@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title><![CDATA[知识从未如此性感]]></title>
-  
+  <subtitle><![CDATA[feel]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.feel88.cn/"/>
   <updated>2015-08-15T13:46:57.000Z</updated>
