@@ -2,82 +2,59 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
- <link rel="icon" type="image/x-icon" href="/favicon.ico">
   
   <title>CDH 安装初始化环境 | 知识从未如此性感</title>
+  <meta name="author" content="feel">
+  
+  <meta name="description" content="feel&#39;s blog | java | scala | python | javascript| linux">
+  
+  
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta property="og:title" content="CDH 安装初始化环境">
+  <meta property="og:site_name" content="知识从未如此性感">
+
   
-    <meta name="author" content="feel">
+    <meta property="og:image" content="undefined">
   
-  
-    <meta name="description" content="install  screen1yum install screen -y">
-  
-  <meta name="description" content="install  screen1yum install screen -y">
-<meta property="og:type" content="article">
-<meta property="og:title" content="CDH 安装初始化环境">
-<meta property="og:url" content="http://blog.feel88.cn/2015/08/15/CDH安装初始化环境/index.html">
-<meta property="og:site_name" content="知识从未如此性感">
-<meta property="og:description" content="install  screen1yum install screen -y">
-<meta property="og:updated_time" content="2015-08-15T12:57:28.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CDH 安装初始化环境">
-<meta name="twitter:description" content="install  screen1yum install screen -y">
-  
-    <link rel="alternate" href="/atom.xml" title="知识从未如此性感" type="application/atom+xml">
-  
-  
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="知识从未如此性感" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
-  <a href="https://github.com/Bestfeel" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0" src="http://www.feel88.cn/site/download/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
-
 </head></html>
+
 <body>
-  <div class="wrapper">
-    <header id="header">
-  <div class="title">
-    <h1><a href="/">知识从未如此性感</a></h1>
-    <p><a href="/"></a></p>
-  </div>
-  <nav class="nav">
-    <ul>
-      
-        <li><a href="/">首页</a></li>
-      
-        <li><a href="/archives">归档</a></li>
-      
-        <li><a href="/site">下载</a></li>
-      
-        <li><a href="/about">关于</a></li>
-      
-      
-        <li><a href="/atom.xml">RSS</a></li>
-      
-    </ul>
-    <div class="clearfix"></div>
-  </nav>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">知识从未如此性感</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
   <div class="clearfix"></div>
-</header>
-    <div class="content"><article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/08/15/CDH安装初始化环境/">
-  <time datetime="2015-08-14T17:54:57.000Z">
-    2015-08-15
-  </time>
-</a>
-    
-    <h1 class="title">CDH 安装初始化环境</h1>
-  </header>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
-  <div class="entry">
-    
-      <h1 id="install-screen">install  screen</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> screen -y</span><br></pre></td></tr></table></figure>
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-08-14T17:54:57.000Z"><a href="/2015/08/15/CDH安装初始化环境/">2015-08-15</a></time>
+      
+      <h1 class="title">CDH 安装初始化环境</h1>
+    </header>
+    <div class="entry">
+      
+        <h1 id="install-screen">install  screen</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> screen -y</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h1 id="init">init</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum  -y <span class="operator"><span class="keyword">install</span> python-devel python-pip libxslt-devel libxml2-devel gcc <span class="keyword">g</span>++ gcc-<span class="keyword">g</span>++</span><br><span class="line">yum -y <span class="keyword">install</span> tree</span><br><span class="line">yum <span class="keyword">install</span> -y python-pip</span><br><span class="line">pip <span class="keyword">install</span> lxml</span></span><br></pre></td></tr></table></figure>
 <h1 id="install-httpd">install httpd</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="operator"><span class="keyword">install</span> httpd -y </span><br><span class="line">service httpd <span class="keyword">start</span></span><br><span class="line">chkconfig httpd <span class="keyword">on</span></span><br><span class="line">mkdir -<span class="keyword">p</span> /<span class="keyword">var</span>/www/html/cdh</span></span><br></pre></td></tr></table></figure>
@@ -99,57 +76,119 @@
 <h1 id="install-coludera-manager-database">install  coludera manager database</h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/<span class="keyword">opt</span>/<span class="keyword">cm</span>-<span class="number">5.3</span>.<span class="number">0</span>/share/cmf/schema/scm_prepare_database.<span class="keyword">sh</span> mysql databases -hlocalhost -uuser -ppassword --scm-host mccrea user password</span><br><span class="line"></span><br><span class="line">/<span class="keyword">opt</span>/<span class="keyword">cm</span>-<span class="number">5.3</span>.<span class="number">0</span>/share/cmf/schema/scm_prepare_database.<span class="keyword">sh</span> mysql hdp_cm -hlocalhost -ucm -padmin--scm-host mccrea <span class="keyword">cm</span> admin</span><br></pre></td></tr></table></figure>
 <h1 id="copy-coludera-manage-to-node">copy coludera manage to node</h1><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r  /opt/cm-<span class="number">5.3</span>.<span class="number">0</span> root<span class="variable">@datanode1</span><span class="symbol">:/opt/cm-</span><span class="number">5.3</span>.<span class="number">0</span></span><br></pre></td></tr></table></figure>
 <h1 id="start-server">start server</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/opt/cm-<span class="number">5.3</span><span class="number">.0</span>/etc/init.d/cloudera-scm-server start</span><br><span class="line"></span><br><span class="line">sudo /opt/cm-<span class="number">5.3</span><span class="number">.0</span>/etc/init.d/cloudera-scm-agent start</span><br></pre></td></tr></table></figure>
-    
+      
+    </div>
+    <footer>
+      
+        <div class="categories">
+    <a href="/categories/bigtata/">bigdata</a>
   </div>
-  <footer>
-    
-      <div class="categories">
-    <a class="categories-link" href="/categories/bigdata/">bigdata</a>
+        <div class="tags">
+    <a href="/tags/bigtata/">bigdata</a>
   </div>
-      <div class="tags">
-    <a class="tags-link" href="/tags/bigdata/">bigdata</a>
-  </div>
+        <div class="addthis addthis_toolbox addthis_default_style">
     
-    <div class="clearfix"></div>
-  </footer>
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
 </article>
 
-<section id="comment">
-  <h1 class="title">评论</h1>
-  <div class="ds-thread" data-title="CDH 安装初始化环境">
-  </div>
-</section></div>
-  </div>
-  <footer id="footer"><div class="copyright">
+<section id="comments">
+ <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-CDH安装初始化环境" data-title="CDH 安装初始化环境" data-url="http://blog.feel88.cn/2015/08/15/CDH安装初始化环境/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"feel"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section></div></div>
+    <aside id="sidebar" class="alignright"><div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:blog.feel88.cn">
+  </form>
+</div>
+
+  <div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
   
-  &copy; 2015 <a href="/">feel</a>
+    <li><a href="/categories/bigtata/">bigdata</a><small>1</small></li>
   
-</div></footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-<script src="/js/scale.fix.js"></script>
+    <li><a href="/categories/tool/">tool</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+  <div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/bigtata/">bigdata</a><small>1</small></li>
+  
+    <li><a href="/tags/tool/">tool</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+  <div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/08/15/git的使用/">git 的使用</a>
+      </li>
+    
+      <li>
+        <a href="/2015/08/15/CDH安装初始化环境/">CDH 安装初始化环境</a>
+      </li>
+    
+  </ul>
+</div></aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2015 feel
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 
-
-<script type="text/javascript">
-  var duoshuoQuery = { short_name: 'feel' };
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';
-    ds.async = true;
-    ds.src = 'http://static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-</script>
 
 
 
 <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
 <script src="/fancybox/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
-  (function($){
-    $('.fancybox').fancybox();
-  })(jQuery);
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
 </script>
 </body>
