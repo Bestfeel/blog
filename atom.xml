@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.feel88.cn/"/>
-  <updated>2015-08-14T20:24:05.000Z</updated>
+  <updated>2015-08-15T12:57:41.000Z</updated>
   <id>http://blog.feel88.cn/</id>
   
   <author>
@@ -15,15 +15,32 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[git 的使用]]></title>
+    <link href="http://blog.feel88.cn/2015/08/15/git%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://blog.feel88.cn/2015/08/15/git的使用/</id>
+    <published>2015-08-15T12:48:03.000Z</published>
+    <updated>2015-08-15T12:57:41.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;"> &#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F; </h2><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">branch </span>-r -d origin/<span class="keyword">branch-name</span><br><span class="line"></span><span class="label">git</span> <span class="keyword">push </span>origin :<span class="keyword">branch-name</span></span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;"> &#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F; </h2><figure class="highlight ar]]>
+    </summary>
+    
+      <category term="tool" scheme="http://blog.feel88.cn/tags/tool/"/>
+    
+      <category term="tool" scheme="http://blog.feel88.cn/categories/tool/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[CDH 安装初始化环境]]></title>
     <link href="http://blog.feel88.cn/2015/08/15/CDH%E5%AE%89%E8%A3%85%E5%88%9D%E5%A7%8B%E5%8C%96%E7%8E%AF%E5%A2%83/"/>
     <id>http://blog.feel88.cn/2015/08/15/CDH安装初始化环境/</id>
     <published>2015-08-14T17:54:57.000Z</published>
-    <updated>2015-08-14T20:24:05.000Z</updated>
+    <updated>2015-08-15T12:57:28.000Z</updated>
     <content type="html"><![CDATA[<h1 id="install-screen">install  screen</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> screen -y</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h1 id="init">init</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum  -y <span class="operator"><span class="keyword">install</span> python-devel python-pip libxslt-devel libxml2-devel gcc <span class="keyword">g</span>++ gcc-<span class="keyword">g</span>++</span><br><span class="line">yum -y <span class="keyword">install</span> tree</span><br><span class="line">yum <span class="keyword">install</span> -y python-pip</span><br><span class="line">pip <span class="keyword">install</span> lxml</span></span><br></pre></td></tr></table></figure>
 <h1 id="install-httpd">install httpd</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="operator"><span class="keyword">install</span> httpd -y </span><br><span class="line">service httpd <span class="keyword">start</span></span><br><span class="line">chkconfig httpd <span class="keyword">on</span></span><br><span class="line">mkdir -<span class="keyword">p</span> /<span class="keyword">var</span>/www/html/cdh</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
 <h1 id="dowload-cdh">dowload cdh</h1><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd  <span class="regexp">/var/</span>www<span class="regexp">/html/</span>cdh</span><br><span class="line">wget <span class="string">http:</span><span class="comment">//archive.cloudera.com/cdh5/parcels/latest/CDH-5.3.0-1.cdh5.3.0.p0.30-el6.parcel.sha1</span></span><br><span class="line">wget <span class="string">http:</span><span class="comment">//archive.cloudera.com/cdh5/parcels/latest/manifest.json</span></span><br><span class="line">wget <span class="string">http:</span><span class="comment">//archive.cloudera.com/cdh5/parcels/latest/CDH-5.3.0-1.cdh5.3.0.p0.30-el6.parcel</span></span><br></pre></td></tr></table></figure>
 <h1 id="install-ntp">install ntp</h1><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install  -y ntpdate ntp</span><br><span class="line">service ntpd <span class="built_in">stop</span></span><br><span class="line">service ntpdate <span class="built_in">start</span></span><br><span class="line">chkconfig ntpdate <span class="command"><span class="keyword">on</span></span></span><br></pre></td></tr></table></figure>
 <h1 id="disabled-selinux">disabled  SELINUX</h1><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed  -<span class="tag">i</span> <span class="string">&apos;s/SELINUX=enforcing/SELINUX=disabled/g&apos;</span> /etc/selinux/config</span><br><span class="line">sed  -<span class="tag">i</span> <span class="string">&apos;/SELINUX=disabled/s/^#*//&apos;</span>  /etc/selinux/config</span><br></pre></td></tr></table></figure>
@@ -43,11 +60,13 @@
 <h1 id="copy-coludera-manage-to-node">copy coludera manage to node</h1><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r  /opt/cm-<span class="number">5.3</span>.<span class="number">0</span> root<span class="variable">@datanode1</span><span class="symbol">:/opt/cm-</span><span class="number">5.3</span>.<span class="number">0</span></span><br></pre></td></tr></table></figure>
 <h1 id="start-server">start server</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/opt/cm-<span class="number">5.3</span><span class="number">.0</span>/etc/init.d/cloudera-scm-server start</span><br><span class="line"></span><br><span class="line">sudo /opt/cm-<span class="number">5.3</span><span class="number">.0</span>/etc/init.d/cloudera-scm-agent start</span><br></pre></td></tr></table></figure>]]></content>
     <summary type="html">
-    <![CDATA[<h1 id="install_screen">install  screen</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> screen -y</span><br></pre></td></tr></table></figure>
-<h1 id="init">init</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum  -y <span class="operator"><span class="keyword">install</span> python-devel python-pip libxslt-devel libxml2-devel gcc <span class="keyword">g</span>++ gcc-<span class="keyword">g</span>++</span><br><span class="line">yum -y <span class="keyword">install</span> tree</span><br><span class="line">yum <span class="keyword">install</span> -y python-pip</span><br><span class="line">pip <span class="keyword">install</span> lxml</span></span><br></pre></td></tr></table></figure>
-<h1 id="install_httpd">install httpd</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="operator"><span class="keyword">install</span> httpd -y </span><br><span class="line">service httpd <span class="keyword">start</span></span><br><span class="line">chkconfig httpd <span class="keyword">on</span></span><br><span class="line">mkdir -<span class="keyword">p</span> /<span class="keyword">var</span>/www/html/cdh</span></span><br></pre></td></tr></table></figure>]]>
+    <![CDATA[<h1 id="install_screen">install  screen</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> screen -y</span><br></pre></td></tr></table></figure>]]>
     
     </summary>
+    
+      <category term="bigdata" scheme="http://blog.feel88.cn/tags/bigdata/"/>
+    
+      <category term="bigdata" scheme="http://blog.feel88.cn/categories/bigdata/"/>
     
   </entry>
   

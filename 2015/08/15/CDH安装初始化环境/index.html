@@ -12,26 +12,18 @@
     <meta name="author" content="feel">
   
   
-    <meta name="description" content="install  screen1yum install screen -y
-init1234yum  -y install python-devel python-pip libxslt-devel libxml2-devel gcc g++ gcc-g++yum -y install treeyum install -y python-pippip install lxml
-install ht">
+    <meta name="description" content="install  screen1yum install screen -y">
   
-  <meta name="description" content="install  screen1yum install screen -y
-init1234yum  -y install python-devel python-pip libxslt-devel libxml2-devel gcc g++ gcc-g++yum -y install treeyum install -y python-pippip install lxml
-install ht">
+  <meta name="description" content="install  screen1yum install screen -y">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CDH 安装初始化环境">
 <meta property="og:url" content="http://blog.feel88.cn/2015/08/15/CDH安装初始化环境/index.html">
 <meta property="og:site_name" content="知识从未如此性感">
-<meta property="og:description" content="install  screen1yum install screen -y
-init1234yum  -y install python-devel python-pip libxslt-devel libxml2-devel gcc g++ gcc-g++yum -y install treeyum install -y python-pippip install lxml
-install ht">
-<meta property="og:updated_time" content="2015-08-14T20:24:05.000Z">
+<meta property="og:description" content="install  screen1yum install screen -y">
+<meta property="og:updated_time" content="2015-08-15T12:57:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CDH 安装初始化环境">
-<meta name="twitter:description" content="install  screen1yum install screen -y
-init1234yum  -y install python-devel python-pip libxslt-devel libxml2-devel gcc g++ gcc-g++yum -y install treeyum install -y python-pippip install lxml
-install ht">
+<meta name="twitter:description" content="install  screen1yum install screen -y">
   
     <link rel="alternate" href="/atom.xml" title="知识从未如此性感" type="application/atom+xml">
   
@@ -41,7 +33,7 @@ install ht">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
-  <a href="https://github.com/Bestfeel" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+  <a href="https://github.com/Bestfeel" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0" src="http://www.feel88.cn/site/download/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
 
 </head></html>
 <body>
@@ -86,9 +78,9 @@ install ht">
   <div class="entry">
     
       <h1 id="install-screen">install  screen</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> screen -y</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h1 id="init">init</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum  -y <span class="operator"><span class="keyword">install</span> python-devel python-pip libxslt-devel libxml2-devel gcc <span class="keyword">g</span>++ gcc-<span class="keyword">g</span>++</span><br><span class="line">yum -y <span class="keyword">install</span> tree</span><br><span class="line">yum <span class="keyword">install</span> -y python-pip</span><br><span class="line">pip <span class="keyword">install</span> lxml</span></span><br></pre></td></tr></table></figure>
 <h1 id="install-httpd">install httpd</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="operator"><span class="keyword">install</span> httpd -y </span><br><span class="line">service httpd <span class="keyword">start</span></span><br><span class="line">chkconfig httpd <span class="keyword">on</span></span><br><span class="line">mkdir -<span class="keyword">p</span> /<span class="keyword">var</span>/www/html/cdh</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
 <h1 id="dowload-cdh">dowload cdh</h1><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd  <span class="regexp">/var/</span>www<span class="regexp">/html/</span>cdh</span><br><span class="line">wget <span class="string">http:</span><span class="comment">//archive.cloudera.com/cdh5/parcels/latest/CDH-5.3.0-1.cdh5.3.0.p0.30-el6.parcel.sha1</span></span><br><span class="line">wget <span class="string">http:</span><span class="comment">//archive.cloudera.com/cdh5/parcels/latest/manifest.json</span></span><br><span class="line">wget <span class="string">http:</span><span class="comment">//archive.cloudera.com/cdh5/parcels/latest/CDH-5.3.0-1.cdh5.3.0.p0.30-el6.parcel</span></span><br></pre></td></tr></table></figure>
 <h1 id="install-ntp">install ntp</h1><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install  -y ntpdate ntp</span><br><span class="line">service ntpd <span class="built_in">stop</span></span><br><span class="line">service ntpdate <span class="built_in">start</span></span><br><span class="line">chkconfig ntpdate <span class="command"><span class="keyword">on</span></span></span><br></pre></td></tr></table></figure>
 <h1 id="disabled-selinux">disabled  SELINUX</h1><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed  -<span class="tag">i</span> <span class="string">&apos;s/SELINUX=enforcing/SELINUX=disabled/g&apos;</span> /etc/selinux/config</span><br><span class="line">sed  -<span class="tag">i</span> <span class="string">&apos;/SELINUX=disabled/s/^#*//&apos;</span>  /etc/selinux/config</span><br></pre></td></tr></table></figure>
@@ -111,8 +103,12 @@ install ht">
   </div>
   <footer>
     
-      
-      
+      <div class="categories">
+    <a class="categories-link" href="/categories/bigdata/">bigdata</a>
+  </div>
+      <div class="tags">
+    <a class="tags-link" href="/tags/bigdata/">bigdata</a>
+  </div>
     
     <div class="clearfix"></div>
   </footer>
