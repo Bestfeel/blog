@@ -4,7 +4,7 @@
   <subtitle><![CDATA[知识从未如此性感]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wwww.feel88.cn/"/>
-  <updated>2015-08-16T06:22:31.000Z</updated>
+  <updated>2015-08-17T13:13:45.000Z</updated>
   <id>http://wwww.feel88.cn/</id>
   
   <author>
@@ -15,11 +15,91 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[sqoops 时区转换]]></title>
+    <link href="http://wwww.feel88.cn/2015/08/17/sqoops%E6%97%B6%E5%8C%BA%E8%BD%AC%E6%8D%A2/"/>
+    <id>http://wwww.feel88.cn/2015/08/17/sqoops时区转换/</id>
+    <published>2015-08-17T12:55:30.000Z</published>
+    <updated>2015-08-17T13:13:45.000Z</updated>
+    <content type="html"><![CDATA[<p> &#x5728;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x78B0;&#x89C1;&#x5404;&#x79CD;&#x65F6;&#x533A;&#x8F6C;&#x6362;&#x95EE;&#x9898;&#x3002;<br> &#x5728;&#x505A; ETL &#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x7531;&#x4E8E;&#x6211;&#x4EEC;&#x7684;&#x6570;&#x636E;&#x65F6;&#x95F4;&#x662F; 0 &#x65F6;&#x533A;&#x7684;&#x3002;&#x9700;&#x8981;&#x8F6C;&#x6362; 8 &#x65F6;&#x533A;&#x3002;</p>
+<a id="more"></a>
+<p>oracle &#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F; </p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sqoop <span class="keyword">import</span> -D oracle.sessionTimeZone=America/Los_Angeles \</span><br><span class="line">    --connect <span class="string">jdbc:</span><span class="string">oracle:</span><span class="string">thin:</span>@<span class="comment">//db.example.com/foo --table bar</span></span><br></pre></td></tr></table></figure>
+<p>mysql &#x6CA1;&#x6709;&#x50CF; oracle &#x8FD9;&#x4E48;&#x7B80;&#x5355;&#x3002;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x8F6C;&#x6362;&#x3002;&#x67E5;&#x627E;&#x76F8;&#x5173;&#x8D44;&#x6599; mysql &#x6709; 2 &#x79CD;&#x65B9;&#x5F0F;&#x89E3;&#x51B3;&#x3002;</p>
+<p>1. &#x5C06; mysql time_zone &#x8BBE;&#x7F6E;&#x6210; +8&#xFF0C;&#x90A3;&#x4E48;&#x67E5;&#x8BE2;&#x7684;&#x65F6;&#x95F4;&#x5B57;&#x6BB5;&#x5C06;&#x4F1A;&#x81EA;&#x52A8;&#x52A0; 8 &#x5C0F;&#x65F6;&#x3002;</p>
+<p>2. &#x4F7F;&#x7528; CONVERT_TZ &#x51FD;&#x6570;&#x8F6C;&#x6362; </p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="header">mysql&gt; SELECT CONVERT_TZ(&apos;2004-01-01 12:00:00&apos;,&apos;GMT&apos;,&apos;MET&apos;);</span><br><span class="line">+---------------------------------------------------------+</span></span><br><span class="line"><span class="header">| CONVERT_TZ(&apos;2004-01-01 12:00:00&apos;,&apos;GMT&apos;,&apos;MET&apos;)           |</span><br><span class="line">+---------------------------------------------------------+</span></span><br><span class="line"><span class="header">| 2004-01-01 13:00:00                                     |</span><br><span class="line">+---------------------------------------------------------+</span></span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"><span class="header">mysql&gt; SELECT CONVERT_TZ(&apos;2004-01-01 12:00:00&apos;,&apos;+00:00&apos;,&apos;+10:00&apos;);</span><br><span class="line">+---------------------------------------------------------+</span></span><br><span class="line"><span class="header">| CONVERT_TZ(&apos;2004-01-01 12:00:00&apos;,&apos;+00:00&apos;,&apos;+10:00&apos;)     |</span><br><span class="line">+---------------------------------------------------------+</span></span><br><span class="line"><span class="header">| 2004-01-01 22:00:00                                     |</span><br><span class="line">+---------------------------------------------------------+</span></span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>sqoop &#x7684;&#x4F7F;&#x7528;&#x6BD4;&#x8F83;&#x9EBB;&#x70E6;&#x4E00;&#x4E9B; </p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqoop <span class="keyword">import</span> --connect <span class="string">jdbc:</span><span class="string">mysql:</span><span class="comment">//localhost:3306/xcloud -username root-password  root--query &quot;select id,password,CONVERT_TZ(last_login,&apos;+00:00&apos;,&apos;+8:00&apos;) as last_login,is_superuser,username,first_name ,last_name,email,is_staff,is_active ,CONVERT_TZ(date_joined,&apos;+00:00&apos;,&apos;+8:00&apos;) as date_joined from auth_user where id &gt;-100 and \$CONDITIONS&quot;  -m 1   --target-dir /test/auth_user/</span></span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<p>在实际应用中，我们经常碰见各种时区转换问题。<br>在做ETL过程中，由于我们的数据时间是0时区的。需要转换8时区。</p>]]>
+    
+    </summary>
+    
+      <category term="bigdata" scheme="http://wwww.feel88.cn/tags/bigtata/"/>
+    
+      <category term="sqoop" scheme="http://wwww.feel88.cn/tags/sqoop/"/>
+    
+      <category term="bigdata" scheme="http://wwww.feel88.cn/categories/bigtata/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[transform]]></title>
+    <link href="http://wwww.feel88.cn/2015/08/17/transform/"/>
+    <id>http://wwww.feel88.cn/2015/08/17/transform/</id>
+    <published>2015-08-17T12:41:44.000Z</published>
+    <updated>2015-08-17T13:16:51.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="transform&#x53D8;&#x5F62;">transform&#x2013;&#x53D8;&#x5F62; </h1><p> &#x6807;&#x7B7E;&#xFF1A; transform</p>
+ <a id="more"></a>
+<hr>
+<h3 id="&#x53D8;&#x5F62;">&#x3010;&#x53D8;&#x5F62;&#x3011;</h3><p>transform &#x53D8;&#x5F62;&#x3002;&#x4E5F;&#x53EB;&#x505A;&#x201C;&#x8F6C;&#x6362;&#x201D;&#x3002;<br>&#x53D8;&#x5F62;&#x91D1;&#x521A; transformer</p>
+<ul>
+<li>2D &#x53D8;&#x5F62; <br> &#x4E00;&#x5171;&#x4E09;&#x79CD;&#xFF1A;<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="rule"><span class="attribute">transform</span>:<span class="value"><span class="function">rotate</span>(<span class="number">40deg</span>)</span></span>;</span><br><span class="line"><span class="rule"><span class="attribute">transform</span>:<span class="value"><span class="function">scale</span>(<span class="number">3</span>)</span></span>;             </span><br><span class="line"><span class="rule"><span class="attribute">transform</span>:<span class="value"><span class="function">skew</span>(<span class="number">30deg</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>&#x5173;&#x4E8E;&#x65CB;&#x8F6C;&#x53D8;&#x5F62;&#xFF1A;<br>:    &#x6B63;&#x65B9;&#x5411;&#x662F;&#x987A;&#x65F6;&#x9488;&#x7684;&#xFF1B;&#x4E2D;&#x5FC3;&#x70B9;&#x9ED8;&#x8BA4;&#x662F;&#x76D2;&#x5B50;&#x7684;&#x4E2D;&#x5FC3;&#x3002;&#x4E00;&#x5708;&#x662F; 360deg&#x3002;</p>
+<p>&#x7F29;&#x653E;&#x53D8;&#x5F62;&#xFF1A;<br>:    &#x7F29;&#x653E;&#x4E5F;&#x6709;&#x4E2D;&#x5FC3;&#xFF0C;&#x5C31;&#x662F;&#x9ED8;&#x8BA4;&#x7684;&#x76D2;&#x5B50;&#x4E2D;&#x5FC3;&#xFF1B;&#x80FD;&#x591F;&#x7F29;&#x5C0F;&#xFF0C;&#x5199;&#x5C0F;&#x6570;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;scale(0.6)<br>:    &#x80FD;&#x591F;&#x7528;&#x9017;&#x53F7;&#xFF0C;&#x9694;&#x5F00;&#x4E24;&#x4E2A;&#x6570;&#x5B57;&#xFF0C;&#x8868;&#x793A; x &#x8F74;&#x548C; y &#x8F74;&#x7684;&#x5404;&#x81EA;&#x7F29;&#x653E;&#x500D;&#x6570;&#x3002;</p>
+<p>&#x659C;&#x5207;&#x53D8;&#x5F62;&#xFF1A;<br>:    &#x80FD;&#x591F;&#x7528;&#x9017;&#x53F7;&#xFF0C;&#x9694;&#x5F00;&#x4E24;&#x4E2A;&#x6570;&#x5B57;&#xFF0C;&#x8868;&#x793A; x &#x8F74;&#x548C; y &#x8F74;&#x7684;&#x5404;&#x81EA;&#x7F29;&#x653E;&#x500D;&#x6570;&#x3002;</p>
+<p><strong>&#x5176;&#x4ED6;&#x6CE8;&#x610F;&#x4E8B;&#x9879;&#xFF1A;</strong></p>
+<ol>
+<li>&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x643A;&#x5E26;&#x591A;&#x79CD;&#x53D8;&#x5F62;&#xFF0C;&#x5C31;&#x7528;&#x7A7A;&#x683C;&#x9694;&#x5F00;&#x5373;&#x53EF;&#xFF1B;<br>    transform:rotate(40deg) scale(3);</li>
+<li>&#x53D8;&#x5F62;&#x53EF;&#x4EE5;&#x8FC7;&#x6E21;&#x3002;&#x5C31;&#x662F; transform &#x5C5E;&#x6027;&#x53EF;&#x4EE5; transition</li>
+</ol>
+<hr>
+<h3 id="3d-&#x53D8;&#x5F62;"><strong>3D &#x53D8;&#x5F62;</strong></h3><p>3D &#x53D8;&#x5F62;&#x5C31;&#x4E24;&#x4E2A;</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="rule"><span class="attribute">transform</span>:<span class="value"><span class="function">rotateX</span>(<span class="number">30deg</span>)</span></span>;   <span class="comment">/* &#x7ED5; x &#x8F74;&#x65CB;&#x8F6C;&#xFF0C;&#x5355;&#x6760; */</span></span><br><span class="line"><span class="rule"><span class="attribute">transform</span>:<span class="value"><span class="function">rotateY</span>(<span class="number">30deg</span>)</span></span>;   <span class="comment">/* &#x7ED5; y &#x8F74;&#x65CB;&#x8F6C;&#xFF0C;&#x94A2;&#x7BA1;&#x821E; */</span></span><br></pre></td></tr></table></figure>
+<p>3D &#x53D8;&#x5F62;&#x79BB;&#x4E0D;&#x5F00;&#x900F;&#x89C6;&#x7684;&#x77E5;&#x8BC6;&#xFF0C;&#x6211;&#x4EEC;&#x73B0;&#x5728;&#xFF1A;</p>
+<pre><code><span class="tag">&lt;<span class="title">div</span>&gt;</span>           
+    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">&quot;images/baby.png&quot;</span> /&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</code></pre><p>3D &#x53D8;&#x5F62;&#xFF1A;   </p>
+<p>&#x7ED9;&#x6F14;&#x5458;&#x8BBE;&#x7F6E;&#x53D8;&#x5F62; :transform:rotateX(30deg);<br>&#x7ED9;&#x821E;&#x53F0;&#x8BBE;&#x7F6E;&#x666F;&#x6DF1;: perspective:400px;</p>
+<p>3D &#x53D8;&#x5F62;&#x4E5F;&#x53EF;&#x4EE5;&#x6709;&#x8FC7;&#x6E21;&#x3002;<br>3D &#x53D8;&#x5F62;&#x6709;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x91CD;&#x8981;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x53EB;&#x505A;&#x80CC;&#x9762;&#x4E0D;&#x53EF;&#x89C1;&#x3002;&#x5982;&#x679C;&#x56FE;&#x7247;&#x88AB;&#x65CB;&#x8F6C;&#x5230;&#x4E86;&#x80CC;&#x9762;&#xFF0C;&#x90A3;&#x4E48;&#x4E0D;&#x53EF;&#x89C1;&#x3002;</p>
+<pre><code><span class="rule"><span class="attribute">-webkit-backface-visibility</span>:<span class="value">hidden</span></span>; 
+</code></pre><h3 id="&#x7EF4;&#x5EA6;&#x79FB;&#x52A8;translate">&#x7EF4;&#x5EA6;&#x79FB;&#x52A8;&#xFF0C;translate</h3><p>:    &#x6BCF;&#x4E00;&#x4E2A;&#x76D2;&#x5B50;&#xFF0C;&#x90FD;&#x6709;&#x7740;&#x81EA;&#x5DF1;&#x7684;&#x5750;&#x6807;&#x8F74;&#x3002;&#x5F53;&#x81EA;&#x5DF1;&#x53D1;&#x751F; rotate &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x81EA;&#x5DF1;&#x7684;&#x8FD9;&#x4E2A;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FFD;&#x52A0;&#x4E00;&#x4E2A; translate&#xFF0C;&#x8868;&#x793A;&#x6CBF;&#x7740;&#x81EA;&#x5DF1;&#x7684;&#x5750;&#x6807;&#x8F74;&#x8FDB;&#x884C;&#x79FB;&#x52A8;&#x3002;</p>
+<p>:    &#x6BCF;&#x4E2A;&#x76D2;&#x5B50;&#x90FD;&#x6709;&#x4E09;&#x4E2A;&#x5750;&#x6807;&#x8F74;&#xFF0C;x &#x8F74;&#x662F;&#x81EA;&#x5DF1;&#x7684;&#x5DE6;&#x65B9;&#x5411;&#xFF0C;y &#x8F74;&#x662F;&#x81EA;&#x5DF1;&#x7684;&#x4E0B;&#x65B9;&#x5411;&#xFF0C;z &#x8F74;&#x662F;&#x81EA;&#x5DF1;&#x7684;&#x8138;&#x671D;&#x5411;&#x7684;&#x65B9;&#x5411;&#x3002;</p>
+<p><strong>&#x8BED;&#x6CD5;&#xFF1A;</strong><br>&#x5148;&#x65CB;&#x8F6C; 140deg&#xFF0C;&#x7136;&#x540E;&#x6CBF;&#x7740;&#x81EA;&#x5DF1;&#x7684; y &#x7EF4;&#x5EA6;&#x8FDB;&#x884C;&#x79FB;&#x52A8; 200px&#x3002;<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="rule"><span class="attribute">transform</span>:<span class="value"><span class="function">rotate</span>(<span class="number">140deg</span>) <span class="function">translateY</span>(<span class="number">200px</span>)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>&#x5982;&#x679C;&#x821E;&#x53F0;&#xFF0C;&#x81EA;&#x5DF1;&#x8981;&#x65CB;&#x8F6C;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x4E00;&#x5B9A;&#x8981;&#x8BBE;&#x7F6E;&#x4FDD;&#x6301;&#x821E;&#x53F0;&#x81EA;&#x5DF1;&#x7684; 3D &#x6F14;&#x5458;&#x4F4D;&#x7F6E;&#x3002;&#x6240;&#x4EE5;&#x8981;&#x8BBE;&#x7F6E;&#xFF1A;<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="rule"><span class="attribute">transform-style</span>:<span class="value">preserve-<span class="number">3</span>d</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>&#x4E00;&#x5B9A;&#x662F;&#x7ED9;&#x821E;&#x53F0;&#x8BBE;&#x7F6E;&#x7684;&#xFF0C;&#x662F;&#x5728;&#x821E;&#x53F0;&#x81EA;&#x8EAB;&#x53D1;&#x751F; 3D &#x65CB;&#x8F6C;&#x7684;&#x65F6;&#x5019;&#x7528;&#x7684; <br> &#x53D8;&#x5F62;&#x6837;&#x5F0F;&#xFF1A;preserve &#x8868;&#x793A;&#x201C;&#x4FDD;&#x7559;&#x201D;&#x3002;&#x4FDD;&#x6301;&#x6240;&#x6709;&#x6F14;&#x5458;&#x7684; 3D &#x4F4D;&#x7F6E;&#x3002;</p>]]></content>
+    <summary type="html">
+    <![CDATA[<h1 id="transform–变形">transform–变形</h1><p>标签： transform</p>]]>
+    
+    </summary>
+    
+      <category term="web" scheme="http://wwww.feel88.cn/tags/web/"/>
+    
+      <category term="web前端" scheme="http://wwww.feel88.cn/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="web" scheme="http://wwww.feel88.cn/categories/web/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Stylus 的使用]]></title>
     <link href="http://wwww.feel88.cn/2015/08/16/Stylus%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>http://wwww.feel88.cn/2015/08/16/Stylus的使用/</id>
     <published>2015-08-16T04:16:16.000Z</published>
-    <updated>2015-08-16T06:22:31.000Z</updated>
+    <updated>2015-08-16T16:38:03.000Z</updated>
     <content type="html"><![CDATA[<h3 id="&#x524D;&#x8A00;">&#x524D;&#x8A00; </h3><p> &#x672C;&#x6765;&#x5199;&#x8FD9;&#x7BC7;&#x535A;&#x5BA2;&#x5F00;&#x59CB;&#x6211;&#x662F;&#x62D2;&#x7EDD;&#x7684;&#x3002;&#x8FD9;&#x4E2A;&#x535A;&#x5BA2;&#x4E5F;&#x662F;&#x4E3A;&#x4E86;&#x8BB0;&#x5F55;&#x81EA;&#x5DF1;&#x7684;&#x6210;&#x957F;&#x7ECF;&#x5386;&#x548C;&#x5B66;&#x4E60;&#x8FC7;&#x7A0B;&#x3002;&#x6211;&#x4E4B;&#x524D;&#x4E5F;&#x7528;&#x8FC7;&#x5F88;&#x591A;&#x535A;&#x5BA2;&#xFF0C;&#x7B14;&#x8BB0;&#x3002;&#x76EE;&#x524D;&#x5927;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x90FD;&#x5728;&#x6211;&#x7684;&#x4E3A;&#x77E5;&#x7B14;&#x8BB0;&#x4E2D;&#x3002;<br>&#x642D;&#x5EFA;&#x8FD9;&#x4E2A;&#x535A;&#x5BA2;&#x6837;&#x5F0F;&#x4F7F;&#x7528;&#x4E86; stylus&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x5B66;&#x4E60;&#x4E86;&#x4E00;&#x4E0B;&#x3002;</p>
 <a id="more"></a>
 <p>&#x5230;&#x76EE;&#x524D;&#x4E3A;&#x6B62;&#xFF0C;&#x524D;&#x7AEF;&#x5F00;&#x53D1;&#x4E09;&#x4E2A;&#x6700;&#x91CD;&#x8981;&#x7684;&#x90E8;&#x5206; HTML, Javascript, CSS &#x4E2D;&#xFF0C;&#x4E0D;&#x7BA1;&#x662F;&#x6587;&#x6863;&#x8FD8;&#x662F;&#x5DE5;&#x5177;&#xFF0C;&#x5BF9;&#x4E8E; CSS &#x7684;&#x652F;&#x6301;&#x662F;&#x6700;&#x5C11;&#x7684;&#x3002;&#x5728; HTML5+CSS3 &#x7684;&#x65F6;&#x4EE3;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x66F4;&#x52A0;&#x61C2; CSS&#xFF0C;&#x8981;&#x8BA9; CSS &#x4E5F;&#x6210;&#x4E3A;&#x5F00;&#x53D1;&#x7684;&#x5229;&#x5668;&#x3002;<br>&#x5BF9;&#x4E8E;&#x5F00;&#x53D1;&#x6765;&#x8BF4;&#xFF0C;CSS &#x7684;&#x5F31;&#x70B9;&#x5728;&#x4E8E;&#x9759;&#x6001;&#x5316;&#x3002;&#x6211;&#x4EEC;&#x4E0D;&#x5F97;&#x4E0D;&#x80CC; CSS &#x7684;&#x5404;&#x79CD;&#x89C4;&#x8303;&#xFF0C;&#x7136;&#x540E;&#x4E00;&#x5B57;&#x4E00;&#x53E5;&#x7684;&#x7F16;&#x5199;&#x6587;&#x4EF6;&#x3002;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x771F;&#x6B63;&#x80FD;&#x63D0;&#x9AD8;&#x5F00;&#x53D1;&#x6548;&#x7387;&#x7684;&#x5DE5;&#x5177;&#xFF0C;LESS, SASS &#x90FD;&#x5728;&#x8FD9;&#x65B9;&#x9762;&#x505A;&#x4E86;&#x4E00;&#x4E9B;&#x8D21;&#x732E;&#x3002;<br>Stylus &#x6BD4; LESS &#x66F4;&#x5F3A;&#x5927;&#xFF0C;&#x800C;&#x4E14;&#x57FA;&#x4E8E; nodejs &#x6BD4; SASS &#x66F4;&#x7B26;&#x5408;&#x6211;&#x4EEC;&#x7684;&#x601D;&#x8DEF;&#x3002;</p>
@@ -83,7 +163,7 @@
 <h3 id="hash-&#x7ED3;&#x6784;">hash  &#x7ED3;&#x6784; </h3><p> &#x7ED9;&#x5B9A; hash , &#x548C; key, &#x5982;&#x679C;&#x5B58;&#x5728;&#x8FD4;&#x56DE; value</p>
 <p>&#x6211;&#x4EEC;&#x5B9A;&#x4E49; get(hash, key)&#x65B9;&#x6CD5;&#xFF0C;&#x7528;&#x6765;&#x8FD4;&#x56DE; key &#x503C;&#x6216; null. &#x6211;&#x4EEC;&#x904D;&#x5386;&#x6BCF;&#x4E2A;&#x952E;&#x503C;&#x5BF9;&#xFF0C;&#x5982;&#x679C;&#x952E;&#x503C;&#x5339;&#x914D;&#xFF0C;&#x8FD4;&#x56DE;&#x5BF9;&#x5E94;&#x7684;&#x503C;&#x3002;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">get(<span class="built_in">hash</span>, key)</span><br><span class="line">  <span class="built_in">return</span> pair[<span class="number">1</span>] <span class="keyword">if</span> pair[<span class="number">0</span>] == key <span class="keyword">for</span> pair <span class="keyword">in</span> <span class="built_in">hash</span></span><br><span class="line"></span><br><span class="line">//pair   &#x8FD9;&#x91CC;&#x7684; pair  &#x5176;&#x5B9E;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x4E8C;&#x5143;&#x7EC4; pair[<span class="number">1</span>] &#x8868;&#x793A; <span class="built_in">hash</span> &#x4E2D;&#x7684; value ,pair[<span class="number">0</span>] &#x8868;&#x793A;<span class="built_in">hash</span> &#x4E2D;&#x7684; key</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hash = <span class="list">(<span class="keyword">one</span> <span class="number">1</span>)</span> <span class="list">(<span class="keyword">two</span> <span class="number">2</span>)</span> <span class="list">(<span class="keyword">three</span> <span class="number">3</span>)</span></span><br><span class="line"></span><br><span class="line">get<span class="list">(<span class="keyword">hash</span>, two)</span></span><br><span class="line">// =&gt; <span class="number">2</span></span><br><span class="line"></span><br><span class="line">get<span class="list">(<span class="keyword">hash</span>, three)</span></span><br><span class="line">// =&gt; <span class="number">3</span></span><br><span class="line"></span><br><span class="line">get<span class="list">(<span class="keyword">hash</span>, something)</span></span><br><span class="line">// =&gt; null</span><br></pre></td></tr></table></figure>
-<p><a href="https://learnboost.github.io/stylus/" target="_blank" rel="external">&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF1A;https://learnboost.github.io/stylus/</a><br><a href="http://www.zhangxinxu.com/jq/stylus/" target="_blank" rel="external">&#x53C2;&#x8003;&#xFF1A; http://www.zhangxinxu.com/jq/stylus/</a></p>]]></content>
+<p><a href="https://learnboost.github.io/stylus/" target="_blank" rel="external">&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF1A;https://learnboost.github.io/stylus/</a><br><a href="http://www.zhangxinxu.com/jq/stylus/" target="_blank" rel="external">&#x53C2;&#x8003;&#xFF1A; http://www.zhangxinxu.com/jq/stylus/</a><br><a href="http://learnboost.github.io/stylus/try.html" target="_blank" rel="external">&#x5728;&#x7EBF;&#x4F53;&#x9A8C;:http://learnboost.github.io/stylus/try.html</a></p>]]></content>
     <summary type="html">
     <![CDATA[<h3 id="前言">前言</h3><p>本来写这篇博客开始我是拒绝的。这个博客也是为了记录自己的成长经历和学习过程。我之前也用过很多博客，笔记。目前大部分内容都在我的为知笔记中。<br>搭建这个博客样式使用了stylus，所以在使用的过程中学习了一下。</p>]]>
     
