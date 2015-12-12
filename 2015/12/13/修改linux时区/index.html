@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>归档：2015/8 | Feel&#39;s blog</title>
+  <title>修改 linux 时区 | Feel&#39;s blog</title>
   <meta name="author" content="feel">
   
   <meta name="description" content="feel&#39;s blog | java | scala | python | javascript| linux | nodejs| Machine Learning">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
-  
+  <meta property="og:title" content="修改 linux 时区">
   <meta property="og:site_name" content="Feel&#39;s blog">
 
   
@@ -46,96 +46,57 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><h2 class="archive-title">2015/8</h2>
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-12T18:57:09.000Z"><a href="/2015/12/13/修改linux时区/">2015-12-13</a></time>
+      
+      <h1 class="title">修改 linux 时区</h1>
+    </header>
+    <div class="entry">
+      
+        <p>linux &#x7684;&#x65F6;&#x533A;&#x4E3A; UTC &#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x4E3A; CST &#x65F6;&#x533A; </p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install  -y ntpdate ntp</span><br><span class="line">service ntpd <span class="built_in">stop</span></span><br><span class="line">service ntpdate <span class="built_in">start</span></span><br><span class="line">chkconfig ntpdate <span class="command"><span class="keyword">on</span></span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p> &#x4FEE;&#x6539;&#x65F6;&#x533A; <br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/etc/</span>sysconfig/clock</span><br><span class="line"></span><br><span class="line">ZONE=<span class="string">&quot;Asia/Shanghai&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mv <span class="regexp">/etc/</span>localtime <span class="regexp">/etc/</span>localtime.bak</span><br><span class="line">ln -s <span class="regexp">/usr/</span>share<span class="regexp">/zoneinfo/</span>Asia<span class="regexp">/Shanghai  /</span>etc/localtime</span><br></pre></td></tr></table></figure></p>
+      
+    </div>
+    <footer>
+      
+        <div class="categories">
+    <a href="/categories/linux/">linux</a>
+  </div>
+        <div class="tags">
+    <a href="/tags/linux/">linux</a>
+  </div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
 
-
-  <div class="archive">
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-08-23T13:56:15.000Z"><a href="/2015/08/23/progress-Bar/">2015-08-23</a></time>
-            
-              <h1 class="title"><a href="/2015/08/23/progress-Bar/">progress Bar</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-08-17T17:12:18.000Z"><a href="/2015/08/18/css3伪元素/">2015-08-18</a></time>
-            
-              <h1 class="title"><a href="/2015/08/18/css3伪元素/">css3 伪元素</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-08-17T12:55:30.000Z"><a href="/2015/08/17/sqoop时区转换/">2015-08-17</a></time>
-            
-              <h1 class="title"><a href="/2015/08/17/sqoop时区转换/">sqoop 时区转换</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-08-17T12:41:44.000Z"><a href="/2015/08/17/transform/">2015-08-17</a></time>
-            
-              <h1 class="title"><a href="/2015/08/17/transform/">transform</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-08-16T04:16:16.000Z"><a href="/2015/08/16/Stylus的使用/">2015-08-16</a></time>
-            
-              <h1 class="title"><a href="/2015/08/16/Stylus的使用/">Stylus 的使用</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-08-15T12:48:03.000Z"><a href="/2015/08/15/git的使用/">2015-08-15</a></time>
-            
-              <h1 class="title"><a href="/2015/08/15/git的使用/">git 的使用</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-08-14T17:54:57.000Z"><a href="/2015/08/15/CDH安装初始化环境/">2015-08-15</a></time>
-            
-              <h1 class="title"><a href="/2015/08/15/CDH安装初始化环境/">CDH 安装初始化环境</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-  </div></div></div>
+<section id="comments">
+ <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-修改linux时区" data-title="修改 linux 时区" data-url="http://wwww.feel88.cn/2015/12/13/修改linux时区/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"feel"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section></div></div>
     <aside id="sidebar" class="alignright"><div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
     <input type="search" name="q" results="0" placeholder="搜索">
