@@ -4,7 +4,7 @@
   <subtitle><![CDATA[知识从未如此性感]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wwww.feel88.cn/"/>
-  <updated>2016-01-02T15:12:49.000Z</updated>
+  <updated>2016-01-02T15:15:57.000Z</updated>
   <id>http://wwww.feel88.cn/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wwww.feel88.cn/2016/01/02/ssl%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81/"/>
     <id>http://wwww.feel88.cn/2016/01/02/ssl双向认证/</id>
     <published>2016-01-02T14:52:17.000Z</published>
-    <updated>2016-01-02T15:12:49.000Z</updated>
+    <updated>2016-01-02T15:15:57.000Z</updated>
     <content type="html"><![CDATA[<p>&#x6709;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x4E00;&#x4E9B;&#x7AEF;&#x53E3;&#x548C;&#x7F51;&#x7AD9;&#x9700;&#x8981; ssl &#x53CC;&#x5411;&#x8BA4;&#x8BC1;</p>
 <p>1. &#x5B89;&#x88C5; htpasswd</p>
 <p>ubuntu  </p>
@@ -57,7 +57,9 @@
     
       <category term="linux" scheme="http://wwww.feel88.cn/tags/linux/"/>
     
-      <category term="linux ,nginx" scheme="http://wwww.feel88.cn/categories/linux-nginx/"/>
+      <category term="nginx" scheme="http://wwww.feel88.cn/tags/nginx/"/>
+    
+      <category term="linux" scheme="http://wwww.feel88.cn/categories/linux/"/>
     
   </entry>
   
@@ -182,7 +184,7 @@
     <link href="http://wwww.feel88.cn/2015/09/04/nginx-403-forbidden/"/>
     <id>http://wwww.feel88.cn/2015/09/04/nginx-403-forbidden/</id>
     <published>2015-09-03T19:38:05.000Z</published>
-    <updated>2015-09-30T10:09:09.000Z</updated>
+    <updated>2016-01-02T15:15:38.000Z</updated>
     <content type="html"><![CDATA[<p>nginx 403 forbidden &#x4E09;&#x79CD;&#x539F;&#x56E0; <br> &#x5F15;&#x8D77; nginx 403 forbidden &#x6709;&#x4E09;&#x79CD;&#x539F;&#x56E0;&#xFF0C;&#x4E00;&#x662F;&#x7F3A;&#x5C11;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#xFF0C;&#x4E8C;&#x6743;&#x9650;&#x95EE;&#x9898;&#xFF0C;&#x4E09;&#x662F; selinux</p>
 <a id="more"></a>
 <h4 id="1&#x7F3A;&#x5C11;-indexhtml-&#x6216;&#x8005;-indexphp-&#x6587;&#x4EF6;">1&#xFF0C;&#x7F3A;&#x5C11; index.html &#x6216;&#x8005; index.php &#x6587;&#x4EF6;</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="title">server</span> {  </span><br><span class="line"> <span class="title">listen</span>       <span class="number">80</span>;  </span><br><span class="line"> <span class="title">server_name</span>  localhost;  </span><br><span class="line"> <span class="title">index</span>  index.php index.html;  </span><br><span class="line"> <span class="title">root</span>  /home/feel/www;</span><br></pre></td></tr></table></figure>
@@ -199,7 +201,7 @@
     
       <category term="nginx" scheme="http://wwww.feel88.cn/tags/nginx/"/>
     
-      <category term="nginx  常用错误" scheme="http://wwww.feel88.cn/categories/nginx-%E5%B8%B8%E7%94%A8%E9%94%99%E8%AF%AF/"/>
+      <category term="nginx常用错误" scheme="http://wwww.feel88.cn/categories/nginx%E5%B8%B8%E7%94%A8%E9%94%99%E8%AF%AF/"/>
     
   </entry>
   
@@ -328,7 +330,7 @@
     <link href="http://wwww.feel88.cn/2015/08/17/transform/"/>
     <id>http://wwww.feel88.cn/2015/08/17/transform/</id>
     <published>2015-08-17T12:41:44.000Z</published>
-    <updated>2015-09-30T10:09:09.000Z</updated>
+    <updated>2016-01-02T15:16:03.000Z</updated>
     <content type="html"><![CDATA[<h1 id="transform&#x53D8;&#x5F62;">transform&#x2013;&#x53D8;&#x5F62; </h1><p> &#x6807;&#x7B7E;&#xFF1A; transform</p>
  <a id="more"></a>
 <hr>
