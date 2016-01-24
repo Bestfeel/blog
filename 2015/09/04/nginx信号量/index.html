@@ -15,191 +15,178 @@
   <meta property="og:site_name" content="Feel&#39;s blog">
 
   
-    <meta property="og:image" content="undefined">
+  
+		<!-- favicon -->
+		<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+		<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+		<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/manifest.json">
+		<meta name="msapplication-TileColor" content="#009688">
+		<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+		<meta name="theme-color" content="#009688">
+		<!-- favicon end -->
+    <!-- <link href="/favicon.ico" rel="icon"> -->
   
 
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="alternate" href="/atom.xml" title="Feel&#39;s blog" type="application/atom+xml">
+  <!-- toc -->
+  <link rel="stylesheet" href="/libs/tocify/jquery.tocify.css" media="screen" type="text/css">
+
+  <!-- <link rel="stylesheet" href="/libs/bs/css/bootstrap.min.css" media="screen" type="text/css"> -->
+  <link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" media="screen" type="text/css">
+
+  <!-- material design -->
+	<!-- <link rel="stylesheet" href="/libs/bs-material/css/ripples.min.css" media="screen" type="text/css"> -->
+  <link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap-material/0.3.0/css/ripples.min.css" media="screen" type="text/css">
+  <!-- <link rel="stylesheet" href="/libs/bs-material/css/material.min.css" media="screen" type="text/css"> -->
+	<link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap-material/0.3.0/css/material.min.css" media="screen" type="text/css">
+
+  <link rel="stylesheet" href="/css/highlight.light.css" media="screen" type="text/css">
+
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-</head></html>
 
-<body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Feel&#39;s blog</a></h1>
-  <h2><a href="/">知识从未如此性感</a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">首页</a></li>
-    
-      <li><a href="/archives">归档</a></li>
-    
-      <li><a href="/site">下载</a></li>
-    
-      <li><a href="/about">关于</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-09-04T08:46:48.000Z"><a href="/2015/09/04/nginx信号量/">2015-09-04</a></time>
-      
-      <h1 class="title">nginx 信号量</h1>
-    </header>
-    <div class="entry">
-      
-        <p> &#x5728;&#x6211;&#x4EEC;&#x4F7F;&#x7528; nginx , &#x6211;&#x4EEC;&#x591A;&#x591A;&#x5C11;&#x5C11;&#x90FD;&#x9700;&#x8981;&#x4F7F;&#x7528; nginx &#x7684;&#x4FE1;&#x53F7;&#x6765;&#x63A7;&#x5236; nginx</p>
+
+  
+
+  <script src="//apps.bdimg.com/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/libs/jquery-2.0.3.min.js" type="text/javascript"><\/script>')</script>
+
+</head></html>
+ 	<body>
+	  <nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">菜单</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Feel&#39;s blog</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/" title="">
+                    <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/archives" title="">
+                    <i class="fa fa-list"></i>存档
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/about" title="">
+                    <i class="fa fa-info-circle"></i>关于
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/site" title="下载中心">
+                    <i class="fa fa-rss"></i>下载
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+	  <div class="container">
+	    <div class="row">
+	
+	<div class="col-md-9 center-content">
+	
+
+		<div class="content">
+			<!-- index -->
+		   
+
+			  		<h2>nginx 信号量</h2>
+					
+					<div>
+						<span class="post-time">2015-09-04 16:46:48</span>
+					</div>	
+					
+
+					<div class="article-content">
+						<p> &#x5728;&#x6211;&#x4EEC;&#x4F7F;&#x7528; nginx , &#x6211;&#x4EEC;&#x591A;&#x591A;&#x5C11;&#x5C11;&#x90FD;&#x9700;&#x8981;&#x4F7F;&#x7528; nginx &#x7684;&#x4FE1;&#x53F7;&#x6765;&#x63A7;&#x5236; nginx</p>
 <a id="more"></a>
 <figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">|<span class="string"> ERM, INT   </span>|<span class="string">  Quick shutdown    &#x7ACB;&#x5373;&#x7ED3;&#x675F;&#x8FDB;&#x7A0B;                                                                       </span><br><span class="line">      </span><br><span class="line"></span>|<span class="string">  QUIT      </span>|<span class="string"> Graceful shutdown  &#x4F18;&#x96C5;&#x7684;&#x5173;&#x95ED;&#x8FDB;&#x7A0B;, &#x5373;&#x7B49;&#x8BF7;&#x6C42;&#x7ED3;&#x675F;&#x540E;&#x518D;&#x5173;&#x95ED;  </span><br><span class="line"> </span><br><span class="line"></span>|<span class="string">  HUP       </span>|<span class="string">  Configuration reload ,Start the new  worker processes with  </span><br><span class="line">             </span>|<span class="string"> a  new configuration Gracefully shutdown the old worker processes </span><br><span class="line">             </span>|<span class="string"> &#x6539;&#x53D8;&#x914D;&#x7F6E;&#x6587;&#x4EF6;, &#x5E73;&#x6ED1;&#x7684;&#x91CD;&#x8BFB;&#x914D;&#x7F6E;&#x6587;&#x4EF6; &#xFF08;&#x5F53;&#x6211;&#x4EEC;&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x5E73;&#x6ED1;&#x5347;&#x7EA7;&#xFF0C;&#x91CD;&#x542F;&#xFF0C;&#x4E2D;&#x95F4;&#x8FC7;&#x7A0B;&#x4E0D;&#x662F;&#x7ACB;&#x5373;&#x751F;&#x6548; </span><br><span class="line"></span><br><span class="line"></span>|<span class="string">  USR1      </span>|<span class="string">  Reopen the log files &#x91CD;&#x8BFB;&#x65E5;&#x5FD7;, &#x5728;&#x65E5;&#x5FD7;&#x6309;&#x6708; / &#x65E5;&#x5206;&#x5272;&#x65F6;&#x6709;&#x7528; &#xFF08;&#x5728;&#x4F7F;&#x7528;&#x65E5;&#x5FD7;&#x5206;&#x9694;&#x65F6;&#xFF0C;&#x4E0D;&#x80FD;&#x7B80;&#x5355;&#x7684;&#x6539;&#x540D;&#x505A;&#x5907;&#x4EFD;  </span><br><span class="line">      </span><br><span class="line"></span>|<span class="string">  USR2       </span>|<span class="string">  Upgrade Executable on the fly &#x5E73;&#x6ED1;&#x7684;&#x5347;&#x7EA7;             </span><br><span class="line"> </span><br><span class="line"></span>|<span class="string">  WINCH     </span>|<span class="string">  Gracefully shutdown the worker processes  &#x4F18;&#x96C5;&#x5173;&#x95ED;&#x65E7;&#x7684;&#x8FDB;&#x7A0B; (&#x914D;&#x5408; USR2 &#x6765;&#x8FDB;&#x884C;&#x5347;&#x7EA7;)</span></span><br></pre></td></tr></table></figure>
 <h3 id="&#x5177;&#x4F53;&#x8BED;&#x6CD5;"> &#x5177;&#x4F53;&#x8BED;&#x6CD5;:</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="operator"><span class="keyword">Kill</span>  - &#x4FE1;&#x53F7;&#x9009;&#x9879; nginx &#x7684;&#x4E3B;&#x8FDB;&#x7A0B;&#x53F7; </span><br><span class="line"><span class="keyword">Kill</span>  -HUP <span class="number">4873</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">Kill</span>  - &#x4FE1;&#x53F7;&#x63A7;&#x5236; <span class="string">`cat /xxx/path/log/nginx.pid`</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">Kill</span>   -USR1 <span class="string">`cat /xxx/path/log/nginx.pid`</span></span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
-        <div class="categories">
-    <a href="/categories/nginx/">nginx</a>
-  </div>
-        <div class="tags">
-    <a href="/tags/nginx信号量/">nginx信号量</a>
-  </div>
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
+					</div>
 
-<section id="comments">
- <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-nginx信号量" data-title="nginx 信号量" data-url="http://wwww.feel88.cn/2015/09/04/nginx信号量/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"feel"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-<!-- 多说公共JS代码 end -->
-  </section></div></div>
-    <aside id="sidebar" class="alignright"><div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="搜索">
-    <input type="hidden" name="q" value="site:wwww.feel88.cn">
-  </form>
+			  <!-- about -->
+			  
+		</div>
+
+		<!-- pagination -->
+	  
+
+		<div class="comment-section">
+  
+  
+   <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="_posts/nginx信号量.md" data-title="nginx 信号量" data-url="http://wwww.feel88.cn/2015/09/04/nginx信号量/"></div>
+    <!-- 多说评论框 end -->
+   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'feel'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
+  
+
+
 </div>
+	</div>
 
-  <div class="widget tag">
-  <h3 class="title">分类</h3>
-  <ul class="entry">
-  
-    <li><a href="/categories/bigtata/">bigdata</a><small>2</small></li>
-  
-    <li><a href="/categories/css3/">css3</a><small>2</small></li>
-  
-    <li><a href="/categories/linux/">linux</a><small>4</small></li>
-  
-    <li><a href="/categories/nginx/">nginx</a><small>1</small></li>
-  
-    <li><a href="/categories/nginx常用错误/">nginx常用错误</a><small>1</small></li>
-  
-    <li><a href="/categories/tool/">tool</a><small>1</small></li>
-  
-    <li><a href="/categories/web/">web</a><small>2</small></li>
-  
-  </ul>
+	
+
 </div>
+		<footer>
+			<p>
+  由 <a href="https://hexo.io">hexo</a> 强力驱动 | 搭载 <a href="https://github.com/wayou/hexo-theme-material">material</a> 主题
+</p>
+<p>
+  &copy; 2016 <a href="http://wwww.feel88.cn"> feel </a>
+</p>
+<a id="gotop" href="#" title="back to top"><i class="mdi-hardware-keyboard-arrow-up"></i></a>
+		</footer>
+	  </div>
 
-  <div class="widget tag">
-  <h3 class="title">标签</h3>
-  <ul class="entry">
-  
-    <li><a href="/tags/bigtata/">bigdata</a><small>2</small></li>
-  
-    <li><a href="/tags/css3/">css3</a><small>2</small></li>
-  
-    <li><a href="/tags/linux/">linux</a><small>4</small></li>
-  
-    <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
-  
-    <li><a href="/tags/nginx信号量/">nginx信号量</a><small>1</small></li>
-  
-    <li><a href="/tags/sqoop/">sqoop</a><small>1</small></li>
-  
-    <li><a href="/tags/tool/">tool</a><small>1</small></li>
-  
-    <li><a href="/tags/web/">web</a><small>3</small></li>
-  
-    <li><a href="/tags/web前端/">web前端</a><small>1</small></li>
-  
-    <li><a href="/tags/前端样式框架/">前端样式框架</a><small>1</small></li>
-  
-    <li><a href="/tags/样式/">样式</a><small>1</small></li>
-  
-  </ul>
-</div>
+		<!-- <script src="/libs/bs/js/bootstrap.min.js"></script> -->
+		<script src="//apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script>(typeof $().modal == 'function')|| document.write('<script src="/libs/bs/js/bootstrap.min.js" type="text/javascript"><\/script>')</script>
 
-  <div class="widget tag">
-  <h3 class="title">最新文章</h3>
-  <ul class="entry">
-    
-      <li>
-        <a href="/2016/01/02/ssl双向认证/">ssl 双向认证</a>
-      </li>
-    
-      <li>
-        <a href="/2015/12/27/autossh隧道搭建私服/">autossh 隧道搭建私服</a>
-      </li>
-    
-      <li>
-        <a href="/2015/12/13/修改linux时区/">修改 linux 时区</a>
-      </li>
-    
-      <li>
-        <a href="/2015/12/06/动态生成密码/">动态生成密码</a>
-      </li>
-    
-      <li>
-        <a href="/2015/09/04/nginx信号量/">nginx 信号量</a>
-      </li>
-    
-  </ul>
-</div></aside>
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  
-  &copy; 2016 feel
-  
-</div>
-<div class="clearfix"></div></footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+		<!-- material design -->
+		<!-- <script src="/libs/bs-material/js/ripples.min.js"></script> -->
+		<script src="//apps.bdimg.com/libs/bootstrap-material/0.3.0/js/ripples.min.js"></script>
+		<!-- <script src="/libs/bs-material/js/material.min.js"></script> -->
+		<script src="//apps.bdimg.com/libs/bootstrap-material/0.3.0/js/material.min.js"></script>
+		<!-- toc -->
+		<!-- <script src="/libs/tocify/jquery-ui.min.js"></script> -->
+		<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+		<script src="/libs/tocify/jquery.tocify.custom.js"></script>
 
+		<script src="/js/main.js"></script>
 
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-</body>
+	</body>
