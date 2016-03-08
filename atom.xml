@@ -4,7 +4,7 @@
   <subtitle><![CDATA[知识从未如此性感]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wwww.feel88.cn/"/>
-  <updated>2016-01-02T15:15:57.000Z</updated>
+  <updated>2016-03-08T03:06:30.000Z</updated>
   <id>http://wwww.feel88.cn/</id>
   
   <author>
@@ -13,6 +13,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[linux  交换分区]]></title>
+    <link href="http://wwww.feel88.cn/2016/03/08/linux-%E4%BA%A4%E6%8D%A2%E5%88%86%E5%8C%BA/"/>
+    <id>http://wwww.feel88.cn/2016/03/08/linux-交换分区/</id>
+    <published>2016-03-08T03:03:46.000Z</published>
+    <updated>2016-03-08T03:06:30.000Z</updated>
+    <content type="html"><![CDATA[<p>&#x5229;&#x7528; swapoff &#x548C; swapon &#x5237;&#x65B0; swap &#x7F13;&#x5B58;</p>
+<h2 id="&#x5982;&#x4F55;&#x6E05;&#x9664;-linux-&#x7684;&#x4EA4;&#x6362;&#x7A7A;&#x95F4;">&#x5982;&#x4F55;&#x6E05;&#x9664; Linux &#x7684;&#x4EA4;&#x6362;&#x7A7A;&#x95F4;&#xFF1F;</h2><p>&#x6709;&#x65F6;&#x8FD0;&#x884C;&#x5927;&#x91CF;&#x7684;&#x8FDB;&#x7A0B;&#x540E; swap &#x5927;&#x91CF;&#x5360;&#x7528;&#xFF0C;&#x8FBE;&#x5230; 30% &#x7684;&#x8BDD;&#x673A;&#x5668;&#x4F1A;&#x53D8;&#x5F97;&#x5F88;&#x6162; <br> &#x53EF;&#x4EE5;&#x7528;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;&#x547D;&#x4EE4;&#x6E05;&#x9664;&#x5237;&#x65B0; swap</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">swapoff -<span class="literal">a</span> &amp;&amp; swapon -<span class="literal">a</span></span><br></pre></td></tr></table></figure>
+<p>&#x4EE5;&#x4E0B;&#x662F;&#x8BBE;&#x7F6E; swap &#x4F18;&#x5148;&#x7EA7;&#x7684;&#x65B9;&#x6CD5;</p>
+<p>swappiness<br>Ubuntu Feisty &#x9ED8;&#x8BA4;&#x7684; vm.swappiness &#x503C;&#x662F; 60, &#x8FD9;&#x4E00;&#x9ED8;&#x8BA4;&#x503C;&#x5DF2;&#x7ECF;&#x5F88;&#x5408;&#x9002;&#x4E86;&#x3002;&#x4F46;&#x4F60;&#x53EF;&#x4EE5;&#x6539;&#x5C0F;&#x4E00;&#x4E9B;&#x964D;&#x4F4E; swap &#x7684;&#x52A0;&#x8F7D;&#xFF0C;&#x7CFB;&#x7EDF;&#x6027;&#x80FD;&#x4F1A;&#x6709;&#x4E00;&#x70B9;&#x70B9;&#x7684;&#x63D0;&#x5347; <br> &#x8F93; &#x5165;&#xFF1A;</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -<span class="tag">q</span> vm.swappiness</span><br></pre></td></tr></table></figure>
+<p>&#x4F60;&#x4F1A;&#x770B;&#x5230;&#x503C;&#x662F; 60&#xFF0C; &#x66F4;&#x6539;:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sysctl vm.swappiness=<span class="number">10</span></span><br></pre></td></tr></table></figure>
+<p>&#x8FD9; &#x6837;&#x4F60;&#x5C31;&#x5C06;&#x503C;&#x7531; 60 &#x6539;&#x4E3A; 10, &#x8FD9;&#x53EF;&#x4EE5;&#x5927;&#x5927;&#x964D;&#x4F4E;&#x7CFB;&#x7EDF;&#x5BF9;&#x4E8E; swap &#x7684;&#x5199;&#x5165;&#xFF0C;&#x5EFA;&#x8BAE;&#x5185;&#x5B58;&#x4E3A; 512m &#x6216;&#x66F4;&#x591A;&#x7684;&#x670B;&#x53CB;&#x91C7;&#x7528;&#x6B64;&#x65B9;&#x6CD5;&#x3002;&#x5982;&#x4F60;&#x4F60;&#x53D1;&#x73B0;&#x4F60;&#x5BF9;&#x4E8E; swap &#x7684;&#x4F7F;&#x7528;&#x6781;&#x5C11;&#xFF0C;&#x53EF; &#x4EE5;&#x5C06;&#x503C;&#x8BBE;&#x4E3A; 0&#x3002;&#x8FD9;&#x5E76;&#x4E0D;&#x4F1A;&#x7981;&#x6B62;&#x4F60;&#x5BF9; swap &#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x800C;&#x662F;&#x4F7F;&#x4F60;&#x7684;&#x7CFB;&#x7EDF;&#x5BF9;&#x4E8E; swap &#x7684;&#x5199;&#x5165;&#x5C3D;&#x53EF;&#x80FD;&#x7684;&#x5C11;&#xFF0C;&#x540C;&#x65F6;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x7684;&#x4F7F;&#x7528;&#x4F60;&#x7684;&#x5B9E;&#x9645;&#x5185;&#x5B58;&#x3002;&#x8FD9;&#x5BF9;&#x4E8E;&#x4F60;&#x5728;&#x5207;&#x6362;&#x5E94;&#x7528;&#x7A0B;&#x5E8F; &#x65F6;&#x6709;&#x7740;&#x5DE8;&#x5927;&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x6837;&#x7684;&#x8BDD;&#x5B83;&#x4EEC;&#x662F;&#x5728;&#x7269;&#x7406;&#x5185;&#x5B58;&#x800C;&#x975E; swap &#x5206;&#x533A;&#x4E2D;&#x3002;<br>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x6C38;&#x4E45;&#x5F97;&#x6539;&#x53D8;&#x8FD9;&#x4E00;&#x503C;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x66F4;&#x6539; sysctl.conf &#x6587;&#x4EF6;&#xFF1A;</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">vim</span> /etc/sysctl.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure>
+<p>&#x6DFB;&#x52A0;&#xFF1A;</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.swappiness=<span class="number">10</span></span><br></pre></td></tr></table></figure>
+<p>&#x5230;&#x672B;&#x884C;&#xFF0C;&#x9700;&#x8981;&#x91CD;&#x542F;&#x751F;&#x6548;&#x3002;<br>&#x6211;&#x53D1;&#x73B0;&#x5BF9; &#x4E8E;&#x6211;&#x7684; 1G &#x5185;&#x5B58;&#xFF0C;&#x5C06;&#x6B64;&#x503C;&#x8BBE;&#x4E3A; 5 &#x662F;&#x6700;&#x5408;&#x9002;&#x7684;&#x3002;</p>]]></content>
+    <summary type="html">
+    <![CDATA[<p>&#x5229;&#x7528; swapoff &#x548C; swapon &#x5237;&#x65B0; swap &#x7F13;&#x5B58;</p>
+<h2 id="&#x5982;&#x4F55;&#x6E05;&#x9664;-linux-&#x768]]>
+    </summary>
+    
+      <category term="linux" scheme="http://wwww.feel88.cn/tags/linux/"/>
+    
+      <category term="linux" scheme="http://wwww.feel88.cn/categories/linux/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[ssl 双向认证]]></title>
