@@ -70,71 +70,85 @@
             <div class="entry">
 
               <h2 id="&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;"> &#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F; </h2>
-              <figure class="highlight armasm">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
-                    <td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">branch </span>-r -d origin/<span class="keyword">branch-name</span><br><span class="line"></span><span class="label">git</span> <span class="keyword">push </span>origin :<span class="keyword">branch-name</span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-              <a id="more"></a>
+              <p>
+                <figure class="highlight armasm">
+                  <table>
+                    <tr>
+                      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
+                      <td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">branch </span>-r -d origin/<span class="keyword">branch-name</span><br><span class="line"></span><span class="label">git</span> <span class="keyword">push </span>origin :<span class="keyword">branch-name</span></span><br></pre></td>
+                    </tr>
+                  </table>
+                </figure>
+              </p>
+              <p>&lt;!--more--&gt;</p>
               <h2 id="git-merge">git merge</h2>
-              <p>You have not concluded your merge (MERGE_HEAD exists).<br>Please, commit your changes before you can merge.</p>
-              <figure class="highlight sql">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td>
-                    <td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">merge</span> <span class="comment">--abort [Since git version 1.7.4]</span></span><br><span class="line"></span><br><span class="line">git <span class="keyword">reset</span> <span class="comment">--merge [prior git versions]</span></span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
+              <p>You have not concluded your merge (MERGE_HEAD exists). Please, commit your changes before you can merge.</p>
+              <p>
+                <figure class="highlight sql">
+                  <table>
+                    <tr>
+                      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td>
+                      <td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">merge</span> <span class="comment">--abort [Since git version 1.7.4]</span></span><br><span class="line"></span><br><span class="line">git <span class="keyword">reset</span> <span class="comment">--merge [prior git versions]</span></span></span><br></pre></td>
+                    </tr>
+                  </table>
+                </figure>
+              </p>
               <h2 id="git-&#x4EE3;&#x7801;&#x8FC1;&#x79FB;">git  &#x4EE3;&#x7801;&#x8FC1;&#x79FB; </h2>
               <p> &#x62C9;&#x53D6;&#x641C;&#x6709;&#x5206;&#x652F;&#x5230;&#x672C;&#x5730; </p>
-              <figure class="highlight bash">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td>
-                    <td class="code"><pre><span class="line"><span class="shebang">#!/bin/bash</span></span><br><span class="line"><span class="keyword">for</span> branch <span class="keyword">in</span> `git branch <span class="operator">-a</span> | grep remotes | grep -v HEAD | grep -v master`; <span class="keyword">do</span></span><br><span class="line">    git branch --track <span class="variable">${branch##*/}</span> <span class="variable">$branch</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
+              <p>
+                <figure class="highlight bash">
+                  <table>
+                    <tr>
+                      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td>
+                      <td class="code"><pre><span class="line"><span class="shebang">#!/bin/bash</span></span><br><span class="line"><span class="keyword">for</span> branch <span class="keyword">in</span> `git branch <span class="operator">-a</span> | grep remotes | grep -v HEAD | grep -v master`; <span class="keyword">do</span></span><br><span class="line">    git branch --track <span class="variable">${branch##*/}</span> <span class="variable">$branch</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td>
+                    </tr>
+                  </table>
+                </figure>
+              </p>
               <p> &#x67E5;&#x770B;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x5730;&#x5740; </p>
-              <figure class="highlight nginx">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
-                    <td class="code"><pre><span class="line"><span class="title">git</span> remote -v</span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
+              <p>
+                <figure class="highlight nginx">
+                  <table>
+                    <tr>
+                      <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+                      <td class="code"><pre><span class="line"><span class="title">git</span> remote -v</span><br></pre></td>
+                    </tr>
+                  </table>
+                </figure>
+              </p>
               <p> &#x66FF;&#x6362;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x5730;&#x5740; </p>
-              <figure class="highlight sql">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
-                    <td class="code"><pre><span class="line">git remote <span class="operator"><span class="keyword">set</span>-<span class="keyword">url</span> origin <span class="string">&quot;newurl&quot;</span></span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
+              <p>
+                <figure class="highlight sql">
+                  <table>
+                    <tr>
+                      <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+                      <td class="code"><pre><span class="line">git remote <span class="operator"><span class="keyword">set</span>-<span class="keyword">url</span> origin <span class="string">&quot;newurl&quot;</span></span></span><br></pre></td>
+                    </tr>
+                  </table>
+                </figure>
+              </p>
               <p> &#x63A8;&#x9001;&#x6240;&#x6709;&#x5206;&#x652F;&#xFF0C;tag &#x5230;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93; </p>
-              <figure class="highlight applescript">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td>
-                    <td class="code"><pre><span class="line">git push <span class="comment">--all</span></span><br><span class="line"></span><br><span class="line">git push  <span class="comment">--tags</span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
+              <p>
+                <figure class="highlight applescript">
+                  <table>
+                    <tr>
+                      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td>
+                      <td class="code"><pre><span class="line">git push <span class="comment">--all</span></span><br><span class="line"></span><br><span class="line">git push  <span class="comment">--tags</span></span><br></pre></td>
+                    </tr>
+                  </table>
+                </figure>
+              </p>
               <p> &#x4EE3;&#x7801;&#x51B2;&#x7A81; </p>
-              <figure class="highlight sql">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td>
-                    <td class="code"><pre><span class="line">git checkout <span class="comment">-- others/report/reportallsendMail.sh</span></span><br><span class="line">git status</span><br><span class="line">git <span class="operator"><span class="keyword">merge</span> origin/<span class="keyword">master</span></span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
+              <p>
+                <figure class="highlight sql">
+                  <table>
+                    <tr>
+                      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td>
+                      <td class="code"><pre><span class="line">git checkout <span class="comment">-- others/report/reportallsendMail.sh</span></span><br><span class="line">git status</span><br><span class="line">git <span class="operator"><span class="keyword">merge</span> origin/<span class="keyword">master</span></span></span><br></pre></td>
+                    </tr>
+                  </table>
+                </figure>
+              </p>
 
             </div>
             <footer>
