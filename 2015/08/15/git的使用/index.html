@@ -1,212 +1,288 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
   <meta charset="utf-8">
-  
+
   <title>git 的使用 | Feel&#39;s blog</title>
   <meta name="author" content="feel">
-  
+
   <meta name="description" content="feel&#39;s blog | java | scala | python | javascript| linux | nodejs| Machine Learning">
-  
-  
+
+
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
   <meta property="og:title" content="git 的使用">
   <meta property="og:site_name" content="Feel&#39;s blog">
 
-  
-    <meta property="og:image" content="undefined">
-  
+
+  <meta property="og:image" content="undefined">
+
 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="Feel&#39;s blog" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-</head></html>
+
+</head>
+
+</html>
 
 <body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Feel&#39;s blog</a></h1>
-  <h2><a href="/">知识从未如此性感</a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">首页</a></li>
-    
-      <li><a href="/archives">归档</a></li>
-    
-      <li><a href="/site">下载</a></li>
-    
-      <li><a href="/about">关于</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-08-15T12:48:03.000Z"><a href="/2015/08/15/git的使用/">2015-08-15</a></time>
-      
-      <h1 class="title">git 的使用</h1>
-    </header>
-    <div class="entry">
-      
-        <h2 id="&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;">&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;</h2><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">branch </span>-r -d origin/<span class="keyword">branch-name</span><br><span class="line"></span><span class="label">git</span> <span class="keyword">push </span>origin :<span class="keyword">branch-name</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="git-merge">git merge</h2><p>You have not concluded your merge (MERGE_HEAD exists).<br>Please, commit your changes before you can merge.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">merge</span> <span class="comment">--abort [Since git version 1.7.4]</span></span><br><span class="line"></span><br><span class="line">git <span class="keyword">reset</span> <span class="comment">--merge [prior git versions]</span></span></span><br></pre></td></tr></table></figure>
-<h2 id="git-&#x4EE3;&#x7801;&#x8FC1;&#x79FB;">git  &#x4EE3;&#x7801;&#x8FC1;&#x79FB; </h2><p> &#x62C9;&#x53D6;&#x641C;&#x6709;&#x5206;&#x652F;&#x5230;&#x672C;&#x5730;</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/bash</span></span><br><span class="line"><span class="keyword">for</span> branch <span class="keyword">in</span> `git branch <span class="operator">-a</span> | grep remotes | grep -v HEAD | grep -v master`; <span class="keyword">do</span></span><br><span class="line">    git branch --track <span class="variable">${branch##*/}</span> <span class="variable">$branch</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>&#x67E5;&#x770B;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x5730;&#x5740;</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> remote -v</span><br></pre></td></tr></table></figure>
-<p>&#x66FF;&#x6362;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x5730;&#x5740;</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="operator"><span class="keyword">set</span>-<span class="keyword">url</span> origin <span class="string">&quot;newurl&quot;</span></span></span><br></pre></td></tr></table></figure>
-<p>&#x63A8;&#x9001;&#x6240;&#x6709;&#x5206;&#x652F;&#xFF0C;tag &#x5230;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git push <span class="comment">--all</span></span><br><span class="line"></span><br><span class="line">git push  <span class="comment">--tags</span></span><br></pre></td></tr></table></figure>
-<p>&#x4EE3;&#x7801;&#x51B2;&#x7A81;</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="comment">-- others/report/reportallsendMail.sh</span></span><br><span class="line">git status</span><br><span class="line">git <span class="operator"><span class="keyword">merge</span> origin/<span class="keyword">master</span></span></span><br></pre></td></tr></table></figure>
-      
+  <header id="header" class="inner">
+    <div class="alignleft">
+      <h1><a href="/">Feel&#39;s blog</a></h1>
+      <h2><a href="/">知识从未如此性感</a></h2>
     </div>
-    <footer>
-      
-        <div class="categories">
-    <a href="/categories/tool/">tool</a>
-  </div>
-        <div class="tags">
-    <a href="/tags/tool/">tool</a>
-  </div>
-        
-      
+    <nav id="main-nav" class="alignright">
+      <ul>
+
+        <li><a href="/">首页</a></li>
+
+        <li><a href="/archives">归档</a></li>
+
+        <li><a href="/site">下载</a></li>
+
+        <li><a href="/about">关于</a></li>
+
+        <li><a href="download.feel88.cn">新版下载中心</a></li>
+      </ul>
       <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
+    </nav>
+    <div class="clearfix"></div>
+  </header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft">
+      <div id="wrapper">
+        <article class="post">
 
-<section id="comments">
- <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-git的使用" data-title="git 的使用" data-url="http://wwww.feel88.cn/2015/08/15/git的使用/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"feel"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-<!-- 多说公共JS代码 end -->
-  </section></div></div>
-    <aside id="sidebar" class="alignright"><div class="widget tag">
-  <h3 class="title">最新文章</h3>
-  <ul class="entry">
-    
-      <li>
-        <a href="/2016/04/03/CGlib实现动态代理/">CGlib 实现动态代理</a>
-      </li>
-    
-      <li>
-        <a href="/2016/03/08/linux-交换分区/">linux  交换分区</a>
-      </li>
-    
-      <li>
-        <a href="/2016/01/02/ssl双向认证/">ssl 双向认证</a>
-      </li>
-    
-      <li>
-        <a href="/2015/12/27/autossh隧道搭建私服/">autossh 隧道搭建私服</a>
-      </li>
-    
-      <li>
-        <a href="/2015/12/13/修改linux时区/">修改 linux 时区</a>
-      </li>
-    
-  </ul>
-</div>
+          <div class="post-content">
+            <header>
 
-  <div class="widget tag">
-  <h3 class="title">分类</h3>
-  <ul class="entry">
-  
-    <li><a href="/categories/bigtata/">bigdata</a><small>2</small></li>
-  
-    <li><a href="/categories/css3/">css3</a><small>2</small></li>
-  
-    <li><a href="/categories/java/">java</a><small>1</small></li>
-  
-    <li><a href="/categories/linux/">linux</a><small>5</small></li>
-  
-    <li><a href="/categories/nginx/">nginx</a><small>1</small></li>
-  
-    <li><a href="/categories/nginx常用错误/">nginx常用错误</a><small>1</small></li>
-  
-    <li><a href="/categories/tool/">tool</a><small>1</small></li>
-  
-    <li><a href="/categories/web/">web</a><small>2</small></li>
-  
-  </ul>
-</div>
+              <div class="icon"></div>
+              <time datetime="2015-08-15T12:48:03.000Z"><a href="/2015/08/15/git的使用/">2015-08-15</a></time>
 
-  <div class="widget tag">
-  <h3 class="title">标签</h3>
-  <ul class="entry">
-  
-    <li><a href="/tags/bigtata/">bigdata</a><small>2</small></li>
-  
-    <li><a href="/tags/css3/">css3</a><small>2</small></li>
-  
-    <li><a href="/tags/java/">java</a><small>1</small></li>
-  
-    <li><a href="/tags/linux/">linux</a><small>5</small></li>
-  
-    <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
-  
-    <li><a href="/tags/nginx信号量/">nginx信号量</a><small>1</small></li>
-  
-    <li><a href="/tags/sqoop/">sqoop</a><small>1</small></li>
-  
-    <li><a href="/tags/tool/">tool</a><small>1</small></li>
-  
-    <li><a href="/tags/web/">web</a><small>3</small></li>
-  
-    <li><a href="/tags/web前端/">web前端</a><small>1</small></li>
-  
-    <li><a href="/tags/前端样式框架/">前端样式框架</a><small>1</small></li>
-  
-    <li><a href="/tags/样式/">样式</a><small>1</small></li>
-  
-  </ul>
-</div></aside>
+              <h1 class="title">git 的使用</h1>
+            </header>
+            <div class="entry">
+
+              <h2 id="&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;"> &#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F; </h2>
+              <figure class="highlight armasm">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
+                    <td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">branch </span>-r -d origin/<span class="keyword">branch-name</span><br><span class="line"></span><span class="label">git</span> <span class="keyword">push </span>origin :<span class="keyword">branch-name</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <a id="more"></a>
+              <h2 id="git-merge">git merge</h2>
+              <p>You have not concluded your merge (MERGE_HEAD exists).<br>Please, commit your changes before you can merge.</p>
+              <figure class="highlight sql">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td>
+                    <td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">merge</span> <span class="comment">--abort [Since git version 1.7.4]</span></span><br><span class="line"></span><br><span class="line">git <span class="keyword">reset</span> <span class="comment">--merge [prior git versions]</span></span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h2 id="git-&#x4EE3;&#x7801;&#x8FC1;&#x79FB;">git  &#x4EE3;&#x7801;&#x8FC1;&#x79FB; </h2>
+              <p> &#x62C9;&#x53D6;&#x641C;&#x6709;&#x5206;&#x652F;&#x5230;&#x672C;&#x5730; </p>
+              <figure class="highlight bash">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td>
+                    <td class="code"><pre><span class="line"><span class="shebang">#!/bin/bash</span></span><br><span class="line"><span class="keyword">for</span> branch <span class="keyword">in</span> `git branch <span class="operator">-a</span> | grep remotes | grep -v HEAD | grep -v master`; <span class="keyword">do</span></span><br><span class="line">    git branch --track <span class="variable">${branch##*/}</span> <span class="variable">$branch</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <p> &#x67E5;&#x770B;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x5730;&#x5740; </p>
+              <figure class="highlight nginx">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+                    <td class="code"><pre><span class="line"><span class="title">git</span> remote -v</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <p> &#x66FF;&#x6362;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x5730;&#x5740; </p>
+              <figure class="highlight sql">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+                    <td class="code"><pre><span class="line">git remote <span class="operator"><span class="keyword">set</span>-<span class="keyword">url</span> origin <span class="string">&quot;newurl&quot;</span></span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <p> &#x63A8;&#x9001;&#x6240;&#x6709;&#x5206;&#x652F;&#xFF0C;tag &#x5230;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93; </p>
+              <figure class="highlight applescript">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td>
+                    <td class="code"><pre><span class="line">git push <span class="comment">--all</span></span><br><span class="line"></span><br><span class="line">git push  <span class="comment">--tags</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <p> &#x4EE3;&#x7801;&#x51B2;&#x7A81; </p>
+              <figure class="highlight sql">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td>
+                    <td class="code"><pre><span class="line">git checkout <span class="comment">-- others/report/reportallsendMail.sh</span></span><br><span class="line">git status</span><br><span class="line">git <span class="operator"><span class="keyword">merge</span> origin/<span class="keyword">master</span></span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+
+            </div>
+            <footer>
+
+              <div class="categories">
+                <a href="/categories/tool/">tool</a>
+              </div>
+              <div class="tags">
+                <a href="/tags/tool/">tool</a>
+              </div>
+
+
+              <div class="clearfix"></div>
+            </footer>
+          </div>
+        </article>
+
+        <section id="comments">
+          <!-- 多说评论框 start -->
+          <div class="ds-thread" data-thread-key="post-git的使用" data-title="git 的使用" data-url="http://wwww.feel88.cn/2015/08/15/git的使用/"></div>
+          <!-- 多说评论框 end -->
+          <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+          <script type="text/javascript">
+            var duoshuoQuery = {
+              short_name: "feel"
+            };
+            (function() {
+              var ds = document.createElement('script');
+              ds.type = 'text/javascript';
+              ds.async = true;
+              ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+              ds.charset = 'UTF-8';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+            })();
+          </script>
+          <!-- 多说公共JS代码 end -->
+        </section>
+      </div>
+    </div>
+    <aside id="sidebar" class="alignright">
+      <div class="widget tag">
+        <h3 class="title">最新文章</h3>
+        <ul class="entry">
+
+          <li>
+            <a href="/2016/04/03/CGlib实现动态代理/">CGlib 实现动态代理</a>
+          </li>
+
+          <li>
+            <a href="/2016/03/08/linux-交换分区/">linux  交换分区</a>
+          </li>
+
+          <li>
+            <a href="/2016/01/02/ssl双向认证/">ssl 双向认证</a>
+          </li>
+
+          <li>
+            <a href="/2015/12/27/autossh隧道搭建私服/">autossh 隧道搭建私服</a>
+          </li>
+
+          <li>
+            <a href="/2015/12/13/修改linux时区/">修改 linux 时区</a>
+          </li>
+
+        </ul>
+      </div>
+
+      <div class="widget tag">
+        <h3 class="title">分类</h3>
+        <ul class="entry">
+
+          <li><a href="/categories/bigtata/">bigdata</a><small>2</small></li>
+
+          <li><a href="/categories/css3/">css3</a><small>2</small></li>
+
+          <li><a href="/categories/java/">java</a><small>1</small></li>
+
+          <li><a href="/categories/linux/">linux</a><small>5</small></li>
+
+          <li><a href="/categories/nginx/">nginx</a><small>1</small></li>
+
+          <li><a href="/categories/nginx常用错误/">nginx常用错误</a><small>1</small></li>
+
+          <li><a href="/categories/tool/">tool</a><small>1</small></li>
+
+          <li><a href="/categories/web/">web</a><small>2</small></li>
+
+        </ul>
+      </div>
+
+      <div class="widget tag">
+        <h3 class="title">标签</h3>
+        <ul class="entry">
+
+          <li><a href="/tags/bigtata/">bigdata</a><small>2</small></li>
+
+          <li><a href="/tags/css3/">css3</a><small>2</small></li>
+
+          <li><a href="/tags/java/">java</a><small>1</small></li>
+
+          <li><a href="/tags/linux/">linux</a><small>5</small></li>
+
+          <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
+
+          <li><a href="/tags/nginx信号量/">nginx信号量</a><small>1</small></li>
+
+          <li><a href="/tags/sqoop/">sqoop</a><small>1</small></li>
+
+          <li><a href="/tags/tool/">tool</a><small>1</small></li>
+
+          <li><a href="/tags/web/">web</a><small>3</small></li>
+
+          <li><a href="/tags/web前端/">web前端</a><small>1</small></li>
+
+          <li><a href="/tags/前端样式框架/">前端样式框架</a><small>1</small></li>
+
+          <li><a href="/tags/样式/">样式</a><small>1</small></li>
+
+        </ul>
+      </div>
+
+      <div class="widget tagcloud">
+        <h3 class="title">标签云</h3>
+        <div class="entry">
+          <a href="/tags/bigtata/" style="font-size: 13.33px">bigdata</a> <a href="/tags/css3/" style="font-size: 13.33px">css3</a> <a href="/tags/java/" style="font-size: 10px">java</a> <a href="/tags/linux/" style="font-size: 20px">linux</a> <a href="/tags/nginx/" style="font-size: 13.33px">nginx</a> <a href="/tags/nginx信号量/" style="font-size: 10px">nginx信号量</a> <a href="/tags/sqoop/" style="font-size: 10px">sqoop</a> <a href="/tags/tool/" style="font-size: 10px">tool</a> <a href="/tags/web/" style="font-size: 16.67px">web</a>          <a href="/tags/web前端/" style="font-size: 10px">web前端</a> <a href="/tags/前端样式框架/" style="font-size: 10px">前端样式框架</a> <a href="/tags/样式/" style="font-size: 10px">样式</a>
+        </div>
+      </div>
+    </aside>
     <div class="clearfix"></div>
   </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  
-  &copy; 2016 feel
-  
-</div>
-<div class="clearfix"></div></footer>
+  <footer id="footer" class="inner">
+    <div class="alignleft">
+
+      &copy; 2016 feel
+
+    </div>
+    <div class="clearfix"></div>
+  </footer>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+  <script src="/js/gallery.js"></script>
 
 
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    (function($) {
+      $('.fancybox').fancybox();
+    })(jQuery);
+  </script>
 </body>
+

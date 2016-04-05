@@ -1,221 +1,421 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
   <meta charset="utf-8">
-  
+
   <title>CDH 安装初始化环境 | Feel&#39;s blog</title>
   <meta name="author" content="feel">
-  
+
   <meta name="description" content="feel&#39;s blog | java | scala | python | javascript| linux | nodejs| Machine Learning">
-  
-  
+
+
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
   <meta property="og:title" content="CDH 安装初始化环境">
   <meta property="og:site_name" content="Feel&#39;s blog">
 
-  
-    <meta property="og:image" content="undefined">
-  
+
+  <meta property="og:image" content="undefined">
+
 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="Feel&#39;s blog" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-</head></html>
+
+</head>
+
+</html>
 
 <body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Feel&#39;s blog</a></h1>
-  <h2><a href="/">知识从未如此性感</a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">首页</a></li>
-    
-      <li><a href="/archives">归档</a></li>
-    
-      <li><a href="/site">下载</a></li>
-    
-      <li><a href="/about">关于</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-08-14T17:54:57.000Z"><a href="/2015/08/15/CDH安装初始化环境/">2015-08-15</a></time>
-      
-      <h1 class="title">CDH 安装初始化环境</h1>
-    </header>
-    <div class="entry">
-      
-        <h1 id="install-screen">install  screen</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> screen -y</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h1 id="init">init</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum  -y <span class="operator"><span class="keyword">install</span> python-devel python-pip libxslt-devel libxml2-devel gcc <span class="keyword">g</span>++ gcc-<span class="keyword">g</span>++</span><br><span class="line">yum -y <span class="keyword">install</span> tree</span><br><span class="line">yum <span class="keyword">install</span> -y python-pip</span><br><span class="line">pip <span class="keyword">install</span> lxml</span></span><br></pre></td></tr></table></figure>
-<h1 id="install-httpd">install httpd</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="operator"><span class="keyword">install</span> httpd -y </span><br><span class="line">service httpd <span class="keyword">start</span></span><br><span class="line">chkconfig httpd <span class="keyword">on</span></span><br><span class="line">mkdir -<span class="keyword">p</span> /<span class="keyword">var</span>/www/html/cdh</span></span><br></pre></td></tr></table></figure>
-<h1 id="dowload-cdh">dowload cdh</h1><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd  <span class="regexp">/var/</span>www<span class="regexp">/html/</span>cdh</span><br><span class="line">wget <span class="string">http:</span><span class="comment">//archive.cloudera.com/cdh5/parcels/latest/CDH-5.3.0-1.cdh5.3.0.p0.30-el6.parcel.sha1</span></span><br><span class="line">wget <span class="string">http:</span><span class="comment">//archive.cloudera.com/cdh5/parcels/latest/manifest.json</span></span><br><span class="line">wget <span class="string">http:</span><span class="comment">//archive.cloudera.com/cdh5/parcels/latest/CDH-5.3.0-1.cdh5.3.0.p0.30-el6.parcel</span></span><br></pre></td></tr></table></figure>
-<h1 id="install-ntp">install ntp</h1><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">yum install  -y ntpdate ntp</span><br><span class="line">service ntpd <span class="built_in">stop</span></span><br><span class="line">service ntpdate <span class="built_in">start</span></span><br><span class="line">chkconfig ntpdate <span class="command"><span class="keyword">on</span></span></span><br><span class="line">service ntpd <span class="built_in">stop</span> </span><br><span class="line">ntpdate asia.pool.ntp.org</span><br><span class="line"> &#x6700;&#x540E;&#x6267;&#x884C; </span><br><span class="line">service ntpd <span class="built_in">start</span></span><br><span class="line">chkconfig ntpd <span class="command"><span class="keyword">on</span></span></span><br></pre></td></tr></table></figure>
-<h1 id="&#x8BBE;&#x7F6E;-swappiness"> &#x8BBE;&#x7F6E;  swappiness</h1><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="number">0</span> &gt;/<span class="keyword">proc</span>/sys/vm/swappiness </span><br><span class="line">vi /etc/sysctl.conf</span><br><span class="line">vm.swappiness=<span class="number">0</span></span><br></pre></td></tr></table></figure>
-<h1 id="disabled-selinux">disabled  SELINUX</h1><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed  -<span class="tag">i</span> <span class="string">&apos;s/SELINUX=enforcing/SELINUX=disabled/g&apos;</span> /etc/selinux/config</span><br><span class="line">sed  -<span class="tag">i</span> <span class="string">&apos;/SELINUX=disabled/s/^#*//&apos;</span>  /etc/selinux/config</span><br></pre></td></tr></table></figure>
-<h1 id="stop-iptable">stop iptable</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">service iptables <span class="operator"><span class="keyword">stop</span> </span><br><span class="line">service ip6tables <span class="keyword">stop</span></span><br><span class="line">chkconfig iptables <span class="keyword">off</span></span><br><span class="line">chkconfig ip6tables <span class="keyword">off</span></span></span><br></pre></td></tr></table></figure>
-<h1 id="upgrade-openssl">upgrade openssl</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum upgrade openssl</span><br><span class="line">yum <span class="keyword">install</span> opensh-clients -y</span><br></pre></td></tr></table></figure>
-<h1 id="mail-service">mail service</h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/usr/sbin/postconf | <span class="keyword">grep</span> inet_protocols</span><br><span class="line"># inet_protocols = <span class="keyword">all</span></span><br><span class="line"><span class="keyword">vi</span> /etc/postfix/main.<span class="keyword">cf</span></span><br><span class="line">sed  -<span class="keyword">i</span> <span class="string">&apos;s/inet_protocols = all/inet_protocols = ipv4/g&apos;</span> /etc/postfix/main.<span class="keyword">cf</span></span><br><span class="line">sed  -<span class="keyword">i</span> <span class="string">&apos;/inet_protocols = ipv4/s/^#*//&apos;</span>  /etc/postfix/main.<span class="keyword">cf</span></span><br></pre></td></tr></table></figure>
-<h1 id="restart-postfix">restart postfix</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/<span class="keyword">init</span>.d/<span class="keyword">postfix</span> restart</span><br></pre></td></tr></table></figure>
-<h1 id="download-mysql-driver-jar">download  mysql driver jar</h1><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt</span><br><span class="line">wget <span class="string">http:</span><span class="comment">//central.maven.org/maven2/mysql/mysql-connector-java/5.1.36/mysql-connector-java-5.1.36.jar</span></span><br></pre></td></tr></table></figure>
-<h1 id="download-jdk">download jdk</h1><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate --no-cookies --<span class="tag">header</span> <span class="string">&quot;Cookie: oraclelicense=accept-securebackup-cookie&quot;</span> http:<span class="comment">//download.oracle.com/otn-pub/java/jdk/7u67-b01/jdk-7u67-linux-x64.tar.gz</span></span><br><span class="line">tar -zxvf *jdk*<span class="class">.tar</span><span class="class">.gz</span></span><br></pre></td></tr></table></figure>
-<h1 id="download-cloudera-manager">download cloudera-manager</h1><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http:<span class="comment">//archive-primary.cloudera.com/cm5/cm/5/cloudera-manager-el6-cm5.3.0_x86_64.tar.gz</span></span><br><span class="line">tar -zxvf cloudera-manager*<span class="class">.tar</span><span class="class">.gz</span></span><br></pre></td></tr></table></figure>
-<h1 id="install-mysql">install mysql</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">yum  -y <span class="operator"><span class="keyword">install</span>  mysql mysql-<span class="keyword">server</span> </span><br><span class="line">service mysqld restart</span><br><span class="line">chkconfig mysqld <span class="keyword">on</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&apos;amon&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;amon&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&apos;hive&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;hive&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&apos;smon&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;smon&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&apos;rman&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;rman&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&apos;hmon&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;hmon&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&apos;nav&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;nav&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> <span class="keyword">password</span>=<span class="keyword">password</span>(<span class="string">&apos;root&apos;</span>)  <span class="keyword">where</span> <span class="keyword">user</span>=<span class="string">&apos;root&apos;</span>;</span> <span class="operator"><span class="keyword">flush</span> <span class="keyword">privileges</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> *.* <span class="keyword">to</span> <span class="string">&apos;root&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">&apos;root&apos;</span>;</span> <span class="operator"><span class="keyword">flush</span> <span class="keyword">privileges</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> hive <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> hive.* <span class="keyword">TO</span> <span class="string">&apos;hive&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;hive&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> amon <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> amon.* <span class="keyword">TO</span> <span class="string">&apos;amon&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;amon&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> smon <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> smon.* <span class="keyword">TO</span> <span class="string">&apos;smon&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;smon&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> rman <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> rman.* <span class="keyword">TO</span> <span class="string">&apos;rman&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;rman&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> hmon <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> hmon.* <span class="keyword">TO</span> <span class="string">&apos;hmon&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;hmon&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> <span class="keyword">nav</span> <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> <span class="keyword">nav</span>.* <span class="keyword">TO</span> <span class="string">&apos;nav&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;nav&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">flush</span> <span class="keyword">privileges</span>;</span></span><br><span class="line">service mysqld restart</span><br></pre></td></tr></table></figure>
-<h1 id="userdel-cloudera-scm">userdel cloudera-scm</h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd --<span class="built_in">system</span> --home=/<span class="keyword">opt</span>/<span class="keyword">cm</span>-<span class="number">5.3</span>.<span class="number">0</span>/run/cloudera-scm-server --<span class="keyword">no</span>-create-home --<span class="keyword">shell</span>=/bin/false --comment <span class="string">&quot;Cloudera SCM User&quot;</span> cloudera-scm</span><br></pre></td></tr></table></figure>
-<h1 id="modify-config-file">Modify config  file</h1><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/opt/</span>cm-<span class="number">5.3</span><span class="number">.0</span><span class="regexp">/etc/</span>cloudera-scm-agent/config.ini</span><br><span class="line"><span class="regexp">/etc/</span>cloudera-scm-server/db.properties</span><br></pre></td></tr></table></figure>
-<h2 id="for-example-only-modify-server_host">for example: only modify server_host</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[General]</span><br><span class="line"></span><br><span class="line"> <span class="number">2</span> <span class="preprocessor"># Hostname of the CM server.</span></span><br><span class="line"></span><br><span class="line"> <span class="number">3</span> server_host=yun4</span><br></pre></td></tr></table></figure>
-<h2 id="copy-mysql-driver-jar">copy mysql driver jar</h2><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp mysql-connector-java-<span class="number">5.1</span>.<span class="number">10</span>.jar cm-<span class="number">5.3</span>.<span class="number">0</span>/share/cmf/<span class="class"><span class="keyword">lib</span>/</span></span><br></pre></td></tr></table></figure>
-<h1 id="install-coludera-manager-database">install  coludera manager database</h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/<span class="keyword">opt</span>/<span class="keyword">cm</span>-<span class="number">5.3</span>.<span class="number">0</span>/share/cmf/schema/scm_prepare_database.<span class="keyword">sh</span> mysql databases -hlocalhost -uuser -ppassword --scm-host mccrea user password</span><br><span class="line"></span><br><span class="line">/<span class="keyword">opt</span>/<span class="keyword">cm</span>-<span class="number">5.3</span>.<span class="number">0</span>/share/cmf/schema/scm_prepare_database.<span class="keyword">sh</span> mysql hdp_cm -hlocalhost -ucm -padmin--scm-host mccrea <span class="keyword">cm</span> admin</span><br></pre></td></tr></table></figure>
-<h1 id="copy-coludera-manage-to-node">copy coludera manage to node</h1><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r  /opt/cm-<span class="number">5.3</span>.<span class="number">0</span> root<span class="variable">@datanode1</span><span class="symbol">:/opt/cm-</span><span class="number">5.3</span>.<span class="number">0</span></span><br></pre></td></tr></table></figure>
-<h1 id="start-server">start server</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/opt/cm-<span class="number">5.3</span><span class="number">.0</span>/etc/init.d/cloudera-scm-server start</span><br><span class="line"></span><br><span class="line">sudo /opt/cm-<span class="number">5.3</span><span class="number">.0</span>/etc/init.d/cloudera-scm-agent start</span><br></pre></td></tr></table></figure>
-      
+  <header id="header" class="inner">
+    <div class="alignleft">
+      <h1><a href="/">Feel&#39;s blog</a></h1>
+      <h2><a href="/">知识从未如此性感</a></h2>
     </div>
-    <footer>
-      
-        <div class="categories">
-    <a href="/categories/bigtata/">bigdata</a>
-  </div>
-        <div class="tags">
-    <a href="/tags/bigtata/">bigdata</a>
-  </div>
-        
-      
+    <nav id="main-nav" class="alignright">
+      <ul>
+
+        <li><a href="/">首页</a></li>
+
+        <li><a href="/archives">归档</a></li>
+
+        <li><a href="/site">下载</a></li>
+
+        <li><a href="/about">关于</a></li>
+
+        <li><a href="download.feel88.cn">新版下载中心</a></li>
+      </ul>
       <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
+    </nav>
+    <div class="clearfix"></div>
+  </header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft">
+      <div id="wrapper">
+        <article class="post">
 
-<section id="comments">
- <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-CDH安装初始化环境" data-title="CDH 安装初始化环境" data-url="http://wwww.feel88.cn/2015/08/15/CDH安装初始化环境/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"feel"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-<!-- 多说公共JS代码 end -->
-  </section></div></div>
-    <aside id="sidebar" class="alignright"><div class="widget tag">
-  <h3 class="title">最新文章</h3>
-  <ul class="entry">
-    
-      <li>
-        <a href="/2016/04/03/CGlib实现动态代理/">CGlib 实现动态代理</a>
-      </li>
-    
-      <li>
-        <a href="/2016/03/08/linux-交换分区/">linux  交换分区</a>
-      </li>
-    
-      <li>
-        <a href="/2016/01/02/ssl双向认证/">ssl 双向认证</a>
-      </li>
-    
-      <li>
-        <a href="/2015/12/27/autossh隧道搭建私服/">autossh 隧道搭建私服</a>
-      </li>
-    
-      <li>
-        <a href="/2015/12/13/修改linux时区/">修改 linux 时区</a>
-      </li>
-    
-  </ul>
-</div>
+          <div class="post-content">
+            <header>
 
-  <div class="widget tag">
-  <h3 class="title">分类</h3>
-  <ul class="entry">
-  
-    <li><a href="/categories/bigtata/">bigdata</a><small>2</small></li>
-  
-    <li><a href="/categories/css3/">css3</a><small>2</small></li>
-  
-    <li><a href="/categories/java/">java</a><small>1</small></li>
-  
-    <li><a href="/categories/linux/">linux</a><small>5</small></li>
-  
-    <li><a href="/categories/nginx/">nginx</a><small>1</small></li>
-  
-    <li><a href="/categories/nginx常用错误/">nginx常用错误</a><small>1</small></li>
-  
-    <li><a href="/categories/tool/">tool</a><small>1</small></li>
-  
-    <li><a href="/categories/web/">web</a><small>2</small></li>
-  
-  </ul>
-</div>
+              <div class="icon"></div>
+              <time datetime="2015-08-14T17:54:57.000Z"><a href="/2015/08/15/CDH安装初始化环境/">2015-08-15</a></time>
 
-  <div class="widget tag">
-  <h3 class="title">标签</h3>
-  <ul class="entry">
-  
-    <li><a href="/tags/bigtata/">bigdata</a><small>2</small></li>
-  
-    <li><a href="/tags/css3/">css3</a><small>2</small></li>
-  
-    <li><a href="/tags/java/">java</a><small>1</small></li>
-  
-    <li><a href="/tags/linux/">linux</a><small>5</small></li>
-  
-    <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
-  
-    <li><a href="/tags/nginx信号量/">nginx信号量</a><small>1</small></li>
-  
-    <li><a href="/tags/sqoop/">sqoop</a><small>1</small></li>
-  
-    <li><a href="/tags/tool/">tool</a><small>1</small></li>
-  
-    <li><a href="/tags/web/">web</a><small>3</small></li>
-  
-    <li><a href="/tags/web前端/">web前端</a><small>1</small></li>
-  
-    <li><a href="/tags/前端样式框架/">前端样式框架</a><small>1</small></li>
-  
-    <li><a href="/tags/样式/">样式</a><small>1</small></li>
-  
-  </ul>
-</div></aside>
+              <h1 class="title">CDH 安装初始化环境</h1>
+            </header>
+            <div class="entry">
+
+              <h1 id="install-screen">install  screen</h1>
+              <figure class="highlight cmake">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+                    <td class="code"><pre><span class="line">yum <span class="keyword">install</span> screen -y</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <a id="more"></a>
+              <h1 id="init">init</h1>
+              <figure class="highlight sql">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td>
+                    <td class="code"><pre><span class="line">yum  -y <span class="operator"><span class="keyword">install</span> python-devel python-pip libxslt-devel libxml2-devel gcc <span class="keyword">g</span>++ gcc-<span class="keyword">g</span>++</span><br><span class="line">yum -y <span class="keyword">install</span> tree</span><br><span class="line">yum <span class="keyword">install</span> -y python-pip</span><br><span class="line">pip <span class="keyword">install</span> lxml</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h1 id="install-httpd">install httpd</h1>
+              <figure class="highlight sql">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td>
+                    <td class="code"><pre><span class="line">yum <span class="operator"><span class="keyword">install</span> httpd -y </span><br><span class="line">service httpd <span class="keyword">start</span></span><br><span class="line">chkconfig httpd <span class="keyword">on</span></span><br><span class="line">mkdir -<span class="keyword">p</span> /<span class="keyword">var</span>/www/html/cdh</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h1 id="dowload-cdh">dowload cdh</h1>
+              <figure class="highlight groovy">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td>
+                    <td class="code"><pre><span class="line">cd  <span class="regexp">/var/</span>www<span class="regexp">/html/</span>cdh</span><br><span class="line">wget <span class="string">http:</span><span class="comment">//archive.cloudera.com/cdh5/parcels/latest/CDH-5.3.0-1.cdh5.3.0.p0.30-el6.parcel.sha1</span></span><br><span class="line">wget <span class="string">http:</span><span class="comment">//archive.cloudera.com/cdh5/parcels/latest/manifest.json</span></span><br><span class="line">wget <span class="string">http:</span><span class="comment">//archive.cloudera.com/cdh5/parcels/latest/CDH-5.3.0-1.cdh5.3.0.p0.30-el6.parcel</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h1 id="install-ntp">install ntp</h1>
+              <figure class="highlight livecodeserver">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td>
+                    <td class="code"><pre><span class="line">yum install  -y ntpdate ntp</span><br><span class="line">service ntpd <span class="built_in">stop</span></span><br><span class="line">service ntpdate <span class="built_in">start</span></span><br><span class="line">chkconfig ntpdate <span class="command"><span class="keyword">on</span></span></span><br><span class="line">service ntpd <span class="built_in">stop</span> </span><br><span class="line">ntpdate asia.pool.ntp.org</span><br><span class="line"> &#x6700;&#x540E;&#x6267;&#x884C; </span><br><span class="line">service ntpd <span class="built_in">start</span></span><br><span class="line">chkconfig ntpd <span class="command"><span class="keyword">on</span></span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h1 id="&#x8BBE;&#x7F6E;-swappiness"> &#x8BBE;&#x7F6E;  swappiness</h1>
+              <figure class="highlight nimrod">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td>
+                    <td class="code"><pre><span class="line">echo <span class="number">0</span> &gt;/<span class="keyword">proc</span>/sys/vm/swappiness </span><br><span class="line">vi /etc/sysctl.conf</span><br><span class="line">vm.swappiness=<span class="number">0</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h1 id="disabled-selinux">disabled  SELINUX</h1>
+              <figure class="highlight stylus">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
+                    <td class="code"><pre><span class="line">sed  -<span class="tag">i</span> <span class="string">&apos;s/SELINUX=enforcing/SELINUX=disabled/g&apos;</span> /etc/selinux/config</span><br><span class="line">sed  -<span class="tag">i</span> <span class="string">&apos;/SELINUX=disabled/s/^#*//&apos;</span>  /etc/selinux/config</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h1 id="stop-iptable">stop iptable</h1>
+              <figure class="highlight sql">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td>
+                    <td class="code"><pre><span class="line">service iptables <span class="operator"><span class="keyword">stop</span> </span><br><span class="line">service ip6tables <span class="keyword">stop</span></span><br><span class="line">chkconfig iptables <span class="keyword">off</span></span><br><span class="line">chkconfig ip6tables <span class="keyword">off</span></span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h1 id="upgrade-openssl">upgrade openssl</h1>
+              <figure class="highlight cmake">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
+                    <td class="code"><pre><span class="line">yum upgrade openssl</span><br><span class="line">yum <span class="keyword">install</span> opensh-clients -y</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h1 id="mail-service">mail service</h1>
+              <figure class="highlight vim">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td>
+                    <td class="code"><pre><span class="line">/usr/sbin/postconf | <span class="keyword">grep</span> inet_protocols</span><br><span class="line"># inet_protocols = <span class="keyword">all</span></span><br><span class="line"><span class="keyword">vi</span> /etc/postfix/main.<span class="keyword">cf</span></span><br><span class="line">sed  -<span class="keyword">i</span> <span class="string">&apos;s/inet_protocols = all/inet_protocols = ipv4/g&apos;</span> /etc/postfix/main.<span class="keyword">cf</span></span><br><span class="line">sed  -<span class="keyword">i</span> <span class="string">&apos;/inet_protocols = ipv4/s/^#*//&apos;</span>  /etc/postfix/main.<span class="keyword">cf</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h1 id="restart-postfix">restart postfix</h1>
+              <figure class="highlight swift">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+                    <td class="code"><pre><span class="line">/etc/<span class="keyword">init</span>.d/<span class="keyword">postfix</span> restart</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h1 id="download-mysql-driver-jar">download  mysql driver jar</h1>
+              <figure class="highlight groovy">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
+                    <td class="code"><pre><span class="line">cd /opt</span><br><span class="line">wget <span class="string">http:</span><span class="comment">//central.maven.org/maven2/mysql/mysql-connector-java/5.1.36/mysql-connector-java-5.1.36.jar</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h1 id="download-jdk">download jdk</h1>
+              <figure class="highlight stylus">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
+                    <td class="code"><pre><span class="line">wget --no-check-certificate --no-cookies --<span class="tag">header</span> <span class="string">&quot;Cookie: oraclelicense=accept-securebackup-cookie&quot;</span> http:<span class="comment">//download.oracle.com/otn-pub/java/jdk/7u67-b01/jdk-7u67-linux-x64.tar.gz</span></span><br><span class="line">tar -zxvf *jdk*<span class="class">.tar</span><span class="class">.gz</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h1 id="download-cloudera-manager">download cloudera-manager</h1>
+              <figure class="highlight stylus">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
+                    <td class="code"><pre><span class="line">wget http:<span class="comment">//archive-primary.cloudera.com/cm5/cm/5/cloudera-manager-el6-cm5.3.0_x86_64.tar.gz</span></span><br><span class="line">tar -zxvf cloudera-manager*<span class="class">.tar</span><span class="class">.gz</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h1 id="install-mysql">install mysql</h1>
+              <figure class="highlight sql">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td>
+                    <td class="code"><pre><span class="line">yum  -y <span class="operator"><span class="keyword">install</span>  mysql mysql-<span class="keyword">server</span> </span><br><span class="line">service mysqld restart</span><br><span class="line">chkconfig mysqld <span class="keyword">on</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&apos;amon&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;amon&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&apos;hive&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;hive&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&apos;smon&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;smon&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&apos;rman&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;rman&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&apos;hmon&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;hmon&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&apos;nav&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;nav&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> <span class="keyword">password</span>=<span class="keyword">password</span>(<span class="string">&apos;root&apos;</span>)  <span class="keyword">where</span> <span class="keyword">user</span>=<span class="string">&apos;root&apos;</span>;</span> <span class="operator"><span class="keyword">flush</span> <span class="keyword">privileges</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> *.* <span class="keyword">to</span> <span class="string">&apos;root&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">&apos;root&apos;</span>;</span> <span class="operator"><span class="keyword">flush</span> <span class="keyword">privileges</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> hive <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> hive.* <span class="keyword">TO</span> <span class="string">&apos;hive&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;hive&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> amon <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> amon.* <span class="keyword">TO</span> <span class="string">&apos;amon&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;amon&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> smon <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> smon.* <span class="keyword">TO</span> <span class="string">&apos;smon&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;smon&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> rman <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> rman.* <span class="keyword">TO</span> <span class="string">&apos;rman&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;rman&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> hmon <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> hmon.* <span class="keyword">TO</span> <span class="string">&apos;hmon&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;hmon&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> <span class="keyword">nav</span> <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> <span class="keyword">nav</span>.* <span class="keyword">TO</span> <span class="string">&apos;nav&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;nav&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">flush</span> <span class="keyword">privileges</span>;</span></span><br><span class="line">service mysqld restart</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h1 id="userdel-cloudera-scm">userdel cloudera-scm</h1>
+              <figure class="highlight vim">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+                    <td class="code"><pre><span class="line">useradd --<span class="built_in">system</span> --home=/<span class="keyword">opt</span>/<span class="keyword">cm</span>-<span class="number">5.3</span>.<span class="number">0</span>/run/cloudera-scm-server --<span class="keyword">no</span>-create-home --<span class="keyword">shell</span>=/bin/false --comment <span class="string">&quot;Cloudera SCM User&quot;</span> cloudera-scm</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h1 id="modify-config-file">Modify config  file</h1>
+              <figure class="highlight groovy">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
+                    <td class="code"><pre><span class="line">vi <span class="regexp">/opt/</span>cm-<span class="number">5.3</span><span class="number">.0</span><span class="regexp">/etc/</span>cloudera-scm-agent/config.ini</span><br><span class="line"><span class="regexp">/etc/</span>cloudera-scm-server/db.properties</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h2 id="for-example-only-modify-server_host">for example: only modify server_host</h2>
+              <figure class="highlight cpp">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td>
+                    <td class="code"><pre><span class="line">[General]</span><br><span class="line"></span><br><span class="line"> <span class="number">2</span> <span class="preprocessor"># Hostname of the CM server.</span></span><br><span class="line"></span><br><span class="line"> <span class="number">3</span> server_host=yun4</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h2 id="copy-mysql-driver-jar">copy mysql driver jar</h2>
+              <figure class="highlight crystal">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+                    <td class="code"><pre><span class="line">cp mysql-connector-java-<span class="number">5.1</span>.<span class="number">10</span>.jar cm-<span class="number">5.3</span>.<span class="number">0</span>/share/cmf/<span class="class"><span class="keyword">lib</span>/</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h1 id="install-coludera-manager-database">install  coludera manager database</h1>
+              <figure class="highlight vim">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td>
+                    <td class="code"><pre><span class="line">/<span class="keyword">opt</span>/<span class="keyword">cm</span>-<span class="number">5.3</span>.<span class="number">0</span>/share/cmf/schema/scm_prepare_database.<span class="keyword">sh</span> mysql databases -hlocalhost -uuser -ppassword --scm-host mccrea user password</span><br><span class="line"></span><br><span class="line">/<span class="keyword">opt</span>/<span class="keyword">cm</span>-<span class="number">5.3</span>.<span class="number">0</span>/share/cmf/schema/scm_prepare_database.<span class="keyword">sh</span> mysql hdp_cm -hlocalhost -ucm -padmin--scm-host mccrea <span class="keyword">cm</span> admin</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h1 id="copy-coludera-manage-to-node">copy coludera manage to node</h1>
+              <figure class="highlight crystal">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+                    <td class="code"><pre><span class="line">scp -r  /opt/cm-<span class="number">5.3</span>.<span class="number">0</span> root<span class="variable">@datanode1</span><span class="symbol">:/opt/cm-</span><span class="number">5.3</span>.<span class="number">0</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h1 id="start-server">start server</h1>
+              <figure class="highlight cpp">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td>
+                    <td class="code"><pre><span class="line">/opt/cm-<span class="number">5.3</span><span class="number">.0</span>/etc/init.d/cloudera-scm-server start</span><br><span class="line"></span><br><span class="line">sudo /opt/cm-<span class="number">5.3</span><span class="number">.0</span>/etc/init.d/cloudera-scm-agent start</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+
+            </div>
+            <footer>
+
+              <div class="categories">
+                <a href="/categories/bigtata/">bigdata</a>
+              </div>
+              <div class="tags">
+                <a href="/tags/bigtata/">bigdata</a>
+              </div>
+
+
+              <div class="clearfix"></div>
+            </footer>
+          </div>
+        </article>
+
+        <section id="comments">
+          <!-- 多说评论框 start -->
+          <div class="ds-thread" data-thread-key="post-CDH安装初始化环境" data-title="CDH 安装初始化环境" data-url="http://wwww.feel88.cn/2015/08/15/CDH安装初始化环境/"></div>
+          <!-- 多说评论框 end -->
+          <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+          <script type="text/javascript">
+            var duoshuoQuery = {
+              short_name: "feel"
+            };
+            (function() {
+              var ds = document.createElement('script');
+              ds.type = 'text/javascript';
+              ds.async = true;
+              ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+              ds.charset = 'UTF-8';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+            })();
+          </script>
+          <!-- 多说公共JS代码 end -->
+        </section>
+      </div>
+    </div>
+    <aside id="sidebar" class="alignright">
+      <div class="widget tag">
+        <h3 class="title">最新文章</h3>
+        <ul class="entry">
+
+          <li>
+            <a href="/2016/04/03/CGlib实现动态代理/">CGlib 实现动态代理</a>
+          </li>
+
+          <li>
+            <a href="/2016/03/08/linux-交换分区/">linux  交换分区</a>
+          </li>
+
+          <li>
+            <a href="/2016/01/02/ssl双向认证/">ssl 双向认证</a>
+          </li>
+
+          <li>
+            <a href="/2015/12/27/autossh隧道搭建私服/">autossh 隧道搭建私服</a>
+          </li>
+
+          <li>
+            <a href="/2015/12/13/修改linux时区/">修改 linux 时区</a>
+          </li>
+
+        </ul>
+      </div>
+
+      <div class="widget tag">
+        <h3 class="title">分类</h3>
+        <ul class="entry">
+
+          <li><a href="/categories/bigtata/">bigdata</a><small>2</small></li>
+
+          <li><a href="/categories/css3/">css3</a><small>2</small></li>
+
+          <li><a href="/categories/java/">java</a><small>1</small></li>
+
+          <li><a href="/categories/linux/">linux</a><small>5</small></li>
+
+          <li><a href="/categories/nginx/">nginx</a><small>1</small></li>
+
+          <li><a href="/categories/nginx常用错误/">nginx常用错误</a><small>1</small></li>
+
+          <li><a href="/categories/tool/">tool</a><small>1</small></li>
+
+          <li><a href="/categories/web/">web</a><small>2</small></li>
+
+        </ul>
+      </div>
+
+      <div class="widget tag">
+        <h3 class="title">标签</h3>
+        <ul class="entry">
+
+          <li><a href="/tags/bigtata/">bigdata</a><small>2</small></li>
+
+          <li><a href="/tags/css3/">css3</a><small>2</small></li>
+
+          <li><a href="/tags/java/">java</a><small>1</small></li>
+
+          <li><a href="/tags/linux/">linux</a><small>5</small></li>
+
+          <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
+
+          <li><a href="/tags/nginx信号量/">nginx信号量</a><small>1</small></li>
+
+          <li><a href="/tags/sqoop/">sqoop</a><small>1</small></li>
+
+          <li><a href="/tags/tool/">tool</a><small>1</small></li>
+
+          <li><a href="/tags/web/">web</a><small>3</small></li>
+
+          <li><a href="/tags/web前端/">web前端</a><small>1</small></li>
+
+          <li><a href="/tags/前端样式框架/">前端样式框架</a><small>1</small></li>
+
+          <li><a href="/tags/样式/">样式</a><small>1</small></li>
+
+        </ul>
+      </div>
+
+      <div class="widget tagcloud">
+        <h3 class="title">标签云</h3>
+        <div class="entry">
+          <a href="/tags/bigtata/" style="font-size: 13.33px">bigdata</a> <a href="/tags/css3/" style="font-size: 13.33px">css3</a> <a href="/tags/java/" style="font-size: 10px">java</a> <a href="/tags/linux/" style="font-size: 20px">linux</a> <a href="/tags/nginx/" style="font-size: 13.33px">nginx</a> <a href="/tags/nginx信号量/" style="font-size: 10px">nginx信号量</a> <a href="/tags/sqoop/" style="font-size: 10px">sqoop</a> <a href="/tags/tool/" style="font-size: 10px">tool</a> <a href="/tags/web/" style="font-size: 16.67px">web</a>          <a href="/tags/web前端/" style="font-size: 10px">web前端</a> <a href="/tags/前端样式框架/" style="font-size: 10px">前端样式框架</a> <a href="/tags/样式/" style="font-size: 10px">样式</a>
+        </div>
+      </div>
+    </aside>
     <div class="clearfix"></div>
   </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  
-  &copy; 2016 feel
-  
-</div>
-<div class="clearfix"></div></footer>
+  <footer id="footer" class="inner">
+    <div class="alignleft">
+
+      &copy; 2016 feel
+
+    </div>
+    <div class="clearfix"></div>
+  </footer>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+  <script src="/js/gallery.js"></script>
 
 
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    (function($) {
+      $('.fancybox').fancybox();
+    })(jQuery);
+  </script>
 </body>
+

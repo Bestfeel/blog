@@ -1,204 +1,252 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
   <meta charset="utf-8">
-  
+
   <title>动态生成密码 | Feel&#39;s blog</title>
   <meta name="author" content="feel">
-  
+
   <meta name="description" content="feel&#39;s blog | java | scala | python | javascript| linux | nodejs| Machine Learning">
-  
-  
+
+
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
   <meta property="og:title" content="动态生成密码">
   <meta property="og:site_name" content="Feel&#39;s blog">
 
-  
-    <meta property="og:image" content="undefined">
-  
+
+  <meta property="og:image" content="undefined">
+
 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="Feel&#39;s blog" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-</head></html>
+
+</head>
+
+</html>
 
 <body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Feel&#39;s blog</a></h1>
-  <h2><a href="/">知识从未如此性感</a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">首页</a></li>
-    
-      <li><a href="/archives">归档</a></li>
-    
-      <li><a href="/site">下载</a></li>
-    
-      <li><a href="/about">关于</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-12-05T17:39:51.000Z"><a href="/2015/12/06/动态生成密码/">2015-12-06</a></time>
-      
-      <h1 class="title">动态生成密码</h1>
-    </header>
-    <div class="entry">
-      
-        <p> &#x6709;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x7BA1;&#x7406;&#x670D;&#x52A1;&#x5668;&#x7684;&#x65F6;&#x5019;&#x7ECF;&#x5E38;&#x66F4;&#x6362;&#x5BC6;&#x7801;&#xFF0C;&#x4E0B;&#x9762;&#x6709;&#x51E0;&#x79CD;&#x52A8;&#x6001;&#x751F;&#x6210;&#x5BC6;&#x7801;&#x7684;&#x65B9;&#x5F0F; </p>
-<a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/bash </span></span><br><span class="line"><span class="keyword">if</span> [<span class="variable">$#</span> <span class="operator">-lt</span> <span class="number">1</span> ];</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;bash  8 (&#x5BC6;&#x7801;&#x957F;&#x5EA6;)&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">cat /dev/urandom | head -<span class="number">1</span> | md5 |base64 | head -c <span class="variable">$1</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;&quot;</span></span><br><span class="line">date |md5 |base64  |head -c <span class="variable">$1</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;&quot;</span></span><br><span class="line">date +%s |shasum |base64 |head  -c <span class="variable">$1</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;&quot;</span></span><br><span class="line">openssl rand -base64 <span class="number">256</span> |head -c  <span class="variable">$1</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-<p> &#x5982;&#x6211;&#x4EEC;&#x8981;&#x751F;&#x6210; 8 &#x4F4D;&#x7684;&#x5BC6;&#x7801;&#xFF1A;<br> &#x6267;&#x884C; <br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./genpasswd<span class="class">.sh</span> <span class="number">8</span></span><br></pre></td></tr></table></figure></p>
-<p> &#x8F93;&#x51FA; </p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ZmI3N2E3</span></span><br><span class="line">ZjA1YjNi</span><br><span class="line">OTY5ZWE4</span><br><span class="line">GcBj1ikc</span><br></pre></td></tr></table></figure>
-      
+  <header id="header" class="inner">
+    <div class="alignleft">
+      <h1><a href="/">Feel&#39;s blog</a></h1>
+      <h2><a href="/">知识从未如此性感</a></h2>
     </div>
-    <footer>
-      
-        <div class="categories">
-    <a href="/categories/linux/">linux</a>
-  </div>
-        <div class="tags">
-    <a href="/tags/linux/">linux</a>
-  </div>
-        
-      
+    <nav id="main-nav" class="alignright">
+      <ul>
+
+        <li><a href="/">首页</a></li>
+
+        <li><a href="/archives">归档</a></li>
+
+        <li><a href="/site">下载</a></li>
+
+        <li><a href="/about">关于</a></li>
+
+        <li><a href="download.feel88.cn">新版下载中心</a></li>
+      </ul>
       <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
+    </nav>
+    <div class="clearfix"></div>
+  </header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft">
+      <div id="wrapper">
+        <article class="post">
 
-<section id="comments">
- <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-动态生成密码" data-title="动态生成密码" data-url="http://wwww.feel88.cn/2015/12/06/动态生成密码/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"feel"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-<!-- 多说公共JS代码 end -->
-  </section></div></div>
-    <aside id="sidebar" class="alignright"><div class="widget tag">
-  <h3 class="title">最新文章</h3>
-  <ul class="entry">
-    
-      <li>
-        <a href="/2016/04/03/CGlib实现动态代理/">CGlib 实现动态代理</a>
-      </li>
-    
-      <li>
-        <a href="/2016/03/08/linux-交换分区/">linux  交换分区</a>
-      </li>
-    
-      <li>
-        <a href="/2016/01/02/ssl双向认证/">ssl 双向认证</a>
-      </li>
-    
-      <li>
-        <a href="/2015/12/27/autossh隧道搭建私服/">autossh 隧道搭建私服</a>
-      </li>
-    
-      <li>
-        <a href="/2015/12/13/修改linux时区/">修改 linux 时区</a>
-      </li>
-    
-  </ul>
-</div>
+          <div class="post-content">
+            <header>
 
-  <div class="widget tag">
-  <h3 class="title">分类</h3>
-  <ul class="entry">
-  
-    <li><a href="/categories/bigtata/">bigdata</a><small>2</small></li>
-  
-    <li><a href="/categories/css3/">css3</a><small>2</small></li>
-  
-    <li><a href="/categories/java/">java</a><small>1</small></li>
-  
-    <li><a href="/categories/linux/">linux</a><small>5</small></li>
-  
-    <li><a href="/categories/nginx/">nginx</a><small>1</small></li>
-  
-    <li><a href="/categories/nginx常用错误/">nginx常用错误</a><small>1</small></li>
-  
-    <li><a href="/categories/tool/">tool</a><small>1</small></li>
-  
-    <li><a href="/categories/web/">web</a><small>2</small></li>
-  
-  </ul>
-</div>
+              <div class="icon"></div>
+              <time datetime="2015-12-05T17:39:51.000Z"><a href="/2015/12/06/动态生成密码/">2015-12-06</a></time>
 
-  <div class="widget tag">
-  <h3 class="title">标签</h3>
-  <ul class="entry">
-  
-    <li><a href="/tags/bigtata/">bigdata</a><small>2</small></li>
-  
-    <li><a href="/tags/css3/">css3</a><small>2</small></li>
-  
-    <li><a href="/tags/java/">java</a><small>1</small></li>
-  
-    <li><a href="/tags/linux/">linux</a><small>5</small></li>
-  
-    <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
-  
-    <li><a href="/tags/nginx信号量/">nginx信号量</a><small>1</small></li>
-  
-    <li><a href="/tags/sqoop/">sqoop</a><small>1</small></li>
-  
-    <li><a href="/tags/tool/">tool</a><small>1</small></li>
-  
-    <li><a href="/tags/web/">web</a><small>3</small></li>
-  
-    <li><a href="/tags/web前端/">web前端</a><small>1</small></li>
-  
-    <li><a href="/tags/前端样式框架/">前端样式框架</a><small>1</small></li>
-  
-    <li><a href="/tags/样式/">样式</a><small>1</small></li>
-  
-  </ul>
-</div></aside>
+              <h1 class="title">动态生成密码</h1>
+            </header>
+            <div class="entry">
+
+              <p> &#x6709;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x7BA1;&#x7406;&#x670D;&#x52A1;&#x5668;&#x7684;&#x65F6;&#x5019;&#x7ECF;&#x5E38;&#x66F4;&#x6362;&#x5BC6;&#x7801;&#xFF0C;&#x4E0B;&#x9762;&#x6709;&#x51E0;&#x79CD;&#x52A8;&#x6001;&#x751F;&#x6210;&#x5BC6;&#x7801;&#x7684;&#x65B9;&#x5F0F;
+              </p>
+              <a id="more"></a>
+              <figure class="highlight bash">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td>
+                    <td class="code"><pre><span class="line"><span class="shebang">#!/bin/bash </span></span><br><span class="line"><span class="keyword">if</span> [<span class="variable">$#</span> <span class="operator">-lt</span> <span class="number">1</span> ];</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;bash  8 (&#x5BC6;&#x7801;&#x957F;&#x5EA6;)&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">cat /dev/urandom | head -<span class="number">1</span> | md5 |base64 | head -c <span class="variable">$1</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;&quot;</span></span><br><span class="line">date |md5 |base64  |head -c <span class="variable">$1</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;&quot;</span></span><br><span class="line">date +%s |shasum |base64 |head  -c <span class="variable">$1</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;&quot;</span></span><br><span class="line">openssl rand -base64 <span class="number">256</span> |head -c  <span class="variable">$1</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <p> &#x5982;&#x6211;&#x4EEC;&#x8981;&#x751F;&#x6210; 8 &#x4F4D;&#x7684;&#x5BC6;&#x7801;&#xFF1A;<br> &#x6267;&#x884C; <br>
+                <figure class="highlight stylus">
+                  <table>
+                    <tr>
+                      <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+                      <td class="code"><pre><span class="line">./genpasswd<span class="class">.sh</span> <span class="number">8</span></span><br></pre></td>
+                    </tr>
+                  </table>
+                </figure>
+              </p>
+              <p> &#x8F93;&#x51FA; </p>
+              <figure class="highlight nginx">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td>
+                    <td class="code"><pre><span class="line"><span class="title">ZmI3N2E3</span></span><br><span class="line">ZjA1YjNi</span><br><span class="line">OTY5ZWE4</span><br><span class="line">GcBj1ikc</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+
+            </div>
+            <footer>
+
+              <div class="categories">
+                <a href="/categories/linux/">linux</a>
+              </div>
+              <div class="tags">
+                <a href="/tags/linux/">linux</a>
+              </div>
+
+
+              <div class="clearfix"></div>
+            </footer>
+          </div>
+        </article>
+
+        <section id="comments">
+          <!-- 多说评论框 start -->
+          <div class="ds-thread" data-thread-key="post-动态生成密码" data-title="动态生成密码" data-url="http://wwww.feel88.cn/2015/12/06/动态生成密码/"></div>
+          <!-- 多说评论框 end -->
+          <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+          <script type="text/javascript">
+            var duoshuoQuery = {
+              short_name: "feel"
+            };
+            (function() {
+              var ds = document.createElement('script');
+              ds.type = 'text/javascript';
+              ds.async = true;
+              ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+              ds.charset = 'UTF-8';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+            })();
+          </script>
+          <!-- 多说公共JS代码 end -->
+        </section>
+      </div>
+    </div>
+    <aside id="sidebar" class="alignright">
+      <div class="widget tag">
+        <h3 class="title">最新文章</h3>
+        <ul class="entry">
+
+          <li>
+            <a href="/2016/04/03/CGlib实现动态代理/">CGlib 实现动态代理</a>
+          </li>
+
+          <li>
+            <a href="/2016/03/08/linux-交换分区/">linux  交换分区</a>
+          </li>
+
+          <li>
+            <a href="/2016/01/02/ssl双向认证/">ssl 双向认证</a>
+          </li>
+
+          <li>
+            <a href="/2015/12/27/autossh隧道搭建私服/">autossh 隧道搭建私服</a>
+          </li>
+
+          <li>
+            <a href="/2015/12/13/修改linux时区/">修改 linux 时区</a>
+          </li>
+
+        </ul>
+      </div>
+
+      <div class="widget tag">
+        <h3 class="title">分类</h3>
+        <ul class="entry">
+
+          <li><a href="/categories/bigtata/">bigdata</a><small>2</small></li>
+
+          <li><a href="/categories/css3/">css3</a><small>2</small></li>
+
+          <li><a href="/categories/java/">java</a><small>1</small></li>
+
+          <li><a href="/categories/linux/">linux</a><small>5</small></li>
+
+          <li><a href="/categories/nginx/">nginx</a><small>1</small></li>
+
+          <li><a href="/categories/nginx常用错误/">nginx常用错误</a><small>1</small></li>
+
+          <li><a href="/categories/tool/">tool</a><small>1</small></li>
+
+          <li><a href="/categories/web/">web</a><small>2</small></li>
+
+        </ul>
+      </div>
+
+      <div class="widget tag">
+        <h3 class="title">标签</h3>
+        <ul class="entry">
+
+          <li><a href="/tags/bigtata/">bigdata</a><small>2</small></li>
+
+          <li><a href="/tags/css3/">css3</a><small>2</small></li>
+
+          <li><a href="/tags/java/">java</a><small>1</small></li>
+
+          <li><a href="/tags/linux/">linux</a><small>5</small></li>
+
+          <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
+
+          <li><a href="/tags/nginx信号量/">nginx信号量</a><small>1</small></li>
+
+          <li><a href="/tags/sqoop/">sqoop</a><small>1</small></li>
+
+          <li><a href="/tags/tool/">tool</a><small>1</small></li>
+
+          <li><a href="/tags/web/">web</a><small>3</small></li>
+
+          <li><a href="/tags/web前端/">web前端</a><small>1</small></li>
+
+          <li><a href="/tags/前端样式框架/">前端样式框架</a><small>1</small></li>
+
+          <li><a href="/tags/样式/">样式</a><small>1</small></li>
+
+        </ul>
+      </div>
+
+      <div class="widget tagcloud">
+        <h3 class="title">标签云</h3>
+        <div class="entry">
+          <a href="/tags/bigtata/" style="font-size: 13.33px">bigdata</a> <a href="/tags/css3/" style="font-size: 13.33px">css3</a> <a href="/tags/java/" style="font-size: 10px">java</a> <a href="/tags/linux/" style="font-size: 20px">linux</a> <a href="/tags/nginx/" style="font-size: 13.33px">nginx</a> <a href="/tags/nginx信号量/" style="font-size: 10px">nginx信号量</a> <a href="/tags/sqoop/" style="font-size: 10px">sqoop</a> <a href="/tags/tool/" style="font-size: 10px">tool</a> <a href="/tags/web/" style="font-size: 16.67px">web</a>          <a href="/tags/web前端/" style="font-size: 10px">web前端</a> <a href="/tags/前端样式框架/" style="font-size: 10px">前端样式框架</a> <a href="/tags/样式/" style="font-size: 10px">样式</a>
+        </div>
+      </div>
+    </aside>
     <div class="clearfix"></div>
   </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  
-  &copy; 2016 feel
-  
-</div>
-<div class="clearfix"></div></footer>
+  <footer id="footer" class="inner">
+    <div class="alignleft">
+
+      &copy; 2016 feel
+
+    </div>
+    <div class="clearfix"></div>
+  </footer>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+  <script src="/js/gallery.js"></script>
 
 
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    (function($) {
+      $('.fancybox').fancybox();
+    })(jQuery);
+  </script>
 </body>
+

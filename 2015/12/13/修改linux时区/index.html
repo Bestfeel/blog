@@ -1,207 +1,270 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
   <meta charset="utf-8">
-  
+
   <title>修改 linux 时区 | Feel&#39;s blog</title>
   <meta name="author" content="feel">
-  
+
   <meta name="description" content="feel&#39;s blog | java | scala | python | javascript| linux | nodejs| Machine Learning">
-  
-  
+
+
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
   <meta property="og:title" content="修改 linux 时区">
   <meta property="og:site_name" content="Feel&#39;s blog">
 
-  
-    <meta property="og:image" content="undefined">
-  
+
+  <meta property="og:image" content="undefined">
+
 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="Feel&#39;s blog" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-</head></html>
+
+</head>
+
+</html>
 
 <body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Feel&#39;s blog</a></h1>
-  <h2><a href="/">知识从未如此性感</a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">首页</a></li>
-    
-      <li><a href="/archives">归档</a></li>
-    
-      <li><a href="/site">下载</a></li>
-    
-      <li><a href="/about">关于</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-12-12T18:57:09.000Z"><a href="/2015/12/13/修改linux时区/">2015-12-13</a></time>
-      
-      <h1 class="title">修改 linux 时区</h1>
-    </header>
-    <div class="entry">
-      
-        <p>linux &#x7684;&#x65F6;&#x533A;&#x4E3A; UTC &#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x4E3A; CST &#x65F6;&#x533A;</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install  -y ntpdate ntp</span><br><span class="line">service ntpd <span class="built_in">stop</span></span><br><span class="line">service ntpdate <span class="built_in">start</span></span><br><span class="line">chkconfig ntpdate <span class="command"><span class="keyword">on</span></span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>&#x4FEE;&#x6539;&#x65F6;&#x533A;<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/etc/</span>sysconfig/clock</span><br><span class="line"></span><br><span class="line">ZONE=<span class="string">&quot;Asia/Shanghai&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mv <span class="regexp">/etc/</span>localtime <span class="regexp">/etc/</span>localtime.bak</span><br><span class="line">ln -s <span class="regexp">/usr/</span>share<span class="regexp">/zoneinfo/</span>Asia<span class="regexp">/Shanghai  /</span>etc/localtime</span><br></pre></td></tr></table></figure></p>
-<p>&#x5C06;&#x5F53;&#x524D;&#x65F6;&#x95F4;&#x548C;&#x65E5;&#x671F;&#x5199;&#x5165; BIOS&#xFF0C;&#x907F;&#x514D;&#x91CD;&#x542F;&#x540E;&#x5931;&#x6548; </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hwclock</span><br></pre></td></tr></table></figure>
-<p>&#x5728;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#x53D1;&#x73B0;&#x4E0A;&#x9762;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x4E0D;&#x80FD;&#x5168;&#x90E8;&#x5E94;&#x7528;&#x751F;&#x6548;&#x3002; &#x6700;&#x597D;&#x8FD8;&#x662F;&#x91CD;&#x542F; reboot  &#x89E3;&#x51B3;&#x3002;</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install  -y ntpdate ntp</span><br><span class="line"></span><br><span class="line">ntpdate asia<span class="class">.pool</span><span class="class">.ntp</span><span class="class">.org</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x7CFB;&#x7EDF;&#x65F6;&#x533A;&#x914D;&#x7F6E; </span><br><span class="line">GMT</span><br><span class="line">cp <span class="regexp">/usr/</span>share<span class="regexp">/zoneinfo/</span>GMT  <span class="regexp">/etc/</span>localtime</span><br><span class="line"> &#x518D;&#x628A;  <span class="regexp">/etc/</span>sysconfig/clock  &#x4FEE;&#x6539;&#x6210;&#x5982;&#x4E0B;&#x5185;&#x5BB9; </span><br><span class="line">ZONE=<span class="string">&quot;GMT&quot;</span></span><br><span class="line">UTC=<span class="literal">false</span></span><br><span class="line">ARC=<span class="literal">false</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> &#x7F8E;&#x4E1C;&#x65F6;&#x95F4; </span><br><span class="line">cp <span class="regexp">/usr/</span>share<span class="regexp">/zoneinfo/</span>Brazil<span class="regexp">/West  /</span>etc/localtime</span><br><span class="line"> &#x518D;&#x628A;  <span class="regexp">/etc/</span>sysconfig/clock  &#x4FEE;&#x6539;&#x6210;&#x5982;&#x4E0B;&#x5185;&#x5BB9; </span><br><span class="line">ZONE=<span class="string">&quot;America/New_York&quot;</span></span><br><span class="line">UTC=<span class="literal">false</span></span><br><span class="line">ARC=<span class="literal">false</span></span><br><span class="line"></span><br><span class="line"> &#x7F8E;&#x4E1C;&#x65F6;&#x95F4; </span><br><span class="line">cp <span class="regexp">/usr/</span>share<span class="regexp">/zoneinfo/</span>America<span class="regexp">/New_York /</span>etc/localtime </span><br><span class="line"> &#x518D;&#x628A;  <span class="regexp">/etc/</span>sysconfig/clock  &#x4FEE;&#x6539;&#x6210;&#x5982;&#x4E0B;&#x5185;&#x5BB9; </span><br><span class="line">ZONE=<span class="string">&quot;America/New_York&quot;</span></span><br><span class="line">UTC=<span class="literal">false</span></span><br><span class="line">ARC=<span class="literal">false</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> &#x4E2D;&#x56FD;&#x65F6;&#x533A; </span><br><span class="line"><span class="regexp">/usr/</span>share<span class="regexp">/zoneinfo/</span>Asia<span class="regexp">/Hong_Kong   /</span>etc/localtime</span><br><span class="line"> &#x518D;&#x628A;  <span class="regexp">/etc/</span>sysconfig/clock  &#x4FEE;&#x6539;&#x6210;&#x5982;&#x4E0B;&#x5185;&#x5BB9; </span><br><span class="line">ZONE=<span class="string">&quot;Asia/Hong_Kong&quot;</span></span><br><span class="line">UTC=<span class="literal">false</span></span><br><span class="line">ARC=<span class="literal">false</span></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> &#x65F6;&#x95F4;&#x540C;&#x6B65;&#x547D;&#x4EE4; (&#x5F53;&#x7CFB;&#x7EDF;&#x9700;&#x8981;&#x5B89;&#x88C5; ntp &#x5373;&#x53EF;)</span><br><span class="line"><span class="regexp">/usr/</span>sbin/ntpdate -u <span class="number">192.43</span><span class="number">.244</span><span class="number">.18</span> </span><br><span class="line"><span class="regexp">/usr/</span>sbin/ntpdate time.asia.apple.com</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> &#x6DFB;&#x52A0;&#x540C;&#x6B65;&#x65F6;&#x949F;&#x811A;&#x672C; </span><br><span class="line">crontab -e</span><br><span class="line"> &#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x884C;&#x5373;&#x53EF;</span><br><span class="line">*<span class="regexp">/5 * * * * /</span>usr<span class="regexp">/sbin/</span>ntpdate -u <span class="number">192.43</span><span class="number">.244</span><span class="number">.18</span> &gt;<span class="regexp">/dev/</span><span class="literal">null</span> <span class="number">2</span>&gt;&amp;<span class="number">1</span></span><br></pre></td></tr></table></figure>
-      
+  <header id="header" class="inner">
+    <div class="alignleft">
+      <h1><a href="/">Feel&#39;s blog</a></h1>
+      <h2><a href="/">知识从未如此性感</a></h2>
     </div>
-    <footer>
-      
-        <div class="categories">
-    <a href="/categories/linux/">linux</a>
-  </div>
-        <div class="tags">
-    <a href="/tags/linux/">linux</a>
-  </div>
-        
-      
+    <nav id="main-nav" class="alignright">
+      <ul>
+
+        <li><a href="/">首页</a></li>
+
+        <li><a href="/archives">归档</a></li>
+
+        <li><a href="/site">下载</a></li>
+
+        <li><a href="/about">关于</a></li>
+
+        <li><a href="download.feel88.cn">新版下载中心</a></li>
+      </ul>
       <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
+    </nav>
+    <div class="clearfix"></div>
+  </header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft">
+      <div id="wrapper">
+        <article class="post">
 
-<section id="comments">
- <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-修改linux时区" data-title="修改 linux 时区" data-url="http://wwww.feel88.cn/2015/12/13/修改linux时区/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"feel"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-<!-- 多说公共JS代码 end -->
-  </section></div></div>
-    <aside id="sidebar" class="alignright"><div class="widget tag">
-  <h3 class="title">最新文章</h3>
-  <ul class="entry">
-    
-      <li>
-        <a href="/2016/04/03/CGlib实现动态代理/">CGlib 实现动态代理</a>
-      </li>
-    
-      <li>
-        <a href="/2016/03/08/linux-交换分区/">linux  交换分区</a>
-      </li>
-    
-      <li>
-        <a href="/2016/01/02/ssl双向认证/">ssl 双向认证</a>
-      </li>
-    
-      <li>
-        <a href="/2015/12/27/autossh隧道搭建私服/">autossh 隧道搭建私服</a>
-      </li>
-    
-      <li>
-        <a href="/2015/12/13/修改linux时区/">修改 linux 时区</a>
-      </li>
-    
-  </ul>
-</div>
+          <div class="post-content">
+            <header>
 
-  <div class="widget tag">
-  <h3 class="title">分类</h3>
-  <ul class="entry">
-  
-    <li><a href="/categories/bigtata/">bigdata</a><small>2</small></li>
-  
-    <li><a href="/categories/css3/">css3</a><small>2</small></li>
-  
-    <li><a href="/categories/java/">java</a><small>1</small></li>
-  
-    <li><a href="/categories/linux/">linux</a><small>5</small></li>
-  
-    <li><a href="/categories/nginx/">nginx</a><small>1</small></li>
-  
-    <li><a href="/categories/nginx常用错误/">nginx常用错误</a><small>1</small></li>
-  
-    <li><a href="/categories/tool/">tool</a><small>1</small></li>
-  
-    <li><a href="/categories/web/">web</a><small>2</small></li>
-  
-  </ul>
-</div>
+              <div class="icon"></div>
+              <time datetime="2015-12-12T18:57:09.000Z"><a href="/2015/12/13/修改linux时区/">2015-12-13</a></time>
 
-  <div class="widget tag">
-  <h3 class="title">标签</h3>
-  <ul class="entry">
-  
-    <li><a href="/tags/bigtata/">bigdata</a><small>2</small></li>
-  
-    <li><a href="/tags/css3/">css3</a><small>2</small></li>
-  
-    <li><a href="/tags/java/">java</a><small>1</small></li>
-  
-    <li><a href="/tags/linux/">linux</a><small>5</small></li>
-  
-    <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
-  
-    <li><a href="/tags/nginx信号量/">nginx信号量</a><small>1</small></li>
-  
-    <li><a href="/tags/sqoop/">sqoop</a><small>1</small></li>
-  
-    <li><a href="/tags/tool/">tool</a><small>1</small></li>
-  
-    <li><a href="/tags/web/">web</a><small>3</small></li>
-  
-    <li><a href="/tags/web前端/">web前端</a><small>1</small></li>
-  
-    <li><a href="/tags/前端样式框架/">前端样式框架</a><small>1</small></li>
-  
-    <li><a href="/tags/样式/">样式</a><small>1</small></li>
-  
-  </ul>
-</div></aside>
+              <h1 class="title">修改 linux 时区</h1>
+            </header>
+            <div class="entry">
+
+              <p>linux &#x7684;&#x65F6;&#x533A;&#x4E3A; UTC &#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x4E3A; CST &#x65F6;&#x533A;</p>
+              <figure class="highlight livecodeserver">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td>
+                    <td class="code"><pre><span class="line">yum install  -y ntpdate ntp</span><br><span class="line">service ntpd <span class="built_in">stop</span></span><br><span class="line">service ntpdate <span class="built_in">start</span></span><br><span class="line">chkconfig ntpdate <span class="command"><span class="keyword">on</span></span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <a id="more"></a>
+              <p>&#x4FEE;&#x6539;&#x65F6;&#x533A;<br>
+                <figure class="highlight groovy">
+                  <table>
+                    <tr>
+                      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td>
+                      <td class="code"><pre><span class="line"><span class="regexp">/etc/</span>sysconfig/clock</span><br><span class="line"></span><br><span class="line">ZONE=<span class="string">&quot;Asia/Shanghai&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mv <span class="regexp">/etc/</span>localtime <span class="regexp">/etc/</span>localtime.bak</span><br><span class="line">ln -s <span class="regexp">/usr/</span>share<span class="regexp">/zoneinfo/</span>Asia<span class="regexp">/Shanghai  /</span>etc/localtime</span><br></pre></td>
+                    </tr>
+                  </table>
+                </figure>
+              </p>
+              <p>&#x5C06;&#x5F53;&#x524D;&#x65F6;&#x95F4;&#x548C;&#x65E5;&#x671F;&#x5199;&#x5165; BIOS&#xFF0C;&#x907F;&#x514D;&#x91CD;&#x542F;&#x540E;&#x5931;&#x6548; </p>
+              <figure class="highlight">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+                    <td class="code"><pre><span class="line">hwclock</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <p>&#x5728;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#x53D1;&#x73B0;&#x4E0A;&#x9762;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x4E0D;&#x80FD;&#x5168;&#x90E8;&#x5E94;&#x7528;&#x751F;&#x6548;&#x3002; &#x6700;&#x597D;&#x8FD8;&#x662F;&#x91CD;&#x542F;
+                reboot &#x89E3;&#x51B3;&#x3002;
+              </p>
+              <figure class="highlight stylus">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td>
+                    <td class="code"><pre><span class="line">yum install  -y ntpdate ntp</span><br><span class="line"></span><br><span class="line">ntpdate asia<span class="class">.pool</span><span class="class">.ntp</span><span class="class">.org</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <figure class="highlight groovy">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td>
+                    <td class="code"><pre><span class="line"></span><br><span class="line">&#x7CFB;&#x7EDF;&#x65F6;&#x533A;&#x914D;&#x7F6E; </span><br><span class="line">GMT</span><br><span class="line">cp <span class="regexp">/usr/</span>share<span class="regexp">/zoneinfo/</span>GMT  <span class="regexp">/etc/</span>localtime</span><br><span class="line"> &#x518D;&#x628A;  <span class="regexp">/etc/</span>sysconfig/clock  &#x4FEE;&#x6539;&#x6210;&#x5982;&#x4E0B;&#x5185;&#x5BB9; </span><br><span class="line">ZONE=<span class="string">&quot;GMT&quot;</span></span><br><span class="line">UTC=<span class="literal">false</span></span><br><span class="line">ARC=<span class="literal">false</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> &#x7F8E;&#x4E1C;&#x65F6;&#x95F4; </span><br><span class="line">cp <span class="regexp">/usr/</span>share<span class="regexp">/zoneinfo/</span>Brazil<span class="regexp">/West  /</span>etc/localtime</span><br><span class="line"> &#x518D;&#x628A;  <span class="regexp">/etc/</span>sysconfig/clock  &#x4FEE;&#x6539;&#x6210;&#x5982;&#x4E0B;&#x5185;&#x5BB9; </span><br><span class="line">ZONE=<span class="string">&quot;America/New_York&quot;</span></span><br><span class="line">UTC=<span class="literal">false</span></span><br><span class="line">ARC=<span class="literal">false</span></span><br><span class="line"></span><br><span class="line"> &#x7F8E;&#x4E1C;&#x65F6;&#x95F4; </span><br><span class="line">cp <span class="regexp">/usr/</span>share<span class="regexp">/zoneinfo/</span>America<span class="regexp">/New_York /</span>etc/localtime </span><br><span class="line"> &#x518D;&#x628A;  <span class="regexp">/etc/</span>sysconfig/clock  &#x4FEE;&#x6539;&#x6210;&#x5982;&#x4E0B;&#x5185;&#x5BB9; </span><br><span class="line">ZONE=<span class="string">&quot;America/New_York&quot;</span></span><br><span class="line">UTC=<span class="literal">false</span></span><br><span class="line">ARC=<span class="literal">false</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> &#x4E2D;&#x56FD;&#x65F6;&#x533A; </span><br><span class="line"><span class="regexp">/usr/</span>share<span class="regexp">/zoneinfo/</span>Asia<span class="regexp">/Hong_Kong   /</span>etc/localtime</span><br><span class="line"> &#x518D;&#x628A;  <span class="regexp">/etc/</span>sysconfig/clock  &#x4FEE;&#x6539;&#x6210;&#x5982;&#x4E0B;&#x5185;&#x5BB9; </span><br><span class="line">ZONE=<span class="string">&quot;Asia/Hong_Kong&quot;</span></span><br><span class="line">UTC=<span class="literal">false</span></span><br><span class="line">ARC=<span class="literal">false</span></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> &#x65F6;&#x95F4;&#x540C;&#x6B65;&#x547D;&#x4EE4; (&#x5F53;&#x7CFB;&#x7EDF;&#x9700;&#x8981;&#x5B89;&#x88C5; ntp &#x5373;&#x53EF;)</span><br><span class="line"><span class="regexp">/usr/</span>sbin/ntpdate -u <span class="number">192.43</span><span class="number">.244</span><span class="number">.18</span> </span><br><span class="line"><span class="regexp">/usr/</span>sbin/ntpdate time.asia.apple.com</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> &#x6DFB;&#x52A0;&#x540C;&#x6B65;&#x65F6;&#x949F;&#x811A;&#x672C; </span><br><span class="line">crontab -e</span><br><span class="line"> &#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x884C;&#x5373;&#x53EF;</span><br><span class="line">*<span class="regexp">/5 * * * * /</span>usr<span class="regexp">/sbin/</span>ntpdate -u <span class="number">192.43</span><span class="number">.244</span><span class="number">.18</span> &gt;<span class="regexp">/dev/</span><span class="literal">null</span> <span class="number">2</span>&gt;&amp;<span class="number">1</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+
+            </div>
+            <footer>
+
+              <div class="categories">
+                <a href="/categories/linux/">linux</a>
+              </div>
+              <div class="tags">
+                <a href="/tags/linux/">linux</a>
+              </div>
+
+
+              <div class="clearfix"></div>
+            </footer>
+          </div>
+        </article>
+
+        <section id="comments">
+          <!-- 多说评论框 start -->
+          <div class="ds-thread" data-thread-key="post-修改linux时区" data-title="修改 linux 时区" data-url="http://wwww.feel88.cn/2015/12/13/修改linux时区/"></div>
+          <!-- 多说评论框 end -->
+          <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+          <script type="text/javascript">
+            var duoshuoQuery = {
+              short_name: "feel"
+            };
+            (function() {
+              var ds = document.createElement('script');
+              ds.type = 'text/javascript';
+              ds.async = true;
+              ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+              ds.charset = 'UTF-8';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+            })();
+          </script>
+          <!-- 多说公共JS代码 end -->
+        </section>
+      </div>
+    </div>
+    <aside id="sidebar" class="alignright">
+      <div class="widget tag">
+        <h3 class="title">最新文章</h3>
+        <ul class="entry">
+
+          <li>
+            <a href="/2016/04/03/CGlib实现动态代理/">CGlib 实现动态代理</a>
+          </li>
+
+          <li>
+            <a href="/2016/03/08/linux-交换分区/">linux  交换分区</a>
+          </li>
+
+          <li>
+            <a href="/2016/01/02/ssl双向认证/">ssl 双向认证</a>
+          </li>
+
+          <li>
+            <a href="/2015/12/27/autossh隧道搭建私服/">autossh 隧道搭建私服</a>
+          </li>
+
+          <li>
+            <a href="/2015/12/13/修改linux时区/">修改 linux 时区</a>
+          </li>
+
+        </ul>
+      </div>
+
+      <div class="widget tag">
+        <h3 class="title">分类</h3>
+        <ul class="entry">
+
+          <li><a href="/categories/bigtata/">bigdata</a><small>2</small></li>
+
+          <li><a href="/categories/css3/">css3</a><small>2</small></li>
+
+          <li><a href="/categories/java/">java</a><small>1</small></li>
+
+          <li><a href="/categories/linux/">linux</a><small>5</small></li>
+
+          <li><a href="/categories/nginx/">nginx</a><small>1</small></li>
+
+          <li><a href="/categories/nginx常用错误/">nginx常用错误</a><small>1</small></li>
+
+          <li><a href="/categories/tool/">tool</a><small>1</small></li>
+
+          <li><a href="/categories/web/">web</a><small>2</small></li>
+
+        </ul>
+      </div>
+
+      <div class="widget tag">
+        <h3 class="title">标签</h3>
+        <ul class="entry">
+
+          <li><a href="/tags/bigtata/">bigdata</a><small>2</small></li>
+
+          <li><a href="/tags/css3/">css3</a><small>2</small></li>
+
+          <li><a href="/tags/java/">java</a><small>1</small></li>
+
+          <li><a href="/tags/linux/">linux</a><small>5</small></li>
+
+          <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
+
+          <li><a href="/tags/nginx信号量/">nginx信号量</a><small>1</small></li>
+
+          <li><a href="/tags/sqoop/">sqoop</a><small>1</small></li>
+
+          <li><a href="/tags/tool/">tool</a><small>1</small></li>
+
+          <li><a href="/tags/web/">web</a><small>3</small></li>
+
+          <li><a href="/tags/web前端/">web前端</a><small>1</small></li>
+
+          <li><a href="/tags/前端样式框架/">前端样式框架</a><small>1</small></li>
+
+          <li><a href="/tags/样式/">样式</a><small>1</small></li>
+
+        </ul>
+      </div>
+
+      <div class="widget tagcloud">
+        <h3 class="title">标签云</h3>
+        <div class="entry">
+          <a href="/tags/bigtata/" style="font-size: 13.33px">bigdata</a> <a href="/tags/css3/" style="font-size: 13.33px">css3</a> <a href="/tags/java/" style="font-size: 10px">java</a> <a href="/tags/linux/" style="font-size: 20px">linux</a> <a href="/tags/nginx/" style="font-size: 13.33px">nginx</a> <a href="/tags/nginx信号量/" style="font-size: 10px">nginx信号量</a> <a href="/tags/sqoop/" style="font-size: 10px">sqoop</a> <a href="/tags/tool/" style="font-size: 10px">tool</a> <a href="/tags/web/" style="font-size: 16.67px">web</a>          <a href="/tags/web前端/" style="font-size: 10px">web前端</a> <a href="/tags/前端样式框架/" style="font-size: 10px">前端样式框架</a> <a href="/tags/样式/" style="font-size: 10px">样式</a>
+        </div>
+      </div>
+    </aside>
     <div class="clearfix"></div>
   </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  
-  &copy; 2016 feel
-  
-</div>
-<div class="clearfix"></div></footer>
+  <footer id="footer" class="inner">
+    <div class="alignleft">
+
+      &copy; 2016 feel
+
+    </div>
+    <div class="clearfix"></div>
+  </footer>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+  <script src="/js/gallery.js"></script>
 
 
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    (function($) {
+      $('.fancybox').fancybox();
+    })(jQuery);
+  </script>
 </body>
+
