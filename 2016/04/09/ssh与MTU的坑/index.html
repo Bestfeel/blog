@@ -1,0 +1,310 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <title>ssh 与 MTU 的坑 | Feel&#39;s blog</title>
+  <meta name="author" content="feel">
+
+  <meta name="description" content="feel&#39;s blog | java | scala | python | javascript| linux | nodejs| Machine Learning">
+
+
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+  <meta property="og:title" content="ssh 与 MTU 的坑">
+  <meta property="og:site_name" content="Feel&#39;s blog">
+
+
+  <meta property="og:image" content="undefined">
+
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="Feel&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+</head>
+
+</html>
+
+<body>
+  <header id="header" class="inner">
+    <div class="alignleft">
+      <h1><a href="/">Feel&#39;s blog</a></h1>
+      <h2><a href="/">知识从未如此性感</a></h2>
+    </div>
+    <nav id="main-nav" class="alignright">
+      <ul>
+
+        <li><a href="/">首页</a></li>
+
+        <li><a href="/archives">归档</a></li>
+
+        <li><a href="/site">下载</a></li>
+
+        <li><a href="/about">关于</a></li>
+
+        <li><a href="http://download.feel88.cn">新版下载中心</a></li>
+      </ul>
+
+
+
+      <div class="clearfix"></div>
+    </nav>
+    <div class="clearfix"></div>
+  </header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft">
+      <div id="wrapper">
+        <article class="post">
+
+          <div class="post-content">
+            <header>
+
+              <div class="icon"></div>
+              <time datetime="2016-04-08T16:31:02.000Z"><a href="/2016/04/09/ssh与MTU的坑/">2016-04-09</a></time>
+
+              <h1 class="title">ssh 与 MTU 的坑</h1>
+            </header>
+            <div class="entry">
+
+              <p>&#x524D;&#x8A00;&#xFF1A;&#x6700;&#x8FD1;&#x4E00;&#x5468;&#x53D1;&#x73B0;&#x5BB6;&#x91CC;&#x7684;&#x7F51;&#x7EDC; ssh &#x534F;&#x8BAE;&#x51FA;&#x5916;&#x7F51;&#x4E0D;&#x4E86;&#xFF0C;&#x4E00;&#x5F00;&#x59CB;&#x6211;&#x4EE5;&#x4E3A;&#x662F;&#x7F51;&#x7EDC;&#x95EE;&#x9898;&#x3002;&#x6298;&#x817E;&#x4E86;&#x534A;&#x5929;&#xFF0C;&#x6700;&#x540E;&#x6211;&#x7528;&#x624B;&#x673A;
+                4G &#x6D41;&#x91CF;&#x6D4B;&#x8BD5;&#xFF0C;&#x5C3D;&#x7136;&#x80FD;&#x8FDE;&#x4E0A; vps. &#x4E8E;&#x662F;&#x5C31;&#x6709;&#x4E86;&#x4E0B;&#x9762;&#x7684;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x3002;</p>
+              <a id="more"></a>
+              <ol>
+                <li>&#x9996;&#x5148;&#x5148;&#x6392;&#x9664;&#x7F51;&#x7EDC;&#x95EE;&#x9898;&#xFF0C;&#x54A8;&#x8BE2;&#x4E86;&#x540C;&#x4E8B;&#x5468;&#x603B;&#xFF0C;&#x4ED6;&#x6000;&#x7591;&#x662F; MTU &#x8BBE;&#x7F6E;&#x95EE;&#x9898;&#x3002;&#x6211;&#x4EEC;&#x5148;&#x666E;&#x53CA;&#x4E0B;
+                  MTU &#x76F8;&#x5173;&#x7684;&#x77E5;&#x8BC6;</li>
+              </ol>
+              <h2 id="mtu">MTU</h2>
+              <p>&#x901A;&#x4FE1;&#x672F;&#x8BED; &#x6700;&#x5927;&#x4F20;&#x8F93;&#x5355;&#x5143; (Maximum Transmission Unit,MTU) &#x662F;&#x6307;&#x4E00;&#x79CD;&#x901A;&#x4FE1;&#x534F;&#x8BAE;&#x7684;&#x67D0;&#x4E00;&#x5C42;&#x4E0A;&#x9762;&#x6240;&#x80FD;&#x901A;&#x8FC7;&#x7684;&#x6700;&#x5927;&#x6570;&#x636E;&#x62A5;&#x5927;&#x5C0F;(&#x4EE5;&#x5B57;&#x8282;&#x4E3A;&#x5355;&#x4F4D;)</p>
+              <h3 id="mtu-&#x4E0D;&#x884C;&#x592A;&#x5927;&#x4E5F;&#x4E0D;&#x80FD;&#x592A;&#x5C0F;-&#x8981;&#x521A;&#x521A;&#x5408;&#x9002;">MTU &#x4E0D;&#x884C;&#x592A;&#x5927;&#x4E5F;&#x4E0D;&#x80FD;&#x592A;&#x5C0F; &#x8981;&#x521A;&#x521A;&#x5408;&#x9002;</h3>
+              <p>&#x6BD4;&#x5982;: &#x4E00;&#x4E2A;&#x6570;&#x636E;&#x603B;&#x957F;&#x662F; 2999 &#x5B57;&#x8282; <br>MTU &#x4E3A; 1500 &#x65F6; &#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x88AB; &#x62C6;&#x6210; 1500 &#x4E3A;&#x6807;&#x51C6;&#x7684;&#x4E00;&#x6BB5;
+                &#x5206; 1500+1499 2 &#x6BB5; &#x4F20;&#x9001;&#x5B8C;&#x6BD5;<br>MTU &#x4E3A; 1400 &#x65F6; &#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x88AB; &#x62C6;&#x6210; 1400 &#x4E3A;&#x6807;&#x51C6;&#x7684;&#x4E00;&#x6BB5; &#x5206; 1400+1400+199 3 &#x6BB5;
+                &#x4F20;&#x9001;&#x5B8C;&#x6BD5;<br> &#x6240;&#x4EE5;&#x592A;&#x5C0F;&#x4E86; &#x4F20;&#x9001;&#x5C31;&#x4E0D;&#x6548;&#x7387;&#x4E86;&#x2026;</p>
+              <p>&#x6BD4;&#x5982;: &#x4E00;&#x4E2A;&#x6570;&#x636E;&#x603B;&#x957F;&#x662F; 9999 &#x5B57;&#x8282; <br>MTU &#x4E3A; 15000 &#x65F6; &#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x88AB; &#x62C6;&#x6210; 15000 &#x4E3A;&#x6807;&#x51C6;&#x7684;&#x4E00;&#x6BB5;
+                &#x5206; 15000 1 &#x6BB5; &#x4F20;&#x9001;&#x5B8C;&#x6BD5;<br> &#x4F46;&#x662F;&#x5305;&#x592A;&#x5927; &#x4F20;&#x9001;&#x8FC7;&#x7A0B;&#x4E2D; &#x88AB;&#x5E72;&#x6270; &#x6216;&#x8005; &#x4E22;&#x5305;&#x4E86; &#x5C31;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x53D1;&#x9001;&#x4E86;
+                <br> &#x6240;&#x4EE5;&#x592A;&#x5927;&#x4E86; &#x4F20;&#x9001;&#x5C31;&#x4E5F;&#x4E0D;&#x6548;&#x7387;&#x4E86;&#x2026;</p>
+              <p>&#x767E;&#x5146;&#x7F51;&#x7EDC; &#x9ED8;&#x8BA4;&#x7684; MTU &#x4E16;&#x754C;&#x6807;&#x51C6;&#x4E3A;&#x6700;&#x5927; 1500 (PS: &#x5343;&#x5146;&#x4E5F;&#x6709;&#x5DE8;&#x5E27; &#x6BD4;&#x5982; 4k 6k 9k &#x751A;&#x81F3; 16k &#x4E0D;&#x8FC7;&#x8981;&#x7EAF;&#x5343;&#x5146;&#x73AF;&#x5883;&#x624D;&#x53EF;&#x4EE5;)</p>
+              <p>MRU Maximum-Receive-Unit (MRU) &#x548C; MTU &#x4E00;&#x6837; &#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x7406;&#x89E3;&#x4E3A; &#x4E00;&#x4E2A;&#x63A5;&#x53D7; &#x4E00;&#x4E2A;&#x53D1;&#x9001; &#x503C;&#x800C;&#x5DF2; <br> &#x6240;&#x4EE5;&#x4E00;&#x822C;
+                &#x8DEF;&#x7531;&#x8BBE;&#x7F6E; MTU MRU &#x76F8;&#x540C;&#x503C;&#x5373;&#x53EF;</p>
+              <p>&#x5982;&#x679C;&#x6D4B;&#x8BD5; MTU &#x9002;&#x5408;&#x5462;?<br>&#x540C;&#x6700;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#x5C31;&#x884C;&#x4E86;&#x2026;<br>ping &#x547D;&#x4EE4; &#x7528;&#x5230; 2 &#x4E2A;&#x53C2;&#x6570; -l &#x5C31;&#x662F;&#x5305;&#x7684;&#x5927;&#x5C0F;
+                -f &#x4E0D;&#x5141;&#x8BB8;&#x5206;&#x6BB5;&#x4F20;&#x9001;</p>
+              <p>&#x5982;&#x4E0B;&#x6D4B;&#x8BD5;&#xFF1A;<br>&#x4ECE; 1472 &#x9010;&#x6B65;&#x51CF;&#x5C11; (MTU &#x6700;&#x5927;&#x503C;&#x662F; 1500 &#x51CF;&#x53BB; 28 &#x5305;&#x5934;&#x5C31;&#x662F; 1472 &#x4E86;)</p>
+              <figure class="highlight cpp">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td>
+                    <td class="code"><pre><span class="line">ping -l <span class="number">1472</span> -f www.feel88.cn</span><br><span class="line"></span><br><span class="line">&#x6B63;&#x5728; Ping www.feel88.cn [<span class="number">121.127</span><span class="number">.225</span><span class="number">.70</span>] &#x5177;&#x6709; <span class="number">1472</span> &#x5B57;&#x8282;&#x7684;&#x6570;&#x636E;:</span><br><span class="line">&#x6765;&#x81EA; <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span> &#x7684;&#x56DE;&#x590D;: &#x9700;&#x8981;&#x62C6;&#x5206;&#x6570;&#x636E;&#x5305;&#x4F46;&#x662F;&#x8BBE;&#x7F6E; DF&#x3002;</span><br><span class="line">&#x9700;&#x8981;&#x62C6;&#x5206;&#x6570;&#x636E;&#x5305;&#x4F46;&#x662F;&#x8BBE;&#x7F6E; DF&#x3002;</span><br><span class="line">&#x9700;&#x8981;&#x62C6;&#x5206;&#x6570;&#x636E;&#x5305;&#x4F46;&#x662F;&#x8BBE;&#x7F6E; DF&#x3002;</span><br><span class="line">&#x9700;&#x8981;&#x62C6;&#x5206;&#x6570;&#x636E;&#x5305;&#x4F46;&#x662F;&#x8BBE;&#x7F6E; DF&#x3002;</span><br><span class="line"></span><br><span class="line"><span class="number">121.127</span><span class="number">.225</span><span class="number">.70</span> &#x7684; Ping &#x7EDF;&#x8BA1;&#x4FE1;&#x606F;:</span><br><span class="line">    &#x6570;&#x636E;&#x5305;: &#x5DF2;&#x53D1;&#x9001; = <span class="number">4</span>&#xFF0C;&#x5DF2;&#x63A5;&#x6536; = <span class="number">1</span>&#xFF0C;&#x4E22;&#x5931; = <span class="number">3</span> (<span class="number">75</span>% &#x4E22;&#x5931;)&#xFF0C;</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <p>&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x786E;&#x5B9E;&#x8BBE;&#x7F6E;&#x7684;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x7136;&#x540E; &#x6211;&#x5C31;&#x4E00;&#x70B9;&#x4E00;&#x70B9;&#x8C03;&#xFF0C;&#x6700;&#x7EC8; 1452 &#x6700;&#x5408;&#x9002;&#xFF0C;&#x521A;&#x521A;&#x597D;&#x3002;</p>
+              <figure class="highlight cpp">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td>
+                    <td class="code"><pre><span class="line">ping -l <span class="number">1452</span> -f www.feel88.cn</span><br><span class="line"></span><br><span class="line">&#x6B63;&#x5728; Ping www.feel88.cn [<span class="number">121.127</span><span class="number">.225</span><span class="number">.70</span>] &#x5177;&#x6709; <span class="number">1452</span> &#x5B57;&#x8282;&#x7684;&#x6570;&#x636E;:</span><br><span class="line">&#x6765;&#x81EA; <span class="number">121.127</span><span class="number">.225</span><span class="number">.70</span> &#x7684;&#x56DE;&#x590D;: &#x5B57;&#x8282; =<span class="number">1452</span> &#x65F6;&#x95F4; =<span class="number">3</span>ms TTL=<span class="number">62</span></span><br><span class="line">&#x6765;&#x81EA; <span class="number">121.127</span><span class="number">.225</span><span class="number">.70</span> &#x7684;&#x56DE;&#x590D;: &#x5B57;&#x8282; =<span class="number">1452</span> &#x65F6;&#x95F4; =<span class="number">3</span>ms TTL=<span class="number">62</span></span><br><span class="line"></span><br><span class="line"><span class="number">121.127</span><span class="number">.225</span><span class="number">.70</span> &#x7684; Ping &#x7EDF;&#x8BA1;&#x4FE1;&#x606F;:</span><br><span class="line">    &#x6570;&#x636E;&#x5305;: &#x5DF2;&#x53D1;&#x9001; = <span class="number">2</span>&#xFF0C;&#x5DF2;&#x63A5;&#x6536; = <span class="number">2</span>&#xFF0C;&#x4E22;&#x5931; = <span class="number">0</span> (<span class="number">0</span>% &#x4E22;&#x5931;)&#xFF0C;</span><br><span class="line">&#x5F80;&#x8FD4;&#x884C;&#x7A0B;&#x7684;&#x4F30;&#x8BA1;&#x65F6;&#x95F4;(&#x4EE5;&#x6BEB;&#x79D2;&#x4E3A;&#x5355;&#x4F4D;):</span><br><span class="line">    &#x6700;&#x77ED; = <span class="number">3</span>ms&#xFF0C;&#x6700;&#x957F; = <span class="number">3</span>ms&#xFF0C;&#x5E73;&#x5747; = <span class="number">3</span>ms</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <p>MSS &#x662F;&#x62A5;&#x6587;&#x4F20;&#x8F93;<br>MSS + 20 &#x5B57;&#x8282; IP &#x5305;&#x5934; + 20 &#x5B57;&#x8282; TCP &#x5934; &#x5C31;&#x662F; MTU &#x4E86;&#x2026;</p>
+              <p>&#x90A3;&#x4E48;&#x6211;&#x7684;&#x6700;&#x4F73; MSS &#x5C31;&#x662F; MTU &#x51CF;&#x53BB; 40 1482-40 = 1442<br>1452 &#x5C31;&#x662F;&#x6211;&#x6700;&#x4F73;&#x7684; MSS &#x4E86;&#x2026;</p>
+              <p>&#x5C0F;&#x7ED3;:<br>ping -l &#x7684;&#x503C; + 28 &#x5C31;&#x662F;&#x6700;&#x4F73; MTU &#x503C;<br>MTU &#x51CF;&#x53BB; 40 &#x5C31;&#x662F; &#x6700;&#x4F73; MSS &#x503C;</p>
+              <ol>
+                <li>
+                  <p>&#x786E;&#x5B9A; MTU &#x7684;&#x4E4B;&#x540E;&#x540E;&#xFF0C; &#x6211;&#x5C31;&#x662F;&#x53BB;&#x8DEF;&#x7531;&#x5668;&#x4E0A;&#x8BBE;&#x7F6E;&#x76F8;&#x5173;&#x7684; MTU&#xFF0C;MRU &#x7684;&#x503C;&#x3002;</p>
+                </li>
+                <li>
+                  <p>&#x628A;&#x81EA;&#x5DF1;&#x7684;&#x7535;&#x8111;&#x4E0A;&#x7684; MTU &#x503C;&#x4E5F;&#x624B;&#x52A8;&#x6539;&#x52A8;&#x3002; </p>
+                </li>
+              </ol>
+              <figure class="highlight cpp">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+                    <td class="code"><pre><span class="line">sudo ifconfig en0 mtu <span class="number">1400</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <figure class="highlight cpp">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td>
+                    <td class="code"><pre><span class="line">&#x279C;  blog git:(master) &#x2717; ifconfig  en0</span><br><span class="line">en0: flags=<span class="number">8863</span>&lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&gt; mtu <span class="number">1480</span></span><br><span class="line">    ether a8:<span class="number">66</span>:<span class="number">7f</span>:<span class="number">10</span>:<span class="number">9</span>b:<span class="number">8</span>a </span><br><span class="line">    inet6 fe80::aa66:<span class="number">7f</span>ff:fe10:<span class="number">9</span>b8a%en0 prefixlen <span class="number">64</span> scopeid <span class="number">0x4</span> </span><br><span class="line">    inet <span class="number">192.168</span><span class="number">.1</span><span class="number">.103</span> netmask <span class="number">0xffffff00</span> broadcast <span class="number">192.168</span><span class="number">.1</span><span class="number">.255</span></span><br><span class="line">    nd6 options=<span class="number">1</span>&lt;PERFORMNUD&gt;</span><br><span class="line">    media: autoselect</span><br><span class="line">    status: active</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <ol>
+                <li>&#x4EE5;&#x4E0A;&#x8BBE;&#x7F6E;&#x597D;&#x4E86;&#x4E4B;&#x540E;&#xFF0C;&#x51C6;&#x5907;&#x8FDE;&#x63A5; ssh &#x5230;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x3002;&#x7ED3;&#x679C;&#x5E76;&#x6CA1;&#x6709;&#x60F3;&#x8C61;&#x7684;&#x8FD9;&#x4E48;&#x597D;&#x3002;&#x8FD8;&#x662F;&#x8FDE;&#x4E0D;&#x4E0A;&#x3002;&#x6700;&#x540E;&#x6211;&#x53EF;&#x4EE5;&#x80AF;&#x5B9A;&#x7684;&#x662F;&#x8FD0;&#x8425;&#x5546;&#x90A3;&#x8FB9;&#x80AF;&#x5B9A;&#x505A;&#x4E86;&#x9650;&#x5236;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x6211;&#x5C1D;&#x8BD5;&#x66F4;&#x6539;
+                  ssh &#x7AEF;&#x53E3;&#xFF0C; &#x5468;&#x603B;&#x4E5F;&#x5EFA;&#x8BAE;&#x6211;&#x5148;&#x6392;&#x9664;&#x7AEF;&#x53E3;&#x7684;&#x95EE;&#x9898;&#x3002;ok. &#x5F00;&#x59CB;&#x5E72;&#x6D3B;&#xFF01;&#xFF01; &#x53C8;&#x7528;&#x624B;&#x673A;&#x6D41;&#x91CF;&#x5148;&#x767B;&#x5165;&#x8FDB;&#x53BB;&#x3002;</li>
+              </ol>
+              <p>&#x9996;&#x5148;&#x6253;&#x5F00;&#x9632;&#x706B;&#x5899;&#x7684;&#x7AEF;&#x53E3;&#x9650;&#x5236;&#xFF0C;&#x5148;&#x52A0;&#x4E0A;&#x4F60;&#x8981;&#x6539;&#x7684;&#x7AEF;&#x53E3;&#x3002;&#x5207;&#x8BB0;&#x4E00;&#x5B9A;&#x8981;&#x5148;&#x8BBE;&#x7F6E;&#x9632;&#x706B;&#x5899;&#x3002;&#x4E0D;&#x7136;&#x7F51;&#x7EDC;&#x4E00;&#x65AD;&#x5F00;&#x5C31;&#x60B2;&#x5267;&#x4E86;&#x3002;<br>&#x4FEE;&#x6539;
+                ssh &#x914D;&#x7F6E;&#x6587;&#x4EF6;</p>
+              <figure class="highlight gradle">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+                    <td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>ssh<span class="regexp">/sshd_config</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <p>&#x627E;&#x5230; #Port 22 &#x4E00;&#x6BB5;&#xFF0C;&#x8FD9;&#x91CC;&#x662F;&#x6807;&#x8BC6;&#x9ED8;&#x8BA4;&#x4F7F;&#x7528; 22 &#x7AEF;&#x53E3;&#xFF0C;&#x4FEE;&#x6539;&#x4E3A;&#x5176;&#x5B83;&#x7AEF;&#x53E3;&#xFF1A;</p>
+              <figure class="highlight cpp">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+                    <td class="code"><pre><span class="line">Port <span class="number">22</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <p>&#x7136;&#x540E;&#x4FDD;&#x5B58;&#x9000;&#x51FA;</p>
+              <p>&#x65AD;&#x5F00;&#x624B;&#x673A;&#x7F51;&#x7EDC;&#xFF0C;&#x8FDE;&#x4E0A;&#x5BB6;&#x91CC;&#x7684;&#x7F51;&#x7EDC;&#x3002; &#x5C3D;&#x7136;&#x6210;&#x529F;&#x8FDE;&#x4E0A;&#x4E86;&#x3002;&#x6700;&#x540E;&#xFF0C;&#x5F88;&#x706B;&#xFF01;&#xFF01;&#xFF01;
+                &#x4E3A;&#x6BDB;&#x7535;&#x4FE1;&#x90A3;&#x8FB9;&#x8981;&#x9650;&#x5236; 22 &#x7AEF;&#x53E3;&#xFF0C;&#x5468;&#x603B;&#x8BF4;&#x53EF;&#x80FD;&#x662F;&#x4ED6;&#x4EEC; acl &#x7B56;&#x7565;&#x914D;&#x7F6E;&#x51FA;&#x9519;&#x4E86;&#x3002;</p>
+
+            </div>
+            <footer>
+
+              <div class="categories">
+                <a href="/categories/linux/">linux</a>
+              </div>
+              <div class="tags">
+                <a href="/tags/linux/">linux</a>
+              </div>
+
+
+              <div class="clearfix"></div>
+            </footer>
+          </div>
+        </article>
+
+        <section id="comments">
+          <!-- 多说评论框 start -->
+          <div class="ds-thread" data-thread-key="post-ssh与MTU的坑" data-title="ssh 与 MTU 的坑" data-url="http://wwww.feel88.cn/2016/04/09/ssh与MTU的坑/"></div>
+          <!-- 多说评论框 end -->
+          <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+          <script type="text/javascript">
+            var duoshuoQuery = {
+              short_name: "feel"
+            };
+            (function() {
+              var ds = document.createElement('script');
+              ds.type = 'text/javascript';
+              ds.async = true;
+              ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+              ds.charset = 'UTF-8';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+            })();
+          </script>
+          <!-- 多说公共JS代码 end -->
+        </section>
+      </div>
+    </div>
+    <aside id="sidebar" class="alignright">
+      <div class="widget tag">
+        <h3 class="title">最新文章</h3>
+        <ul class="entry">
+
+          <li>
+            <a href="/2016/04/09/ssh与MTU的坑/">ssh 与 MTU 的坑</a>
+          </li>
+
+          <li>
+            <a href="/2016/04/03/CGlib实现动态代理/">CGlib 实现动态代理</a>
+          </li>
+
+          <li>
+            <a href="/2016/03/08/linux-交换分区/">linux  交换分区</a>
+          </li>
+
+          <li>
+            <a href="/2016/01/02/ssl双向认证/">ssl 双向认证</a>
+          </li>
+
+          <li>
+            <a href="/2015/12/27/autossh隧道搭建私服/">autossh 隧道搭建私服</a>
+          </li>
+
+        </ul>
+      </div>
+
+      <div class="widget tag">
+        <h3 class="title">分类</h3>
+        <ul class="entry">
+
+          <li><a href="/categories/bigtata/">bigdata</a><small>2</small></li>
+
+          <li><a href="/categories/css3/">css3</a><small>2</small></li>
+
+          <li><a href="/categories/java/">java</a><small>1</small></li>
+
+          <li><a href="/categories/linux/">linux</a><small>6</small></li>
+
+          <li><a href="/categories/nginx/">nginx</a><small>1</small></li>
+
+          <li><a href="/categories/nginx常用错误/">nginx常用错误</a><small>1</small></li>
+
+          <li><a href="/categories/tool/">tool</a><small>1</small></li>
+
+          <li><a href="/categories/web/">web</a><small>2</small></li>
+
+        </ul>
+      </div>
+
+      <div class="widget tag">
+        <h3 class="title">标签</h3>
+        <ul class="entry">
+
+          <li><a href="/tags/bigtata/">bigdata</a><small>2</small></li>
+
+          <li><a href="/tags/css3/">css3</a><small>2</small></li>
+
+          <li><a href="/tags/java/">java</a><small>1</small></li>
+
+          <li><a href="/tags/linux/">linux</a><small>6</small></li>
+
+          <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
+
+          <li><a href="/tags/nginx信号量/">nginx信号量</a><small>1</small></li>
+
+          <li><a href="/tags/sqoop/">sqoop</a><small>1</small></li>
+
+          <li><a href="/tags/tool/">tool</a><small>1</small></li>
+
+          <li><a href="/tags/web/">web</a><small>3</small></li>
+
+          <li><a href="/tags/web前端/">web前端</a><small>1</small></li>
+
+          <li><a href="/tags/前端样式框架/">前端样式框架</a><small>1</small></li>
+
+          <li><a href="/tags/样式/">样式</a><small>1</small></li>
+
+        </ul>
+      </div>
+    </aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner">
+    <div class="alignleft">
+
+      &copy; 2016 feel
+
+    </div>
+    <div class="clearfix"></div>
+  </footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+  <script src="/js/gallery.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    (function($) {
+      $('.fancybox').fancybox();
+    })(jQuery);
+  </script>
+</body>
+
