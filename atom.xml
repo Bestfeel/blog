@@ -1422,8 +1422,8 @@
     <link href="http://wwww.feel88.cn/2015/08/15/git%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>http://wwww.feel88.cn/2015/08/15/git的使用/</id>
     <published>2015-08-15T12:48:03.000Z</published>
-    <updated>2016-01-26T06:56:43.000Z</updated>
-    <content type="html"><![CDATA[<h2 id="&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;"> &#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F; </h2>
+    <updated>2016-04-14T02:17:08.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;">&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;</h2>
 <figure class="highlight armasm">
   <table>
     <tr>
@@ -1443,8 +1443,8 @@
     </tr>
   </table>
 </figure>
-<h2 id="git-&#x4EE3;&#x7801;&#x8FC1;&#x79FB;">git  &#x4EE3;&#x7801;&#x8FC1;&#x79FB; </h2>
-<p> &#x62C9;&#x53D6;&#x641C;&#x6709;&#x5206;&#x652F;&#x5230;&#x672C;&#x5730; </p>
+<h2 id="git-&#x4EE3;&#x7801;&#x8FC1;&#x79FB;">git  &#x4EE3;&#x7801;&#x8FC1;&#x79FB;</h2>
+<p>&#x62C9;&#x53D6;&#x641C;&#x6709;&#x5206;&#x652F;&#x5230;&#x672C;&#x5730;</p>
 <figure class="highlight bash">
   <table>
     <tr>
@@ -1453,7 +1453,7 @@
     </tr>
   </table>
 </figure>
-<p> &#x67E5;&#x770B;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x5730;&#x5740; </p>
+<p>&#x67E5;&#x770B;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x5730;&#x5740;</p>
 <figure class="highlight nginx">
   <table>
     <tr>
@@ -1462,7 +1462,7 @@
     </tr>
   </table>
 </figure>
-<p> &#x66FF;&#x6362;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x5730;&#x5740; </p>
+<p>&#x66FF;&#x6362;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x5730;&#x5740;</p>
 <figure class="highlight sql">
   <table>
     <tr>
@@ -1471,7 +1471,7 @@
     </tr>
   </table>
 </figure>
-<p> &#x63A8;&#x9001;&#x6240;&#x6709;&#x5206;&#x652F;&#xFF0C;tag &#x5230;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93; </p>
+<p>&#x63A8;&#x9001;&#x6240;&#x6709;&#x5206;&#x652F;&#xFF0C;tag &#x5230;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;</p>
 <figure class="highlight applescript">
   <table>
     <tr>
@@ -1480,7 +1480,7 @@
     </tr>
   </table>
 </figure>
-<p> &#x4EE3;&#x7801;&#x51B2;&#x7A81; </p>
+<h2 id="&#x4EE3;&#x7801;&#x51B2;&#x7A81;">&#x4EE3;&#x7801;&#x51B2;&#x7A81;</h2>
 <figure class="highlight sql">
   <table>
     <tr>
@@ -1488,7 +1488,76 @@
       <td class="code"><pre><span class="line">git checkout <span class="comment">-- others/report/reportallsendMail.sh</span></span><br><span class="line">git status</span><br><span class="line">git <span class="operator"><span class="keyword">merge</span> origin/<span class="keyword">master</span></span></span><br></pre></td>
     </tr>
   </table>
-</figure>]]></content>
+</figure>
+<h2 id="&#x66F4;&#x65B0;-fork-&#x9879;&#x76EE;">&#x66F4;&#x65B0; fork &#x9879;&#x76EE;:</h2>
+<p>&#x5982;&#x679C;&#x4F60; fork &#x4E86;&#x522B;&#x4EBA;&#x7684;&#x9879;&#x76EE;&#xFF0C;&#x8FC7;&#x6BB5;&#x65F6;&#x95F4;&#x7A81;&#x7136;&#x53D1;&#x73B0;&#x8BE5;&#x9879;&#x76EE;&#x66F4;&#x65B0;&#x4E86;&#x5F88;&#x591A;&#x5185;&#x5BB9;&#xFF0C;&#x4E8E;&#x662F;&#x4F60;&#x60F3;&#x540C;&#x6B65;&#x66F4;&#x65B0;&#x5230;&#x81EA;&#x5DF1;&#x7684;&#x4ED3;&#x5E93;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x6309;&#x5982;&#x4E0B;&#x6B65;&#x9AA4;&#xFF1A; </p>
+<ol>
+  <li>&#x6DFB;&#x52A0;&#x4E00;&#x4E2A; remote &#x6307;&#x5411;&#x4E0A;&#x6E38;&#x4ED3;&#x5E93;</li>
+</ol>
+<figure class="highlight vim">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+      <td class="code"><pre><span class="line">git remote <span class="built_in">add</span> upstream http<span class="variable">s:</span>//github.<span class="keyword">com</span>/keleshev/schema.git</span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<ol>
+  <li>&#x83B7;&#x53D6;&#x4E0A;&#x6E38;&#x8FDC;&#x7A0B;&#x5206;&#x652F;&#x66F4;&#x65B0;&#x5185;&#x5BB9;</li>
+</ol>
+<figure class="highlight nginx">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+      <td class="code"><pre><span class="line"><span class="title">git</span> fetch upstream</span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<ol>
+  <li>&#x5408;&#x5E76;&#x5230;&#x672C;&#x5730;&#x5206;&#x652F;
+    <figure class="highlight sql">
+      <table>
+        <tr>
+          <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
+          <td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git <span class="operator"><span class="keyword">merge</span> upstream/<span class="keyword">master</span></span></span><br></pre></td>
+        </tr>
+      </table>
+    </figure>
+  </li>
+</ol>
+<h2 id="&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;">&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;</h2>
+<figure class="highlight perl">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+      <td class="code"><pre><span class="line">git <span class="keyword">push</span> origin --<span class="keyword">delete</span> branch-a   <span class="comment"># &#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F; branch-a</span></span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<p>&#x5982;&#x679C;&#x8FDC;&#x7A0B;&#x5206;&#x652F;&#x5DF2;&#x7ECF;&#x5220;&#x9664;, &#x4F46;&#x662F;&#x672C;&#x5730;&#x8FD8;&#x5B58;&#x5728;&#x8BF8;&#x5982;:remotes/origin/[branch]&#x8FD9;&#x6837;&#x7684;&#x5206;&#x652F;&#x65F6;, &#x53EF;&#x80FD;&#x4F1A;&#x5F15;&#x8D77;&#x9519;&#x8BEF;:</p>
+<pre><code>error: unable to delete &apos;lzjun&apos;: remote <span class="keyword">ref</span> does <span class="keyword">not</span> exist
+error: failed to push some refs to &apos;git@bitbucket.org:sponialtd/openplay_pylibs.git&apos;
+</code></pre>
+<p>&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#x662F; <a href="http://stackoverflow.com/questions/10292480/when-deleting-remote-git-branch-error-unable-to-push-to-unqualified-destination" target="_blank" rel="external"> &#x53C2;&#x8003;&#x5730;&#x5740;</a>&#xFF1A;</p>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+      <td class="code"><pre><span class="line">git fetch -<span class="tag">p</span> origin</span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<h2 id="&#x4E0D;&#x518D;&#x540C;&#x6B65;&#x67D0;&#x4E9B;&#x5DF2;&#x7ECF;&#x52A0;&#x5165;&#x4ED3;&#x5E93;&#x7684;&#x6587;&#x4EF6;">&#x4E0D;&#x518D;&#x540C;&#x6B65;&#x67D0;&#x4E9B;&#x5DF2;&#x7ECF;&#x52A0;&#x5165;&#x4ED3;&#x5E93;&#x7684;&#x6587;&#x4EF6;</h2>
+<p>&#x6709;&#x65F6;&#x5019;&#x5FD8;&#x8BB0;&#x6DFB;&#x52A0;.gitignore &#x6587;&#x4EF6;&#xFF0C;&#x800C;&#x8BEF;&#x628A;&#x4E00;&#x4E9B; pyc &#x6587;&#x4EF6;&#x540C;&#x6B65;&#x5230;&#x4E86;&#x4ED3;&#x5E93;&#x4E2D;&#xFF0C;&#x6B64;&#x65F6;&#x4F60;&#x5E0C;&#x671B;&#x4E0D;&#x518D;&#x540C;&#x6B65;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#xFF0C;&#x4F7F;&#x7528;&#xFF1A;<br>
+  <figure class="highlight sql">
+    <table>
+      <tr>
+        <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td>
+        <td class="code"><pre><span class="line">    git <span class="operator"><span class="keyword">update</span>-<span class="keyword">index</span> <span class="comment">--assume-unchanged path/to/file</span></span><br><span class="line"><span class="string">``</span><span class="string">`    </span><br><span class="line">&#x5982;&#x679C;&#x73B0;&#x5728;&#x4F60;&#x53C8;&#x60F3;&#x628A;&#x5B83;&#x52A0;&#x5165;&#x5230;&#x4ED3;&#x5E93;&#x4E2D;&#xFF0C;&#x600E;&#x4E48;&#x529E;&#xFF1F;&#x4F7F;&#x7528;&#xFF1A;</span><br><span class="line">`</span><span class="string">``</span>    </span><br><span class="line">git <span class="keyword">update</span>-<span class="keyword">index</span> <span class="comment">--no-assume-unchanged path/to/file</span></span></span><br></pre></td>
+      </tr>
+    </table>
+  </figure>
+</p>]]></content>
     <summary type="html">
     <![CDATA[<h2 id="删除远程分支">删除远程分支</h2>
 <figure class="highlight armasm">
