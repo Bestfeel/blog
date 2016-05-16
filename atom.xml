@@ -1422,7 +1422,7 @@
     <link href="http://wwww.feel88.cn/2015/08/15/git%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>http://wwww.feel88.cn/2015/08/15/git的使用/</id>
     <published>2015-08-15T12:48:03.000Z</published>
-    <updated>2016-04-14T02:17:08.000Z</updated>
+    <updated>2016-05-16T10:23:45.000Z</updated>
     <content type="html"><![CDATA[<h2 id="&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;">&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;</h2>
 <figure class="highlight armasm">
   <table>
@@ -1557,7 +1557,54 @@ error: failed to push some refs to &apos;git@bitbucket.org:sponialtd/openplay_py
       </tr>
     </table>
   </figure>
-</p>]]></content>
+</p>
+<h2 id="git-&#x5FFD;&#x7565;-test-&#x6587;&#x4EF6;&#x63D0;&#x4EA4;&#x907F;&#x514D;&#x4EE3;&#x7801;&#x51B2;&#x7A81;">git  &#x5FFD;&#x7565; test &#x6587;&#x4EF6;&#x63D0;&#x4EA4;&#xFF08;&#x907F;&#x514D;&#x4EE3;&#x7801;&#x51B2;&#x7A81;&#xFF09;</h2>
+<p>&#x5728; .gitignore &#x4E2D;&#x6DFB;&#x52A0;&#x4F60;&#x8981;&#x5FFD;&#x7565;&#x63D0;&#x4EA4;&#x7684;&#x6587;&#x4EF6;&#x5939; <br> &#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight bash">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+      <td class="code"><pre><span class="line">src/<span class="built_in">test</span>/</span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<p>&#x5982;&#x679C;&#x56E0;&#x4E3A;&#x5386;&#x53F2;&#x539F;&#x56E0;&#xFF0C;&#x6211;&#x4EEC;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x4E0A;&#x6709; test &#x6587;&#x4EF6;&#x3002;&#x5373; &#x5982;&#x679C;&#x4F60;&#x7684;&#x6587;&#x4EF6;&#x5DF2;&#x7ECF;&#x63D0;&#x4EA4;&#x8FC7;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x9700;&#x8981;&#x5728;&#x7F13;&#x5B58;&#x4E2D;&#x5C06;&#x4ED6;&#x6E05;&#x7A7A;</p>
+<figure class="highlight nginx">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+      <td class="code"><pre><span class="line"><span class="title">git</span> rm   --cached <span class="string">&quot;src/test/*&quot;</span></span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<p>&#x4E4B;&#x540E;&#x518D;&#x63D0;&#x4EA4;&#x548C; push </p>
+<figure class="highlight armasm">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td>
+      <td class="code"><pre><span class="line"><span class="label">git</span>  <span class="keyword">add </span>*</span><br><span class="line"><span class="label">git</span> <span class="keyword">add </span>.gitignore</span><br><span class="line"></span><br><span class="line"><span class="label">git</span> commit -am <span class="string">&quot;&#x6E05;&#x7406;&#x672C;&#x5730;&#x7F13;&#x5B58;&quot;</span></span><br><span class="line"><span class="label">git</span>  <span class="keyword">push </span> origin master</span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<h2 id="&#x591A;&#x5206;&#x652F;&#x4EE3;&#x7801;&#x534F;&#x4F5C;">&#x591A;&#x5206;&#x652F;&#x4EE3;&#x7801;&#x534F;&#x4F5C;</h2>
+<h4 id="&#x521B;&#x5EFA;&#x5206;&#x652F;">&#x521B;&#x5EFA;&#x5206;&#x652F;</h4>
+<figure class="highlight armasm">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td>
+      <td class="code"><pre><span class="line"><span class="label">git</span>   <span class="keyword">branch </span> dev</span><br><span class="line"></span><br><span class="line"><span class="label">git</span> checkout  dev</span><br><span class="line"><span class="label">git</span> <span class="keyword">add </span>*</span><br><span class="line"><span class="label">git</span> commit -am <span class="string">&quot;add dev&quot;</span></span><br><span class="line"><span class="label">git</span> <span class="keyword">push </span> origin dev</span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<h3 id="&#x540C;&#x6B65;&#x4EE3;&#x7801;">&#x540C;&#x6B65;&#x4EE3;&#x7801;</h3>
+<figure class="highlight sql">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td>
+      <td class="code"><pre><span class="line">git  checkout  master </span><br><span class="line">git pull origin master</span><br><span class="line"></span><br><span class="line">git checkout  dev</span><br><span class="line">git <span class="operator"><span class="keyword">merge</span>   <span class="keyword">master</span></span><br><span class="line">(&#x6709;&#x51B2;&#x7A81;&#x9700;&#x8981;&#x89E3;&#x51B3;&#x51B2;&#x7A81;)</span><br><span class="line">git  <span class="keyword">status</span></span></span><br></pre></td>
+    </tr>
+  </table>
+</figure>]]></content>
     <summary type="html">
     <![CDATA[<h2 id="删除远程分支">删除远程分支</h2>
 <figure class="highlight armasm">
