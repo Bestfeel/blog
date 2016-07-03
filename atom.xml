@@ -1422,8 +1422,17 @@
     <link href="http://wwww.feel88.cn/2015/08/15/git%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>http://wwww.feel88.cn/2015/08/15/git的使用/</id>
     <published>2015-08-15T12:48:03.000Z</published>
-    <updated>2016-05-16T10:23:45.000Z</updated>
-    <content type="html"><![CDATA[<h2 id="&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;">&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;</h2>
+    <updated>2016-07-03T14:49:24.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="&#x521B;&#x5EFA;-git-&#x9879;&#x76EE;">&#x521B;&#x5EFA; git &#x9879;&#x76EE;</h2>
+<figure class="highlight ruby">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td>
+      <td class="code"><pre><span class="line"><span class="variable">$ </span>mdkir  project</span><br><span class="line"><span class="variable">$ </span>cd project</span><br><span class="line"><span class="variable">$ </span>git init</span><br><span class="line"><span class="variable">$ </span>echo .<span class="constant">DS_Store</span> <span class="prompt">&gt;&gt; </span>.gitignore</span><br><span class="line"><span class="variable">$ </span>git remote add origin git<span class="variable">@github</span>.<span class="symbol">com:</span>[your-github-account]/[your-github-account]-project.git</span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<h2 id="&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;">&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;</h2>
 <figure class="highlight armasm">
   <table>
     <tr>
@@ -1606,7 +1615,16 @@ error: failed to push some refs to &apos;git@bitbucket.org:sponialtd/openplay_py
   </table>
 </figure>]]></content>
     <summary type="html">
-    <![CDATA[<h2 id="删除远程分支">删除远程分支</h2>
+    <![CDATA[<h2 id="创建git项目">创建git项目</h2>
+<figure class="highlight ruby">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td>
+      <td class="code"><pre><span class="line"><span class="variable">$ </span>mdkir  project</span><br><span class="line"><span class="variable">$ </span>cd project</span><br><span class="line"><span class="variable">$ </span>git init</span><br><span class="line"><span class="variable">$ </span>echo .<span class="constant">DS_Store</span> <span class="prompt">&gt;&gt; </span>.gitignore</span><br><span class="line"><span class="variable">$ </span>git remote add origin git<span class="variable">@github</span>.<span class="symbol">com:</span>[your-github-account]/[your-github-account]-project.git</span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<h2 id="删除远程分支">删除远程分支</h2>
 <figure class="highlight armasm">
   <table>
     <tr>
