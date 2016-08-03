@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Feel&#39;s blog</title>
+  <title>java 编程规范 | Feel&#39;s blog</title>
   <meta name="author" content="feel">
 
   <meta name="description" content="feel&#39;s blog | java | scala | python | javascript| linux | nodejs| Machine Learning">
@@ -12,7 +12,7 @@
 
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
-
+  <meta property="og:title" content="java 编程规范">
   <meta property="og:site_name" content="Feel&#39;s blog">
 
 
@@ -65,7 +65,7 @@
               <div class="icon"></div>
               <time datetime="2016-08-03T09:01:17.000Z"><a href="/2016/08/03/java编程规范/">2016-08-03</a></time>
 
-              <h1 class="title"><a href="/2016/08/03/java编程规范/">java 编程规范</a></h1>
+              <h1 class="title">java 编程规范</h1>
             </header>
             <div class="entry">
 
@@ -714,258 +714,39 @@
             </div>
             <footer>
 
-
-
-
-              <div class="clearfix"></div>
-            </footer>
-          </div>
-        </article>
-
-        <article class="post">
-
-          <div class="post-content">
-            <header>
-
-              <div class="icon"></div>
-              <time datetime="2016-04-08T16:31:02.000Z"><a href="/2016/04/09/ssh与MTU的坑/">2016-04-09</a></time>
-
-              <h1 class="title"><a href="/2016/04/09/ssh与MTU的坑/">ssh 与 MTU 的坑</a></h1>
-            </header>
-            <div class="entry">
-
-              <p>前言：最近一周发现家里的网络ssh 协议出外网不了，一开始我以为是网络问题。折腾了半天，最后我用手机4G流量测试，尽然能连上vps.于是就有了下面的这篇文章。</p>
-
-            </div>
-            <footer>
-
-
-              <div class="alignleft">
-                <a href="/2016/04/09/ssh与MTU的坑/#more" class="more-link">阅读更多</a>
+              <div class="categories">
+                <a href="/categories/java/">java</a>
+              </div>
+              <div class="tags">
+                <a href="/tags/java/">java</a>
               </div>
 
 
-
               <div class="clearfix"></div>
             </footer>
           </div>
         </article>
 
-        <article class="post">
-
-          <div class="post-content">
-            <header>
-
-              <div class="icon"></div>
-              <time datetime="2016-04-03T15:52:26.000Z"><a href="/2016/04/03/CGlib实现动态代理/">2016-04-03</a></time>
-
-              <h1 class="title"><a href="/2016/04/03/CGlib实现动态代理/">CGlib 实现动态代理</a></h1>
-            </header>
-            <div class="entry">
-
-              <p>代理模式是常用的java设计模式，他的特征是代理类与委托类有同样的接口，代理类主要负责为委托类预处理消息、过滤消息、把消息转发给委托类，以及事后处理消息等。代理类与委托类之间通常会存在关联关系，一个代理类的对象与一个委托类的对象关联，代理类的对象本身并不真正实现服务，而是通过调用委托类的对象的相关方法，来提供特定的服务。 按照代理的创建时期，代理类可以分为两种：</p>
-              <p>静态代理：由程序员创建或特定工具自动生成源代码，再对其编译。在程序运行前，代理类的.class文件就已经存在了；<br>动态代理：在程序运行时，运用反射机制动态创建而成。</p>
-
-            </div>
-            <footer>
-
-
-              <div class="alignleft">
-                <a href="/2016/04/03/CGlib实现动态代理/#more" class="more-link">阅读更多</a>
-              </div>
-
-
-
-              <div class="clearfix"></div>
-            </footer>
-          </div>
-        </article>
-
-        <article class="post">
-
-          <div class="post-content">
-            <header>
-
-              <div class="icon"></div>
-              <time datetime="2016-03-08T03:03:46.000Z"><a href="/2016/03/08/linux-交换分区/">2016-03-08</a></time>
-
-              <h1 class="title"><a href="/2016/03/08/linux-交换分区/">linux  交换分区</a></h1>
-            </header>
-            <div class="entry">
-
-              <p>利用swapoff和swapon刷新swap缓存</p>
-              <h2 id="如何清除Linux的交换空间？">如何清除Linux的交换空间？</h2>
-              <p>有时运行大量的进程后swap大量占用，达到30%的话机器会变得很慢<br>可以用以下两个命令清除刷新swap</p>
-              <figure class="highlight autohotkey">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
-                    <td class="code"><pre><span class="line"></span><br><span class="line">swapoff -<span class="literal">a</span> &amp;&amp; swapon -<span class="literal">a</span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-
-            </div>
-            <footer>
-
-
-              <div class="alignleft">
-                <a href="/2016/03/08/linux-交换分区/#more" class="more-link">阅读更多</a>
-              </div>
-
-
-
-              <div class="clearfix"></div>
-            </footer>
-          </div>
-        </article>
-
-        <article class="post">
-
-          <div class="post-content">
-            <header>
-
-              <div class="icon"></div>
-              <time datetime="2016-01-02T14:52:17.000Z"><a href="/2016/01/02/ssl双向认证/">2016-01-02</a></time>
-
-              <h1 class="title"><a href="/2016/01/02/ssl双向认证/">ssl 双向认证</a></h1>
-            </header>
-            <div class="entry">
-
-              <p>有时候我们一些端口和网站需要ssl 双向认证</p>
-              <p>1.安装htpasswd</p>
-              <p>ubuntu </p>
-              <figure class="highlight actionscript">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
-                    <td class="code"><pre><span class="line">apt-<span class="keyword">get</span> install apache2-utils</span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-
-            </div>
-            <footer>
-
-
-              <div class="alignleft">
-                <a href="/2016/01/02/ssl双向认证/#more" class="more-link">阅读更多</a>
-              </div>
-
-
-
-              <div class="clearfix"></div>
-            </footer>
-          </div>
-        </article>
-
-        <article class="post">
-
-          <div class="post-content">
-            <header>
-
-              <div class="icon"></div>
-              <time datetime="2015-12-27T11:40:43.000Z"><a href="/2015/12/27/autossh隧道搭建私服/">2015-12-27</a></time>
-
-              <h1 class="title"><a href="/2015/12/27/autossh隧道搭建私服/">autossh 隧道搭建私服</a></h1>
-            </header>
-            <div class="entry">
-
-              <p>应同事的要求：他想实现远程登入家里的局域网服务器。</p>
-              <p>情况是这样的。家里有台服务器（笔记本即可）。一台外网服务器。</p>
-              <p>想通过在公司远程登入家里的那台局域网服务器。</p>
-              <p>开始我的想法是：搭建openvpn 。但是毕竟不是什么人都能搭建成功，而且还有很多缺点。 操作复杂</p>
-              <p>一个周末的下午我突然想起可以通过隧道反向代理出去。也是一个非常不错的方法。–&gt;(这个想法来自我现在的上google 的方式）</p>
-
-            </div>
-            <footer>
-
-
-              <div class="alignleft">
-                <a href="/2015/12/27/autossh隧道搭建私服/#more" class="more-link">阅读更多</a>
-              </div>
-
-
-
-              <div class="clearfix"></div>
-            </footer>
-          </div>
-        </article>
-
-        <article class="post">
-
-          <div class="post-content">
-            <header>
-
-              <div class="icon"></div>
-              <time datetime="2015-12-12T18:57:09.000Z"><a href="/2015/12/13/修改linux时区/">2015-12-13</a></time>
-
-              <h1 class="title"><a href="/2015/12/13/修改linux时区/">修改 linux 时区</a></h1>
-            </header>
-            <div class="entry">
-
-              <p>linux 的时区为UTC ，我们需要修改为CST时区</p>
-              <figure class="highlight livecodeserver">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td>
-                    <td class="code"><pre><span class="line">yum install  -y ntpdate ntp</span><br><span class="line">service ntpd <span class="built_in">stop</span></span><br><span class="line">service ntpdate <span class="built_in">start</span></span><br><span class="line">chkconfig ntpdate <span class="command"><span class="keyword">on</span></span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-
-            </div>
-            <footer>
-
-
-              <div class="alignleft">
-                <a href="/2015/12/13/修改linux时区/#more" class="more-link">阅读更多</a>
-              </div>
-
-
-
-              <div class="clearfix"></div>
-            </footer>
-          </div>
-        </article>
-
-        <article class="post">
-
-          <div class="post-content">
-            <header>
-
-              <div class="icon"></div>
-              <time datetime="2015-12-05T17:39:51.000Z"><a href="/2015/12/06/动态生成密码/">2015-12-06</a></time>
-
-              <h1 class="title"><a href="/2015/12/06/动态生成密码/">动态生成密码</a></h1>
-            </header>
-            <div class="entry">
-
-              <p>有时候，我们在管理服务器的时候经常更换密码，下面有几种动态生成密码的方式</p>
-
-            </div>
-            <footer>
-
-
-              <div class="alignleft">
-                <a href="/2015/12/06/动态生成密码/#more" class="more-link">阅读更多</a>
-              </div>
-
-
-
-              <div class="clearfix"></div>
-            </footer>
-          </div>
-        </article>
-
-
-        <nav id="pagination">
-
-
-          <a href="/page/2/" class="alignright next">下一页</a>
-
-          <div class="clearfix"></div>
-        </nav>
+        <section id="comments">
+          <!-- 多说评论框 start -->
+          <div class="ds-thread" data-thread-key="post-java编程规范" data-title="java 编程规范" data-url="http://wwww.feel88.cn/2016/08/03/java编程规范/"></div>
+          <!-- 多说评论框 end -->
+          <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+          <script type="text/javascript">
+            var duoshuoQuery = {
+              short_name: "feel"
+            };
+            (function() {
+              var ds = document.createElement('script');
+              ds.type = 'text/javascript';
+              ds.async = true;
+              ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+              ds.charset = 'UTF-8';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+            })();
+          </script>
+          <!-- 多说公共JS代码 end -->
+        </section>
       </div>
     </div>
     <aside id="sidebar" class="alignright">
