@@ -2155,7 +2155,7 @@
     <link href="http://wwww.feel88.cn/2015/08/15/git%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>http://wwww.feel88.cn/2015/08/15/git的使用/</id>
     <published>2015-08-15T12:48:03.000Z</published>
-    <updated>2016-07-03T14:49:24.000Z</updated>
+    <updated>2016-08-16T06:16:57.000Z</updated>
     <content type="html"><![CDATA[<h2 id="&#x521B;&#x5EFA;-git-&#x9879;&#x76EE;">&#x521B;&#x5EFA; git &#x9879;&#x76EE;</h2>
 <figure class="highlight ruby">
   <table>
@@ -2346,7 +2346,52 @@ error: failed to push some refs to &apos;git@bitbucket.org:sponialtd/openplay_py
       <td class="code"><pre><span class="line">git  checkout  master </span><br><span class="line">git pull origin master</span><br><span class="line"></span><br><span class="line">git checkout  dev</span><br><span class="line">git <span class="operator"><span class="keyword">merge</span>   <span class="keyword">master</span></span><br><span class="line">(&#x6709;&#x51B2;&#x7A81;&#x9700;&#x8981;&#x89E3;&#x51B3;&#x51B2;&#x7A81;)</span><br><span class="line">git  <span class="keyword">status</span></span></span><br></pre></td>
     </tr>
   </table>
-</figure>]]></content>
+</figure>
+<h3 id="&#x4EE3;&#x7801;&#x51B2;&#x7A81;&#x89E3;&#x51B3;&#x65B9;&#x6848;">&#x4EE3;&#x7801;&#x51B2;&#x7A81;&#x89E3;&#x51B3;&#x65B9;&#x6848;</h3>
+<p>&#x540C;&#x4E8B;&#x5728;&#x4F7F;&#x7528; git pull &#x4EE3;&#x7801;&#x65F6;&#xFF0C;&#x7ECF;&#x5E38;&#x4F1A;&#x78B0;&#x5230;&#x6709;&#x51B2;&#x7A81;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x63D0;&#x793A;&#x5982;&#x4E0B;&#x4FE1;&#x606F;&#xFF1A;<br>
+  <figure class="highlight livecodeserver">
+    <table>
+      <tr>
+        <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
+        <td class="code"><pre><span class="line">error: Your <span class="built_in">local</span> changes <span class="built_in">to</span> <span class="string">&apos;c/environ.c&apos;</span> would be overwritten <span class="keyword">by</span> <span class="built_in">merge</span>.  Aborting.</span><br><span class="line">Please, commit your changes <span class="operator">or</span> stash them <span class="keyword">before</span> you can <span class="built_in">merge</span>.</span><br></pre></td>
+      </tr>
+    </table>
+  </figure>
+</p>
+<p>&#x8FD9;&#x4E2A;&#x610F;&#x601D;&#x662F;&#x8BF4;&#x66F4;&#x65B0;&#x4E0B;&#x6765;&#x7684;&#x5185;&#x5BB9;&#x548C;&#x672C;&#x5730;&#x4FEE;&#x6539;&#x7684;&#x5185;&#x5BB9;&#x6709;&#x51B2;&#x7A81;&#xFF0C;&#x5148;&#x63D0;&#x4EA4;&#x4F60;&#x7684;&#x6539;&#x53D8;&#x6216;&#x8005;&#x5148;&#x5C06;&#x672C;&#x5730;&#x4FEE;&#x6539;&#x6682;&#x65F6;&#x5B58;&#x50A8;&#x8D77;&#x6765;&#x3002;</p>
+<p>&#x5904;&#x7406;&#x7684;&#x65B9;&#x5F0F;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x4F7F;&#x7528; git stash &#x547D;&#x4EE4;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x5206;&#x6210;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x6B65;&#x9AA4;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;</p>
+<h4 id="1&#x5148;&#x5C06;&#x672C;&#x5730;&#x4FEE;&#x6539;&#x5B58;&#x50A8;&#x8D77;&#x6765;">1&#x3001;&#x5148;&#x5C06;&#x672C;&#x5730;&#x4FEE;&#x6539;&#x5B58;&#x50A8;&#x8D77;&#x6765;</h4>
+<figure class="highlight nginx">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+      <td class="code"><pre><span class="line"><span class="title">git</span> stash</span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<p>&#x8FD9;&#x6837;&#x672C;&#x5730;&#x7684;&#x6240;&#x6709;&#x4FEE;&#x6539;&#x5C31;&#x90FD;&#x88AB;&#x6682;&#x65F6;&#x5B58;&#x50A8;&#x8D77;&#x6765; &#x3002;&#x662F;&#x7528; git stash list &#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4FDD;&#x5B58;&#x7684;&#x4FE1;&#x606F;&#xFF1A;</p>
+<h4 id="2pull-&#x5185;&#x5BB9;">2&#x3001;pull &#x5185;&#x5BB9;</h4>
+<p>&#x6682;&#x5B58;&#x4E86;&#x672C;&#x5730;&#x4FEE;&#x6539;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5; pull &#x4E86;&#x3002;</p>
+<figure class="highlight nginx">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+      <td class="code"><pre><span class="line"><span class="title">git</span> pull</span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<h4 id="3-&#x8FD8;&#x539F;&#x6682;&#x5B58;&#x7684;&#x5185;&#x5BB9;">3. &#x8FD8;&#x539F;&#x6682;&#x5B58;&#x7684;&#x5185;&#x5BB9;</h4>
+<figure class="highlight avrasm">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+      <td class="code"><pre><span class="line">git stash <span class="keyword">pop</span></span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<p>&#x610F;&#x601D;&#x5C31;&#x662F;&#x7CFB;&#x7EDF;&#x81EA;&#x52A8;&#x5408;&#x5E76;&#x4FEE;&#x6539;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x4F46;&#x662F;&#x5176;&#x4E2D;&#x6709;&#x51B2;&#x7A81;&#xFF0C;&#x9700;&#x8981;&#x89E3;&#x51B3;&#x5176;&#x4E2D;&#x7684;&#x51B2;&#x7A81;&#x3002;</p>
+<h4 id="4&#x89E3;&#x51B3;&#x6587;&#x4EF6;&#x4E2D;&#x51B2;&#x7A81;&#x7684;&#x7684;&#x90E8;&#x5206;">4&#x3001;&#x89E3;&#x51B3;&#x6587;&#x4EF6;&#x4E2D;&#x51B2;&#x7A81;&#x7684;&#x7684;&#x90E8;&#x5206;</h4>
+<p>&#x6253;&#x5F00;&#x51B2;&#x7A81;&#x7684;&#x6587;&#x4EF6;, &#x5E76;&#x89E3;&#x51B3;&#x4EE3;&#x7801;&#x51B2;&#x7A81;&#x7684;&#x6587;&#x4EF6;</p>]]></content>
     <summary type="html">
     <![CDATA[<h2 id="创建git项目">创建git项目</h2>
 <figure class="highlight ruby">
