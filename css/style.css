@@ -579,7 +579,7 @@ article footer .addthis iframe {
 #pagination a {
   display: block;
   padding: 5px 10px;
-  background: #ddd;
+  background: #0e7370;
   color: #fff;
   font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   margin-bottom: 50px;
@@ -587,7 +587,7 @@ article footer .addthis iframe {
 
 #pagination a:hover {
   background: #bedeea;
-  color: #fff;
+  color: #1a6765;
   text-decoration: none;
   text-shadow: none;
 }
