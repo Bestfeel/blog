@@ -66,6 +66,35 @@
             <header>
 
               <div class="icon"></div>
+              <time datetime="2015-12-05T17:39:51.000Z"><a href="/2015/12/06/动态生成密码/">2015-12-06</a></time>
+
+              <h1 class="title"><a href="/2015/12/06/动态生成密码/">动态生成密码</a></h1>
+            </header>
+            <div class="entry">
+
+              <p>有时候，我们在管理服务器的时候经常更换密码，下面有几种动态生成密码的方式</p>
+
+            </div>
+            <footer>
+
+
+              <div class="alignleft">
+                <a href="/2015/12/06/动态生成密码/#more" class="more-link">阅读更多</a>
+              </div>
+
+
+
+              <div class="clearfix"></div>
+            </footer>
+          </div>
+        </article>
+
+        <article class="post">
+
+          <div class="post-content">
+            <header>
+
+              <div class="icon"></div>
               <time datetime="2015-09-04T08:46:48.000Z"><a href="/2015/09/04/nginx信号量/">2015-09-04</a></time>
 
               <h1 class="title"><a href="/2015/09/04/nginx信号量/">nginx 信号量</a></h1>
@@ -271,70 +300,6 @@
           </div>
         </article>
 
-        <article class="post">
-
-          <div class="post-content">
-            <header>
-
-              <div class="icon"></div>
-              <time datetime="2015-08-15T12:48:03.000Z"><a href="/2015/08/15/git的使用/">2015-08-15</a></time>
-
-              <h1 class="title"><a href="/2015/08/15/git的使用/">git 的使用</a></h1>
-            </header>
-            <div class="entry">
-
-              <h2 id="创建git项目">创建git项目</h2>
-              <figure class="highlight ruby">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td>
-                    <td class="code"><pre><span class="line"><span class="variable">$ </span>mdkir  project</span><br><span class="line"><span class="variable">$ </span>cd project</span><br><span class="line"><span class="variable">$ </span>git init</span><br><span class="line"><span class="variable">$ </span>echo .<span class="constant">DS_Store</span> <span class="prompt">&gt;&gt; </span>.gitignore</span><br><span class="line"><span class="variable">$ </span>git remote add origin git<span class="variable">@github</span>.<span class="symbol">com:</span>[your-github-account]/[your-github-account]-project.git</span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-              <h2 id="通过ssh-agent同步或克隆远程代码">通过ssh-agent同步或克隆远程代码</h2>
-              <figure class="highlight ocaml">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
-                    <td class="code"><pre><span class="line"></span><br><span class="line">ssh-agent bash -c <span class="symbol">'ssh</span>-add ~/.ssh/id_rsa_qa; git pull origin master'</span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-              <h2 id="本地代码库回滚">本地代码库回滚</h2>
-              <figure class="highlight sql">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td>
-                    <td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">reset</span> <span class="comment">--hard commit-id :回滚到commit-id，讲commit-id之后提交的commit都去除</span></span><br><span class="line"></span><br><span class="line">git <span class="keyword">reset</span> <span class="comment">--hard HEAD~3：将最近3次的提交回滚</span></span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-              <h2 id="删除远程分支">删除远程分支</h2>
-              <figure class="highlight armasm">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
-                    <td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">branch </span>-r -d origin/<span class="keyword">branch-name</span><br><span class="line"></span><span class="label">git</span> <span class="keyword">push </span>origin :<span class="keyword">branch-name</span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-
-            </div>
-            <footer>
-
-
-              <div class="alignleft">
-                <a href="/2015/08/15/git的使用/#more" class="more-link">阅读更多</a>
-              </div>
-
-
-
-              <div class="clearfix"></div>
-            </footer>
-          </div>
-        </article>
-
 
         <nav id="pagination">
 
@@ -353,6 +318,10 @@
         <ul class="entry">
 
           <li>
+            <a href="/2016/09/20/scala学习/">scala 学习</a>
+          </li>
+
+          <li>
             <a href="/2016/08/03/java编程规范/">java 编程规范</a>
           </li>
 
@@ -366,10 +335,6 @@
 
           <li>
             <a href="/2016/03/08/linux-交换分区/">linux  交换分区</a>
-          </li>
-
-          <li>
-            <a href="/2016/01/02/ssl双向认证/">ssl 双向认证</a>
           </li>
 
         </ul>
