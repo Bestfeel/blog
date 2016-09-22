@@ -4,7 +4,7 @@
   <subtitle><![CDATA[知识从未如此性感]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wwww.feel88.cn/"/>
-  <updated>2016-09-22T07:54:06.000Z</updated>
+  <updated>2016-09-22T12:16:52.000Z</updated>
   <id>http://wwww.feel88.cn/</id>
   
   <author>
@@ -15,11 +15,153 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[go 编程笔记二]]></title>
+    <link href="http://wwww.feel88.cn/2016/09/22/go%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0%E4%BA%8C/"/>
+    <id>http://wwww.feel88.cn/2016/09/22/go编程笔记二/</id>
+    <published>2016-09-22T10:42:07.000Z</published>
+    <updated>2016-09-22T12:16:52.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="&#x5E76;&#x53D1;-goroutine">&#x5E76;&#x53D1; Goroutine</h3>
+<h3 id="channel">Channel</h3>
+<ul>
+  <li>channel &#x662F;&#x5F15; &#x7C7B;&#x578B;, &#x4F7F; &#x201C;make(chan
+    <type>)&#x201D; &#x521B;&#x5EFA;,
+      <type> &#x662F;&#x8981;&#x4F20;&#x9012;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;</type></type></li>
+  <li>channel &#x4F7F; &#x201C;&lt;-&#x201C; &#x63A5;&#x6536;&#x548C;&#x53D1;&#x9001;&#x6570;&#x636E;&#x3002;</li>
+  <li>&#x201C;chan &lt;- data&#x201D; &#x53D1;&#x9001;&#x6570;&#x636E;, </li>
+  <li>&#x201C;data &lt;- chan&#x201D; &#x63A5;&#x6536;&#x6570;&#x636E;,</li>
+  <li>&#x53EF;&#x4EE5; &#x5FFD;&#x7565;&#x6389;&#x63A5;&#x6536;&#x7ED3;&#x679C;, &#x7EAF;&#x7CB9;&#x4F5C;&#x4E3A;&#x540C;&#x6B65;&#x4FE1;&#x53F7;&#x901A;&#x77E5;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;, &#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x90FD;&#x4F1A;&#x88AB;&#x963B;&#x585E; (block)&#x3002;</li>
+  <li>&#x53D1;&#x9001;&#x64CD;&#x4F5C;&#x88AB;&#x963B;&#x585E;, &#x76F4;&#x5230;&#x63A5;&#x6536;&#x7AEF;&#x51C6;&#x5907;&#x597D;&#x63A5;&#x6536;&#x3002;</li>
+  <li>&#x63A5;&#x6536;&#x64CD;&#x4F5C;&#x88AB;&#x963B;&#x585E;, &#x76F4;&#x5230;&#x53D1;&#x9001;&#x7AEF;&#x51C6;&#x5907;&#x597D;&#x53D1;&#x9001;&#x3002;</li>
+</ul>
+<a id="more"></a>
+<p>&#x521B;&#x5EFA; channel &#x4F7F;&#x7528; make(chan bool)<br>, &#x6267;&#x884C; &#x5E76;&#x53D1; &#x4F7F;&#x7528; &#x54E6; go method()</p>
+<figure class="highlight swift">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td>
+      <td class="code"><pre><span class="line"></span><br><span class="line">package main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;runtime&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">test</span><span class="params">(<span class="built_in">c</span> chan bool, b bool)</span></span> {</span><br><span class="line">    x := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">100000000</span>; i++ {</span><br><span class="line">        x += i</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">println</span>(x)</span><br><span class="line">    <span class="keyword">if</span> b {</span><br><span class="line">        <span class="built_in">c</span> &lt;- <span class="literal">true</span></span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">    <span class="comment">// &#x544A;&#x77E5;&#x8C03;&#x5EA6;&#x5668;&#x540C;&#x65F6;&#x4F7F; &#x591A;&#x4E2A;&#x7EBF;&#x7A0B;</span></span><br><span class="line">    runtime.<span class="type">GOMAXPROCS</span>(<span class="number">2</span>)</span><br><span class="line">    <span class="built_in">c</span> := make(chan bool)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">100</span>; i++ {</span><br><span class="line">        go test(<span class="built_in">c</span>, i == <span class="number">99</span>)</span><br><span class="line">    }</span><br><span class="line">    &lt;-<span class="built_in">c</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">package main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &quot;time&quot;</span><br><span class="line"></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">test1</span><span class="params">(<span class="built_in">c</span> chan int)</span></span> {</span><br><span class="line">    time.<span class="type">Sleep</span>(<span class="number">3</span> * time.<span class="type">Second</span>)</span><br><span class="line">    <span class="built_in">println</span>(<span class="string">&quot;go...&quot;</span>)</span><br><span class="line">    <span class="built_in">c</span> &lt;- <span class="number">1</span></span><br><span class="line">}</span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">    <span class="built_in">c</span> := make(chan int)</span><br><span class="line">    go test1(<span class="built_in">c</span>)</span><br><span class="line">    <span class="built_in">println</span>(<span class="string">&quot;hi!&quot;</span>)</span><br><span class="line">    &lt;-<span class="built_in">c</span>       <span class="comment">// &#x963B;&#x585E;&#x7B49;&#x5F85;&#x9000;&#x51FA;&#x4FE1;&#x53F7;, &#x5FFD;&#x7565;&#x6389;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x3002;</span></span><br><span class="line">    <span class="built_in">println</span>(<span class="string">&quot;over!&quot;</span>)</span><br><span class="line">}</span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>&#x63A5;&#x6536;&#x7AEF;&#x4F7F; &#x8FED;&#x4EE3;&#x5668;&#x6216;&#x8005;&#x5FAA;&#x73AF;&#x63A5;&#x6536;&#x6570;&#x636E;, &#x5219;&#x5FC5;&#x987B;&#x8C03; close . &#x5426;&#x5219;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x63A5;&#x6536;&#x7AEF; throw: all goroutines are asleep - deadlock!&#x3002;</li>
+</ul>
+<figure class="highlight swift">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td>
+      <td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">    <span class="built_in">c</span> := make(chan int)</span><br><span class="line">    go <span class="func"><span class="keyword">func</span><span class="params">()</span></span> {</span><br><span class="line">        <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">20</span>; i++ {</span><br><span class="line">            <span class="built_in">c</span> &lt;- i</span><br><span class="line">        }</span><br><span class="line">        close(<span class="built_in">c</span>) <span class="comment">// &#x5982;&#x679C;&#x4E0D;&#x5173;&#x95ED;, &#x4F1A;&#x5F15;&#x53D1;&#x63A5;&#x6536;&#x7AEF; throw: all goroutines are asleep - deadlock! }()</span></span><br><span class="line">        <span class="keyword">for</span> v := range <span class="built_in">c</span> {</span><br><span class="line">            <span class="built_in">println</span>(v)</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">    <span class="built_in">c</span> := make(chan int)</span><br><span class="line">    go <span class="func"><span class="keyword">func</span><span class="params">()</span></span> {</span><br><span class="line">        <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">20</span>; i++ {</span><br><span class="line">            <span class="built_in">c</span> &lt;- i</span><br><span class="line">        }</span><br><span class="line">        close(<span class="built_in">c</span>)</span><br><span class="line">    }()</span><br><span class="line">    <span class="keyword">for</span> {</span><br><span class="line">        <span class="keyword">if</span> v, ok := &lt;-<span class="built_in">c</span>; ok {</span><br><span class="line">            <span class="number">76</span></span><br><span class="line">            <span class="built_in">println</span>(v)</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<h4 id="&#x5355;&#x5411;&#x901A;&#x9053;">&#x5355;&#x5411;&#x901A;&#x9053;</h4>
+<ul>
+  <li>&#x53EF;&#x4EE5;&#x5C06; channel &#x6307;&#x5B9A;&#x4E3A;&#x5355;&#x5411;&#x901A;&#x9053;&#x3002; &#x5982; &#x201C;&lt;-chan int&#x201D; &#x4EC5;&#x80FD;&#x63A5;&#x6536;, &#x201C;chan&lt;- int&#x201D; &#x4EC5;&#x80FD;&#x53D1;&#x9001;&#x3002;</li>
+</ul>
+<figure class="highlight go">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td>
+      <td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> recv(c &lt;-<span class="keyword">chan</span> <span class="typename">int</span>, over <span class="keyword">chan</span> &lt;- <span class="typename">bool</span>) {</span><br><span class="line">    <span class="keyword">for</span> v := <span class="keyword">range</span> c {</span><br><span class="line">        <span class="built_in">println</span>(v)</span><br><span class="line">    }</span><br><span class="line">    over &lt;- <span class="constant">true</span></span><br><span class="line">}</span><br><span class="line"><span class="keyword">func</span> send(c <span class="keyword">chan</span> &lt;- <span class="typename">int</span>) {</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ {</span><br><span class="line">        c &lt;- i</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">close</span>(c)  <span class="comment">// &#x7701;&#x7565; close, &#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4; recv throw: all goroutines are asleep - deadlock!</span></span><br><span class="line">}</span><br><span class="line"><span class="keyword">func</span> main() {</span><br><span class="line">    c := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="typename">int</span>) <span class="comment">// &#x53CC;&#x5411; channel, &#x53EF;&#x4EE5;&#x8F6C;&#x6362;&#x4E3A;&#x5355;&#x5411; channel&#x3002;</span></span><br><span class="line">    o := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="typename">bool</span>)</span><br><span class="line">    <span class="keyword">go</span> recv(c, o)</span><br><span class="line">    <span class="keyword">go</span> send(c)</span><br><span class="line">    &lt;-o</span><br><span class="line">}</span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<h4 id="&#x5F02;&#x6B65;&#x901A;&#x9053;">&#x5F02;&#x6B65;&#x901A;&#x9053;</h4>
+<p>&#x5F02;&#x6B65;&#x901A;&#x9053;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x7ED9; channel &#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x7F13;&#x5B58;&#x533A; <br> &#x5982;: make(chan int, 10)</p>
+<figure class="highlight go">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td>
+      <td class="code"><pre><span class="line"><span class="keyword">func</span> main() {</span><br><span class="line">    c := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="typename">int</span>, <span class="number">10</span>)</span><br><span class="line">    o := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="typename">bool</span>)</span><br><span class="line">    <span class="keyword">go</span> <span class="keyword">func</span>() {</span><br><span class="line">        time.Sleep(<span class="number">2</span> * time.Second)</span><br><span class="line">        <span class="built_in">println</span>(<span class="string">&quot;recv:&quot;</span>, &lt;-c)</span><br><span class="line">        o &lt;- <span class="constant">true</span></span><br><span class="line">    }()</span><br><span class="line">    c &lt;- <span class="number">100</span>     <span class="comment">// &#x672A;&#x963B;&#x585E; println(&quot;send over...&quot;)</span></span><br><span class="line">    &lt;-o</span><br><span class="line">}</span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<h4 id="select">Select</h4>
+<ul>
+  <li>&#x968F;&#x673A;&#x5904;&#x7406; &#x4E2A;&#x53EF; &#x7684; channel&#x3002;</li>
+</ul>
+<figure class="highlight go">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td>
+      <td class="code"><pre><span class="line"><span class="keyword">func</span> main() {</span><br><span class="line">    c1, c2 := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="typename">int</span>), <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="typename">string</span>)</span><br><span class="line">    o := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="typename">bool</span>)</span><br><span class="line">    <span class="keyword">go</span> <span class="keyword">func</span>() {</span><br><span class="line">        <span class="keyword">for</span> {</span><br><span class="line">            <span class="keyword">select</span> {</span><br><span class="line">            <span class="keyword">case</span> v, ok := &lt;-c1:</span><br><span class="line">                <span class="keyword">if</span> !ok {</span><br><span class="line">                    o &lt;- <span class="constant">true</span>; <span class="keyword">break</span></span><br><span class="line">                }</span><br><span class="line">                <span class="built_in">println</span>(<span class="string">&quot;c1 =&quot;</span>, v)</span><br><span class="line">            <span class="keyword">case</span> v, ok := &lt;-c2:</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }()</span><br><span class="line">    c1 &lt;- <span class="number">1</span></span><br><span class="line">    c2 &lt;- <span class="string">&quot;a&quot;</span></span><br><span class="line">    c2 &lt;- <span class="string">&quot;b&quot;</span></span><br><span class="line">    c1 &lt;- <span class="number">2</span></span><br><span class="line">    <span class="built_in">close</span>(c1)</span><br><span class="line">    <span class="comment">//close(c2)</span></span><br><span class="line">    &lt;-o</span><br><span class="line">}</span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<h4 id="timeout">Timeout</h4>
+<p>time &#x5305;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86; After&#x3001;Tick &#x7B49;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x8BA1;&#x65F6;&#x5668; channel&#x3002;<br>&#x5982;&#x4E0B; &#x7684;&#x4F8B; &#x4E2D;, &#x6211;&#x4EEC; After &#x6765;&#x5904; &#x7406; &#x4E2A;&#x9700;&#x6C42;: &#x4E0D;&#x7BA1;&#x6709;&#x6CA1;&#x6709;&#x6570;&#x636E;&#x64CD;&#x4F5C;, &#x603B;&#x4E4B; 5 &#x79D2;&#x540E;&#x7EC8; &#x5FAA;&#x73AF;&#x3002;</p>
+<figure class="highlight go">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td>
+      <td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">func</span> main() {</span><br><span class="line">    c := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="typename">int</span>)</span><br><span class="line">    o := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="typename">bool</span>)</span><br><span class="line">    tick := time.Tick(<span class="number">1</span> * time.Second)</span><br><span class="line">    <span class="keyword">go</span> <span class="keyword">func</span>() {</span><br><span class="line">        <span class="keyword">for</span> {</span><br><span class="line">            <span class="keyword">select</span> {</span><br><span class="line">            <span class="keyword">case</span> v := &lt;-c:</span><br><span class="line">                <span class="built_in">println</span>(v)</span><br><span class="line">            <span class="keyword">case</span> &lt;-tick:</span><br><span class="line">                <span class="built_in">println</span>(<span class="string">&quot;tick&quot;</span>)</span><br><span class="line">            <span class="keyword">case</span> &lt;-time.After(<span class="number">5</span> * time.Second):</span><br><span class="line">            <span class="comment">// &#x53EA;&#x7528;&#x4E00;&#x6B21;, &#x6CA1;&#x5FC5;&#x8981;&#x7528;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#x3002;</span></span><br><span class="line">                <span class="built_in">println</span>(<span class="string">&quot;timeout&quot;</span>)</span><br><span class="line">                o &lt;- <span class="constant">true</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }()</span><br><span class="line">    &lt;-o</span><br><span class="line">}</span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<h3 id="&#x6D4B;&#x8BD5;">&#x6D4B;&#x8BD5;</h3>
+<ul>
+  <li>&#x6D4B;&#x8BD5;&#x51FD;&#x6570;&#x540D;&#x79F0;&#x5FC5;&#x987B;&#x662F; &#x201C;Test[^a-z]&#x201D; &#x8FD9;&#x6837;&#x7684;&#x683C;&#x5F0F;&#xFF0C;&#x5982;&#x4E0B;:TestSum. &#x6D4B;&#x8BD5;&#x6587;&#x4EF6;&#x5FC5;&#x987B;&#x662F; _test.go .</li>
+  <li>&#x5728;&#x4F7F;&#x7528; idea &#x8FDB;&#x884C;&#x6D4B;&#x8BD5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9700;&#x8981;&#x914D;&#x7F6E;&#x9700;&#x8981;&#x6D4B;&#x8BD5;&#x7684;&#x6587;&#x4EF6;&#x6216;&#x8005; package&#x3002;</li>
+  <li>&#x4F7F;&#x7528; &#x547D;&#x4EE4;&#x6D4B;&#x8BD5; &#xFF1A;go test</li>
+  <li>go test -v ./src/test/&#x2026;</li>
+  <li>&#x2022; -v: &#x663E; &#x6240;&#x6709;&#x6D4B;&#x8BD5;&#x51FD;&#x6570;&#x8FD0; &#x7EC6;&#x8282;&#x3002;</li>
+  <li>&#x2022; -run=regex: &#x6307;&#x5B9A;&#x8981;&#x6267; &#x7684;&#x7684;&#x6D4B;&#x8BD5;&#x51FD;&#x6570;&#x3002;</li>
+  <li>main_test.go</li>
+</ul>
+<figure class="highlight stata">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td>
+      <td class="code"><pre><span class="line"></span><br><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    <span class="string">&quot;testing&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func <span class="literal">sum</span>(<span class="keyword">args</span>... int) int {</span><br><span class="line"></span><br><span class="line">    <span class="keyword">sum</span> := 0</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> <span class="keyword">args</span> {</span><br><span class="line">        <span class="keyword">sum</span> += v</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">sum</span></span><br><span class="line">}</span><br><span class="line">func TestSum(t *testing.T) {</span><br><span class="line">    <span class="keyword">if</span> <span class="literal">sum</span>(1, 2, 3) != 16 {</span><br><span class="line">        t.<span class="literal">Log</span>(<span class="string">&quot;&#x6D4B;&#x8BD5;&#x6837;&#x4F8B;&#x5931;&#x8D25;!&quot;</span>)</span><br><span class="line">        t.FailNow()</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<h3 id="benchmak-&#x538B;&#x529B;&#x6D4B;&#x8BD5;">Benchmak  &#x538B;&#x529B;&#x6D4B;&#x8BD5;</h3>
+<ul>
+  <li>
+    <p>Benchmak &#x7684;&#x4F7F;&#x7528;&#x548C; test &#x7C7B;&#x4F3C;&#x3002; &#x51FD;&#x6570;&#x540D;&#x4F7F;&#x7528; Benchmak &#x5F00;&#x5934;</p>
+  </li>
+  <li>
+    <p>&#x547D;&#x4EE4;&#x7684;&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#xFF1A;go test -v ./src/test/&#x2026; -bench ^BenchmarkSum$ -run ^$</p>
+  </li>
+</ul>
+<figure class="highlight autoit">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td>
+      <td class="code"><pre><span class="line"></span><br><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    <span class="string">&quot;testing&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sum</span><span class="params">(args... int)</span> <span class="title">int</span> {</span></span><br><span class="line"></span><br><span class="line">    sum := <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _, v := range args {</span><br><span class="line">        sum += v</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> sum</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestSum</span><span class="params">(t *testing.T)</span> {</span></span><br><span class="line">    <span class="keyword">if</span> sum(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>) != <span class="number">16</span> {</span><br><span class="line">        t.<span class="built_in">Log</span>(<span class="string">&quot;&#x6D4B;&#x8BD5;&#x6837;&#x4F8B;&#x5931;&#x8D25;!&quot;</span>)</span><br><span class="line">        t.FailNow()</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkSum</span><span class="params">(b *testing.B)</span> {</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span><span class="comment">; i &lt; b.N; i++ {</span></span><br><span class="line">        sum(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td>
+    </tr>
+  </table>
+</figure>]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="并发_Goroutine">并发 Goroutine</h3>
+<h3 id="Channel">Channel</h3>
+<ul>
+  <li>channel 是引 类型,使 “make(chan
+    <type>)” 创建,
+      <type> 是要传递的数据类型。</type></type></li>
+  <li>channel 使 “&lt;-“ 接收和发送数据。</li>
+  <li>“chan &lt;- data” 发送数据, </li>
+  <li>“data &lt;- chan” 接收数据,</li>
+  <li>可以 忽略掉接收结果,纯粹作为同步信号通知。默认情况下,发送和接收都会被阻塞 (block)。</li>
+  <li>发送操作被阻塞,直到接收端准备好接收。</li>
+  <li>接收操作被阻塞,直到发送端准备好发送。</li>
+</ul>]]>
+    
+    </summary>
+    
+      <category term="go" scheme="http://wwww.feel88.cn/tags/go/"/>
+    
+      <category term="go" scheme="http://wwww.feel88.cn/categories/go/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[go 编程笔记一]]></title>
     <link href="http://wwww.feel88.cn/2016/09/22/go%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0%E4%B8%80/"/>
     <id>http://wwww.feel88.cn/2016/09/22/go编程笔记一/</id>
     <published>2016-09-22T07:39:04.000Z</published>
-    <updated>2016-09-22T07:54:06.000Z</updated>
+    <updated>2016-09-22T12:16:52.000Z</updated>
     <content type="html"><![CDATA[<h3 id="&#x5F00;&#x59CB;&#x5B66;-go-&#x7F16;&#x7A0B;&#x8BED;&#x8A00;-&#x8001;&#x89C4;&#x77E9;&#x5B66;&#x4E60;&#x4EFB;&#x4F55;&#x4E00;&#x95E8;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x90FD;&#x9700;&#x8981;&#x628A;&#x8BE5;&#x8BED;&#x8A00;&#x7684;&#x8BED;&#x6CD5;&#x7279;&#x6027;&#x8FC7;&#x4E00;&#x904D;">&#x5F00;&#x59CB;&#x5B66; go &#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#xFF0C; &#x8001;&#x89C4;&#x77E9;&#xFF0C;&#x5B66;&#x4E60;&#x4EFB;&#x4F55;&#x4E00;&#x95E8;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x90FD;&#x9700;&#x8981;&#x628A;&#x8BE5;&#x8BED;&#x8A00;&#x7684;&#x8BED;&#x6CD5;&#x7279;&#x6027;&#x8FC7;&#x4E00;&#x904D;</h3>
 <p>&#x8FD9;&#x7BC7;&#x7F16;&#x7A0B;&#x7B14;&#x8BB0;&#x4E3B;&#x8981;&#x8BB2;&#x7684;&#x662F;&#x57FA;&#x672C;&#x8BED;&#x6CD5;&#xFF0C;&#x4E0B;&#x4E00;&#x7BC7;&#x4F1A;&#x5206;&#x4EAB;&#x4E00;&#x4E9B; go &#x5E76;&#x53D1;&#x53CA;&#x9AD8;&#x7EA7;&#x7279;&#x6027;</p>
 <h3 id="&#x53D8;&#x91CF;">&#x53D8;&#x91CF;</h3>
@@ -140,7 +282,7 @@
 </figure>
 <h3 id="&#x63A7;&#x5236;&#x7ED3;&#x6784;-if-for-switch">&#x63A7;&#x5236;&#x7ED3;&#x6784; &#xFF08;if  for  switch)</h3>
 <ul>
-  <li>if<br>&#x2022; &#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x6CA1;&#x6709;&#x62EC;&#x53F7;;<br>&#x2022; &#x6301; &#x4E2A;&#x521D;&#x59CB;&#x5316;&#x8868;&#x8FBE;&#x5F0F; (&#x53EF;&#x4EE5;&#x662F;&#x591A;&#x53D8;&#x91CF;&#x521D;&#x59CB;&#x5316;&#x8BED;&#x53E5;);<br>&#x2022; &#x5DE6; &#x62EC;&#x53F7;&#x5FC5;&#x987B;&#x548C;&#x6761;&#x4EF6;&#x8BED;&#x53E5;&#x5728;&#x540C; &#x3002;</li>
+  <li>if<br>&#x2022; &#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x6CA1;&#x6709;&#x62EC;&#x53F7;;<br>&#x2022; &#x6301; &#x4E2A;&#x521D;&#x59CB;&#x5316;&#x8868;&#x8FBE;&#x5F0F; (&#x53EF;&#x4EE5;&#x662F;&#x591A;&#x53D8;&#x91CF;&#x521D;&#x59CB;&#x5316;&#x8BED;&#x53E5;);<br>&#x2022; &#x5DE6; &#x62EC;&#x53F7;&#x5FC5;&#x987B;&#x548C;&#x6761;&#x4EF6;&#x8BED;&#x53E5;&#x5728;&#x540C;</li>
 </ul>
 <figure class="highlight livecodeserver">
   <table>
@@ -244,19 +386,20 @@
   <li>panic/recover: &#x9519;&#x8BEF;&#x5904;&#x7406;&#x3002;</li>
 </ul>
 <h3 id="&#x51FD;&#x6570;">&#x51FD;&#x6570;</h3>
-<p>Go &#x51FD;&#x6570;&#x4E0D; &#x6301; &#x5D4C;&#x5957; (nested)&#x3001;&#x91CD;&#x8F7D; (overload) &#x548C; &#x9ED8;&#x8BA4;&#x53C2;&#x6570; (default parameter), &#x4F46; &#x6301;:</p>
+<p>Go &#x51FD;&#x6570;&#x4E0D; &#x6301; &#x5D4C;&#x5957; (nested)&#x3001;&#x91CD;&#x8F7D; (overload) &#x548C; &#x9ED8;&#x8BA4;&#x53C2;&#x6570; (default parameter), &#x4F46;&#x652F;&#x6301;:</p>
 <ul>
   <li>&#x9700;&#x58F0;&#x660E;&#x539F;&#x578B;;</li>
   <li>&#x4E0D;&#x5B9A; &#x5EA6;&#x53D8;&#x53C2;;</li>
   <li>&#x591A;&#x8FD4;&#x56DE;&#x503C;;</li>
-  <li>&#x547D;&#x540D;&#x8FD4;&#x56DE;&#x503C;&#x53C2;&#x6570;; &#x2022; &#x533F;&#x540D;&#x51FD;&#x6570;;</li>
+  <li>&#x547D;&#x540D;&#x8FD4;&#x56DE;&#x503C;&#x53C2;&#x6570;;</li>
+  <li>&#x533F;&#x540D;&#x51FD;&#x6570;;</li>
   <li>&#x95ED;&#x5305;;</li>
 </ul>
 <figure class="highlight go">
   <table>
     <tr>
       <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td>
-      <td class="code"><pre><span class="line"><span class="comment">//  &#x4F46;&#x53C2;&#x6570;</span></span><br><span class="line"><span class="keyword">func</span> example(x <span class="typename">int</span>) <span class="typename">int</span> {</span><br><span class="line">	<span class="keyword">if</span> x == <span class="number">0</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="number">5</span></span><br><span class="line">	} <span class="keyword">else</span> {</span><br><span class="line">		<span class="keyword">return</span> x</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//  &#x4E0D;&#x5B9A;&#x53C2;&#x6570;</span></span><br><span class="line"><span class="keyword">func</span> add(args... <span class="typename">int</span>) <span class="typename">int</span> {</span><br><span class="line"></span><br><span class="line">	sum := <span class="number">0</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> args {</span><br><span class="line">		sum += v</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> sum</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#x63A5;&#x6536;&#x591A;&#x4E2A;&#x53C2;&#x6570;, &#x8FD4;&#x56DE;&#x503C;&#x3002;</span></span><br><span class="line"><span class="keyword">func</span> test(a, b <span class="typename">int</span>, c <span class="typename">string</span>) {</span><br><span class="line">    <span class="built_in">println</span>(a, b, c)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> callback <span class="keyword">func</span>(s <span class="typename">string</span>)  <span class="comment">// &#x5B9A;&#x4E49;&#x51FD;&#x6570;&#x7C7B;&#x578B;</span></span><br><span class="line"><span class="keyword">func</span> test(a, b <span class="typename">int</span>, sum <span class="keyword">func</span>(<span class="typename">int</span>, <span class="typename">int</span>) <span class="typename">int</span>){   <span class="comment">// &#x63A5;&#x6536;&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x53C2;&#x6570;, &#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;  callback &#x7C7B;&#x578B;&#x3002;</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">println</span>(sum(a, b))</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#x591A;&#x4E2A;&#x8FD4;&#x56DE;&#x503C;</span></span><br><span class="line"><span class="keyword">func</span> swap(a, b <span class="typename">int</span>) (<span class="typename">int</span>, <span class="typename">int</span>) {</span><br><span class="line"><span class="keyword">return</span> b, a</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// &#x547D;&#x540D;&#x8FD4;&#x56DE;&#x53C2;&#x6570;</span></span><br><span class="line"><span class="keyword">func</span> change(a, b <span class="typename">int</span>) (x, y <span class="typename">int</span>) {</span><br><span class="line">    x = a + <span class="number">100</span></span><br><span class="line">    y = b + <span class="number">100</span></span><br><span class="line">   <span class="keyword">return</span>   <span class="comment">// &#x4E5F;&#x53EF;&#x4EE5;&#x5199;&#x6210; return x, y</span></span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a, b := change(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// &#x95ED;&#x5305;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> closures(x <span class="typename">int</span>) (<span class="keyword">func</span>(<span class="typename">int</span>) <span class="typename">int</span>) {</span><br><span class="line">	<span class="comment">// &#x8FD4;&#x56DE;&#x533F;&#x540D;&#x51FD;&#x6570;</span></span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">func</span>(y <span class="typename">int</span>) <span class="typename">int</span> {</span><br><span class="line">		<span class="keyword">return</span> x + y</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td>
+      <td class="code"><pre><span class="line"><span class="comment">//  &#x5355;&#x4E2A;&#x53C2;&#x6570;</span></span><br><span class="line"><span class="keyword">func</span> example(x <span class="typename">int</span>) <span class="typename">int</span> {</span><br><span class="line">	<span class="keyword">if</span> x == <span class="number">0</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="number">5</span></span><br><span class="line">	} <span class="keyword">else</span> {</span><br><span class="line">		<span class="keyword">return</span> x</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//  &#x4E0D;&#x5B9A;&#x53C2;&#x6570;</span></span><br><span class="line"><span class="keyword">func</span> add(args... <span class="typename">int</span>) <span class="typename">int</span> {</span><br><span class="line"></span><br><span class="line">	sum := <span class="number">0</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> args {</span><br><span class="line">		sum += v</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> sum</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#x63A5;&#x6536;&#x591A;&#x4E2A;&#x53C2;&#x6570;, &#x8FD4;&#x56DE;&#x503C;&#x3002;</span></span><br><span class="line"><span class="keyword">func</span> test(a, b <span class="typename">int</span>, c <span class="typename">string</span>) {</span><br><span class="line">    <span class="built_in">println</span>(a, b, c)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> callback <span class="keyword">func</span>(s <span class="typename">string</span>)  <span class="comment">// &#x5B9A;&#x4E49;&#x51FD;&#x6570;&#x7C7B;&#x578B;</span></span><br><span class="line"><span class="keyword">func</span> test(a, b <span class="typename">int</span>, sum <span class="keyword">func</span>(<span class="typename">int</span>, <span class="typename">int</span>) <span class="typename">int</span>){   <span class="comment">// &#x63A5;&#x6536;&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x53C2;&#x6570;, &#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;  callback &#x7C7B;&#x578B;&#x3002;</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">println</span>(sum(a, b))</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#x591A;&#x4E2A;&#x8FD4;&#x56DE;&#x503C;</span></span><br><span class="line"><span class="keyword">func</span> swap(a, b <span class="typename">int</span>) (<span class="typename">int</span>, <span class="typename">int</span>) {</span><br><span class="line"><span class="keyword">return</span> b, a</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// &#x547D;&#x540D;&#x8FD4;&#x56DE;&#x53C2;&#x6570;</span></span><br><span class="line"><span class="keyword">func</span> change(a, b <span class="typename">int</span>) (x, y <span class="typename">int</span>) {</span><br><span class="line">    x = a + <span class="number">100</span></span><br><span class="line">    y = b + <span class="number">100</span></span><br><span class="line">   <span class="keyword">return</span>   <span class="comment">// &#x4E5F;&#x53EF;&#x4EE5;&#x5199;&#x6210; return x, y</span></span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a, b := change(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// &#x95ED;&#x5305;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> closures(x <span class="typename">int</span>) (<span class="keyword">func</span>(<span class="typename">int</span>) <span class="typename">int</span>) {</span><br><span class="line">	<span class="comment">// &#x8FD4;&#x56DE;&#x533F;&#x540D;&#x51FD;&#x6570;</span></span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">func</span>(y <span class="typename">int</span>) <span class="typename">int</span> {</span><br><span class="line">		<span class="keyword">return</span> x + y</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td>
     </tr>
   </table>
 </figure>
@@ -372,7 +515,7 @@
     <link href="http://wwww.feel88.cn/2016/09/21/kotlin%E5%AD%A6%E4%B9%A0/"/>
     <id>http://wwww.feel88.cn/2016/09/21/kotlin学习/</id>
     <published>2016-09-21T11:14:01.000Z</published>
-    <updated>2016-09-21T11:14:57.000Z</updated>
+    <updated>2016-09-22T12:16:52.000Z</updated>
     <content type="html"><![CDATA[<p>Statically typed programming language<br>for the JVM, Android and the browser<br>100% interoperable with Java&#x2122;</p>
 <p>&#x6B63;&#x5982;&#x5B98;&#x7F51;&#x6240;&#x8BF4;&#xFF0C;kotlin &#x5B8C;&#x5168;&#x517C;&#x5BB9; java &#x800C;&#x4E0D;&#x50CF; scala &#x4E00;&#x6837;&#xFF0C;&#x5F88;&#x591A;&#x7C7B;&#x5E93;&#x90FD;&#x662F;&#x81EA;&#x5DF1;&#x6574;&#x4E00;&#x5957;&#x3002;&#x5E9F;&#x8BDD;&#x4E0D;&#x591A;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x53BB;&#x5B66;&#x5B66;&#x5B83;&#x7684;&#x8BED;&#x6CD5;&#x3002;</p>
 <h3 id="&#x5B9A;&#x4E49;&#x51FD;&#x6570;">&#x5B9A;&#x4E49;&#x51FD;&#x6570;</h3>
@@ -780,7 +923,7 @@
     <link href="http://wwww.feel88.cn/2016/09/20/scala%E5%AD%A6%E4%B9%A0/"/>
     <id>http://wwww.feel88.cn/2016/09/20/scala学习/</id>
     <published>2016-09-20T06:37:40.000Z</published>
-    <updated>2016-09-20T06:42:40.000Z</updated>
+    <updated>2016-09-22T12:16:52.000Z</updated>
     <content type="html"><![CDATA[<h2 id="learnscala">learnscala</h2>
 <a id="more"></a>
 <figure class="highlight crystal">
@@ -803,7 +946,7 @@
     <link href="http://wwww.feel88.cn/2016/08/03/java%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/"/>
     <id>http://wwww.feel88.cn/2016/08/03/java编程规范/</id>
     <published>2016-08-03T09:01:17.000Z</published>
-    <updated>2016-08-03T09:09:32.000Z</updated>
+    <updated>2016-09-22T12:16:52.000Z</updated>
     <content type="html"><![CDATA[<h2 id="1-&#x4ECB;&#x7ECD;">1 - &#x4ECB;&#x7ECD;</h2>
 <h3 id="11-&#x4E3A;&#x5565;&#x8981;&#x6709;&#x7F16;&#x7801;&#x89C4;&#x8303;">1.1 &#x4E3A;&#x5565;&#x8981;&#x6709;&#x7F16;&#x7801;&#x89C4;&#x8303;</h3>
 <p>&#x5BF9;&#x4E8E;&#x7F16;&#x7A0B;&#x4EBA;&#x5458;&#x6765;&#x8BF4;&#xFF0C;&#x7F16;&#x7801;&#x89C4;&#x8303;&#x7684;&#x91CD;&#x8981;&#x6027;&#x4F53;&#x73B0;&#x5728;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x65B9;&#x9762;:</p>
@@ -1536,7 +1679,7 @@
     <link href="http://wwww.feel88.cn/2016/04/09/ssh%E4%B8%8EMTU%E7%9A%84%E5%9D%91/"/>
     <id>http://wwww.feel88.cn/2016/04/09/ssh与MTU的坑/</id>
     <published>2016-04-08T16:31:02.000Z</published>
-    <updated>2016-04-08T17:03:06.000Z</updated>
+    <updated>2016-09-22T12:16:52.000Z</updated>
     <content type="html"><![CDATA[<p>&#x524D;&#x8A00;&#xFF1A;&#x6700;&#x8FD1;&#x4E00;&#x5468;&#x53D1;&#x73B0;&#x5BB6;&#x91CC;&#x7684;&#x7F51;&#x7EDC; ssh &#x534F;&#x8BAE;&#x51FA;&#x5916;&#x7F51;&#x4E0D;&#x4E86;&#xFF0C;&#x4E00;&#x5F00;&#x59CB;&#x6211;&#x4EE5;&#x4E3A;&#x662F;&#x7F51;&#x7EDC;&#x95EE;&#x9898;&#x3002;&#x6298;&#x817E;&#x4E86;&#x534A;&#x5929;&#xFF0C;&#x6700;&#x540E;&#x6211;&#x7528;&#x624B;&#x673A; 4G &#x6D41;&#x91CF;&#x6D4B;&#x8BD5;&#xFF0C;&#x5C3D;&#x7136;&#x80FD;&#x8FDE;&#x4E0A; vps. &#x4E8E;&#x662F;&#x5C31;&#x6709;&#x4E86;&#x4E0B;&#x9762;&#x7684;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x3002;</p>
 <a id="more"></a>
 <ol>
@@ -1634,7 +1777,7 @@
     <link href="http://wwww.feel88.cn/2016/04/03/CGlib%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"/>
     <id>http://wwww.feel88.cn/2016/04/03/CGlib实现动态代理/</id>
     <published>2016-04-03T15:52:26.000Z</published>
-    <updated>2016-04-03T16:04:48.000Z</updated>
+    <updated>2016-09-22T12:16:52.000Z</updated>
     <content type="html"><![CDATA[<p>&#x4EE3;&#x7406;&#x6A21;&#x5F0F;&#x662F;&#x5E38;&#x7528;&#x7684; java &#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x4ED6;&#x7684;&#x7279;&#x5F81;&#x662F;&#x4EE3;&#x7406;&#x7C7B;&#x4E0E;&#x59D4;&#x6258;&#x7C7B;&#x6709;&#x540C;&#x6837;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x4EE3;&#x7406;&#x7C7B;&#x4E3B;&#x8981;&#x8D1F;&#x8D23;&#x4E3A;&#x59D4;&#x6258;&#x7C7B;&#x9884;&#x5904;&#x7406;&#x6D88;&#x606F;&#x3001;&#x8FC7;&#x6EE4;&#x6D88;&#x606F;&#x3001;&#x628A;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x7ED9;&#x59D4;&#x6258;&#x7C7B;&#xFF0C;&#x4EE5;&#x53CA;&#x4E8B;&#x540E;&#x5904;&#x7406;&#x6D88;&#x606F;&#x7B49;&#x3002;&#x4EE3;&#x7406;&#x7C7B;&#x4E0E;&#x59D4;&#x6258;&#x7C7B;&#x4E4B;&#x95F4;&#x901A;&#x5E38;&#x4F1A;&#x5B58;&#x5728;&#x5173;&#x8054;&#x5173;&#x7CFB;&#xFF0C;&#x4E00;&#x4E2A;&#x4EE3;&#x7406;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#x4E0E;&#x4E00;&#x4E2A;&#x59D4;&#x6258;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#x5173;&#x8054;&#xFF0C;&#x4EE3;&#x7406;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#x672C;&#x8EAB;&#x5E76;&#x4E0D;&#x771F;&#x6B63;&#x5B9E;&#x73B0;&#x670D;&#x52A1;&#xFF0C;&#x800C;&#x662F;&#x901A;&#x8FC7;&#x8C03;&#x7528;&#x59D4;&#x6258;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#x7684;&#x76F8;&#x5173;&#x65B9;&#x6CD5;&#xFF0C;&#x6765;&#x63D0;&#x4F9B;&#x7279;&#x5B9A;&#x7684;&#x670D;&#x52A1;&#x3002; &#x6309;&#x7167;&#x4EE3;&#x7406;&#x7684;&#x521B;&#x5EFA;&#x65F6;&#x671F;&#xFF0C;&#x4EE3;&#x7406;&#x7C7B;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4E24;&#x79CD;&#xFF1A;</p>
 <p>&#x9759;&#x6001;&#x4EE3;&#x7406;&#xFF1A;&#x7531;&#x7A0B;&#x5E8F;&#x5458;&#x521B;&#x5EFA;&#x6216;&#x7279;&#x5B9A;&#x5DE5;&#x5177;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x6E90;&#x4EE3;&#x7801;&#xFF0C;&#x518D;&#x5BF9;&#x5176;&#x7F16;&#x8BD1;&#x3002;&#x5728;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x524D;&#xFF0C;&#x4EE3;&#x7406;&#x7C7B;&#x7684;.class &#x6587;&#x4EF6;&#x5C31;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x4E86;&#xFF1B;<br>&#x52A8;&#x6001;&#x4EE3;&#x7406;&#xFF1A;&#x5728;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x8FD0;&#x7528;&#x53CD;&#x5C04;&#x673A;&#x5236;&#x52A8;&#x6001;&#x521B;&#x5EFA;&#x800C;&#x6210;&#x3002;</p>
 <a id="more"></a>
@@ -1734,7 +1877,7 @@
     <link href="http://wwww.feel88.cn/2016/03/08/linux-%E4%BA%A4%E6%8D%A2%E5%88%86%E5%8C%BA/"/>
     <id>http://wwww.feel88.cn/2016/03/08/linux-交换分区/</id>
     <published>2016-03-08T03:03:46.000Z</published>
-    <updated>2016-03-08T03:14:38.000Z</updated>
+    <updated>2016-09-22T12:16:52.000Z</updated>
     <content type="html"><![CDATA[<p>&#x5229;&#x7528; swapoff &#x548C; swapon &#x5237;&#x65B0; swap &#x7F13;&#x5B58;</p>
 <h2 id="&#x5982;&#x4F55;&#x6E05;&#x9664;-linux-&#x7684;&#x4EA4;&#x6362;&#x7A7A;&#x95F4;">&#x5982;&#x4F55;&#x6E05;&#x9664; Linux &#x7684;&#x4EA4;&#x6362;&#x7A7A;&#x95F4;&#xFF1F;</h2>
 <p>&#x6709;&#x65F6;&#x8FD0;&#x884C;&#x5927;&#x91CF;&#x7684;&#x8FDB;&#x7A0B;&#x540E; swap &#x5927;&#x91CF;&#x5360;&#x7528;&#xFF0C;&#x8FBE;&#x5230; 30% &#x7684;&#x8BDD;&#x673A;&#x5668;&#x4F1A;&#x53D8;&#x5F97;&#x5F88;&#x6162; <br> &#x53EF;&#x4EE5;&#x7528;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;&#x547D;&#x4EE4;&#x6E05;&#x9664;&#x5237;&#x65B0; swap</p>
@@ -1811,7 +1954,7 @@
     <link href="http://wwww.feel88.cn/2016/01/02/ssl%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81/"/>
     <id>http://wwww.feel88.cn/2016/01/02/ssl双向认证/</id>
     <published>2016-01-02T14:52:17.000Z</published>
-    <updated>2016-03-19T13:59:12.000Z</updated>
+    <updated>2016-09-22T12:16:52.000Z</updated>
     <content type="html"><![CDATA[<p>&#x6709;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x4E00;&#x4E9B;&#x7AEF;&#x53E3;&#x548C;&#x7F51;&#x7AD9;&#x9700;&#x8981; ssl &#x53CC;&#x5411;&#x8BA4;&#x8BC1;</p>
 <p>1. &#x5B89;&#x88C5; htpasswd</p>
 <p>ubuntu </p>
@@ -1930,7 +2073,7 @@
     <link href="http://wwww.feel88.cn/2015/12/27/autossh%E9%9A%A7%E9%81%93%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%8D/"/>
     <id>http://wwww.feel88.cn/2015/12/27/autossh隧道搭建私服/</id>
     <published>2015-12-27T11:40:43.000Z</published>
-    <updated>2015-12-27T11:45:12.000Z</updated>
+    <updated>2016-09-22T12:16:52.000Z</updated>
     <content type="html"><![CDATA[<p> &#x5E94;&#x540C;&#x4E8B;&#x7684;&#x8981;&#x6C42;&#xFF1A;&#x4ED6;&#x60F3;&#x5B9E;&#x73B0;&#x8FDC;&#x7A0B;&#x767B;&#x5165;&#x5BB6;&#x91CC;&#x7684;&#x5C40;&#x57DF;&#x7F51;&#x670D;&#x52A1;&#x5668;&#x3002;</p>
 <p> &#x60C5;&#x51B5;&#x662F;&#x8FD9;&#x6837;&#x7684;&#x3002;&#x5BB6;&#x91CC;&#x6709;&#x53F0;&#x670D;&#x52A1;&#x5668;&#xFF08;&#x7B14;&#x8BB0;&#x672C;&#x5373;&#x53EF;&#xFF09;&#x3002;&#x4E00;&#x53F0;&#x5916;&#x7F51;&#x670D;&#x52A1;&#x5668;&#x3002;</p>
 <p> &#x60F3;&#x901A;&#x8FC7;&#x5728;&#x516C;&#x53F8;&#x8FDC;&#x7A0B;&#x767B;&#x5165;&#x5BB6;&#x91CC;&#x7684;&#x90A3;&#x53F0;&#x5C40;&#x57DF;&#x7F51;&#x670D;&#x52A1;&#x5668;&#x3002;</p>
@@ -2024,7 +2167,7 @@
     <link href="http://wwww.feel88.cn/2015/12/13/%E4%BF%AE%E6%94%B9linux%E6%97%B6%E5%8C%BA/"/>
     <id>http://wwww.feel88.cn/2015/12/13/修改linux时区/</id>
     <published>2015-12-12T18:57:09.000Z</published>
-    <updated>2015-12-26T12:36:07.000Z</updated>
+    <updated>2016-09-22T12:16:52.000Z</updated>
     <content type="html"><![CDATA[<p>linux &#x7684;&#x65F6;&#x533A;&#x4E3A; UTC &#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x4E3A; CST &#x65F6;&#x533A;</p>
 <figure class="highlight livecodeserver">
   <table>
@@ -2095,7 +2238,7 @@
     <link href="http://wwww.feel88.cn/2015/12/06/%E5%8A%A8%E6%80%81%E7%94%9F%E6%88%90%E5%AF%86%E7%A0%81/"/>
     <id>http://wwww.feel88.cn/2015/12/06/动态生成密码/</id>
     <published>2015-12-05T17:39:51.000Z</published>
-    <updated>2015-12-05T17:45:07.000Z</updated>
+    <updated>2016-09-22T12:16:52.000Z</updated>
     <content type="html"><![CDATA[<p> &#x6709;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x7BA1;&#x7406;&#x670D;&#x52A1;&#x5668;&#x7684;&#x65F6;&#x5019;&#x7ECF;&#x5E38;&#x66F4;&#x6362;&#x5BC6;&#x7801;&#xFF0C;&#x4E0B;&#x9762;&#x6709;&#x51E0;&#x79CD;&#x52A8;&#x6001;&#x751F;&#x6210;&#x5BC6;&#x7801;&#x7684;&#x65B9;&#x5F0F; </p>
 <a id="more"></a>
 <figure class="highlight bash">
@@ -2141,7 +2284,7 @@
     <link href="http://wwww.feel88.cn/2015/09/04/nginx%E4%BF%A1%E5%8F%B7%E9%87%8F/"/>
     <id>http://wwww.feel88.cn/2015/09/04/nginx信号量/</id>
     <published>2015-09-04T08:46:48.000Z</published>
-    <updated>2015-09-30T10:09:09.000Z</updated>
+    <updated>2016-09-22T12:16:52.000Z</updated>
     <content type="html"><![CDATA[<p> &#x5728;&#x6211;&#x4EEC;&#x4F7F;&#x7528; nginx , &#x6211;&#x4EEC;&#x591A;&#x591A;&#x5C11;&#x5C11;&#x90FD;&#x9700;&#x8981;&#x4F7F;&#x7528; nginx &#x7684;&#x4FE1;&#x53F7;&#x6765;&#x63A7;&#x5236; nginx</p>
 <a id="more"></a>
 <figure class="highlight gherkin">
@@ -2177,7 +2320,7 @@
     <link href="http://wwww.feel88.cn/2015/09/04/nginx-403-forbidden/"/>
     <id>http://wwww.feel88.cn/2015/09/04/nginx-403-forbidden/</id>
     <published>2015-09-03T19:38:05.000Z</published>
-    <updated>2016-01-02T15:15:38.000Z</updated>
+    <updated>2016-09-22T12:16:52.000Z</updated>
     <content type="html"><![CDATA[<p>nginx 403 forbidden &#x4E09;&#x79CD;&#x539F;&#x56E0; <br> &#x5F15;&#x8D77; nginx 403 forbidden &#x6709;&#x4E09;&#x79CD;&#x539F;&#x56E0;&#xFF0C;&#x4E00;&#x662F;&#x7F3A;&#x5C11;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#xFF0C;&#x4E8C;&#x6743;&#x9650;&#x95EE;&#x9898;&#xFF0C;&#x4E09;&#x662F; selinux</p>
 <a id="more"></a>
 <h4 id="1&#x7F3A;&#x5C11;-indexhtml-&#x6216;&#x8005;-indexphp-&#x6587;&#x4EF6;">1&#xFF0C;&#x7F3A;&#x5C11; index.html &#x6216;&#x8005; index.php &#x6587;&#x4EF6;</h4>
@@ -2227,7 +2370,7 @@
     <link href="http://wwww.feel88.cn/2015/08/23/progress-Bar/"/>
     <id>http://wwww.feel88.cn/2015/08/23/progress-Bar/</id>
     <published>2015-08-23T13:56:15.000Z</published>
-    <updated>2015-09-30T10:09:09.000Z</updated>
+    <updated>2016-09-22T12:16:52.000Z</updated>
     <content type="html"><![CDATA[<h1 id="&#x5173;&#x4E8E;&#x8FDB;&#x5EA6;&#x6761;-progress-bar">&#x5173;&#x4E8E;&#x8FDB;&#x5EA6;&#x6761; -progress Bar</h1>
 <ol>
   <li>&#x63D0;&#x5230;&#x8FDB;&#x5EA6;&#x6761;&#xFF0C;&#x9996;&#x5148;&#x4F1A;&#x60F3;&#x5230; css3 &#x91CC;&#x9762;&#x7684;&#x65B0;&#x589E;&#x6807;&#x7B7E; progress&#xFF0C;&#x5B83;&#x7684;&#x7528;&#x6CD5;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x548C;&#x5355;&#x4E00;&#xFF0C;&#x6709;&#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#xFF1A;value &#x548C; max&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5F53;&#x524D;&#x503C;&#x548C;&#x6700;&#x5927;&#x503C;&#x3002;&#x4ECA;&#x5929;&#x5728;&#x9879;&#x76EE;&#x4E2D;&#x6709;&#x8FDB;&#x5EA6;&#x6761;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x4F46;&#x662F;&#x8D77;&#x521D;&#x7528;&#x4E86;&#x8FD9;&#x4E2A;&#xFF0C;&#x53D1;&#x73B0;&#x5F88;&#x96BE;&#x8C03;&#x6837;&#x5F0F;&#xFF0C;&#x6216;&#x8005;&#x8BF4;&#x6837;&#x5F0F;&#x5C31;&#x6839;&#x672C;&#x4E0D;&#x600E;&#x4E48;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#x5C31;&#x6682;&#x65F6;&#x4F5C;&#x7F62;&#xFF0C;&#x53E6;&#x5916;&#x5BFB;&#x6C42;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x3002;</li>
@@ -2283,7 +2426,7 @@
     <link href="http://wwww.feel88.cn/2015/08/18/css3%E4%BC%AA%E5%85%83%E7%B4%A0/"/>
     <id>http://wwww.feel88.cn/2015/08/18/css3伪元素/</id>
     <published>2015-08-17T17:12:18.000Z</published>
-    <updated>2015-09-30T10:09:09.000Z</updated>
+    <updated>2016-09-22T12:16:52.000Z</updated>
     <content type="html"><![CDATA[<h1 id="css3-&#x4F2A;&#x7C7B;&#x5143;&#x7D20;">css3- &#x4F2A;&#x7C7B;&#x5143;&#x7D20;</h1>
 <h3 id="1-&#x4F2A;&#x7C7B;&#x5143;&#x7D20;&#x7684;&#x5B9A;&#x4E49;">1. &#x4F2A;&#x7C7B;&#x5143;&#x7D20;&#x7684;&#x5B9A;&#x4E49;</h3>
 <p>&#x6240;&#x8C13;&#x2018;&#x4F2A;&#x5143;&#x7D20;&#x2019;&#xFF0C;&#x5C31;&#x662F;&#x672C;&#x8EAB;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x9875;&#x9762;&#x5143;&#x7D20;&#xFF0C;HTML &#x4EE3;&#x7801;&#x91CC;&#x5E76;&#x6CA1;&#x6709;&#x8FD9;&#x6837;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x4F46;&#x5728;&#x9875;&#x9762;&#x663E;&#x793A;&#x65F6;&#xFF0C;&#x4F60;&#x5374;&#x80FD;&#x770B;&#x5230;&#x8FD9;&#x4E9B;&#x672C;&#x6765;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x5143;&#x7D20;&#x53D1;&#x6325;&#x7740;&#x4F5C;&#x7528;&#x3002;<br>
@@ -2479,7 +2622,7 @@
     <link href="http://wwww.feel88.cn/2015/08/17/sqoop%E6%97%B6%E5%8C%BA%E8%BD%AC%E6%8D%A2/"/>
     <id>http://wwww.feel88.cn/2015/08/17/sqoop时区转换/</id>
     <published>2015-08-17T12:55:30.000Z</published>
-    <updated>2015-09-30T10:09:09.000Z</updated>
+    <updated>2016-09-22T12:16:52.000Z</updated>
     <content type="html"><![CDATA[<p> &#x5728;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x78B0;&#x89C1;&#x5404;&#x79CD;&#x65F6;&#x533A;&#x8F6C;&#x6362;&#x95EE;&#x9898;&#x3002;<br> &#x5728;&#x505A; ETL &#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x7531;&#x4E8E;&#x6211;&#x4EEC;&#x7684;&#x6570;&#x636E;&#x65F6;&#x95F4;&#x662F; 0 &#x65F6;&#x533A;&#x7684;&#x3002;&#x9700;&#x8981;&#x8F6C;&#x6362; 8 &#x65F6;&#x533A;&#x3002;</p>
 <a id="more"></a>
 <p>oracle &#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F; </p>
@@ -2529,7 +2672,7 @@
     <link href="http://wwww.feel88.cn/2015/08/17/transform/"/>
     <id>http://wwww.feel88.cn/2015/08/17/transform/</id>
     <published>2015-08-17T12:41:44.000Z</published>
-    <updated>2016-01-02T15:16:03.000Z</updated>
+    <updated>2016-09-22T12:16:52.000Z</updated>
     <content type="html"><![CDATA[<h1 id="transform&#x53D8;&#x5F62;">transform&#x2013;&#x53D8;&#x5F62;</h1>
 <p>&#x6807;&#x7B7E;&#xFF1A; transform</p>
 <a id="more"></a>
@@ -2620,7 +2763,7 @@
     <link href="http://wwww.feel88.cn/2015/08/16/Stylus%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>http://wwww.feel88.cn/2015/08/16/Stylus的使用/</id>
     <published>2015-08-16T04:16:16.000Z</published>
-    <updated>2015-09-30T10:09:09.000Z</updated>
+    <updated>2016-09-22T12:16:52.000Z</updated>
     <content type="html"><![CDATA[<h3 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h3>
 <p>&#x672C;&#x6765;&#x5199;&#x8FD9;&#x7BC7;&#x535A;&#x5BA2;&#x5F00;&#x59CB;&#x6211;&#x662F;&#x62D2;&#x7EDD;&#x7684;&#x3002;&#x8FD9;&#x4E2A;&#x535A;&#x5BA2;&#x4E5F;&#x662F;&#x4E3A;&#x4E86;&#x8BB0;&#x5F55;&#x81EA;&#x5DF1;&#x7684;&#x6210;&#x957F;&#x7ECF;&#x5386;&#x548C;&#x5B66;&#x4E60;&#x8FC7;&#x7A0B;&#x3002;&#x6211;&#x4E4B;&#x524D;&#x4E5F;&#x7528;&#x8FC7;&#x5F88;&#x591A;&#x535A;&#x5BA2;&#xFF0C;&#x7B14;&#x8BB0;&#x3002;&#x76EE;&#x524D;&#x5927;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x90FD;&#x5728;&#x6211;&#x7684;&#x4E3A;&#x77E5;&#x7B14;&#x8BB0;&#x4E2D;&#x3002;<br>&#x642D;&#x5EFA;&#x8FD9;&#x4E2A;&#x535A;&#x5BA2;&#x6837;&#x5F0F;&#x4F7F;&#x7528;&#x4E86; stylus&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x5B66;&#x4E60;&#x4E86;&#x4E00;&#x4E0B;&#x3002;</p>
 <a id="more"></a>
@@ -2939,7 +3082,7 @@
     <link href="http://wwww.feel88.cn/2015/08/15/git%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>http://wwww.feel88.cn/2015/08/15/git的使用/</id>
     <published>2015-08-15T12:48:03.000Z</published>
-    <updated>2016-08-29T08:51:35.000Z</updated>
+    <updated>2016-09-22T12:16:52.000Z</updated>
     <content type="html"><![CDATA[<h2 id="&#x521B;&#x5EFA;-git-&#x9879;&#x76EE;">&#x521B;&#x5EFA; git &#x9879;&#x76EE;</h2>
 <figure class="highlight ruby">
   <table>
@@ -3237,230 +3380,6 @@ error: failed to push some refs to &apos;git@bitbucket.org:sponialtd/openplay_py
       <category term="tool" scheme="http://wwww.feel88.cn/tags/tool/"/>
     
       <category term="tool" scheme="http://wwww.feel88.cn/categories/tool/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[CDH 安装初始化环境]]></title>
-    <link href="http://wwww.feel88.cn/2015/08/15/CDH%E5%AE%89%E8%A3%85%E5%88%9D%E5%A7%8B%E5%8C%96%E7%8E%AF%E5%A2%83/"/>
-    <id>http://wwww.feel88.cn/2015/08/15/CDH安装初始化环境/</id>
-    <published>2015-08-14T17:54:57.000Z</published>
-    <updated>2016-04-01T03:15:59.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="install-screen">install  screen</h1>
-<figure class="highlight cmake">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br></pre></td>
-      <td class="code"><pre><span class="line">yum <span class="keyword">install</span> screen -y</span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<a id="more"></a>
-<h1 id="init">init</h1>
-<figure class="highlight sql">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td>
-      <td class="code"><pre><span class="line">yum  -y <span class="operator"><span class="keyword">install</span> python-devel python-pip libxslt-devel libxml2-devel gcc <span class="keyword">g</span>++ gcc-<span class="keyword">g</span>++</span><br><span class="line">yum -y <span class="keyword">install</span> tree</span><br><span class="line">yum <span class="keyword">install</span> -y python-pip</span><br><span class="line">pip <span class="keyword">install</span> lxml</span></span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<h1 id="install-httpd">install httpd</h1>
-<figure class="highlight sql">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td>
-      <td class="code"><pre><span class="line">yum <span class="operator"><span class="keyword">install</span> httpd -y </span><br><span class="line">service httpd <span class="keyword">start</span></span><br><span class="line">chkconfig httpd <span class="keyword">on</span></span><br><span class="line">mkdir -<span class="keyword">p</span> /<span class="keyword">var</span>/www/html/cdh</span></span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<h1 id="dowload-cdh">dowload cdh</h1>
-<figure class="highlight groovy">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td>
-      <td class="code"><pre><span class="line">cd  <span class="regexp">/var/</span>www<span class="regexp">/html/</span>cdh</span><br><span class="line">wget <span class="string">http:</span><span class="comment">//archive.cloudera.com/cdh5/parcels/latest/CDH-5.3.0-1.cdh5.3.0.p0.30-el6.parcel.sha1</span></span><br><span class="line">wget <span class="string">http:</span><span class="comment">//archive.cloudera.com/cdh5/parcels/latest/manifest.json</span></span><br><span class="line">wget <span class="string">http:</span><span class="comment">//archive.cloudera.com/cdh5/parcels/latest/CDH-5.3.0-1.cdh5.3.0.p0.30-el6.parcel</span></span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<h1 id="install-ntp">install ntp</h1>
-<figure class="highlight livecodeserver">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td>
-      <td class="code"><pre><span class="line">yum install  -y ntpdate ntp</span><br><span class="line">service ntpd <span class="built_in">stop</span></span><br><span class="line">service ntpdate <span class="built_in">start</span></span><br><span class="line">chkconfig ntpdate <span class="command"><span class="keyword">on</span></span></span><br><span class="line">service ntpd <span class="built_in">stop</span> </span><br><span class="line">ntpdate asia.pool.ntp.org</span><br><span class="line"> &#x6700;&#x540E;&#x6267;&#x884C; </span><br><span class="line">service ntpd <span class="built_in">start</span></span><br><span class="line">chkconfig ntpd <span class="command"><span class="keyword">on</span></span></span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<h1 id="&#x8BBE;&#x7F6E;-swappiness"> &#x8BBE;&#x7F6E;  swappiness</h1>
-<figure class="highlight nimrod">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td>
-      <td class="code"><pre><span class="line">echo <span class="number">0</span> &gt;/<span class="keyword">proc</span>/sys/vm/swappiness </span><br><span class="line">vi /etc/sysctl.conf</span><br><span class="line">vm.swappiness=<span class="number">0</span></span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<h1 id="disabled-selinux">disabled  SELINUX</h1>
-<figure class="highlight stylus">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
-      <td class="code"><pre><span class="line">sed  -<span class="tag">i</span> <span class="string">&apos;s/SELINUX=enforcing/SELINUX=disabled/g&apos;</span> /etc/selinux/config</span><br><span class="line">sed  -<span class="tag">i</span> <span class="string">&apos;/SELINUX=disabled/s/^#*//&apos;</span>  /etc/selinux/config</span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<h1 id="stop-iptable">stop iptable</h1>
-<figure class="highlight sql">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td>
-      <td class="code"><pre><span class="line">service iptables <span class="operator"><span class="keyword">stop</span> </span><br><span class="line">service ip6tables <span class="keyword">stop</span></span><br><span class="line">chkconfig iptables <span class="keyword">off</span></span><br><span class="line">chkconfig ip6tables <span class="keyword">off</span></span></span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<h1 id="upgrade-openssl">upgrade openssl</h1>
-<figure class="highlight cmake">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
-      <td class="code"><pre><span class="line">yum upgrade openssl</span><br><span class="line">yum <span class="keyword">install</span> opensh-clients -y</span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<h1 id="mail-service">mail service</h1>
-<figure class="highlight vim">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td>
-      <td class="code"><pre><span class="line">/usr/sbin/postconf | <span class="keyword">grep</span> inet_protocols</span><br><span class="line"># inet_protocols = <span class="keyword">all</span></span><br><span class="line"><span class="keyword">vi</span> /etc/postfix/main.<span class="keyword">cf</span></span><br><span class="line">sed  -<span class="keyword">i</span> <span class="string">&apos;s/inet_protocols = all/inet_protocols = ipv4/g&apos;</span> /etc/postfix/main.<span class="keyword">cf</span></span><br><span class="line">sed  -<span class="keyword">i</span> <span class="string">&apos;/inet_protocols = ipv4/s/^#*//&apos;</span>  /etc/postfix/main.<span class="keyword">cf</span></span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<h1 id="restart-postfix">restart postfix</h1>
-<figure class="highlight swift">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br></pre></td>
-      <td class="code"><pre><span class="line">/etc/<span class="keyword">init</span>.d/<span class="keyword">postfix</span> restart</span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<h1 id="download-mysql-driver-jar">download  mysql driver jar</h1>
-<figure class="highlight groovy">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
-      <td class="code"><pre><span class="line">cd /opt</span><br><span class="line">wget <span class="string">http:</span><span class="comment">//central.maven.org/maven2/mysql/mysql-connector-java/5.1.36/mysql-connector-java-5.1.36.jar</span></span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<h1 id="download-jdk">download jdk</h1>
-<figure class="highlight stylus">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
-      <td class="code"><pre><span class="line">wget --no-check-certificate --no-cookies --<span class="tag">header</span> <span class="string">&quot;Cookie: oraclelicense=accept-securebackup-cookie&quot;</span> http:<span class="comment">//download.oracle.com/otn-pub/java/jdk/7u67-b01/jdk-7u67-linux-x64.tar.gz</span></span><br><span class="line">tar -zxvf *jdk*<span class="class">.tar</span><span class="class">.gz</span></span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<h1 id="download-cloudera-manager">download cloudera-manager</h1>
-<figure class="highlight stylus">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
-      <td class="code"><pre><span class="line">wget http:<span class="comment">//archive-primary.cloudera.com/cm5/cm/5/cloudera-manager-el6-cm5.3.0_x86_64.tar.gz</span></span><br><span class="line">tar -zxvf cloudera-manager*<span class="class">.tar</span><span class="class">.gz</span></span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<h1 id="install-mysql">install mysql</h1>
-<figure class="highlight sql">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td>
-      <td class="code"><pre><span class="line">yum  -y <span class="operator"><span class="keyword">install</span>  mysql mysql-<span class="keyword">server</span> </span><br><span class="line">service mysqld restart</span><br><span class="line">chkconfig mysqld <span class="keyword">on</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&apos;amon&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;amon&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&apos;hive&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;hive&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&apos;smon&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;smon&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&apos;rman&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;rman&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&apos;hmon&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;hmon&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&apos;nav&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;nav&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> <span class="keyword">password</span>=<span class="keyword">password</span>(<span class="string">&apos;root&apos;</span>)  <span class="keyword">where</span> <span class="keyword">user</span>=<span class="string">&apos;root&apos;</span>;</span> <span class="operator"><span class="keyword">flush</span> <span class="keyword">privileges</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> *.* <span class="keyword">to</span> <span class="string">&apos;root&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">&apos;root&apos;</span>;</span> <span class="operator"><span class="keyword">flush</span> <span class="keyword">privileges</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> hive <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> hive.* <span class="keyword">TO</span> <span class="string">&apos;hive&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;hive&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> amon <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> amon.* <span class="keyword">TO</span> <span class="string">&apos;amon&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;amon&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> smon <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> smon.* <span class="keyword">TO</span> <span class="string">&apos;smon&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;smon&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> rman <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> rman.* <span class="keyword">TO</span> <span class="string">&apos;rman&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;rman&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> hmon <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> hmon.* <span class="keyword">TO</span> <span class="string">&apos;hmon&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;hmon&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> <span class="keyword">nav</span> <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">grant</span> all <span class="keyword">on</span> <span class="keyword">nav</span>.* <span class="keyword">TO</span> <span class="string">&apos;nav&apos;</span>@<span class="string">&apos;%&apos;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&apos;nav&apos;</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">flush</span> <span class="keyword">privileges</span>;</span></span><br><span class="line">service mysqld restart</span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<h1 id="userdel-cloudera-scm">userdel cloudera-scm</h1>
-<figure class="highlight vim">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br></pre></td>
-      <td class="code"><pre><span class="line">useradd --<span class="built_in">system</span> --home=/<span class="keyword">opt</span>/<span class="keyword">cm</span>-<span class="number">5.3</span>.<span class="number">0</span>/run/cloudera-scm-server --<span class="keyword">no</span>-create-home --<span class="keyword">shell</span>=/bin/false --comment <span class="string">&quot;Cloudera SCM User&quot;</span> cloudera-scm</span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<h1 id="modify-config-file">Modify config  file</h1>
-<figure class="highlight groovy">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
-      <td class="code"><pre><span class="line">vi <span class="regexp">/opt/</span>cm-<span class="number">5.3</span><span class="number">.0</span><span class="regexp">/etc/</span>cloudera-scm-agent/config.ini</span><br><span class="line"><span class="regexp">/etc/</span>cloudera-scm-server/db.properties</span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<h2 id="for-example-only-modify-server_host">for example: only modify server_host</h2>
-<figure class="highlight cpp">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td>
-      <td class="code"><pre><span class="line">[General]</span><br><span class="line"></span><br><span class="line"> <span class="number">2</span> <span class="preprocessor"># Hostname of the CM server.</span></span><br><span class="line"></span><br><span class="line"> <span class="number">3</span> server_host=yun4</span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<h2 id="copy-mysql-driver-jar">copy mysql driver jar</h2>
-<figure class="highlight crystal">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br></pre></td>
-      <td class="code"><pre><span class="line">cp mysql-connector-java-<span class="number">5.1</span>.<span class="number">10</span>.jar cm-<span class="number">5.3</span>.<span class="number">0</span>/share/cmf/<span class="class"><span class="keyword">lib</span>/</span></span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<h1 id="install-coludera-manager-database">install  coludera manager database</h1>
-<figure class="highlight vim">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td>
-      <td class="code"><pre><span class="line">/<span class="keyword">opt</span>/<span class="keyword">cm</span>-<span class="number">5.3</span>.<span class="number">0</span>/share/cmf/schema/scm_prepare_database.<span class="keyword">sh</span> mysql databases -hlocalhost -uuser -ppassword --scm-host mccrea user password</span><br><span class="line"></span><br><span class="line">/<span class="keyword">opt</span>/<span class="keyword">cm</span>-<span class="number">5.3</span>.<span class="number">0</span>/share/cmf/schema/scm_prepare_database.<span class="keyword">sh</span> mysql hdp_cm -hlocalhost -ucm -padmin--scm-host mccrea <span class="keyword">cm</span> admin</span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<h1 id="copy-coludera-manage-to-node">copy coludera manage to node</h1>
-<figure class="highlight crystal">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br></pre></td>
-      <td class="code"><pre><span class="line">scp -r  /opt/cm-<span class="number">5.3</span>.<span class="number">0</span> root<span class="variable">@datanode1</span><span class="symbol">:/opt/cm-</span><span class="number">5.3</span>.<span class="number">0</span></span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<h1 id="start-server">start server</h1>
-<figure class="highlight cpp">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td>
-      <td class="code"><pre><span class="line">/opt/cm-<span class="number">5.3</span><span class="number">.0</span>/etc/init.d/cloudera-scm-server start</span><br><span class="line"></span><br><span class="line">sudo /opt/cm-<span class="number">5.3</span><span class="number">.0</span>/etc/init.d/cloudera-scm-agent start</span><br></pre></td>
-    </tr>
-  </table>
-</figure>]]></content>
-    <summary type="html">
-    <![CDATA[<h1 id="install_screen">install  screen</h1>
-<figure class="highlight cmake">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br></pre></td>
-      <td class="code"><pre><span class="line">yum <span class="keyword">install</span> screen -y</span><br></pre></td>
-    </tr>
-  </table>
-</figure>]]>
-    
-    </summary>
-    
-      <category term="bigdata" scheme="http://wwww.feel88.cn/tags/bigtata/"/>
-    
-      <category term="bigdata" scheme="http://wwww.feel88.cn/categories/bigtata/"/>
     
   </entry>
   

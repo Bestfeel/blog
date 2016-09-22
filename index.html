@@ -66,6 +66,49 @@
             <header>
 
               <div class="icon"></div>
+              <time datetime="2016-09-22T10:42:07.000Z"><a href="/2016/09/22/go编程笔记二/">2016-09-22</a></time>
+
+              <h1 class="title"><a href="/2016/09/22/go编程笔记二/">go 编程笔记二</a></h1>
+            </header>
+            <div class="entry">
+
+              <h3 id="并发_Goroutine">并发 Goroutine</h3>
+              <h3 id="Channel">Channel</h3>
+              <ul>
+                <li>channel 是引 类型,使 “make(chan
+                  <type>)” 创建,
+                    <type> 是要传递的数据类型。</type>
+                  </type>
+                </li>
+                <li>channel 使 “&lt;-“ 接收和发送数据。</li>
+                <li>“chan &lt;- data” 发送数据, </li>
+                <li>“data &lt;- chan” 接收数据,</li>
+                <li>可以 忽略掉接收结果,纯粹作为同步信号通知。默认情况下,发送和接收都会被阻塞 (block)。</li>
+                <li>发送操作被阻塞,直到接收端准备好接收。</li>
+                <li>接收操作被阻塞,直到发送端准备好发送。</li>
+              </ul>
+
+            </div>
+            <footer>
+
+
+              <div class="alignleft">
+                <a href="/2016/09/22/go编程笔记二/#more" class="more-link">阅读更多</a>
+              </div>
+
+
+
+              <div class="clearfix"></div>
+            </footer>
+          </div>
+        </article>
+
+        <article class="post">
+
+          <div class="post-content">
+            <header>
+
+              <div class="icon"></div>
               <time datetime="2016-09-22T07:39:04.000Z"><a href="/2016/09/22/go编程笔记一/">2016-09-22</a></time>
 
               <h1 class="title"><a href="/2016/09/22/go编程笔记一/">go 编程笔记一</a></h1>
@@ -310,45 +353,6 @@
           </div>
         </article>
 
-        <article class="post">
-
-          <div class="post-content">
-            <header>
-
-              <div class="icon"></div>
-              <time datetime="2016-01-02T14:52:17.000Z"><a href="/2016/01/02/ssl双向认证/">2016-01-02</a></time>
-
-              <h1 class="title"><a href="/2016/01/02/ssl双向认证/">ssl 双向认证</a></h1>
-            </header>
-            <div class="entry">
-
-              <p>有时候我们一些端口和网站需要ssl 双向认证</p>
-              <p>1.安装htpasswd</p>
-              <p>ubuntu </p>
-              <figure class="highlight actionscript">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
-                    <td class="code"><pre><span class="line">apt-<span class="keyword">get</span> install apache2-utils</span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-
-            </div>
-            <footer>
-
-
-              <div class="alignleft">
-                <a href="/2016/01/02/ssl双向认证/#more" class="more-link">阅读更多</a>
-              </div>
-
-
-
-              <div class="clearfix"></div>
-            </footer>
-          </div>
-        </article>
-
 
         <nav id="pagination">
 
@@ -363,6 +367,10 @@
       <div class="widget tag">
         <h3 class="title">最新文章</h3>
         <ul class="entry">
+
+          <li>
+            <a href="/2016/09/22/go编程笔记二/">go 编程笔记二</a>
+          </li>
 
           <li>
             <a href="/2016/09/22/go编程笔记一/">go 编程笔记一</a>
@@ -380,10 +388,6 @@
             <a href="/2016/08/03/java编程规范/">java 编程规范</a>
           </li>
 
-          <li>
-            <a href="/2016/04/09/ssh与MTU的坑/">ssh 与 MTU 的坑</a>
-          </li>
-
         </ul>
       </div>
 
@@ -395,7 +399,7 @@
 
           <li><a href="/categories/css3/">css3</a><small>2</small></li>
 
-          <li><a href="/categories/go/">go</a><small>1</small></li>
+          <li><a href="/categories/go/">go</a><small>2</small></li>
 
           <li><a href="/categories/java/">java</a><small>2</small></li>
 
@@ -422,7 +426,7 @@
 
           <li><a href="/tags/css3/">css3</a><small>2</small></li>
 
-          <li><a href="/tags/go/">go</a><small>1</small></li>
+          <li><a href="/tags/go/">go</a><small>2</small></li>
 
           <li><a href="/tags/java/">java</a><small>3</small></li>
 
