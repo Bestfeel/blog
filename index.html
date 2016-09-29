@@ -72,20 +72,15 @@
             </header>
             <div class="entry">
 
-              <h3 id="并发_Goroutine">并发 Goroutine</h3>
-              <h3 id="Channel">Channel</h3>
+              <h2 id="目录">目录</h2>
               <ul>
-                <li>channel 是引 类型,使 “make(chan
-                  <type>)” 创建,
-                    <type> 是要传递的数据类型。</type>
-                  </type>
-                </li>
-                <li>channel 使 “&lt;-“ 接收和发送数据。</li>
-                <li>“chan &lt;- data” 发送数据,</li>
-                <li>“data &lt;- chan” 接收数据,</li>
-                <li>可以 忽略掉接收结果,纯粹作为同步信号通知。默认情况下,发送和接收都会被阻塞 (block)。</li>
-                <li>发送操作被阻塞,直到接收端准备好接收。</li>
-                <li>接收操作被阻塞,直到发送端准备好发送。</li>
+                <li><a href="#并发Goroutine">并发</a></li>
+                <li><a href="#Channel">Channel</a></li>
+                <li><a href="#单向通道">单向通道</a></li>
+                <li><a href="#异步通道">异步通道</a></li>
+                <li><a href="#Select">Select</a></li>
+                <li><a href="#Timeout">Timeout</a></li>
+                <li><a href="#测试">测试</a></li>
               </ul>
 
             </div>
@@ -117,23 +112,18 @@
 
               <h3 id="开始学go_编程语言，_老规矩，学习任何一门编程语言都需要把该语言的语法特性过一遍">开始学go 编程语言， 老规矩，学习任何一门编程语言都需要把该语言的语法特性过一遍</h3>
               <p>这篇编程笔记主要讲的是基本语法，下一篇会分享一些go并发及高级特性</p>
-              <h3 id="变量">变量</h3>
+              <h2 id="目录">目录</h2>
               <ul>
-                <li>
-                  <p>变量的声明必须使用，在go 语言中声明的变量不使用，会报错，我们可以使用 idea 去帮我们优化变量和包的引用</p>
-                </li>
-                <li>
-                  <p>全局变量</p>
-                </li>
+                <li><a href="#变量">变量</a></li>
+                <li><a href="#字符串">字符串</a></li>
+                <li><a href="#控制结构">控制结构</a></li>
+                <li><a href="#type定义的新类型">type定义的新类型</a></li>
+                <li><a href="#Array,Slices和Maps">Array,Slices和Maps</a></li>
+                <li><a href="#函数">函数</a></li>
+                <li><a href="#Structs">Structs</a></li>
+                <li><a href="#接口">接口</a></li>
+                <li><a href="#包">包</a></li>
               </ul>
-              <figure class="highlight kotlin">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
-                    <td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> name</span> = <span class="string">"feel"</span></span><br><span class="line"><span class="variable"><span class="keyword">var</span> name string</span> = <span class="string">"feel"</span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
 
             </div>
             <footer>
