@@ -66,6 +66,45 @@
             <header>
 
               <div class="icon"></div>
+              <time datetime="2016-03-08T03:03:46.000Z"><a href="/2016/03/08/linux-交换分区/">2016-03-08</a></time>
+
+              <h1 class="title"><a href="/2016/03/08/linux-交换分区/">linux  交换分区</a></h1>
+            </header>
+            <div class="entry">
+
+              <p>利用swapoff和swapon刷新swap缓存</p>
+              <h2 id="如何清除Linux的交换空间？">如何清除Linux的交换空间？</h2>
+              <p>有时运行大量的进程后swap大量占用，达到30%的话机器会变得很慢<br>可以用以下两个命令清除刷新swap</p>
+              <figure class="highlight autohotkey">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
+                    <td class="code"><pre><span class="line"></span><br><span class="line">swapoff -<span class="literal">a</span> &amp;&amp; swapon -<span class="literal">a</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+
+            </div>
+            <footer>
+
+
+              <div class="alignleft">
+                <a href="/2016/03/08/linux-交换分区/#more" class="more-link">阅读更多</a>
+              </div>
+
+
+
+              <div class="clearfix"></div>
+            </footer>
+          </div>
+        </article>
+
+        <article class="post">
+
+          <div class="post-content">
+            <header>
+
+              <div class="icon"></div>
               <time datetime="2016-01-02T14:52:17.000Z"><a href="/2016/01/02/ssl双向认证/">2016-01-02</a></time>
 
               <h1 class="title"><a href="/2016/01/02/ssl双向认证/">ssl 双向认证</a></h1>
@@ -288,38 +327,6 @@
           </div>
         </article>
 
-        <article class="post">
-
-          <div class="post-content">
-            <header>
-
-              <div class="icon"></div>
-              <time datetime="2015-08-17T17:12:18.000Z"><a href="/2015/08/18/css3伪元素/">2015-08-18</a></time>
-
-              <h1 class="title"><a href="/2015/08/18/css3伪元素/">css3 伪元素</a></h1>
-            </header>
-            <div class="entry">
-
-              <h1 id="css3-伪类元素">css3-伪类元素</h1>
-              <h3 id="1-_伪类元素的定义">1. 伪类元素的定义</h3>
-              <p>所谓‘伪元素’，就是本身不存在的页面元素，HTML代码里并没有这样的元素，但在页面显示时，你却能看到这些本来不存在的元素发挥着作用。<br>
-
-              </p>
-            </div>
-            <footer>
-
-
-              <div class="alignleft">
-                <a href="/2015/08/18/css3伪元素/#more" class="more-link">阅读更多</a>
-              </div>
-
-
-
-              <div class="clearfix"></div>
-            </footer>
-          </div>
-        </article>
-
 
         <nav id="pagination">
 
@@ -338,6 +345,10 @@
         <ul class="entry">
 
           <li>
+            <a href="/2016/11/15/mysql5-7版本新特性/">mysql5.7 版本新特性</a>
+          </li>
+
+          <li>
             <a href="/2016/09/22/go编程笔记二/">go 编程笔记二</a>
           </li>
 
@@ -351,10 +362,6 @@
 
           <li>
             <a href="/2016/09/20/scala学习/">scala 学习</a>
-          </li>
-
-          <li>
-            <a href="/2016/08/03/java编程规范/">java 编程规范</a>
           </li>
 
         </ul>
@@ -384,6 +391,8 @@
 
           <li><a href="/categories/web/">web</a><small>2</small></li>
 
+          <li><a href="/categories/数据库/">数据库</a><small>1</small></li>
+
         </ul>
       </div>
 
@@ -402,6 +411,8 @@
           <li><a href="/tags/kotlin/">kotlin</a><small>1</small></li>
 
           <li><a href="/tags/linux/">linux</a><small>6</small></li>
+
+          <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
 
           <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
 
