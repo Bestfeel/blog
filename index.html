@@ -66,6 +66,65 @@
             <header>
 
               <div class="icon"></div>
+              <time datetime="2016-11-21T16:35:13.000Z"><a href="/2016/11/22/线程安全问题/">2016-11-22</a></time>
+
+              <h1 class="title"><a href="/2016/11/22/线程安全问题/">线程安全问题</a></h1>
+            </header>
+            <div class="entry">
+
+              <p>并发编程一直是业界的难题，如果你的代码程序中设计到多线程的问题，那么恭喜你！你已经走在在并发编程的道路上。</p>
+
+            </div>
+            <footer>
+
+
+              <div class="alignleft">
+                <a href="/2016/11/22/线程安全问题/#more" class="more-link">阅读更多</a>
+              </div>
+
+
+
+              <div class="clearfix"></div>
+            </footer>
+          </div>
+        </article>
+
+        <article class="post">
+
+          <div class="post-content">
+            <header>
+
+              <div class="icon"></div>
+              <time datetime="2016-11-21T16:07:54.000Z"><a href="/2016/11/22/Peterson无锁互斥算法/">2016-11-22</a></time>
+
+              <h1 class="title"><a href="/2016/11/22/Peterson无锁互斥算法/">Peterson 无锁互斥算法</a></h1>
+            </header>
+            <div class="entry">
+
+              <p>我们知道要解决线程互斥问题，我们一般使用锁机制来实现。实现互斥的一种软件方法是采用锁机制，即提供一对上锁和开锁原语，以及一个所变量W 进入临界区前，通过所变量来判断临界资源是否被占用。</p>
+              <p>Peterson算法是一个实现互斥锁的并发程序设计算法，可以控制两个进程访问一个共享的单用户资源而不发生访问冲突。</p>
+
+            </div>
+            <footer>
+
+
+              <div class="alignleft">
+                <a href="/2016/11/22/Peterson无锁互斥算法/#more" class="more-link">阅读更多</a>
+              </div>
+
+
+
+              <div class="clearfix"></div>
+            </footer>
+          </div>
+        </article>
+
+        <article class="post">
+
+          <div class="post-content">
+            <header>
+
+              <div class="icon"></div>
               <time datetime="2016-11-15T13:31:11.000Z"><a href="/2016/11/15/mysql5-7版本新特性/">2016-11-15</a></time>
 
               <h1 class="title"><a href="/2016/11/15/mysql5-7版本新特性/">mysql5.7 版本新特性</a></h1>
@@ -274,65 +333,6 @@
           </div>
         </article>
 
-        <article class="post">
-
-          <div class="post-content">
-            <header>
-
-              <div class="icon"></div>
-              <time datetime="2016-04-08T16:31:02.000Z"><a href="/2016/04/09/ssh与MTU的坑/">2016-04-09</a></time>
-
-              <h1 class="title"><a href="/2016/04/09/ssh与MTU的坑/">ssh 与 MTU 的坑</a></h1>
-            </header>
-            <div class="entry">
-
-              <p>前言：最近一周发现家里的网络ssh 协议出外网不了，一开始我以为是网络问题。折腾了半天，最后我用手机4G流量测试，尽然能连上vps.于是就有了下面的这篇文章。</p>
-
-            </div>
-            <footer>
-
-
-              <div class="alignleft">
-                <a href="/2016/04/09/ssh与MTU的坑/#more" class="more-link">阅读更多</a>
-              </div>
-
-
-
-              <div class="clearfix"></div>
-            </footer>
-          </div>
-        </article>
-
-        <article class="post">
-
-          <div class="post-content">
-            <header>
-
-              <div class="icon"></div>
-              <time datetime="2016-04-03T15:52:26.000Z"><a href="/2016/04/03/CGlib实现动态代理/">2016-04-03</a></time>
-
-              <h1 class="title"><a href="/2016/04/03/CGlib实现动态代理/">CGlib 实现动态代理</a></h1>
-            </header>
-            <div class="entry">
-
-              <p>代理模式是常用的java设计模式，他的特征是代理类与委托类有同样的接口，代理类主要负责为委托类预处理消息、过滤消息、把消息转发给委托类，以及事后处理消息等。代理类与委托类之间通常会存在关联关系，一个代理类的对象与一个委托类的对象关联，代理类的对象本身并不真正实现服务，而是通过调用委托类的对象的相关方法，来提供特定的服务。 按照代理的创建时期，代理类可以分为两种：</p>
-              <p>静态代理：由程序员创建或特定工具自动生成源代码，再对其编译。在程序运行前，代理类的.class文件就已经存在了；<br>动态代理：在程序运行时，运用反射机制动态创建而成。</p>
-
-            </div>
-            <footer>
-
-
-              <div class="alignleft">
-                <a href="/2016/04/03/CGlib实现动态代理/#more" class="more-link">阅读更多</a>
-              </div>
-
-
-
-              <div class="clearfix"></div>
-            </footer>
-          </div>
-        </article>
-
 
         <nav id="pagination">
 
@@ -349,6 +349,14 @@
         <ul class="entry">
 
           <li>
+            <a href="/2016/11/22/线程安全问题/">线程安全问题</a>
+          </li>
+
+          <li>
+            <a href="/2016/11/22/Peterson无锁互斥算法/">Peterson 无锁互斥算法</a>
+          </li>
+
+          <li>
             <a href="/2016/11/15/mysql5-7版本新特性/">mysql5.7 版本新特性</a>
           </li>
 
@@ -358,14 +366,6 @@
 
           <li>
             <a href="/2016/09/22/go编程笔记一/">go 编程笔记一</a>
-          </li>
-
-          <li>
-            <a href="/2016/09/21/kotlin学习/">kotlin 学习</a>
-          </li>
-
-          <li>
-            <a href="/2016/09/20/scala学习/">scala 学习</a>
           </li>
 
         </ul>
@@ -381,7 +381,7 @@
 
           <li><a href="/categories/go/">go</a><small>2</small></li>
 
-          <li><a href="/categories/java/">java</a><small>2</small></li>
+          <li><a href="/categories/java/">java</a><small>4</small></li>
 
           <li><a href="/categories/kotlin/">kotlin</a><small>1</small></li>
 
@@ -411,6 +411,8 @@
           <li><a href="/tags/go/">go</a><small>2</small></li>
 
           <li><a href="/tags/java/">java</a><small>3</small></li>
+
+          <li><a href="/tags/java并发编程/">java并发编程</a><small>2</small></li>
 
           <li><a href="/tags/kotlin/">kotlin</a><small>1</small></li>
 

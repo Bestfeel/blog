@@ -66,6 +66,65 @@
             <header>
 
               <div class="icon"></div>
+              <time datetime="2016-04-08T16:31:02.000Z"><a href="/2016/04/09/ssh与MTU的坑/">2016-04-09</a></time>
+
+              <h1 class="title"><a href="/2016/04/09/ssh与MTU的坑/">ssh 与 MTU 的坑</a></h1>
+            </header>
+            <div class="entry">
+
+              <p>前言：最近一周发现家里的网络ssh 协议出外网不了，一开始我以为是网络问题。折腾了半天，最后我用手机4G流量测试，尽然能连上vps.于是就有了下面的这篇文章。</p>
+
+            </div>
+            <footer>
+
+
+              <div class="alignleft">
+                <a href="/2016/04/09/ssh与MTU的坑/#more" class="more-link">阅读更多</a>
+              </div>
+
+
+
+              <div class="clearfix"></div>
+            </footer>
+          </div>
+        </article>
+
+        <article class="post">
+
+          <div class="post-content">
+            <header>
+
+              <div class="icon"></div>
+              <time datetime="2016-04-03T15:52:26.000Z"><a href="/2016/04/03/CGlib实现动态代理/">2016-04-03</a></time>
+
+              <h1 class="title"><a href="/2016/04/03/CGlib实现动态代理/">CGlib 实现动态代理</a></h1>
+            </header>
+            <div class="entry">
+
+              <p>代理模式是常用的java设计模式，他的特征是代理类与委托类有同样的接口，代理类主要负责为委托类预处理消息、过滤消息、把消息转发给委托类，以及事后处理消息等。代理类与委托类之间通常会存在关联关系，一个代理类的对象与一个委托类的对象关联，代理类的对象本身并不真正实现服务，而是通过调用委托类的对象的相关方法，来提供特定的服务。 按照代理的创建时期，代理类可以分为两种：</p>
+              <p>静态代理：由程序员创建或特定工具自动生成源代码，再对其编译。在程序运行前，代理类的.class文件就已经存在了；<br>动态代理：在程序运行时，运用反射机制动态创建而成。</p>
+
+            </div>
+            <footer>
+
+
+              <div class="alignleft">
+                <a href="/2016/04/03/CGlib实现动态代理/#more" class="more-link">阅读更多</a>
+              </div>
+
+
+
+              <div class="clearfix"></div>
+            </footer>
+          </div>
+        </article>
+
+        <article class="post">
+
+          <div class="post-content">
+            <header>
+
+              <div class="icon"></div>
               <time datetime="2016-03-08T03:03:46.000Z"><a href="/2016/03/08/linux-交换分区/">2016-03-08</a></time>
 
               <h1 class="title"><a href="/2016/03/08/linux-交换分区/">linux  交换分区</a></h1>
@@ -266,67 +325,6 @@
           </div>
         </article>
 
-        <article class="post">
-
-          <div class="post-content">
-            <header>
-
-              <div class="icon"></div>
-              <time datetime="2015-09-03T19:38:05.000Z"><a href="/2015/09/04/nginx-403-forbidden/">2015-09-04</a></time>
-
-              <h1 class="title"><a href="/2015/09/04/nginx-403-forbidden/">nginx 403 forbidden</a></h1>
-            </header>
-            <div class="entry">
-
-              <p>nginx 403 forbidden 三种原因<br>引起nginx 403 forbidden有三种原因，一是缺少索引文件，二权限问题，三是 selinux</p>
-
-            </div>
-            <footer>
-
-
-              <div class="alignleft">
-                <a href="/2015/09/04/nginx-403-forbidden/#more" class="more-link">阅读更多</a>
-              </div>
-
-
-
-              <div class="clearfix"></div>
-            </footer>
-          </div>
-        </article>
-
-        <article class="post">
-
-          <div class="post-content">
-            <header>
-
-              <div class="icon"></div>
-              <time datetime="2015-08-23T13:56:15.000Z"><a href="/2015/08/23/progress-Bar/">2015-08-23</a></time>
-
-              <h1 class="title"><a href="/2015/08/23/progress-Bar/">progress Bar</a></h1>
-            </header>
-            <div class="entry">
-
-              <h1 id="关于进度条-progress_Bar">关于进度条-progress Bar</h1>
-              <ol>
-                <li>提到进度条，首先会想到css3里面的新增标签progress，它的用法比较简单和单一，有两个属性：value和max，也就是当前值和最大值。今天在项目中有进度条的需求，但是起初用了这个，发现很难调样式，或者说样式就根本不怎么起作用，所以就暂时作罢，另外寻求解决方法。</li>
-              </ol>
-
-            </div>
-            <footer>
-
-
-              <div class="alignleft">
-                <a href="/2015/08/23/progress-Bar/#more" class="more-link">阅读更多</a>
-              </div>
-
-
-
-              <div class="clearfix"></div>
-            </footer>
-          </div>
-        </article>
-
 
         <nav id="pagination">
 
@@ -345,6 +343,14 @@
         <ul class="entry">
 
           <li>
+            <a href="/2016/11/22/线程安全问题/">线程安全问题</a>
+          </li>
+
+          <li>
+            <a href="/2016/11/22/Peterson无锁互斥算法/">Peterson 无锁互斥算法</a>
+          </li>
+
+          <li>
             <a href="/2016/11/15/mysql5-7版本新特性/">mysql5.7 版本新特性</a>
           </li>
 
@@ -354,14 +360,6 @@
 
           <li>
             <a href="/2016/09/22/go编程笔记一/">go 编程笔记一</a>
-          </li>
-
-          <li>
-            <a href="/2016/09/21/kotlin学习/">kotlin 学习</a>
-          </li>
-
-          <li>
-            <a href="/2016/09/20/scala学习/">scala 学习</a>
           </li>
 
         </ul>
@@ -377,7 +375,7 @@
 
           <li><a href="/categories/go/">go</a><small>2</small></li>
 
-          <li><a href="/categories/java/">java</a><small>2</small></li>
+          <li><a href="/categories/java/">java</a><small>4</small></li>
 
           <li><a href="/categories/kotlin/">kotlin</a><small>1</small></li>
 
@@ -407,6 +405,8 @@
           <li><a href="/tags/go/">go</a><small>2</small></li>
 
           <li><a href="/tags/java/">java</a><small>3</small></li>
+
+          <li><a href="/tags/java并发编程/">java并发编程</a><small>2</small></li>
 
           <li><a href="/tags/kotlin/">kotlin</a><small>1</small></li>
 
