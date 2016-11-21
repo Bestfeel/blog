@@ -4,7 +4,7 @@
   <subtitle><![CDATA[知识从未如此性感]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wwww.feel88.cn/"/>
-  <updated>2016-11-21T16:36:03.000Z</updated>
+  <updated>2016-11-21T16:55:53.000Z</updated>
   <id>http://wwww.feel88.cn/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wwww.feel88.cn/2016/11/22/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/"/>
     <id>http://wwww.feel88.cn/2016/11/22/线程安全问题/</id>
     <published>2016-11-21T16:35:13.000Z</published>
-    <updated>2016-11-21T16:36:03.000Z</updated>
+    <updated>2016-11-21T16:55:53.000Z</updated>
     <content type="html"><![CDATA[<p> &#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x4E00;&#x76F4;&#x662F;&#x4E1A;&#x754C;&#x7684;&#x96BE;&#x9898;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x7684;&#x4EE3;&#x7801;&#x7A0B;&#x5E8F;&#x4E2D;&#x8BBE;&#x8BA1;&#x5230;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x90A3;&#x4E48;&#x606D;&#x559C;&#x4F60;&#xFF01;&#x4F60;&#x5DF2;&#x7ECF;&#x8D70;&#x5728;&#x5728;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7684;&#x9053;&#x8DEF;&#x4E0A;&#x3002;</p>
 <a id="more"></a>
 <p> &#x8D77;&#x56E0;:<br> &#x4ECA;&#x65E9;&#x4E0A;&#x73ED;&#x7A81;&#x7136;&#x6536;&#x5230;&#x90AE;&#x4EF6;&#xFF0C;&#x4E8B;&#x4E1A;&#x90E8;&#x5728;&#x4F7F;&#x7528;&#x6211;&#x4EEC;&#x4EFF;&#x771F;&#x7CFB;&#x7EDF;&#x7684;&#x65F6;&#x5019;, &#x53D1;&#x73B0;&#x6709;&#x4E2A;&#x9700;&#x6C42;&#x65E0;&#x6CD5;&#x6EE1;&#x8DB3;&#x4ED6;&#x4EEC;&#x7684;&#x4E1A;&#x52A1;&#x3002;&#x5728;&#x8BBE;&#x5907;&#x4EA7;&#x751F;&#x6570;&#x636E;&#x70B9;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x4F9D;&#x8D56;&#x4E0A;&#x4E00;&#x4E9B;&#x72B6;&#x6001;&#x503C;&#x7684;&#x65F6;&#x5019;&#x51FA;&#x73B0;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x95EE;&#x9898;&#x3002;<br> &#x9700;&#x6C42;&#x662F;&#x5B9E;&#x73B0;&#x81EA;&#x589E;&#xFF0C;&#x81EA;&#x51CF;&#x7684;&#x64CD;&#x4F5C;&#x3002;<br> &#x6536;&#x5230;&#x90AE;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#x4E0B;&#x610F;&#x8BC6;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x7684;&#x7ECF;&#x9A8C;&#x63D0;&#x4F9B;&#x4E86;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;</p>
@@ -42,9 +42,7 @@
     <p> &#x7C7B;&#x9759;&#x6001;&#x53D8;&#x91CF; (&#x7EBF;&#x7A0B;&#x4E0D;&#x5B89;&#x5168;)</p>
   </li>
 </ol>
-<blockquote>
-  <p> &#x5982;&#x4E0B;&#x4EE3;&#x7801;&#x5B9E;&#x4F8B;, &#x7EBF;&#x7A0B;&#x5185;&#x90E8;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;. &#x6BCF;&#x4E2A;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x5360;&#x7528;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x6808;&#x7A7A;&#x95F4;&#x3002; </p>
-</blockquote>
+<p> &#x5982;&#x4E0B;&#x4EE3;&#x7801;&#x5B9E;&#x4F8B;, &#x7EBF;&#x7A0B;&#x5185;&#x90E8;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;. &#x6BCF;&#x4E2A;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x5360;&#x7528;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x6808;&#x7A7A;&#x95F4;&#x3002; </p>
 <figure class="highlight cpp">
   <table>
     <tr>
@@ -53,9 +51,7 @@
     </tr>
   </table>
 </figure>
-<blockquote>
-  <p> &#x5F53;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x5171;&#x4EAB;&#x540C;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#xFF0C;&#x8BBF;&#x95EE;&#x8BE5;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x7684;&#x6210;&#x5458;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x7EBF;&#x7A0B;&#x4E0D;&#x5B89;&#x5168;&#x7684;&#x64CD;&#x4F5C;&#x3002; &#x5F53;&#x8BBF;&#x95EE;&#x65B9;&#x6CD5;&#x5185;&#x90E8;&#x7684;&#x53D8;&#x91CF;&#x65F6;&#xFF0C;&#x6B64;&#x65F6;&#x662F;&#x4E0D;&#x5B58;&#x5728;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x95EE;&#x9898;&#x7684;&#x3002;&#x65B9;&#x6CD5;&#x5185;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x5DF2;&#x7ECF;&#x662F;&#x653E;&#x5728;&#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x81EA;&#x5DF1;&#x7684;&#x6808;&#x533A;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x4F5C;&#x4E3A;&#x64CD;&#x4F5C;&#x6570;&#xFF0C;&#x5C31;&#x53EA;&#x80FD;&#x88AB;&#x4ED6;&#x81EA;&#x5DF1;&#x7684;&#x7EBF;&#x7A0B;&#x8BBF;&#x95EE;&#x5230;&#x3002;</p>
-</blockquote>
+<p> &#x5F53;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x5171;&#x4EAB;&#x540C;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#xFF0C;&#x8BBF;&#x95EE;&#x8BE5;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x7684;&#x6210;&#x5458;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x7EBF;&#x7A0B;&#x4E0D;&#x5B89;&#x5168;&#x7684;&#x64CD;&#x4F5C;&#x3002; &#x5F53;&#x8BBF;&#x95EE;&#x65B9;&#x6CD5;&#x5185;&#x90E8;&#x7684;&#x53D8;&#x91CF;&#x65F6;&#xFF0C;&#x6B64;&#x65F6;&#x662F;&#x4E0D;&#x5B58;&#x5728;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x95EE;&#x9898;&#x7684;&#x3002;&#x65B9;&#x6CD5;&#x5185;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x5DF2;&#x7ECF;&#x662F;&#x653E;&#x5728;&#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x81EA;&#x5DF1;&#x7684;&#x6808;&#x533A;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x4F5C;&#x4E3A;&#x64CD;&#x4F5C;&#x6570;&#xFF0C;&#x5C31;&#x53EA;&#x80FD;&#x88AB;&#x4ED6;&#x81EA;&#x5DF1;&#x7684;&#x7EBF;&#x7A0B;&#x8BBF;&#x95EE;&#x5230;&#x3002;</p>
 <figure class="highlight gradle">
   <table>
     <tr>
