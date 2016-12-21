@@ -222,7 +222,7 @@ article .gallery:hover .control {
   opacity: 1;
   -ms-filter: none;
   -webkit-filter: none;
-  filter: none;
+          filter: none;
 }
 
 article .gallery img {
