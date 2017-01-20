@@ -4,7 +4,7 @@
   <subtitle><![CDATA[知识从未如此性感]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wwww.feel88.cn/"/>
-  <updated>2016-12-15T08:32:01.000Z</updated>
+  <updated>2017-01-20T19:59:30.000Z</updated>
   <id>http://wwww.feel88.cn/</id>
   
   <author>
@@ -13,6 +13,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[scala 元编程]]></title>
+    <link href="http://wwww.feel88.cn/2016/12/23/scala%E5%85%83%E7%BC%96%E7%A8%8B/"/>
+    <id>http://wwww.feel88.cn/2016/12/23/scala元编程/</id>
+    <published>2016-12-23T13:56:15.000Z</published>
+    <updated>2017-01-20T19:59:30.000Z</updated>
+    <content type="html"><![CDATA[<p>Ruby &#x7ECF;&#x9A8C;&#x7684;&#x670B;&#x53CB;&#x90FD;&#x77E5;&#x9053; Ruby &#x7684;&#x5143;&#x7F16;&#x7A0B;&#x5A01;&#x529B;&#x5341;&#x5206;&#x5F3A;&#x5927;. &#x5143;&#x7F16;&#x7A0B;&#x53EF;&#x4EE5;&#x5728;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x5B57;&#x6BB5;&#x6216;&#x8005;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#x8FDB;&#x884C;&#x52A8;&#x6001;&#x4F7F;&#x7528;&#x3002;<br> &#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x4F7F;&#x7528; scala &#x600E;&#x4E48;&#x8FDB;&#x884C;&#x5143;&#x7F16;&#x7A0B;&#x5462;?<br>
+  <a id="more"></a><br> &#x5728; scala &#x4E2D;&#x6211;&#x4EEC;&#x9700;&#x8981; Dynamic &#x8FD9;&#x4E2A;&#x7279;&#x8D28;&#xFF0C;&#x6211;&#x4EEC;&#x67E5;&#x770B;&#x6E90;&#x7801;&#x65B9;&#x5411;&#xFF0C;&#x5B83;&#x5E76;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x548C;&#x5B9E;&#x73B0;&#x4EFB;&#x4F55;&#x65B9;&#x6CD5;&#x548C;&#x5B57;&#x6BB5;&#x3002;<br>Dynamic &#x7279;&#x8D28;&#x53EA;&#x8D77;&#x5230;&#x6807;&#x793A;&#x4F5C;&#x7528; &#x8BE5;&#x7279;&#x8D28;&#x5E76;&#x4E0D;&#x5305;&#x542B;&#x4EFB;&#x4F55;&#x65B9;&#x6CD5;&#x5B9A;&#x4E49; &#x5047;&#x5982;&#x7F16;&#x8BD1;&#x5668;&#x67E5;&#x770B;&#x5230;&#x8BE5;&#x7279;&#x8D28; &#x5728;&#x5904;&#x7406;&#x8BE5;&#x7279;&#x8D28;&#x65F6;&#x4F1A;&#x9075;&#x5FAA;&#x67D0;&#x4E00;&#x7279;&#x6B8A;&#x534F;&#x8BAE;.</p>
+<figure class="highlight scala">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+      <td class="code"><pre><span class="line"><span class="class"><span class="keyword">trait</span> <span class="title">Dynamic</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Any</span></span></span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<p> &#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x5B9A;&#x4E49;&#x7684;&#x7C7B;&#x4E2D;&#x5B9E;&#x73B0; Dynamic&#x3002;&#x5E76;&#x4E14;&#x5BFC;&#x5165; import scala.language.dynamics&#x3002; &#x5982;&#x4E0B;&#x4EE3;&#x7801;&#x6848;&#x4F8B;&#xFF1A;</p>
+<figure class="highlight scala">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td>
+      <td class="code"><pre><span class="line"><span class="keyword">package</span> com.gizwits.scala</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> scala.language.dynamics</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Dynamic</span> {</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">show</span>(</span>) = println(<span class="string">&quot;hell  world&quot;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">selectDynamic</span>(</span>field: <span class="type">String</span>) = field <span class="keyword">match</span> {</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;name&quot;</span> =&gt; <span class="string">&quot;feel&quot;</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;age&quot;</span> =&gt; <span class="number">100</span></span><br><span class="line">    <span class="keyword">case</span> _ =&gt; <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">RuntimeException</span>(<span class="string">&quot;new field&quot;</span>)</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">DynamicsMethod</span> {</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span>(</span>args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = {</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">val</span> <span class="title">person</span> =</span> <span class="keyword">new</span> <span class="type">Person</span></span><br><span class="line">    person.show</span><br><span class="line">    println(person.name)</span><br><span class="line">    println(person.age)</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td>
+    </tr>
+  </table>
+</figure>
+<p> &#x5982;&#x4E0A;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x52A8;&#x6001;&#x4F7F;&#x7528;&#x5B57;&#x6BB5;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x5B9E;&#x73B0; selectDynamic &#x65B9;&#x6CD5;&#x3002; &#x7C7B;&#x4F3C;&#x7684;&#x5176;&#x4ED6;&#x4F7F;&#x7528; </p>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td>
+      <td class="code"><pre><span class="line">foo.<span class="function"><span class="title">method</span><span class="params">(&#x201C;blah&#x201D;)</span></span> &#x2013;&gt; foo.<span class="function"><span class="title">applyDynamic</span><span class="params">(&#x201C;method&#x201D;)</span><span class="params">(&#x201C;blah&#x201D;)</span></span></span><br><span class="line">foo.<span class="function"><span class="title">method</span><span class="params">(x = &#x201C;blah&#x201D;)</span></span> &#x2013;&gt; foo.<span class="function"><span class="title">applyDynamic</span><span class="params">(&#x201C;method&#x201D;)</span><span class="params">((&#x201C;x&#x201D;,&#x201D;blah&#x201D;)</span></span>)</span><br><span class="line">foo<span class="class">.field</span> &#x2013;&gt; foo.<span class="function"><span class="title">selectDynamic</span><span class="params">(&#x201C;field&#x201D;)</span></span></span><br><span class="line">foo<span class="class">.varia</span> = <span class="number">10</span> &#x2013;&gt; foo.<span class="function"><span class="title">updateDynamic</span><span class="params">(&#x201C;field&#x201D;)</span><span class="params">(<span class="number">10</span>)</span></span></span><br><span class="line">foo.<span class="function"><span class="title">arr</span><span class="params">(<span class="number">10</span>)</span></span>=<span class="number">13</span> &#x2013;&gt; foo.<span class="function"><span class="title">selectDynamic</span><span class="params">(&#x201C;arr&#x201D;)</span></span>.<span class="function"><span class="title">update</span><span class="params">(<span class="number">10</span>,<span class="number">13</span>)</span></span></span><br><span class="line">foo.<span class="function"><span class="title">arr</span><span class="params">(<span class="number">10</span>)</span></span> &#x2013;&gt; foo.<span class="function"><span class="title">applyDynamic</span><span class="params">(&#x201C;arr&#x201D;)</span><span class="params">(<span class="number">10</span>)</span></span></span><br></pre></td>
+    </tr>
+  </table>
+</figure>]]></content>
+    <summary type="html">
+    <![CDATA[<p>Ruby 经验的朋友都知道 Ruby 的元编程威力十分强大.元编程可以在我们没有定义字段或者方法的时候进行动态使用。<br>那么我们使用scala怎么进行元编程呢?<br>]]>
+    
+    </summary>
+    
+      <category term="scala" scheme="http://wwww.feel88.cn/tags/scala/"/>
+    
+      <category term="scala" scheme="http://wwww.feel88.cn/categories/scala/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[线程安全问题]]></title>
@@ -3030,56 +3075,6 @@
       <category term="样式" scheme="http://wwww.feel88.cn/tags/%E6%A0%B7%E5%BC%8F/"/>
     
       <category term="css3" scheme="http://wwww.feel88.cn/categories/css3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[sqoop 时区转换]]></title>
-    <link href="http://wwww.feel88.cn/2015/08/17/sqoop%E6%97%B6%E5%8C%BA%E8%BD%AC%E6%8D%A2/"/>
-    <id>http://wwww.feel88.cn/2015/08/17/sqoop时区转换/</id>
-    <published>2015-08-17T12:55:30.000Z</published>
-    <updated>2016-09-22T12:16:52.000Z</updated>
-    <content type="html"><![CDATA[<p> &#x5728;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x78B0;&#x89C1;&#x5404;&#x79CD;&#x65F6;&#x533A;&#x8F6C;&#x6362;&#x95EE;&#x9898;&#x3002;<br> &#x5728;&#x505A; ETL &#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x7531;&#x4E8E;&#x6211;&#x4EEC;&#x7684;&#x6570;&#x636E;&#x65F6;&#x95F4;&#x662F; 0 &#x65F6;&#x533A;&#x7684;&#x3002;&#x9700;&#x8981;&#x8F6C;&#x6362; 8 &#x65F6;&#x533A;&#x3002;</p>
-<a id="more"></a>
-<p>oracle &#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F; </p>
-<figure class="highlight groovy">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
-      <td class="code"><pre><span class="line">$ sqoop <span class="keyword">import</span> -D oracle.sessionTimeZone=America/Los_Angeles \</span><br><span class="line">    --connect <span class="string">jdbc:</span><span class="string">oracle:</span><span class="string">thin:</span>@<span class="comment">//db.example.com/foo --table bar</span></span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<p>mysql &#x6CA1;&#x6709;&#x50CF; oracle &#x8FD9;&#x4E48;&#x7B80;&#x5355;&#x3002;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x8F6C;&#x6362;&#x3002;&#x67E5;&#x627E;&#x76F8;&#x5173;&#x8D44;&#x6599; mysql &#x6709; 2 &#x79CD;&#x65B9;&#x5F0F;&#x89E3;&#x51B3;&#x3002;</p>
-<p>1. &#x5C06; mysql time_zone &#x8BBE;&#x7F6E;&#x6210; +8&#xFF0C;&#x90A3;&#x4E48;&#x67E5;&#x8BE2;&#x7684;&#x65F6;&#x95F4;&#x5B57;&#x6BB5;&#x5C06;&#x4F1A;&#x81EA;&#x52A8;&#x52A0; 8 &#x5C0F;&#x65F6;&#x3002;</p>
-<p>2. &#x4F7F;&#x7528; CONVERT_TZ &#x51FD;&#x6570;&#x8F6C;&#x6362; </p>
-<figure class="highlight asciidoc">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td>
-      <td class="code"><pre><span class="line"><span class="header">mysql&gt; SELECT CONVERT_TZ(&apos;2004-01-01 12:00:00&apos;,&apos;GMT&apos;,&apos;MET&apos;);</span><br><span class="line">+---------------------------------------------------------+</span></span><br><span class="line"><span class="header">| CONVERT_TZ(&apos;2004-01-01 12:00:00&apos;,&apos;GMT&apos;,&apos;MET&apos;)           |</span><br><span class="line">+---------------------------------------------------------+</span></span><br><span class="line"><span class="header">| 2004-01-01 13:00:00                                     |</span><br><span class="line">+---------------------------------------------------------+</span></span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"><span class="header">mysql&gt; SELECT CONVERT_TZ(&apos;2004-01-01 12:00:00&apos;,&apos;+00:00&apos;,&apos;+10:00&apos;);</span><br><span class="line">+---------------------------------------------------------+</span></span><br><span class="line"><span class="header">| CONVERT_TZ(&apos;2004-01-01 12:00:00&apos;,&apos;+00:00&apos;,&apos;+10:00&apos;)     |</span><br><span class="line">+---------------------------------------------------------+</span></span><br><span class="line"><span class="header">| 2004-01-01 22:00:00                                     |</span><br><span class="line">+---------------------------------------------------------+</span></span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td>
-    </tr>
-  </table>
-</figure>
-<p>sqoop &#x7684;&#x4F7F;&#x7528;&#x6BD4;&#x8F83;&#x9EBB;&#x70E6;&#x4E00;&#x4E9B; </p>
-<figure class="highlight groovy">
-  <table>
-    <tr>
-      <td class="gutter"><pre><span class="line">1</span><br></pre></td>
-      <td class="code"><pre><span class="line">sqoop <span class="keyword">import</span> --connect <span class="string">jdbc:</span><span class="string">mysql:</span><span class="comment">//localhost:3306/xcloud -username root-password  root--query &quot;select id,password,CONVERT_TZ(last_login,&apos;+00:00&apos;,&apos;+8:00&apos;) as last_login,is_superuser,username,first_name ,last_name,email,is_staff,is_active ,CONVERT_TZ(date_joined,&apos;+00:00&apos;,&apos;+8:00&apos;) as date_joined from auth_user where id &gt;-100 and \$CONDITIONS&quot;  -m 1   --target-dir /test/auth_user/</span></span><br></pre></td>
-    </tr>
-  </table>
-</figure>]]></content>
-    <summary type="html">
-    <![CDATA[<p>在实际应用中，我们经常碰见各种时区转换问题。<br>在做ETL过程中，由于我们的数据时间是0时区的。需要转换8时区。</p>]]>
-    
-    </summary>
-    
-      <category term="bigdata" scheme="http://wwww.feel88.cn/tags/bigtata/"/>
-    
-      <category term="sqoop" scheme="http://wwww.feel88.cn/tags/sqoop/"/>
-    
-      <category term="bigdata" scheme="http://wwww.feel88.cn/categories/bigtata/"/>
     
   </entry>
   
