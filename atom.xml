@@ -4,7 +4,7 @@
   <subtitle><![CDATA[知识从未如此性感]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wwww.feel88.cn/"/>
-  <updated>2017-03-19T12:41:49.000Z</updated>
+  <updated>2017-03-19T12:45:07.000Z</updated>
   <id>http://wwww.feel88.cn/</id>
   
   <author>
@@ -19,8 +19,9 @@
     <link href="http://wwww.feel88.cn/2017/01/04/python%E4%B8%8B%E5%AE%89%E8%A3%85MySQLdb/"/>
     <id>http://wwww.feel88.cn/2017/01/04/python下安装MySQLdb/</id>
     <published>2017-01-04T08:46:48.000Z</published>
-    <updated>2017-03-19T12:41:49.000Z</updated>
-    <content type="html"><![CDATA[<p>&#x5728;&#x65B0;&#x7248;&#x7684; mac &#x4E0B;&#x5B89;&#x88C5;&#x4E00;&#x4E9B;&#x5E93;&#x7684;&#x65F6;&#x5019;&#x51FA;&#x73B0; <code>ld: library not found for -lssl</code> &#x7B49;&#x7C7B;&#x4F3C;&#x7684;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x3002;<br> &#x8BF4;&#x5E93;&#x91CC;&#x7F3A;&#x5C11;&#x94FE;&#x63A5;&#xFF0C;&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x7B49;&#x7B49;&#x3002;&#x5176;&#x5B9E;&#x90FD;&#x548C; xcode &#x6709;&#x5173;&#x7CFB;&#x3002;</p>
+    <updated>2017-03-19T12:45:07.000Z</updated>
+    <content type="html"><![CDATA[<p>&#x5728;&#x65B0;&#x7248;&#x7684; mac &#x4E0B;&#x5B89;&#x88C5;&#x4E00;&#x4E9B;&#x5E93;&#x7684;&#x65F6;&#x5019;&#x51FA;&#x73B0; <code>ld: library not found for -lssl</code> &#x7B49;&#x7C7B;&#x4F3C;&#x7684;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x3002;<br> &#x8BF4;&#x5E93;&#x91CC;&#x7F3A;&#x5C11;&#x94FE;&#x63A5;&#xFF0C;&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x7B49;&#x7B49;&#x3002;&#x5176;&#x5B9E;&#x90FD;&#x548C; xcode &#x6709;&#x5173;&#x7CFB; <br><a href="http://railsapps.github.io/xcode-command-line-tools.html" target="_blank" rel="external"> &#x53C2;&#x8003;</a></p>
+<a id="more"></a>
 <figure class="highlight crystal">
   <table>
     <tr>
@@ -57,7 +58,8 @@
   </table>
 </figure>]]></content>
     <summary type="html">
-    <![CDATA[<p>&#x5728;&#x65B0;&#x7248;&#x7684; mac &#x4E0B;&#x5B89;&#x88C5;&#x4E00;&#x4E9B;&#x5E93;&#x7684;&#x65F6;&#x5019;&#x51FA;&#x73B0; <code>ld: l]]>
+    <![CDATA[<p>在新版的mac下安装一些库的时候出现<code>ld: library not found for -lssl</code> 等类似的错误信息。<br>说库里缺少链接，还有其他的等等。其实都和xcode有关系<br><a href="http://railsapps.github.io/xcode-command-line-tools.html">参考</a></p>]]>
+    
     </summary>
     
       <category term="python下安装MySQLdb填坑" scheme="http://wwww.feel88.cn/tags/python%E4%B8%8B%E5%AE%89%E8%A3%85MySQLdb%E5%A1%AB%E5%9D%91/"/>
