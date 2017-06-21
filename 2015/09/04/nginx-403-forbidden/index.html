@@ -72,49 +72,43 @@
             </header>
             <div class="entry">
 
-              <p>nginx 403 forbidden &#x4E09;&#x79CD;&#x539F;&#x56E0; &#x5F15;&#x8D77; nginx 403 forbidden &#x6709;&#x4E09;&#x79CD;&#x539F;&#x56E0;&#xFF0C;&#x4E00;&#x662F;&#x7F3A;&#x5C11;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#xFF0C;&#x4E8C;&#x6743;&#x9650;&#x95EE;&#x9898;&#xFF0C;&#x4E09;&#x662F;
+              <p>nginx 403 forbidden &#x4E09;&#x79CD;&#x539F;&#x56E0; <br> &#x5F15;&#x8D77; nginx 403 forbidden &#x6709;&#x4E09;&#x79CD;&#x539F;&#x56E0;&#xFF0C;&#x4E00;&#x662F;&#x7F3A;&#x5C11;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#xFF0C;&#x4E8C;&#x6743;&#x9650;&#x95EE;&#x9898;&#xFF0C;&#x4E09;&#x662F;
                 selinux
               </p>
-              <p>&lt;!--more--&gt;</p>
-              <h4 id="1&#x7F3A;&#x5C11;-indexhtml-&#x6216;&#x8005;-indexphp-&#x6587;&#x4EF6;">1&#xFF0C;&#x7F3A;&#x5C11; index.html &#x6216;&#x8005; index.php &#x6587;&#x4EF6; </h4>
-              <p>
-                <figure class="highlight nginx">
-                  <table>
-                    <tr>
-                      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td>
-                      <td class="code"><pre><span class="line"></span><br><span class="line"><span class="title">server</span> {  </span><br><span class="line"> <span class="title">listen</span>       <span class="number">80</span>;  </span><br><span class="line"> <span class="title">server_name</span>  localhost;  </span><br><span class="line"> <span class="title">index</span>  index.php index.html;  </span><br><span class="line"> <span class="title">root</span>  /home/feel/www;</span><br></pre></td>
-                    </tr>
-                  </table>
-                </figure>
-              </p>
-              <p> &#x5982;&#x679C;&#x5728; /home/zhang/www &#x4E0B;&#x9762;&#x6CA1;&#x6709; index.php,index.html &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x57DF;&#x540D;&#xFF0C;&#x627E;&#x4E0D;&#x5230;&#x6587;&#x4EF6;&#xFF0C;&#x4F1A;&#x62A5;
+              <a id="more"></a>
+              <h4 id="1&#x7F3A;&#x5C11;-indexhtml-&#x6216;&#x8005;-indexphp-&#x6587;&#x4EF6;">1&#xFF0C;&#x7F3A;&#x5C11; index.html &#x6216;&#x8005; index.php &#x6587;&#x4EF6;</h4>
+              <figure class="highlight nginx">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td>
+                    <td class="code"><pre><span class="line"></span><br><span class="line"><span class="title">server</span> {  </span><br><span class="line"> <span class="title">listen</span>       <span class="number">80</span>;  </span><br><span class="line"> <span class="title">server_name</span>  localhost;  </span><br><span class="line"> <span class="title">index</span>  index.php index.html;  </span><br><span class="line"> <span class="title">root</span>  /home/feel/www;</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <p>&#x5982;&#x679C;&#x5728; /home/zhang/www &#x4E0B;&#x9762;&#x6CA1;&#x6709; index.php,index.html &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x57DF;&#x540D;&#xFF0C;&#x627E;&#x4E0D;&#x5230;&#x6587;&#x4EF6;&#xFF0C;&#x4F1A;&#x62A5;
                 403 forbidden&#x3002;&#x4F8B;&#x5982;&#xFF1A;&#x4F60;&#x8BBF;&#x95EE; www.test.com &#x800C;&#x8FD9;&#x4E2A;&#x57DF;&#x540D;&#xFF0C;&#x5BF9;&#x5E94;&#x7684; root &#x6307;&#x5B9A;&#x7684;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#x4E0D;&#x5B58;&#x5728;&#x3002;</p>
-              <h4 id="2&#x6743;&#x9650;&#x95EE;&#x9898;">2&#xFF0C;&#x6743;&#x9650;&#x95EE;&#x9898; </h4>
-              <p> &#x56E0;&#x4E3A;&#x6743;&#x9650;&#x95EE;&#x9898;&#x5F15;&#x8D77;&#x7684; 403&#xFF0C;&#x4E2A;&#x4EBA;&#x89C9;&#x5F97;&#x6BD4;&#x8F83;&#x96BE;&#x67E5;&#x627E;&#xFF0C;&#x56E0;&#x4E3A;&#x4E00;&#x65F6;&#x60F3;&#x4E0D;&#x8D77; </p>
-              <p>
-                <figure class="highlight nginx">
-                  <table>
-                    <tr>
-                      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td>
-                      <td class="code"><pre><span class="line"><span class="title">server</span> {  </span><br><span class="line"> <span class="title">listen</span>       <span class="number">80</span>;  </span><br><span class="line"> <span class="title">server_name</span>  localhost;  </span><br><span class="line"> <span class="title">index</span>  index.php index.html;  </span><br><span class="line"> <span class="title">root</span>  /home/feel/www;</span><br></pre></td>
-                    </tr>
-                  </table>
-                </figure>
-              </p>
-              <p> &#x6211;&#x628A; web &#x76EE;&#x5F55;&#x653E;&#x5728;&#x7528;&#x6237;&#x7684;&#x6240;&#x5C5E;&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#xFF0C;nginx &#x7684;&#x542F;&#x52A8;&#x7528;&#x6237;&#x9ED8;&#x8BA4;&#x662F; nginx &#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5BF9;&#x76EE;&#x5F55;&#x6839;&#x672C;&#x6CA1;&#x6709;&#x8BFB;&#x7684;&#x6743;&#x9650;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4F1A;&#x62A5;
+              <h4 id="2&#x6743;&#x9650;&#x95EE;&#x9898;">2&#xFF0C;&#x6743;&#x9650;&#x95EE;&#x9898;</h4>
+              <p>&#x56E0;&#x4E3A;&#x6743;&#x9650;&#x95EE;&#x9898;&#x5F15;&#x8D77;&#x7684; 403&#xFF0C;&#x4E2A;&#x4EBA;&#x89C9;&#x5F97;&#x6BD4;&#x8F83;&#x96BE;&#x67E5;&#x627E;&#xFF0C;&#x56E0;&#x4E3A;&#x4E00;&#x65F6;&#x60F3;&#x4E0D;&#x8D77;</p>
+              <figure class="highlight nginx">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td>
+                    <td class="code"><pre><span class="line"><span class="title">server</span> {  </span><br><span class="line"> <span class="title">listen</span>       <span class="number">80</span>;  </span><br><span class="line"> <span class="title">server_name</span>  localhost;  </span><br><span class="line"> <span class="title">index</span>  index.php index.html;  </span><br><span class="line"> <span class="title">root</span>  /home/feel/www;</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <p>&#x6211;&#x628A; web &#x76EE;&#x5F55;&#x653E;&#x5728;&#x7528;&#x6237;&#x7684;&#x6240;&#x5C5E;&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#xFF0C;nginx &#x7684;&#x542F;&#x52A8;&#x7528;&#x6237;&#x9ED8;&#x8BA4;&#x662F; nginx &#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5BF9;&#x76EE;&#x5F55;&#x6839;&#x672C;&#x6CA1;&#x6709;&#x8BFB;&#x7684;&#x6743;&#x9650;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4F1A;&#x62A5;
                 403 &#x9519;&#x8BEF;&#x4E86;&#x3002;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#xFF0C;&#x628A; web &#x76EE;&#x5F55;&#x7684;&#x6743;&#x9650;&#x6539;&#x5927;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x628A; nginx &#x7684;&#x542F;&#x52A8;&#x7528;&#x6237;&#x6539;&#x6210;&#x76EE;&#x5F55;&#x7684;&#x6240;&#x5C5E;&#x7528;&#x6237;&#xFF0C;&#x91CD;&#x8D77;&#x4E00;&#x4E0B;&#x5C31;&#x80FD;&#x89E3;&#x51B3;&#x3002;</p>
               <h4 id="3-&#x6CA1;&#x6709;&#x5173;&#x95ED;-selinux">3. &#x6CA1;&#x6709;&#x5173;&#x95ED; selinux</h4>
-              <p> &#x8FD9;&#x4E2A;&#x56F0;&#x6270;&#x4E86;&#x6211;&#x597D;&#x4E45;&#xFF0C;&#x6700;&#x540E;&#x6211;&#x5C1D;&#x8BD5;&#x5173;&#x95ED; selinux. &#x91CD;&#x542F;&#x670D;&#x52A1;&#x5668;&#x3002;&#x6700;&#x540E;&#x89E3;&#x51B3;&#x4E86;&#xFF01;&#xFF01;&#xFF01;</p>
-              <p>
-                <figure class="highlight stylus">
-                  <table>
-                    <tr>
-                      <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
-                      <td class="code"><pre><span class="line">sed  -<span class="tag">i</span> <span class="string">&apos;s/SELINUX=enforcing/SELINUX=disabled/g&apos;</span> /etc/selinux/config</span><br><span class="line">sed  -<span class="tag">i</span> <span class="string">&apos;/SELINUX=disabled/s/^#*//&apos;</span>  /etc/selinux/config</span><br></pre></td>
-                    </tr>
-                  </table>
-                </figure>
-              </p>
+              <p>&#x8FD9;&#x4E2A;&#x56F0;&#x6270;&#x4E86;&#x6211;&#x597D;&#x4E45;&#xFF0C;&#x6700;&#x540E;&#x6211;&#x5C1D;&#x8BD5;&#x5173;&#x95ED; selinux. &#x91CD;&#x542F;&#x670D;&#x52A1;&#x5668;&#x3002;&#x6700;&#x540E;&#x89E3;&#x51B3;&#x4E86;&#xFF01;&#xFF01;&#xFF01;</p>
+              <figure class="highlight stylus">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td>
+                    <td class="code"><pre><span class="line">sed  -<span class="tag">i</span> <span class="string">&apos;s/SELINUX=enforcing/SELINUX=disabled/g&apos;</span> /etc/selinux/config</span><br><span class="line">sed  -<span class="tag">i</span> <span class="string">&apos;/SELINUX=disabled/s/^#*//&apos;</span>  /etc/selinux/config</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
 
             </div>
             <footer>
