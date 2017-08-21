@@ -1,0 +1,365 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <title>ubuntu 搭建深度学习 tensorflow 环境 | Feel&#39;s blog</title>
+  <meta name="author" content="feel">
+
+  <meta name="description" content="feel&#39;s blog | java | scala | python | javascript| linux | nodejs| Machine Learning|go">
+
+
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+  <meta property="og:title" content="ubuntu 搭建深度学习 tensorflow 环境">
+  <meta property="og:site_name" content="Feel&#39;s blog">
+
+
+  <meta property="og:image" content="undefined">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="Feel&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <a href="https://github.com/Bestfeel" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+</head>
+
+</html>
+
+<body>
+  <header id="header" class="inner">
+    <div class="alignleft">
+      <h1><a href="/">Feel&#39;s blog</a></h1>
+      <h2><a href="/">知识从未如此性感</a></h2>
+    </div>
+    <nav id="main-nav" class="alignright">
+      <ul>
+
+        <li><a href="/">首页</a></li>
+
+        <li><a href="/archives">归档</a></li>
+
+        <li><a href="/site">下载</a></li>
+
+        <li><a href="/about">联系我</a></li>
+
+        <li><a href="http://download.feel88.cn">新版下载中心</a></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+
+
+
+      <div class="clearfix"></div>
+    </nav>
+    <div class="clearfix"></div>
+  </header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft">
+      <div id="wrapper">
+        <article class="post">
+
+          <div class="post-content">
+            <header>
+
+              <div class="icon"></div>
+              <time datetime="2017-06-27T15:40:43.000Z"><a href="/2017/06/27/ubuntu搭建深度学习tensorflow环境/">2017-06-27</a></time>
+
+              <h1 class="title">ubuntu 搭建深度学习 tensorflow 环境</h1>
+            </header>
+            <div class="entry">
+
+              <h3 id="&#x82F1;&#x4F1F;&#x8FBE;&#x9A71;&#x52A8;&#x5B89;&#x88C5;">&#x82F1;&#x4F1F;&#x8FBE;&#x9A71;&#x52A8;&#x5B89;&#x88C5;</h3>
+              <p>&#x628A; nouveau &#x9A71;&#x52A8;&#x52A0;&#x5165;&#x9ED1;&#x540D;&#x5355; <br>sudo nano /etc/modprobe.d/blacklist-nouveau.conf<br> &#x52A0;&#x5165;&#x5982;&#x4E0B;&#x5185;&#x5BB9;&#xFF1A;</p>
+              <a id="more"></a>
+              <figure class="highlight vbnet">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td>
+                    <td class="code"><pre><span class="line">blacklist nouveau</span><br><span class="line">blacklist lbm-nouveau</span><br><span class="line">options nouveau modeset=<span class="number">0</span></span><br><span class="line"><span class="keyword">alias</span> nouveau <span class="keyword">off</span></span><br><span class="line"><span class="keyword">alias</span> lbm-nouveau <span class="keyword">off</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <p>&#x7981;&#x7528; nouveau &#x5185;&#x6838;&#x6A21;&#x5757;</p>
+              <figure class="highlight stata">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td>
+                    <td class="code"><pre><span class="line">echo options nouveau modeset=0 | sudo tee -a /etc/modprobe.<span class="keyword">d</span>/nouveau-kms.<span class="keyword">conf</span></span><br><span class="line">sudo <span class="keyword">update</span>-initramfs -<span class="keyword">u</span></span><br><span class="line">sudo reboot</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <figure class="highlight smali">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td>
+                    <td class="code"><pre><span class="line">sudo apt-get remove --purge nvidia*</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sudo<span class="instruction"> add-apt-repository </span>ppa:graphics-drivers/ppa</span><br><span class="line"></span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line">&#x6709;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5B89;&#x88C5;&#x7684;&#x65F6;&#x5019;&#x5DF2;&#x7ECF;&#x88C5;&#x597D;&#x9A71;&#x52A8;&#x4E86;&#xFF0C;&#x6BD4;&#x5982;&#x6211;&#x88C5;&#x7684;&#x7684; linux-mint</span><br><span class="line"></span><br><span class="line">sudo apt-get install nvidia-375&#xFF08;375 &#x662F;&#x4F60;&#x67E5;&#x5230;&#x7684;&#x7248;&#x672C;&#x53F7;&#xFF09;</span><br><span class="line"></span><br><span class="line">sudo apt-get install mesa-common-dev</span><br><span class="line"></span><br><span class="line">sudo apt-get install freeglut3-dev</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <p>nvidia-smi &#x67E5;&#x770B;&#x663E;&#x5361;&#x4FE1;&#x606F;</p>
+              <figure class="highlight asciidoc">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td>
+                    <td class="code"><pre><span class="line">(anaconda3-4.4.0) feel@feel ~ $ nvidia-smi</span><br><span class="line"><span class="header">Fri Aug  4 23:35:12 2017       </span><br><span class="line">+-----------------------------------------------------------------------------+</span></span><br><span class="line">| NVIDIA-SMI 375.66                 Driver Version: 375.66                    |</span><br><span class="line">|-------------------------------<span class="code">+----------------------+</span>----------------------+</span><br><span class="line">| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |</span><br><span class="line">| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |</span><br><span class="line">|===============================<span class="code">+======================+</span>======================|</span><br><span class="line">|   0  GeForce GTX 1070    Off  | 0000:01:00.0      On |                  N/A |</span><br><span class="line"><span class="header">|  0%   39C    P8     7W / 166W |    290MiB /  8113MiB |      0%      Default |</span><br><span class="line">+-------------------------------+----------------------+----------------------+</span></span><br><span class="line"><span class="header">                                                                               </span><br><span class="line">+-----------------------------------------------------------------------------+</span></span><br><span class="line">| Processes:                                                       GPU Memory |</span><br><span class="line">|  GPU       PID  Type  Process name                               Usage      |</span><br><span class="line">|=============================================================================|</span><br><span class="line">|    0      1358    G   /usr/lib/xorg/Xorg                             187MiB |</span><br><span class="line">|    0      2148    G   cinnamon                                        53MiB |</span><br><span class="line">|    0      2225    G   fcitx-qimpanel                                   6MiB |</span><br><span class="line"><span class="header">|    0     14661    G   ...el-token=EB93CBA024396B73A9BB8EB7603278B5    41MiB |</span><br><span class="line">+-----------------------------------------------------------------------------+</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h3 id="cuda-&#x7684;&#x5B89;&#x88C5;&#x53CA;&#x914D;&#x7F6E;">cuda &#x7684;&#x5B89;&#x88C5;&#x53CA;&#x914D;&#x7F6E;</h3>
+              <p>ubuntu &#x7684; gcc &#x7F16;&#x8BD1;&#x5668;&#x662F; 5.4.0&#xFF0C;&#x7136;&#x800C; cuda8.0 &#x4E0D;&#x652F;&#x6301; 5.0 &#x4EE5;&#x4E0A;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#xFF0C;&#x56E0;&#x6B64;&#x9700;&#x8981;&#x964D;&#x7EA7;&#xFF0C;&#x628A;&#x7F16;&#x8BD1;&#x5668;&#x7248;&#x672C;&#x964D;&#x5230;
+                4.9
+                <br>&#x5728; terminal &#x4E2D;&#x6267;&#x884C;</p>
+              <figure class="highlight stata">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td>
+                    <td class="code"><pre><span class="line">sudo apt-get install gcc -4.9 gcc-5 <span class="keyword">g</span>++-4.9 <span class="keyword">g</span>++-5</span><br><span class="line"></span><br><span class="line">sudo <span class="keyword">update</span>-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 20</span><br><span class="line"></span><br><span class="line">sudo <span class="keyword">update</span>-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 10</span><br><span class="line"></span><br><span class="line">sudo <span class="keyword">update</span>-alternatives --install /usr/bin/<span class="keyword">g</span>++ <span class="keyword">g</span>++ /usr/bin/<span class="keyword">g</span>++-4.9 20</span><br><span class="line"></span><br><span class="line">sudo <span class="keyword">update</span>-alternatives --install /usr/bin/<span class="keyword">g</span>++ <span class="keyword">g</span>++ /usr/bin/<span class="keyword">g</span>++-5 10</span><br><span class="line"></span><br><span class="line">sudo <span class="keyword">update</span>-alternatives --install /usr/bin/<span class="keyword">cc</span> <span class="keyword">cc</span> /usr/bin/gcc 30</span><br><span class="line"></span><br><span class="line">sudo <span class="keyword">update</span>-alternatives --<span class="keyword">set</span> <span class="keyword">cc</span> /usr/bin/gcc</span><br><span class="line"></span><br><span class="line">sudo <span class="keyword">update</span>-alternatives --install /usr/bin/c++ c++ /usr/bin/<span class="keyword">g</span>++ 30</span><br><span class="line"></span><br><span class="line">sudo <span class="keyword">update</span>-alternatives --<span class="keyword">set</span> c++ /usr/bin/<span class="keyword">g</span>++</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <figure class="highlight cpp">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td>
+                    <td class="code"><pre><span class="line">sudo dpkg -i cuda-repo-ubuntu1604-<span class="number">8</span>-<span class="number">0</span>-local-ga2_8<span class="number">.0</span><span class="number">.61</span>-<span class="number">1</span>_amd64.deb</span><br><span class="line">sudo dpkg -i  cuda-repo-ubuntu1604-<span class="number">8</span>-<span class="number">0</span>-local-cublas-performance-update_8<span class="number">.0</span><span class="number">.61</span>-<span class="number">1</span>_amd64.deb</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo  apt  install cuda</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <p>&#x8FDB;&#x5165;&#x975E;&#x56FE;&#x50CF;&#x5316;&#x754C;&#x9762;</p>
+              <figure class="highlight cpp">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+                    <td class="code"><pre><span class="line">sudo init <span class="number">3</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <p>&#x6D4B;&#x8BD5; cuda &#x7684; Samples<br>&#x547D;&#x4EE4;&#x884C;&#x8F93;&#x5165;&#xFF08;&#x6CE8;&#x610F; cuda-8.0 &#x662F;&#x8981;&#x76F8;&#x5BF9;&#x5E94;&#x81EA;&#x5DF1;&#x7684; cuda &#x7248;&#x672C;&#xFF09;</p>
+              <figure class="highlight gradle">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td>
+                    <td class="code"><pre><span class="line">cd <span class="regexp">/usr/</span>local<span class="regexp">/cuda-8.0/</span>samples<span class="regexp">/1_Utilities/</span>deviceQuery</span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">sudo .<span class="regexp">/deviceQuery</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <p>&#x8FD4;&#x56DE;&#x5982;&#x4E0B;&#x4FE1;&#x606F;</p>
+              <figure class="highlight sql">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td>
+                    <td class="code"><pre><span class="line">(anaconda3-4.4.0) feel@feel /usr/local/cuda-8.0/samples/1_Utilities/deviceQuery $ sudo ./deviceQuery</span><br><span class="line">./deviceQuery Starting...</span><br><span class="line"></span><br><span class="line"> CUDA Device Query (Runtime API) version (CUDART static linking)</span><br><span class="line"></span><br><span class="line">Detected 1 CUDA Capable device(s)</span><br><span class="line"></span><br><span class="line">Device 0: &quot;GeForce GTX 1070&quot;</span><br><span class="line">  CUDA Driver Version / Runtime Version          8.0 / 8.0</span><br><span class="line">  CUDA Capability Major/Minor version number:    6.1</span><br><span class="line">  Total amount of global memory:                 8114 MBytes (8507752448 bytes)</span><br><span class="line">  (15) Multiprocessors, (128) CUDA Cores/MP:     1920 CUDA Cores</span><br><span class="line">  GPU Max Clock rate:                            1835 MHz (1.84 GHz)</span><br><span class="line">  Memory Clock rate:                             4004 Mhz</span><br><span class="line">  Memory Bus Width:                              256-bit</span><br><span class="line">  L2 <span class="operator"><span class="keyword">Cache</span> <span class="keyword">Size</span>:                                 <span class="number">2097152</span> <span class="keyword">bytes</span></span><br><span class="line">  Maximum Texture <span class="keyword">Dimension</span> <span class="keyword">Size</span> (x,y,z)         <span class="number">1</span><span class="keyword">D</span>=(<span class="number">131072</span>), <span class="number">2</span><span class="keyword">D</span>=(<span class="number">131072</span>, <span class="number">65536</span>), <span class="number">3</span><span class="keyword">D</span>=(<span class="number">16384</span>, <span class="number">16384</span>, <span class="number">16384</span>)</span><br><span class="line">  Maximum Layered <span class="number">1</span><span class="keyword">D</span> Texture <span class="keyword">Size</span>, (<span class="keyword">num</span>) layers  <span class="number">1</span><span class="keyword">D</span>=(<span class="number">32768</span>), <span class="number">2048</span> layers</span><br><span class="line">  Maximum Layered <span class="number">2</span><span class="keyword">D</span> Texture <span class="keyword">Size</span>, (<span class="keyword">num</span>) layers  <span class="number">2</span><span class="keyword">D</span>=(<span class="number">32768</span>, <span class="number">32768</span>), <span class="number">2048</span> layers</span><br><span class="line">  Total amount <span class="keyword">of</span> <span class="keyword">constant</span> <span class="keyword">memory</span>:               <span class="number">65536</span> <span class="keyword">bytes</span></span><br><span class="line">  Total amount <span class="keyword">of</span> <span class="keyword">shared</span> <span class="keyword">memory</span> per <span class="keyword">block</span>:       <span class="number">49152</span> <span class="keyword">bytes</span></span><br><span class="line">  Total <span class="built_in">number</span> <span class="keyword">of</span> registers available per <span class="keyword">block</span>: <span class="number">65536</span></span><br><span class="line">  Warp <span class="keyword">size</span>:                                     <span class="number">32</span></span><br><span class="line">  Maximum <span class="built_in">number</span> <span class="keyword">of</span> threads per multiprocessor:  <span class="number">2048</span></span><br><span class="line">  Maximum <span class="built_in">number</span> <span class="keyword">of</span> threads per <span class="keyword">block</span>:           <span class="number">1024</span></span><br><span class="line">  <span class="keyword">Max</span> <span class="keyword">dimension</span> <span class="keyword">size</span> <span class="keyword">of</span> a <span class="keyword">thread</span> <span class="keyword">block</span> (x,y,z): (<span class="number">1024</span>, <span class="number">1024</span>, <span class="number">64</span>)</span><br><span class="line">  <span class="keyword">Max</span> <span class="keyword">dimension</span> <span class="keyword">size</span> <span class="keyword">of</span> a grid <span class="keyword">size</span>    (x,y,z): (<span class="number">2147483647</span>, <span class="number">65535</span>, <span class="number">65535</span>)</span><br><span class="line">  Maximum <span class="keyword">memory</span> pitch:                          <span class="number">2147483647</span> <span class="keyword">bytes</span></span><br><span class="line">  Texture alignment:                             <span class="number">512</span> <span class="keyword">bytes</span></span><br><span class="line">  <span class="keyword">Concurrent</span> copy <span class="keyword">and</span> kernel execution:          Yes <span class="keyword">with</span> <span class="number">2</span> copy <span class="keyword">engine</span>(s)</span><br><span class="line">  Run <span class="keyword">time</span> <span class="keyword">limit</span> <span class="keyword">on</span> kernels:                     Yes</span><br><span class="line">  Integrated GPU sharing Host <span class="keyword">Memory</span>:            <span class="keyword">No</span></span><br><span class="line">  Support host page-<span class="keyword">locked</span> <span class="keyword">memory</span> <span class="keyword">mapping</span>:       Yes</span><br><span class="line">  Alignment requirement <span class="keyword">for</span> Surfaces:            Yes</span><br><span class="line">  Device has ECC support:                        Disabled</span><br><span class="line">  Device supports Unified Addressing (UVA):      Yes</span><br><span class="line">  Device PCI <span class="keyword">Domain</span> <span class="keyword">ID</span> / Bus <span class="keyword">ID</span> / location <span class="keyword">ID</span>:   <span class="number">0</span> / <span class="number">1</span> / <span class="number">0</span></span><br><span class="line">  <span class="keyword">Compute</span> <span class="keyword">Mode</span>:</span><br><span class="line">     &lt; <span class="keyword">Default</span> (multiple host threads can <span class="keyword">use</span> ::cudaSetDevice() <span class="keyword">with</span> device simultaneously) &gt;</span><br><span class="line"></span><br><span class="line">deviceQuery, CUDA Driver = CUDART, CUDA Driver <span class="keyword">Version</span> = <span class="number">8.0</span>, CUDA Runtime <span class="keyword">Version</span> = <span class="number">8.0</span>, NumDevs = <span class="number">1</span>, Device0 = GeForce GTX <span class="number">1070</span></span><br><span class="line"><span class="keyword">Result</span> = PASS</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <h3 id="&#x5B89;&#x88C5;-cudnn">&#x5B89;&#x88C5; cuDNN</h3>
+              <figure class="highlight groovy">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td>
+                    <td class="code"><pre><span class="line">tar  -xvf  cudnn-<span class="number">8.0</span>-linux-x64-v7.tar</span><br><span class="line">sudo cp  cuda<span class="regexp">/include/</span>cudnn.h   <span class="regexp">/usr/</span>local<span class="regexp">/cuda/</span>include/</span><br><span class="line">sudo cp  cuda<span class="regexp">/lib64/</span>* <span class="regexp">/usr/</span>local<span class="regexp">/cuda/</span>lib64/</span><br><span class="line">sudo chmod a+r <span class="regexp">/usr/</span>local<span class="regexp">/cuda/</span>include<span class="regexp">/cudnn.h /</span>usr<span class="regexp">/local/</span>cuda<span class="regexp">/lib64/</span>libcudnn*</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <figure class="highlight stylus">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td>
+                    <td class="code"><pre><span class="line">import os</span><br><span class="line">os<span class="class">.environ</span>[<span class="string">&apos;TF_CPP_MIN_LOG_LEVEL&apos;</span>]=<span class="string">&apos;2&apos;</span></span><br><span class="line">import tensorflow as tf</span><br><span class="line">hello = tf.<span class="function"><span class="title">constant</span><span class="params">(<span class="string">&apos;Hello, TensorFlow!&apos;</span>)</span></span></span><br><span class="line">sess = tf.<span class="function"><span class="title">Session</span><span class="params">()</span></span></span><br><span class="line">sess.<span class="function"><span class="title">run</span><span class="params">(hello)</span></span></span><br><span class="line"><span class="tag">a</span> = tf.<span class="function"><span class="title">constant</span><span class="params">(<span class="number">10</span>)</span></span></span><br><span class="line"><span class="tag">b</span> = tf.<span class="function"><span class="title">constant</span><span class="params">(<span class="number">32</span>)</span></span></span><br><span class="line">sess.<span class="function"><span class="title">run</span><span class="params">(a + b)</span></span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <figure class="highlight vhdl">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td>
+                    <td class="code"><pre><span class="line">&gt;&gt;&gt; sess = tf.Session()</span><br><span class="line"><span class="number">2017</span>-<span class="number">08</span>-<span class="number">05</span> <span class="number">02</span>:<span class="number">45</span>:<span class="number">02.887841</span>: W tensorflow/core/platform/cpu_feature_guard.cc:<span class="number">45</span>] The TensorFlow <span class="keyword">library</span> wasn<span class="attribute">&apos;t</span> compiled <span class="keyword">to</span> <span class="keyword">use</span> SSE4.<span class="number">1</span> instructions, but these are available <span class="keyword">on</span> your machine <span class="keyword">and</span> could speed up CPU computations.</span><br><span class="line"><span class="number">2017</span>-<span class="number">08</span>-<span class="number">05</span> <span class="number">02</span>:<span class="number">45</span>:<span class="number">02.887891</span>: W tensorflow/core/platform/cpu_feature_guard.cc:<span class="number">45</span>] The TensorFlow <span class="keyword">library</span> wasn<span class="attribute">&apos;t</span> compiled <span class="keyword">to</span> <span class="keyword">use</span> SSE4.<span class="number">2</span> instructions, but these are available <span class="keyword">on</span> your machine <span class="keyword">and</span> could speed up CPU computations.</span><br><span class="line"><span class="number">2017</span>-<span class="number">08</span>-<span class="number">05</span> <span class="number">02</span>:<span class="number">45</span>:<span class="number">02.887909</span>: W tensorflow/core/platform/cpu_feature_guard.cc:<span class="number">45</span>] The TensorFlow <span class="keyword">library</span> wasn<span class="attribute">&apos;t</span> compiled <span class="keyword">to</span> <span class="keyword">use</span> AVX instructions, but these are available <span class="keyword">on</span> your machine <span class="keyword">and</span> could speed up CPU computations.</span><br><span class="line"><span class="number">2017</span>-<span class="number">08</span>-<span class="number">05</span> <span class="number">02</span>:<span class="number">45</span>:<span class="number">02.887925</span>: W tensorflow/core/platform/cpu_feature_guard.cc:<span class="number">45</span>] The TensorFlow <span class="keyword">library</span> wasn<span class="attribute">&apos;t</span> compiled <span class="keyword">to</span> <span class="keyword">use</span> AVX2 instructions, but these are available <span class="keyword">on</span> your machine <span class="keyword">and</span> could speed up CPU computations.</span><br><span class="line"><span class="number">2017</span>-<span class="number">08</span>-<span class="number">05</span> <span class="number">02</span>:<span class="number">45</span>:<span class="number">02.887941</span>: W tensorflow/core/platform/cpu_feature_guard.cc:<span class="number">45</span>] The TensorFlow <span class="keyword">library</span> wasn<span class="attribute">&apos;t</span> compiled <span class="keyword">to</span> <span class="keyword">use</span> FMA instructions, but these are available <span class="keyword">on</span> your machine <span class="keyword">and</span> could speed up CPU computations.</span><br><span class="line"><span class="number">2017</span>-<span class="number">08</span>-<span class="number">05</span> <span class="number">02</span>:<span class="number">45</span>:<span class="number">03.014577</span>: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:<span class="number">893</span>] successful NUMA node read from SysFS had negative value (-<span class="number">1</span>), but there must be at least one NUMA node, so returning NUMA node zero</span><br><span class="line"><span class="number">2017</span>-<span class="number">08</span>-<span class="number">05</span> <span class="number">02</span>:<span class="number">45</span>:<span class="number">03.014837</span>: I tensorflow/core/common_runtime/gpu/gpu_device.cc:<span class="number">940</span>] Found device <span class="number">0</span> <span class="keyword">with</span> properties: </span><br><span class="line">name: GeForce GTX <span class="number">1070</span></span><br><span class="line">major: <span class="number">6</span> minor: <span class="number">1</span> memoryClockRate (GHz) <span class="number">1.835</span></span><br><span class="line">pciBusID <span class="number">0000</span>:<span class="number">01</span>:<span class="number">00.0</span></span><br><span class="line">Total memory: <span class="number">7.92</span>GiB</span><br><span class="line">Free memory: <span class="number">7.59</span>GiB</span><br><span class="line"><span class="number">2017</span>-<span class="number">08</span>-<span class="number">05</span> <span class="number">02</span>:<span class="number">45</span>:<span class="number">03.014850</span>: I tensorflow/core/common_runtime/gpu/gpu_device.cc:<span class="number">961</span>] DMA: <span class="number">0</span> </span><br><span class="line"><span class="number">2017</span>-<span class="number">08</span>-<span class="number">05</span> <span class="number">02</span>:<span class="number">45</span>:<span class="number">03.014853</span>: I tensorflow/core/common_runtime/gpu/gpu_device.cc:<span class="number">971</span>] <span class="number">0</span>:   Y </span><br><span class="line"><span class="number">2017</span>-<span class="number">08</span>-<span class="number">05</span> <span class="number">02</span>:<span class="number">45</span>:<span class="number">03.014862</span>: I tensorflow/core/common_runtime/gpu/gpu_device.cc:<span class="number">1030</span>] Creating TensorFlow device (/gpu:<span class="number">0</span>) -&gt; (device: <span class="number">0</span>, name: GeForce GTX <span class="number">1070</span>, pci <span class="keyword">bus</span> id: <span class="number">0000</span>:<span class="number">01</span>:<span class="number">00.0</span>)</span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+              <p>&#x4EE5;&#x4E0A;&#x4F1A;&#x6253;&#x51FA;&#x8B66;&#x544A;&#x4FE1;&#x606F;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x6709;&#x628A;&#x8FD9;&#x4E2A;&#x8B66;&#x544A;&#x5173;&#x95ED;&#x5373;&#x53EF;</p>
+              <figure class="highlight stylus">
+                <table>
+                  <tr>
+                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
+                    <td class="code"><pre><span class="line">os<span class="class">.environ</span>[<span class="string">&apos;TF_CPP_MIN_LOG_LEVEL&apos;</span>]=<span class="string">&apos;2&apos;</span></span><br></pre></td>
+                  </tr>
+                </table>
+              </figure>
+
+            </div>
+            <footer>
+
+              <div class="categories">
+                <a href="/categories/DL/">DL</a>
+              </div>
+              <div class="tags">
+                <a href="/tags/DL/">DL</a>
+              </div>
+
+
+              <div class="clearfix"></div>
+            </footer>
+          </div>
+        </article>
+
+        <section id="comments">
+          <!-- 多说评论框 start -->
+          <div class="ds-thread" data-thread-key="post-ubuntu搭建深度学习tensorflow环境" data-title="ubuntu 搭建深度学习 tensorflow 环境" data-url="http://wwww.feel88.cn/2017/06/27/ubuntu搭建深度学习tensorflow环境/"></div>
+          <!-- 多说评论框 end -->
+          <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+          <script type="text/javascript">
+            var duoshuoQuery = {
+              short_name: "feel"
+            };
+            (function() {
+              var ds = document.createElement('script');
+              ds.type = 'text/javascript';
+              ds.async = true;
+              ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+              ds.charset = 'UTF-8';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+            })();
+          </script>
+          <!-- 多说公共JS代码 end -->
+        </section>
+      </div>
+    </div>
+    <aside id="sidebar" class="alignright">
+      <div class="widget tag">
+        <h3 class="title">最新文章</h3>
+        <ul class="entry">
+
+          <li>
+            <a href="/2017/06/27/ubuntu搭建深度学习tensorflow环境/">ubuntu 搭建深度学习 tensorflow 环境</a>
+          </li>
+
+          <li>
+            <a href="/2017/01/04/python下安装MySQLdb/">python 下安装 MySQLdb 填坑</a>
+          </li>
+
+          <li>
+            <a href="/2016/12/23/scala元编程/">scala 元编程</a>
+          </li>
+
+          <li>
+            <a href="/2016/11/22/线程安全问题/">线程安全问题</a>
+          </li>
+
+          <li>
+            <a href="/2016/11/22/Peterson无锁互斥算法/">Peterson 无锁互斥算法</a>
+          </li>
+
+        </ul>
+      </div>
+
+      <div class="widget tag">
+        <h3 class="title">分类</h3>
+        <ul class="entry">
+
+          <li><a href="/categories/DL/">DL</a><small>1</small></li>
+
+          <li><a href="/categories/bigtata/">bigdata</a><small>2</small></li>
+
+          <li><a href="/categories/css3/">css3</a><small>2</small></li>
+
+          <li><a href="/categories/go/">go</a><small>2</small></li>
+
+          <li><a href="/categories/java/">java</a><small>4</small></li>
+
+          <li><a href="/categories/kotlin/">kotlin</a><small>1</small></li>
+
+          <li><a href="/categories/linux/">linux</a><small>6</small></li>
+
+          <li><a href="/categories/nginx/">nginx</a><small>1</small></li>
+
+          <li><a href="/categories/nginx常用错误/">nginx常用错误</a><small>1</small></li>
+
+          <li><a href="/categories/python/">python</a><small>1</small></li>
+
+          <li><a href="/categories/scala/">scala</a><small>3</small></li>
+
+          <li><a href="/categories/tool/">tool</a><small>1</small></li>
+
+          <li><a href="/categories/web/">web</a><small>2</small></li>
+
+          <li><a href="/categories/数据库/">数据库</a><small>1</small></li>
+
+        </ul>
+      </div>
+
+      <div class="widget tag">
+        <h3 class="title">标签</h3>
+        <ul class="entry">
+
+          <li><a href="/tags/DL/">DL</a><small>1</small></li>
+
+          <li><a href="/tags/bigtata/">bigdata</a><small>2</small></li>
+
+          <li><a href="/tags/css3/">css3</a><small>2</small></li>
+
+          <li><a href="/tags/go/">go</a><small>2</small></li>
+
+          <li><a href="/tags/java/">java</a><small>3</small></li>
+
+          <li><a href="/tags/java并发编程/">java并发编程</a><small>2</small></li>
+
+          <li><a href="/tags/kotlin/">kotlin</a><small>1</small></li>
+
+          <li><a href="/tags/linux/">linux</a><small>6</small></li>
+
+          <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
+
+          <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
+
+          <li><a href="/tags/nginx信号量/">nginx信号量</a><small>1</small></li>
+
+          <li><a href="/tags/python下安装MySQLdb填坑/">python下安装MySQLdb填坑</a><small>1</small></li>
+
+          <li><a href="/tags/scala/">scala</a><small>3</small></li>
+
+          <li><a href="/tags/sqoop/">sqoop</a><small>1</small></li>
+
+          <li><a href="/tags/tool/">tool</a><small>1</small></li>
+
+          <li><a href="/tags/web/">web</a><small>3</small></li>
+
+          <li><a href="/tags/web前端/">web前端</a><small>1</small></li>
+
+          <li><a href="/tags/前端样式框架/">前端样式框架</a><small>1</small></li>
+
+          <li><a href="/tags/样式/">样式</a><small>1</small></li>
+
+        </ul>
+      </div>
+    </aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner">
+    <div class="alignleft">
+
+      &copy; 2017 feel
+
+    </div>
+    <div class="clearfix"></div>
+  </footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+  <script src="/js/gallery.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    (function($) {
+      $('.fancybox').fancybox();
+    })(jQuery);
+  </script>
+</body>
+
