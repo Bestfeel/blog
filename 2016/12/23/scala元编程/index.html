@@ -1,279 +1,237 @@
 <!DOCTYPE HTML>
 <html>
-
 <head>
   <meta charset="utf-8">
-
-  <title>scala 元编程 | Feel&#39;s blog</title>
+  
+  <title>scala 元编程 | 知识从未如此性感</title>
   <meta name="author" content="feel">
-
-  <meta name="description" content="feel&#39;s blog | java | scala | python | javascript| linux | nodejs| Machine Learning|go">
-
-
+  
+  <meta name="description" content="feel&#39;s blog | java | scala | python | javascript| linux| go |人工智能">
+  
+  
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
   <meta property="og:title" content="scala 元编程">
-  <meta property="og:site_name" content="Feel&#39;s blog">
+  <meta property="og:site_name" content="知识从未如此性感">
 
-
-  <meta property="og:image" content="undefined">
-
+  
+    <meta property="og:image" content="undefined">
+  
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="alternate" href="/atom.xml" title="Feel&#39;s blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="知识从未如此性感" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <a href="https://github.com/Bestfeel" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-</head>
-
-</html>
+  
+</head></html>
 
 <body>
-  <header id="header" class="inner">
-    <div class="alignleft">
-      <h1><a href="/">Feel&#39;s blog</a></h1>
-      <h2><a href="/">知识从未如此性感</a></h2>
-    </div>
-    <nav id="main-nav" class="alignright">
-      <ul>
-
-        <li><a href="/">首页</a></li>
-
-        <li><a href="/archives">归档</a></li>
-
-        <li><a href="/site">下载</a></li>
-
-        <li><a href="/about">联系我</a></li>
-
-        <li><a href="http://download.feel88.cn">新版下载中心</a></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-
-
-
-      <div class="clearfix"></div>
-    </nav>
-    <div class="clearfix"></div>
-  </header>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">知识从未如此性感</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/site">下载</a></li>
+    
+      <li><a href="/about">联系我</a></li>
+    
+    <li><a href="http://download.feel88.cn">新版下载中心</a></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  
+  
+  
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft">
-      <div id="wrapper">
-        <article class="post">
-
-          <div class="post-content">
-            <header>
-
-              <div class="icon"></div>
-              <time datetime="2016-12-23T13:56:15.000Z"><a href="/2016/12/23/scala元编程/">2016-12-23</a></time>
-
-              <h1 class="title">scala 元编程</h1>
-            </header>
-            <div class="entry">
-
-              <p>Ruby &#x7ECF;&#x9A8C;&#x7684;&#x670B;&#x53CB;&#x90FD;&#x77E5;&#x9053; Ruby &#x7684;&#x5143;&#x7F16;&#x7A0B;&#x5A01;&#x529B;&#x5341;&#x5206;&#x5F3A;&#x5927;. &#x5143;&#x7F16;&#x7A0B;&#x53EF;&#x4EE5;&#x5728;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x5B57;&#x6BB5;&#x6216;&#x8005;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#x8FDB;&#x884C;&#x52A8;&#x6001;&#x4F7F;&#x7528;&#x3002;<br>                &#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x4F7F;&#x7528; scala &#x600E;&#x4E48;&#x8FDB;&#x884C;&#x5143;&#x7F16;&#x7A0B;&#x5462;?<br>
-                <a id="more"></a><br> &#x5728; scala &#x4E2D;&#x6211;&#x4EEC;&#x9700;&#x8981; Dynamic &#x8FD9;&#x4E2A;&#x7279;&#x8D28;&#xFF0C;&#x6211;&#x4EEC;&#x67E5;&#x770B;&#x6E90;&#x7801;&#x53D1;&#x73B0;&#xFF0C;&#x5B83;&#x5E76;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x548C;&#x5B9E;&#x73B0;&#x4EFB;&#x4F55;&#x65B9;&#x6CD5;&#x548C;&#x5B57;&#x6BB5;&#x3002;<br>Dynamic
-                &#x7279;&#x8D28;&#x53EA;&#x8D77;&#x5230;&#x6807;&#x793A;&#x4F5C;&#x7528;, &#x8BE5;&#x7279;&#x8D28;&#x5E76;&#x4E0D;&#x5305;&#x542B;&#x4EFB;&#x4F55;&#x65B9;&#x6CD5;&#x5B9A;&#x4E49;. &#x5047;&#x5982;&#x7F16;&#x8BD1;&#x5668;&#x67E5;&#x770B;&#x5230;&#x8BE5;&#x7279;&#x8D28;,
-                &#x5728;&#x5904;&#x7406;&#x8BE5;&#x7279;&#x8D28;&#x65F6;&#x4F1A;&#x9075;&#x5FAA;&#x67D0;&#x4E00;&#x7279;&#x6B8A;&#x534F;&#x8BAE;.
-              </p>
-              <figure class="highlight scala">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
-                    <td class="code"><pre><span class="line"><span class="class"><span class="keyword">trait</span> <span class="title">Dynamic</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Any</span></span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-              <p> &#x5728;&#x6211;&#x4EEC;&#x7684;&#x5B9A;&#x4E49;&#x7684;&#x7C7B;&#x4E2D;&#x5B9E;&#x73B0; Dynamic&#x3002;&#x5E76;&#x4E14;&#x5BFC;&#x5165; import scala.language.dynamics&#x3002; &#x5982;&#x4E0B;&#x4EE3;&#x7801;&#x6848;&#x4F8B;&#xFF1A;</p>
-              <figure class="highlight scala">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td>
-                    <td class="code"><pre><span class="line"><span class="keyword">package</span> com.gizwits.scala</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> scala.language.dynamics</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Dynamic</span> {</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">show</span>(</span>) = println(<span class="string">&quot;hell  world&quot;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">selectDynamic</span>(</span>field: <span class="type">String</span>) = field <span class="keyword">match</span> {</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;name&quot;</span> =&gt; <span class="string">&quot;feel&quot;</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;age&quot;</span> =&gt; <span class="number">100</span></span><br><span class="line">    <span class="keyword">case</span> _ =&gt; <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">RuntimeException</span>(<span class="string">&quot;new field&quot;</span>)</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">DynamicsMethod</span> {</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span>(</span>args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = {</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">val</span> <span class="title">person</span> =</span> <span class="keyword">new</span> <span class="type">Person</span></span><br><span class="line">    person.show</span><br><span class="line">    println(person.name)</span><br><span class="line">    println(person.age)</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-              <p> &#x5982;&#x4E0A;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x52A8;&#x6001;&#x4F7F;&#x7528;&#x5B57;&#x6BB5;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x5B9E;&#x73B0; selectDynamic &#x65B9;&#x6CD5;&#x3002; &#x7C7B;&#x4F3C;&#x7684;&#x5176;&#x4ED6;&#x4F7F;&#x7528;
-              </p>
-              <figure class="highlight stylus">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td>
-                    <td class="code"><pre><span class="line">foo.<span class="function"><span class="title">method</span><span class="params">(&#x201C;blah&#x201D;)</span></span> &#x2013;&gt; foo.<span class="function"><span class="title">applyDynamic</span><span class="params">(&#x201C;method&#x201D;)</span><span class="params">(&#x201C;blah&#x201D;)</span></span></span><br><span class="line">foo.<span class="function"><span class="title">method</span><span class="params">(x = &#x201C;blah&#x201D;)</span></span> &#x2013;&gt; foo.<span class="function"><span class="title">applyDynamic</span><span class="params">(&#x201C;method&#x201D;)</span><span class="params">((&#x201C;x&#x201D;,&#x201D;blah&#x201D;)</span></span>)</span><br><span class="line">foo<span class="class">.field</span> &#x2013;&gt; foo.<span class="function"><span class="title">selectDynamic</span><span class="params">(&#x201C;field&#x201D;)</span></span></span><br><span class="line">foo<span class="class">.varia</span> = <span class="number">10</span> &#x2013;&gt; foo.<span class="function"><span class="title">updateDynamic</span><span class="params">(&#x201C;field&#x201D;)</span><span class="params">(<span class="number">10</span>)</span></span></span><br><span class="line">foo.<span class="function"><span class="title">arr</span><span class="params">(<span class="number">10</span>)</span></span>=<span class="number">13</span> &#x2013;&gt; foo.<span class="function"><span class="title">selectDynamic</span><span class="params">(&#x201C;arr&#x201D;)</span></span>.<span class="function"><span class="title">update</span><span class="params">(<span class="number">10</span>,<span class="number">13</span>)</span></span></span><br><span class="line">foo.<span class="function"><span class="title">arr</span><span class="params">(<span class="number">10</span>)</span></span> &#x2013;&gt; foo.<span class="function"><span class="title">applyDynamic</span><span class="params">(&#x201C;arr&#x201D;)</span><span class="params">(<span class="number">10</span>)</span></span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-
-            </div>
-            <footer>
-
-              <div class="categories">
-                <a href="/categories/scala/">scala</a>
-              </div>
-              <div class="tags">
-                <a href="/tags/scala/">scala</a>
-              </div>
-
-
-              <div class="clearfix"></div>
-            </footer>
-          </div>
-        </article>
-
-        <section id="comments">
-          <!-- 多说评论框 start -->
-          <div class="ds-thread" data-thread-key="post-scala元编程" data-title="scala 元编程" data-url="http://wwww.feel88.cn/2016/12/23/scala元编程/"></div>
-          <!-- 多说评论框 end -->
-          <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-          <script type="text/javascript">
-            var duoshuoQuery = {
-              short_name: "feel"
-            };
-            (function() {
-              var ds = document.createElement('script');
-              ds.type = 'text/javascript';
-              ds.async = true;
-              ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-              ds.charset = 'UTF-8';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-            })();
-          </script>
-          <!-- 多说公共JS代码 end -->
-        </section>
-      </div>
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-12-23T13:56:15.000Z"><a href="/2016/12/23/scala元编程/">2016-12-23</a></time>
+      
+      <h1 class="title">scala 元编程</h1>
+    </header>
+    <div class="entry">
+      
+        <p>Ruby &#x7ECF;&#x9A8C;&#x7684;&#x670B;&#x53CB;&#x90FD;&#x77E5;&#x9053; Ruby &#x7684;&#x5143;&#x7F16;&#x7A0B;&#x5A01;&#x529B;&#x5341;&#x5206;&#x5F3A;&#x5927;. &#x5143;&#x7F16;&#x7A0B;&#x53EF;&#x4EE5;&#x5728;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x5B57;&#x6BB5;&#x6216;&#x8005;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#x8FDB;&#x884C;&#x52A8;&#x6001;&#x4F7F;&#x7528;&#x3002;<br> &#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x4F7F;&#x7528; scala &#x600E;&#x4E48;&#x8FDB;&#x884C;&#x5143;&#x7F16;&#x7A0B;&#x5462;?<br><a id="more"></a><br> &#x5728; scala &#x4E2D;&#x6211;&#x4EEC;&#x9700;&#x8981; Dynamic &#x8FD9;&#x4E2A;&#x7279;&#x8D28;&#xFF0C;&#x6211;&#x4EEC;&#x67E5;&#x770B;&#x6E90;&#x7801;&#x53D1;&#x73B0;&#xFF0C;&#x5B83;&#x5E76;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x548C;&#x5B9E;&#x73B0;&#x4EFB;&#x4F55;&#x65B9;&#x6CD5;&#x548C;&#x5B57;&#x6BB5;&#x3002;<br>Dynamic &#x7279;&#x8D28;&#x53EA;&#x8D77;&#x5230;&#x6807;&#x793A;&#x4F5C;&#x7528;, &#x8BE5;&#x7279;&#x8D28;&#x5E76;&#x4E0D;&#x5305;&#x542B;&#x4EFB;&#x4F55;&#x65B9;&#x6CD5;&#x5B9A;&#x4E49;. &#x5047;&#x5982;&#x7F16;&#x8BD1;&#x5668;&#x67E5;&#x770B;&#x5230;&#x8BE5;&#x7279;&#x8D28;, &#x5728;&#x5904;&#x7406;&#x8BE5;&#x7279;&#x8D28;&#x65F6;&#x4F1A;&#x9075;&#x5FAA;&#x67D0;&#x4E00;&#x7279;&#x6B8A;&#x534F;&#x8BAE;.</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">trait</span> <span class="title">Dynamic</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Any</span></span></span><br></pre></td></tr></table></figure>
+<p> &#x5728;&#x6211;&#x4EEC;&#x7684;&#x5B9A;&#x4E49;&#x7684;&#x7C7B;&#x4E2D;&#x5B9E;&#x73B0; Dynamic&#x3002;&#x5E76;&#x4E14;&#x5BFC;&#x5165; import scala.language.dynamics&#x3002; &#x5982;&#x4E0B;&#x4EE3;&#x7801;&#x6848;&#x4F8B;&#xFF1A;</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.gizwits.scala</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> scala.language.dynamics</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Dynamic</span> {</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">show</span>(</span>) = println(<span class="string">&quot;hell  world&quot;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">selectDynamic</span>(</span>field: <span class="type">String</span>) = field <span class="keyword">match</span> {</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;name&quot;</span> =&gt; <span class="string">&quot;feel&quot;</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;age&quot;</span> =&gt; <span class="number">100</span></span><br><span class="line">    <span class="keyword">case</span> _ =&gt; <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">RuntimeException</span>(<span class="string">&quot;new field&quot;</span>)</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">DynamicsMethod</span> {</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span>(</span>args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = {</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">val</span> <span class="title">person</span> =</span> <span class="keyword">new</span> <span class="type">Person</span></span><br><span class="line">    person.show</span><br><span class="line">    println(person.name)</span><br><span class="line">    println(person.age)</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p> &#x5982;&#x4E0A;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x52A8;&#x6001;&#x4F7F;&#x7528;&#x5B57;&#x6BB5;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x5B9E;&#x73B0; selectDynamic &#x65B9;&#x6CD5;&#x3002; &#x7C7B;&#x4F3C;&#x7684;&#x5176;&#x4ED6;&#x4F7F;&#x7528; </p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">foo.<span class="function"><span class="title">method</span><span class="params">(&#x201C;blah&#x201D;)</span></span> &#x2013;&gt; foo.<span class="function"><span class="title">applyDynamic</span><span class="params">(&#x201C;method&#x201D;)</span><span class="params">(&#x201C;blah&#x201D;)</span></span></span><br><span class="line">foo.<span class="function"><span class="title">method</span><span class="params">(x = &#x201C;blah&#x201D;)</span></span> &#x2013;&gt; foo.<span class="function"><span class="title">applyDynamic</span><span class="params">(&#x201C;method&#x201D;)</span><span class="params">((&#x201C;x&#x201D;,&#x201D;blah&#x201D;)</span></span>)</span><br><span class="line">foo<span class="class">.field</span> &#x2013;&gt; foo.<span class="function"><span class="title">selectDynamic</span><span class="params">(&#x201C;field&#x201D;)</span></span></span><br><span class="line">foo<span class="class">.varia</span> = <span class="number">10</span> &#x2013;&gt; foo.<span class="function"><span class="title">updateDynamic</span><span class="params">(&#x201C;field&#x201D;)</span><span class="params">(<span class="number">10</span>)</span></span></span><br><span class="line">foo.<span class="function"><span class="title">arr</span><span class="params">(<span class="number">10</span>)</span></span>=<span class="number">13</span> &#x2013;&gt; foo.<span class="function"><span class="title">selectDynamic</span><span class="params">(&#x201C;arr&#x201D;)</span></span>.<span class="function"><span class="title">update</span><span class="params">(<span class="number">10</span>,<span class="number">13</span>)</span></span></span><br><span class="line">foo.<span class="function"><span class="title">arr</span><span class="params">(<span class="number">10</span>)</span></span> &#x2013;&gt; foo.<span class="function"><span class="title">applyDynamic</span><span class="params">(&#x201C;arr&#x201D;)</span><span class="params">(<span class="number">10</span>)</span></span></span><br></pre></td></tr></table></figure>
+      
     </div>
-    <aside id="sidebar" class="alignright">
-      <div class="widget tag">
-        <h3 class="title">最新文章</h3>
-        <ul class="entry">
+    <footer>
+      
+        <div class="categories">
+    <a href="/categories/scala/">scala</a>
+  </div>
+        <div class="tags">
+    <a href="/tags/scala/">scala</a>
+  </div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
 
-          <li>
-            <a href="/2017/06/27/ubuntu搭建深度学习tensorflow环境/">ubuntu 搭建深度学习 tensorflow 环境</a>
-          </li>
+<section id="comments">
+ <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-scala元编程" data-title="scala 元编程" data-url="http://blog.feel88.cn/2016/12/23/scala元编程/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"feel"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section></div></div>
+    <aside id="sidebar" class="alignright"><div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2017/06/27/ubuntu搭建深度学习tensorflow环境/">ubuntu 搭建深度学习 tensorflow 环境</a>
+      </li>
+    
+      <li>
+        <a href="/2017/01/04/python下安装MySQLdb/">python 下安装 MySQLdb 填坑</a>
+      </li>
+    
+      <li>
+        <a href="/2016/12/23/scala元编程/">scala 元编程</a>
+      </li>
+    
+      <li>
+        <a href="/2016/11/22/线程安全问题/">线程安全问题</a>
+      </li>
+    
+      <li>
+        <a href="/2016/11/22/Peterson无锁互斥算法/">Peterson 无锁互斥算法</a>
+      </li>
+    
+  </ul>
+</div>
 
-          <li>
-            <a href="/2017/01/04/python下安装MySQLdb/">python 下安装 MySQLdb 填坑</a>
-          </li>
+  <div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/DL/">DL</a><small>1</small></li>
+  
+    <li><a href="/categories/bigdata/">bigdata</a><small>2</small></li>
+  
+    <li><a href="/categories/css3/">css3</a><small>2</small></li>
+  
+    <li><a href="/categories/go/">go</a><small>2</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>4</small></li>
+  
+    <li><a href="/categories/kotlin/">kotlin</a><small>1</small></li>
+  
+    <li><a href="/categories/linux/">linux</a><small>6</small></li>
+  
+    <li><a href="/categories/nginx/">nginx</a><small>1</small></li>
+  
+    <li><a href="/categories/nginx常用错误/">nginx常用错误</a><small>1</small></li>
+  
+    <li><a href="/categories/python/">python</a><small>1</small></li>
+  
+    <li><a href="/categories/scala/">scala</a><small>3</small></li>
+  
+    <li><a href="/categories/tool/">tool</a><small>1</small></li>
+  
+    <li><a href="/categories/web/">web</a><small>2</small></li>
+  
+    <li><a href="/categories/数据库/">数据库</a><small>1</small></li>
+  
+  </ul>
+</div>
 
-          <li>
-            <a href="/2016/12/23/scala元编程/">scala 元编程</a>
-          </li>
-
-          <li>
-            <a href="/2016/11/22/线程安全问题/">线程安全问题</a>
-          </li>
-
-          <li>
-            <a href="/2016/11/22/Peterson无锁互斥算法/">Peterson 无锁互斥算法</a>
-          </li>
-
-        </ul>
-      </div>
-
-      <div class="widget tag">
-        <h3 class="title">分类</h3>
-        <ul class="entry">
-
-          <li><a href="/categories/DL/">DL</a><small>1</small></li>
-
-          <li><a href="/categories/bigtata/">bigdata</a><small>2</small></li>
-
-          <li><a href="/categories/css3/">css3</a><small>2</small></li>
-
-          <li><a href="/categories/go/">go</a><small>2</small></li>
-
-          <li><a href="/categories/java/">java</a><small>4</small></li>
-
-          <li><a href="/categories/kotlin/">kotlin</a><small>1</small></li>
-
-          <li><a href="/categories/linux/">linux</a><small>6</small></li>
-
-          <li><a href="/categories/nginx/">nginx</a><small>1</small></li>
-
-          <li><a href="/categories/nginx常用错误/">nginx常用错误</a><small>1</small></li>
-
-          <li><a href="/categories/python/">python</a><small>1</small></li>
-
-          <li><a href="/categories/scala/">scala</a><small>3</small></li>
-
-          <li><a href="/categories/tool/">tool</a><small>1</small></li>
-
-          <li><a href="/categories/web/">web</a><small>2</small></li>
-
-          <li><a href="/categories/数据库/">数据库</a><small>1</small></li>
-
-        </ul>
-      </div>
-
-      <div class="widget tag">
-        <h3 class="title">标签</h3>
-        <ul class="entry">
-
-          <li><a href="/tags/DL/">DL</a><small>1</small></li>
-
-          <li><a href="/tags/bigtata/">bigdata</a><small>2</small></li>
-
-          <li><a href="/tags/css3/">css3</a><small>2</small></li>
-
-          <li><a href="/tags/go/">go</a><small>2</small></li>
-
-          <li><a href="/tags/java/">java</a><small>3</small></li>
-
-          <li><a href="/tags/java并发编程/">java并发编程</a><small>2</small></li>
-
-          <li><a href="/tags/kotlin/">kotlin</a><small>1</small></li>
-
-          <li><a href="/tags/linux/">linux</a><small>6</small></li>
-
-          <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
-
-          <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
-
-          <li><a href="/tags/nginx信号量/">nginx信号量</a><small>1</small></li>
-
-          <li><a href="/tags/python下安装MySQLdb填坑/">python下安装MySQLdb填坑</a><small>1</small></li>
-
-          <li><a href="/tags/scala/">scala</a><small>3</small></li>
-
-          <li><a href="/tags/sqoop/">sqoop</a><small>1</small></li>
-
-          <li><a href="/tags/tool/">tool</a><small>1</small></li>
-
-          <li><a href="/tags/web/">web</a><small>3</small></li>
-
-          <li><a href="/tags/web前端/">web前端</a><small>1</small></li>
-
-          <li><a href="/tags/前端样式框架/">前端样式框架</a><small>1</small></li>
-
-          <li><a href="/tags/样式/">样式</a><small>1</small></li>
-
-        </ul>
-      </div>
-    </aside>
+  <div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/DL/">DL</a><small>1</small></li>
+  
+    <li><a href="/tags/bigdata/">bigdata</a><small>2</small></li>
+  
+    <li><a href="/tags/css3/">css3</a><small>2</small></li>
+  
+    <li><a href="/tags/go/">go</a><small>2</small></li>
+  
+    <li><a href="/tags/java/">java</a><small>3</small></li>
+  
+    <li><a href="/tags/java并发编程/">java并发编程</a><small>2</small></li>
+  
+    <li><a href="/tags/kotlin/">kotlin</a><small>1</small></li>
+  
+    <li><a href="/tags/linux/">linux</a><small>6</small></li>
+  
+    <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
+  
+    <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
+  
+    <li><a href="/tags/nginx信号量/">nginx信号量</a><small>1</small></li>
+  
+    <li><a href="/tags/python下安装MySQLdb填坑/">python下安装MySQLdb填坑</a><small>1</small></li>
+  
+    <li><a href="/tags/scala/">scala</a><small>3</small></li>
+  
+    <li><a href="/tags/sqoop/">sqoop</a><small>1</small></li>
+  
+    <li><a href="/tags/tool/">tool</a><small>1</small></li>
+  
+    <li><a href="/tags/web/">web</a><small>3</small></li>
+  
+    <li><a href="/tags/web前端/">web前端</a><small>1</small></li>
+  
+    <li><a href="/tags/前端样式框架/">前端样式框架</a><small>1</small></li>
+  
+    <li><a href="/tags/样式/">样式</a><small>1</small></li>
+  
+  </ul>
+</div></aside>
     <div class="clearfix"></div>
   </div>
-  <footer id="footer" class="inner">
-    <div class="alignleft">
-
-      &copy; 2017 feel
-
-    </div>
-    <div class="clearfix"></div>
-  </footer>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2018 feel
+  
+</div>
+<div class="clearfix"></div></footer>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-  <script src="/js/jquery.imagesloaded.min.js"></script>
-  <script src="/js/gallery.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
 
 
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript">
-    (function($) {
-      $('.fancybox').fancybox();
-    })(jQuery);
-  </script>
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
 </body>
-

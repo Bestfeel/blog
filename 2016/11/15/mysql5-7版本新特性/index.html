@@ -1,319 +1,272 @@
 <!DOCTYPE HTML>
 <html>
-
 <head>
   <meta charset="utf-8">
-
-  <title>mysql5.7 版本新特性 | Feel&#39;s blog</title>
+  
+  <title>mysql5.7 版本新特性 | 知识从未如此性感</title>
   <meta name="author" content="feel">
-
-  <meta name="description" content="feel&#39;s blog | java | scala | python | javascript| linux | nodejs| Machine Learning|go">
-
-
+  
+  <meta name="description" content="feel&#39;s blog | java | scala | python | javascript| linux| go |人工智能">
+  
+  
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
   <meta property="og:title" content="mysql5.7 版本新特性">
-  <meta property="og:site_name" content="Feel&#39;s blog">
+  <meta property="og:site_name" content="知识从未如此性感">
 
-
-  <meta property="og:image" content="undefined">
-
+  
+    <meta property="og:image" content="undefined">
+  
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="alternate" href="/atom.xml" title="Feel&#39;s blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="知识从未如此性感" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <a href="https://github.com/Bestfeel" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-</head>
-
-</html>
+  
+</head></html>
 
 <body>
-  <header id="header" class="inner">
-    <div class="alignleft">
-      <h1><a href="/">Feel&#39;s blog</a></h1>
-      <h2><a href="/">知识从未如此性感</a></h2>
-    </div>
-    <nav id="main-nav" class="alignright">
-      <ul>
-
-        <li><a href="/">首页</a></li>
-
-        <li><a href="/archives">归档</a></li>
-
-        <li><a href="/site">下载</a></li>
-
-        <li><a href="/about">联系我</a></li>
-
-        <li><a href="http://download.feel88.cn">新版下载中心</a></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-
-
-
-      <div class="clearfix"></div>
-    </nav>
-    <div class="clearfix"></div>
-  </header>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">知识从未如此性感</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/site">下载</a></li>
+    
+      <li><a href="/about">联系我</a></li>
+    
+    <li><a href="http://download.feel88.cn">新版下载中心</a></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  
+  
+  
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft">
-      <div id="wrapper">
-        <article class="post">
-
-          <div class="post-content">
-            <header>
-
-              <div class="icon"></div>
-              <time datetime="2016-11-15T13:31:11.000Z"><a href="/2016/11/15/mysql5-7版本新特性/">2016-11-15</a></time>
-
-              <h1 class="title">mysql5.7 版本新特性</h1>
-            </header>
-            <div class="entry">
-
-              <p>mysql 5.7 &#x7248;&#x672C;&#x65B0;&#x7279;&#x6027;</p>
-              <a id="more"></a>
-              <h3 id="mysql-&#x670D;&#x52A1;&#x529F;&#x80FD;&#x589E;&#x5F3A;">mysql  &#x670D;&#x52A1;&#x529F;&#x80FD;&#x589E;&#x5F3A;</h3>
-              <ul>
-                <li>&#x6570;&#x636E;&#x5E93;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F;&#x53D8;&#x66F4;</li>
-                <li>&#x652F;&#x6301;&#x4E3A;&#x8868;&#x589E;&#x52A0;&#x8BA1;&#x7B97;&#x5217;</li>
-                <li>&#x5F15;&#x5165; json &#x5217;&#x7C7B;&#x578B;&#x53CA;&#x76F8;&#x5173;&#x51FD;&#x6570;</li>
-              </ul>
-              <h4 id="&#x6570;&#x636E;&#x5E93;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F;&#x53D8;&#x66F4;">&#x6570;&#x636E;&#x5E93;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F;&#x53D8;&#x66F4;</h4>
-              <ul>
-                <li>mysql 5.7 &#x4E4B;&#x524D;</li>
-              </ul>
-              <figure class="highlight brainfuck">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
-                    <td class="code"><pre><span class="line"><span class="comment">script/mysql_install_db</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">datadir=/data/sql_data</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">user=mysql</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">basedir=/home/mysql</span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-              <ul>
-                <li>mysql 5.7 &#x4E4B;&#x540E;</li>
-              </ul>
-              <figure class="highlight brainfuck">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
-                    <td class="code"><pre><span class="line"><span class="comment">bin/mysqld</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">initialize</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">user=mysql</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">basedir=/home/mysql</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">datadir=/home/mysql/data</span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-              <h4 id="&#x652F;&#x6301;&#x4E3A;&#x8868;&#x589E;&#x52A0;&#x8BA1;&#x7B97;&#x5217;">&#x652F;&#x6301;&#x4E3A;&#x8868;&#x589E;&#x52A0;&#x8BA1;&#x7B97;&#x5217;</h4>
-              <ul>
-                <li>
-                  <p>&#x5728; 5.7 &#x4E4B;&#x524D; <br> &#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x89E6;&#x53D1;&#x5668;&#x6765;&#x5B9E;&#x73B0;&#x76F8;&#x5173;&#x7684;&#x529F;&#x80FD;&#x6216;&#x8005;&#x901A;&#x8FC7;&#x521B;&#x5EFA;&#x89C6;&#x56FE;&#x7684;&#x65B9;&#x5F0F;</p>
-                </li>
-                <li>
-                  <p>&#x5728; 5.7 &#x4E2D; <br> &#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x652F;&#x6301;&#x589E;&#x52A0;&#x5217;&#x7684;&#x65B9;&#x5F0F;</p>
-                </li>
-              </ul>
-              <p>&#x5982;&#x4E0B;: &#x63D2;&#x5165; c1,c3, &#x90A3;&#x4E48; c3 &#x81EA;&#x52A8;&#x8BA1;&#x7B97;&#x51FA;&#x6765;</p>
-              <figure class="highlight sql">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
-                    <td class="code"><pre><span class="line"><span class="operator"><span class="keyword">create</span>  <span class="keyword">table</span>  <span class="keyword">t</span>(<span class="keyword">id</span>  <span class="built_in">int</span>  auto_increment <span class="keyword">not</span> <span class="literal">null</span>, c1 <span class="built_in">int</span> ,c2 <span class="built_in">int</span> ,c3 <span class="built_in">int</span> <span class="keyword">as</span> (c1+c2) , primary <span class="keyword">key</span>(<span class="keyword">id</span>))</span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-              <h4 id="&#x5F15;&#x5165;-json-&#x5217;&#x7C7B;&#x578B;&#x53CA;&#x76F8;&#x5173;&#x51FD;&#x6570;">&#x5F15;&#x5165; json &#x5217;&#x7C7B;&#x578B;&#x53CA;&#x76F8;&#x5173;&#x51FD;&#x6570;</h4>
-              <ul>
-                <li>&#x5728; 5.7 &#x4E4B;&#x524D;&#x3002;</li>
-              </ul>
-              <p>&#x53EA;&#x80FD;&#x5728; varchar &#x6216;&#x8005; text &#x7B49;&#x5B57;&#x7B26;&#x7C7B;&#x578B;&#x5B58;&#x50A8; json &#x7C7B;&#x578B;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;&#x7A0B;&#x5E8F;&#x53BB;&#x89E3;&#x6790;&#x4F7F;&#x7528;
-                json &#x5B57;&#x7B26;&#x4E32;</p>
-              <ul>
-                <li>&#x5728; 5.7 &#x4E2D;</li>
-              </ul>
-              <p>&#x589E;&#x5F3A;&#x4E86; json &#x7C7B;&#x578B;&#x5B58;&#x50A8;&#xFF0C;&#x5982; json_type(),json_object(),json_merge(),json_array() &#x7B49;&#x3002;</p>
-              <h4 id="&#x652F;&#x6301;&#x591A;&#x6E90;&#x590D;&#x5236;">&#x652F;&#x6301;&#x591A;&#x6E90;&#x590D;&#x5236;</h4>
-              <h4 id="innodb-&#x5F15;&#x64CE;&#x589E;&#x5F3A;">innodb &#x5F15;&#x64CE;&#x589E;&#x5F3A;</h4>
-              <ul>
-                <li>&#x652F;&#x6301;&#x7F13;&#x51B2;&#x6C60;&#x5927;&#x5C0F;&#x5728;&#x7EBF;&#x53D8;&#x66F4;</li>
-                <li>&#x589E;&#x52A0; innodb_buffer_pool &#x5BFC;&#x5165;&#x5BFC;&#x51FA;&#x529F;&#x80FD;</li>
-                <li>&#x652F;&#x6301;&#x4E3A; innodb &#x8868;&#x5EFA;&#x7ACB;&#x8868;&#x7A7A;&#x95F4;</li>
-              </ul>
-              <h4 id="&#x5B89;&#x5168;&#x53CA;&#x7BA1;&#x7406;&#x65B9;&#x9762;&#x589E;&#x5F3A;">&#x5B89;&#x5168;&#x53CA;&#x7BA1;&#x7406;&#x65B9;&#x9762;&#x589E;&#x5F3A;</h4>
-              <ul>
-                <li>&#x4E0D;&#x518D;&#x652F;&#x6301; old_password &#x8BA4;&#x8BC1;</li>
-                <li>&#x589E;&#x52A0;&#x8D26;&#x53F7;&#x9ED8;&#x8BA4;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x53CA;&#x52A0;&#x5F3A;&#x4E86;&#x5BF9;&#x8D26;&#x53F7;&#x7684;&#x7BA1;&#x7406;&#x529F;&#x80FD;</li>
-                <li>&#x589E;&#x52A0;&#x4E86; sys &#x7BA1;&#x7406;&#x6570;&#x636E;&#x5E93;</li>
-              </ul>
-
-            </div>
-            <footer>
-
-              <div class="categories">
-                <a href="/categories/数据库/">数据库</a>
-              </div>
-              <div class="tags">
-                <a href="/tags/mysql/">mysql</a>
-              </div>
-
-
-              <div class="clearfix"></div>
-            </footer>
-          </div>
-        </article>
-
-        <section id="comments">
-          <!-- 多说评论框 start -->
-          <div class="ds-thread" data-thread-key="post-mysql5-7版本新特性" data-title="mysql5.7 版本新特性" data-url="http://wwww.feel88.cn/2016/11/15/mysql5-7版本新特性/"></div>
-          <!-- 多说评论框 end -->
-          <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-          <script type="text/javascript">
-            var duoshuoQuery = {
-              short_name: "feel"
-            };
-            (function() {
-              var ds = document.createElement('script');
-              ds.type = 'text/javascript';
-              ds.async = true;
-              ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-              ds.charset = 'UTF-8';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-            })();
-          </script>
-          <!-- 多说公共JS代码 end -->
-        </section>
-      </div>
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-11-15T13:31:11.000Z"><a href="/2016/11/15/mysql5-7版本新特性/">2016-11-15</a></time>
+      
+      <h1 class="title">mysql5.7 版本新特性</h1>
+    </header>
+    <div class="entry">
+      
+        <p>mysql 5.7  &#x7248;&#x672C;&#x65B0;&#x7279;&#x6027;</p>
+<a id="more"></a>
+<h3 id="mysql-&#x670D;&#x52A1;&#x529F;&#x80FD;&#x589E;&#x5F3A;">mysql  &#x670D;&#x52A1;&#x529F;&#x80FD;&#x589E;&#x5F3A;</h3><ul>
+<li>&#x6570;&#x636E;&#x5E93;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F;&#x53D8;&#x66F4;</li>
+<li>&#x652F;&#x6301;&#x4E3A;&#x8868;&#x589E;&#x52A0;&#x8BA1;&#x7B97;&#x5217;</li>
+<li>&#x5F15;&#x5165; json &#x5217;&#x7C7B;&#x578B;&#x53CA;&#x76F8;&#x5173;&#x51FD;&#x6570;</li>
+</ul>
+<h4 id="&#x6570;&#x636E;&#x5E93;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F;&#x53D8;&#x66F4;">&#x6570;&#x636E;&#x5E93;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F;&#x53D8;&#x66F4;</h4><ul>
+<li>mysql 5.7  &#x4E4B;&#x524D;</li>
+</ul>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">script/mysql_install_db</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">datadir=/data/sql_data</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">user=mysql</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">basedir=/home/mysql</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>mysql 5.7 &#x4E4B;&#x540E;</li>
+</ul>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">bin/mysqld</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">initialize</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">user=mysql</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">basedir=/home/mysql</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">datadir=/home/mysql/data</span></span><br></pre></td></tr></table></figure>
+<h4 id="&#x652F;&#x6301;&#x4E3A;&#x8868;&#x589E;&#x52A0;&#x8BA1;&#x7B97;&#x5217;">&#x652F;&#x6301;&#x4E3A;&#x8868;&#x589E;&#x52A0;&#x8BA1;&#x7B97;&#x5217;</h4><ul>
+<li><p>&#x5728; 5.7 &#x4E4B;&#x524D; <br> &#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x89E6;&#x53D1;&#x5668;&#x6765;&#x5B9E;&#x73B0;&#x76F8;&#x5173;&#x7684;&#x529F;&#x80FD;&#x6216;&#x8005;&#x901A;&#x8FC7;&#x521B;&#x5EFA;&#x89C6;&#x56FE;&#x7684;&#x65B9;&#x5F0F;</p>
+</li>
+<li><p>&#x5728; 5.7 &#x4E2D; <br> &#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x652F;&#x6301;&#x589E;&#x52A0;&#x5217;&#x7684;&#x65B9;&#x5F0F;</p>
+</li>
+</ul>
+<p>&#x5982;&#x4E0B;: &#x63D2;&#x5165; c1,c3, &#x90A3;&#x4E48; c3  &#x81EA;&#x52A8;&#x8BA1;&#x7B97;&#x51FA;&#x6765;</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">create</span>  <span class="keyword">table</span>  <span class="keyword">t</span>(<span class="keyword">id</span>  <span class="built_in">int</span>  auto_increment <span class="keyword">not</span> <span class="literal">null</span>, c1 <span class="built_in">int</span> ,c2 <span class="built_in">int</span> ,c3 <span class="built_in">int</span> <span class="keyword">as</span> (c1+c2) , primary <span class="keyword">key</span>(<span class="keyword">id</span>))</span></span><br></pre></td></tr></table></figure>
+<h4 id="&#x5F15;&#x5165;-json-&#x5217;&#x7C7B;&#x578B;&#x53CA;&#x76F8;&#x5173;&#x51FD;&#x6570;">&#x5F15;&#x5165; json &#x5217;&#x7C7B;&#x578B;&#x53CA;&#x76F8;&#x5173;&#x51FD;&#x6570;</h4><ul>
+<li>&#x5728; 5.7 &#x4E4B;&#x524D;&#x3002;</li>
+</ul>
+<p>&#x53EA;&#x80FD;&#x5728; varchar &#x6216;&#x8005; text &#x7B49;&#x5B57;&#x7B26;&#x7C7B;&#x578B;&#x5B58;&#x50A8; json &#x7C7B;&#x578B;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;&#x7A0B;&#x5E8F;&#x53BB;&#x89E3;&#x6790;&#x4F7F;&#x7528; json &#x5B57;&#x7B26;&#x4E32;</p>
+<ul>
+<li>&#x5728; 5.7 &#x4E2D;</li>
+</ul>
+<p>&#x589E;&#x5F3A;&#x4E86; json &#x7C7B;&#x578B;&#x5B58;&#x50A8;&#xFF0C;&#x5982; json_type(),json_object(),json_merge(),json_array() &#x7B49;&#x3002;</p>
+<h4 id="&#x652F;&#x6301;&#x591A;&#x6E90;&#x590D;&#x5236;">&#x652F;&#x6301;&#x591A;&#x6E90;&#x590D;&#x5236;</h4><h4 id="innodb-&#x5F15;&#x64CE;&#x589E;&#x5F3A;">innodb &#x5F15;&#x64CE;&#x589E;&#x5F3A;</h4><ul>
+<li>&#x652F;&#x6301;&#x7F13;&#x51B2;&#x6C60;&#x5927;&#x5C0F;&#x5728;&#x7EBF;&#x53D8;&#x66F4;</li>
+<li>&#x589E;&#x52A0; innodb_buffer_pool &#x5BFC;&#x5165;&#x5BFC;&#x51FA;&#x529F;&#x80FD;</li>
+<li>&#x652F;&#x6301;&#x4E3A; innodb &#x8868;&#x5EFA;&#x7ACB;&#x8868;&#x7A7A;&#x95F4;</li>
+</ul>
+<h4 id="&#x5B89;&#x5168;&#x53CA;&#x7BA1;&#x7406;&#x65B9;&#x9762;&#x589E;&#x5F3A;">&#x5B89;&#x5168;&#x53CA;&#x7BA1;&#x7406;&#x65B9;&#x9762;&#x589E;&#x5F3A;</h4><ul>
+<li>&#x4E0D;&#x518D;&#x652F;&#x6301; old_password &#x8BA4;&#x8BC1;</li>
+<li>&#x589E;&#x52A0;&#x8D26;&#x53F7;&#x9ED8;&#x8BA4;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x53CA;&#x52A0;&#x5F3A;&#x4E86;&#x5BF9;&#x8D26;&#x53F7;&#x7684;&#x7BA1;&#x7406;&#x529F;&#x80FD;</li>
+<li>&#x589E;&#x52A0;&#x4E86; sys &#x7BA1;&#x7406;&#x6570;&#x636E;&#x5E93;</li>
+</ul>
+      
     </div>
-    <aside id="sidebar" class="alignright">
-      <div class="widget tag">
-        <h3 class="title">最新文章</h3>
-        <ul class="entry">
+    <footer>
+      
+        <div class="categories">
+    <a href="/categories/数据库/">数据库</a>
+  </div>
+        <div class="tags">
+    <a href="/tags/mysql/">mysql</a>
+  </div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
 
-          <li>
-            <a href="/2017/06/27/ubuntu搭建深度学习tensorflow环境/">ubuntu 搭建深度学习 tensorflow 环境</a>
-          </li>
+<section id="comments">
+ <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-mysql5-7版本新特性" data-title="mysql5.7 版本新特性" data-url="http://blog.feel88.cn/2016/11/15/mysql5-7版本新特性/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"feel"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section></div></div>
+    <aside id="sidebar" class="alignright"><div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2017/06/27/ubuntu搭建深度学习tensorflow环境/">ubuntu 搭建深度学习 tensorflow 环境</a>
+      </li>
+    
+      <li>
+        <a href="/2017/01/04/python下安装MySQLdb/">python 下安装 MySQLdb 填坑</a>
+      </li>
+    
+      <li>
+        <a href="/2016/12/23/scala元编程/">scala 元编程</a>
+      </li>
+    
+      <li>
+        <a href="/2016/11/22/线程安全问题/">线程安全问题</a>
+      </li>
+    
+      <li>
+        <a href="/2016/11/22/Peterson无锁互斥算法/">Peterson 无锁互斥算法</a>
+      </li>
+    
+  </ul>
+</div>
 
-          <li>
-            <a href="/2017/01/04/python下安装MySQLdb/">python 下安装 MySQLdb 填坑</a>
-          </li>
+  <div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/DL/">DL</a><small>1</small></li>
+  
+    <li><a href="/categories/bigdata/">bigdata</a><small>2</small></li>
+  
+    <li><a href="/categories/css3/">css3</a><small>2</small></li>
+  
+    <li><a href="/categories/go/">go</a><small>2</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>4</small></li>
+  
+    <li><a href="/categories/kotlin/">kotlin</a><small>1</small></li>
+  
+    <li><a href="/categories/linux/">linux</a><small>6</small></li>
+  
+    <li><a href="/categories/nginx/">nginx</a><small>1</small></li>
+  
+    <li><a href="/categories/nginx常用错误/">nginx常用错误</a><small>1</small></li>
+  
+    <li><a href="/categories/python/">python</a><small>1</small></li>
+  
+    <li><a href="/categories/scala/">scala</a><small>3</small></li>
+  
+    <li><a href="/categories/tool/">tool</a><small>1</small></li>
+  
+    <li><a href="/categories/web/">web</a><small>2</small></li>
+  
+    <li><a href="/categories/数据库/">数据库</a><small>1</small></li>
+  
+  </ul>
+</div>
 
-          <li>
-            <a href="/2016/12/23/scala元编程/">scala 元编程</a>
-          </li>
-
-          <li>
-            <a href="/2016/11/22/线程安全问题/">线程安全问题</a>
-          </li>
-
-          <li>
-            <a href="/2016/11/22/Peterson无锁互斥算法/">Peterson 无锁互斥算法</a>
-          </li>
-
-        </ul>
-      </div>
-
-      <div class="widget tag">
-        <h3 class="title">分类</h3>
-        <ul class="entry">
-
-          <li><a href="/categories/DL/">DL</a><small>1</small></li>
-
-          <li><a href="/categories/bigtata/">bigdata</a><small>2</small></li>
-
-          <li><a href="/categories/css3/">css3</a><small>2</small></li>
-
-          <li><a href="/categories/go/">go</a><small>2</small></li>
-
-          <li><a href="/categories/java/">java</a><small>4</small></li>
-
-          <li><a href="/categories/kotlin/">kotlin</a><small>1</small></li>
-
-          <li><a href="/categories/linux/">linux</a><small>6</small></li>
-
-          <li><a href="/categories/nginx/">nginx</a><small>1</small></li>
-
-          <li><a href="/categories/nginx常用错误/">nginx常用错误</a><small>1</small></li>
-
-          <li><a href="/categories/python/">python</a><small>1</small></li>
-
-          <li><a href="/categories/scala/">scala</a><small>3</small></li>
-
-          <li><a href="/categories/tool/">tool</a><small>1</small></li>
-
-          <li><a href="/categories/web/">web</a><small>2</small></li>
-
-          <li><a href="/categories/数据库/">数据库</a><small>1</small></li>
-
-        </ul>
-      </div>
-
-      <div class="widget tag">
-        <h3 class="title">标签</h3>
-        <ul class="entry">
-
-          <li><a href="/tags/DL/">DL</a><small>1</small></li>
-
-          <li><a href="/tags/bigtata/">bigdata</a><small>2</small></li>
-
-          <li><a href="/tags/css3/">css3</a><small>2</small></li>
-
-          <li><a href="/tags/go/">go</a><small>2</small></li>
-
-          <li><a href="/tags/java/">java</a><small>3</small></li>
-
-          <li><a href="/tags/java并发编程/">java并发编程</a><small>2</small></li>
-
-          <li><a href="/tags/kotlin/">kotlin</a><small>1</small></li>
-
-          <li><a href="/tags/linux/">linux</a><small>6</small></li>
-
-          <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
-
-          <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
-
-          <li><a href="/tags/nginx信号量/">nginx信号量</a><small>1</small></li>
-
-          <li><a href="/tags/python下安装MySQLdb填坑/">python下安装MySQLdb填坑</a><small>1</small></li>
-
-          <li><a href="/tags/scala/">scala</a><small>3</small></li>
-
-          <li><a href="/tags/sqoop/">sqoop</a><small>1</small></li>
-
-          <li><a href="/tags/tool/">tool</a><small>1</small></li>
-
-          <li><a href="/tags/web/">web</a><small>3</small></li>
-
-          <li><a href="/tags/web前端/">web前端</a><small>1</small></li>
-
-          <li><a href="/tags/前端样式框架/">前端样式框架</a><small>1</small></li>
-
-          <li><a href="/tags/样式/">样式</a><small>1</small></li>
-
-        </ul>
-      </div>
-    </aside>
+  <div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/DL/">DL</a><small>1</small></li>
+  
+    <li><a href="/tags/bigdata/">bigdata</a><small>2</small></li>
+  
+    <li><a href="/tags/css3/">css3</a><small>2</small></li>
+  
+    <li><a href="/tags/go/">go</a><small>2</small></li>
+  
+    <li><a href="/tags/java/">java</a><small>3</small></li>
+  
+    <li><a href="/tags/java并发编程/">java并发编程</a><small>2</small></li>
+  
+    <li><a href="/tags/kotlin/">kotlin</a><small>1</small></li>
+  
+    <li><a href="/tags/linux/">linux</a><small>6</small></li>
+  
+    <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
+  
+    <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
+  
+    <li><a href="/tags/nginx信号量/">nginx信号量</a><small>1</small></li>
+  
+    <li><a href="/tags/python下安装MySQLdb填坑/">python下安装MySQLdb填坑</a><small>1</small></li>
+  
+    <li><a href="/tags/scala/">scala</a><small>3</small></li>
+  
+    <li><a href="/tags/sqoop/">sqoop</a><small>1</small></li>
+  
+    <li><a href="/tags/tool/">tool</a><small>1</small></li>
+  
+    <li><a href="/tags/web/">web</a><small>3</small></li>
+  
+    <li><a href="/tags/web前端/">web前端</a><small>1</small></li>
+  
+    <li><a href="/tags/前端样式框架/">前端样式框架</a><small>1</small></li>
+  
+    <li><a href="/tags/样式/">样式</a><small>1</small></li>
+  
+  </ul>
+</div></aside>
     <div class="clearfix"></div>
   </div>
-  <footer id="footer" class="inner">
-    <div class="alignleft">
-
-      &copy; 2017 feel
-
-    </div>
-    <div class="clearfix"></div>
-  </footer>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2018 feel
+  
+</div>
+<div class="clearfix"></div></footer>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-  <script src="/js/jquery.imagesloaded.min.js"></script>
-  <script src="/js/gallery.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
 
 
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript">
-    (function($) {
-      $('.fancybox').fancybox();
-    })(jQuery);
-  </script>
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
 </body>
-

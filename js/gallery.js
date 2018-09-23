@@ -1,11 +1,11 @@
-(function($) {
+(function($){
   // Caption
-  $('.entry').each(function(i) {
-    $(this).find('img').each(function() {
-      if (!$(this).hasClass('nofancybox')) {
+  $('.entry').each(function(i){
+    $(this).find('img').each(function(){
+      if (!$(this).hasClass('nofancybox')){
         var alt = this.alt;
 
-        if (alt) {
+        if (alt){
           $(this).after('<span class="caption">' + alt + '</span>');
         }
 
@@ -15,57 +15,49 @@
   });
 
   // Gallery
-  var play = function(parent, item, callback) {
+  var play = function(parent, item, callback){
     var width = parent.width();
 
-    item.imagesLoaded(function() {
+    item.imagesLoaded(function(){
       var _this = this[0],
         nWidth = _this.naturalWidth,
         nHeight = _this.naturalHeight;
 
       callback();
-      this.animate({
-        opacity: 1
-      }, 500);
-      parent.animate({
-        height: width * nHeight / nWidth
-      }, 500);
+      this.animate({opacity: 1}, 500);
+      parent.animate({height: width * nHeight / nWidth}, 500);
     });
   };
 
-  $('.gallery').each(function() {
+  $('.gallery').each(function(){
     var $this = $(this),
       current = 0,
       photoset = $this.children('.photoset').children(),
       all = photoset.length,
       loading = true;
 
-    play($this, photoset.eq(0), function() {
+    play($this, photoset.eq(0), function(){
       loading = false;
     });
 
-    $this.on('click', '.prev', function() {
-      if (!loading) {
+    $this.on('click', '.prev', function(){
+      if (!loading){
         var next = (current - 1) % all;
         loading = true;
 
-        play($this, photoset.eq(next), function() {
-          photoset.eq(current).animate({
-            opacity: 0
-          }, 500);
+        play($this, photoset.eq(next), function(){
+          photoset.eq(current).animate({opacity: 0}, 500);
           loading = false;
           current = next;
         });
       }
-    }).on('click', '.next', function() {
-      if (!loading) {
+    }).on('click', '.next', function(){
+      if (!loading){
         var next = (current + 1) % all;
         loading = true;
 
-        play($this, photoset.eq(next), function() {
-          photoset.eq(current).animate({
-            opacity: 0
-          }, 500);
+        play($this, photoset.eq(next), function(){
+          photoset.eq(current).animate({opacity: 0}, 500);
           loading = false;
           current = next;
         });

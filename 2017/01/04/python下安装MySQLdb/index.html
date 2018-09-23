@@ -1,284 +1,240 @@
 <!DOCTYPE HTML>
 <html>
-
 <head>
   <meta charset="utf-8">
-
-  <title>python 下安装 MySQLdb 填坑 | Feel&#39;s blog</title>
+  
+  <title>python 下安装 MySQLdb 填坑 | 知识从未如此性感</title>
   <meta name="author" content="feel">
-
-  <meta name="description" content="feel&#39;s blog | java | scala | python | javascript| linux | nodejs| Machine Learning|go">
-
-
+  
+  <meta name="description" content="feel&#39;s blog | java | scala | python | javascript| linux| go |人工智能">
+  
+  
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
   <meta property="og:title" content="python 下安装 MySQLdb 填坑">
-  <meta property="og:site_name" content="Feel&#39;s blog">
+  <meta property="og:site_name" content="知识从未如此性感">
 
-
-  <meta property="og:image" content="undefined">
-
+  
+    <meta property="og:image" content="undefined">
+  
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="alternate" href="/atom.xml" title="Feel&#39;s blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="知识从未如此性感" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <a href="https://github.com/Bestfeel" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-</head>
-
-</html>
+  
+</head></html>
 
 <body>
-  <header id="header" class="inner">
-    <div class="alignleft">
-      <h1><a href="/">Feel&#39;s blog</a></h1>
-      <h2><a href="/">知识从未如此性感</a></h2>
-    </div>
-    <nav id="main-nav" class="alignright">
-      <ul>
-
-        <li><a href="/">首页</a></li>
-
-        <li><a href="/archives">归档</a></li>
-
-        <li><a href="/site">下载</a></li>
-
-        <li><a href="/about">联系我</a></li>
-
-        <li><a href="http://download.feel88.cn">新版下载中心</a></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-
-
-
-      <div class="clearfix"></div>
-    </nav>
-    <div class="clearfix"></div>
-  </header>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">知识从未如此性感</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/site">下载</a></li>
+    
+      <li><a href="/about">联系我</a></li>
+    
+    <li><a href="http://download.feel88.cn">新版下载中心</a></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  
+  
+  
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft">
-      <div id="wrapper">
-        <article class="post">
-
-          <div class="post-content">
-            <header>
-
-              <div class="icon"></div>
-              <time datetime="2017-01-04T08:46:48.000Z"><a href="/2017/01/04/python下安装MySQLdb/">2017-01-04</a></time>
-
-              <h1 class="title">python 下安装 MySQLdb 填坑</h1>
-            </header>
-            <div class="entry">
-
-              <p>&#x5728;&#x65B0;&#x7248;&#x7684; mac &#x4E0B;&#x5B89;&#x88C5;&#x4E00;&#x4E9B;&#x5E93;&#x7684;&#x65F6;&#x5019;&#x51FA;&#x73B0; <code>ld: library not found for -lssl</code> &#x7B49;&#x7C7B;&#x4F3C;&#x7684;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x3002;<br>                &#x8BF4;&#x5E93;&#x91CC;&#x7F3A;&#x5C11;&#x94FE;&#x63A5;&#xFF0C;&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x7B49;&#x7B49;&#x3002;&#x5176;&#x5B9E;&#x90FD;&#x548C; xcode &#x6709;&#x5173;&#x7CFB; <br><a href="http://railsapps.github.io/xcode-command-line-tools.html" target="_blank" rel="external"> &#x53C2;&#x8003;</a></p>
-              <a id="more"></a>
-              <figure class="highlight crystal">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td>
-                    <td class="code"><pre><span class="line">cc -bundle -undefined dynamic_lookup -arch x86_64 -arch i386 -<span class="constant">Wl</span>,-<span class="constant">F</span>. build/temp.macosx-<span class="number">10.12</span>-intel-<span class="number">2.7</span>/_mysql.o -<span class="constant">L</span>/usr/local/<span class="constant">Cellar</span>/mysql/<span class="number">5.7</span>.<span class="number">17</span>/<span class="class"><span class="keyword">lib</span> -<span class="title">lmysqlclient</span> -<span class="title">lssl</span> -<span class="title">lcrypto</span> -<span class="title">o</span> <span class="title">build</span>/<span class="title">lib</span>.<span class="title">macosx</span>-10.12-<span class="title">intel</span>-2.7/<span class="title">_mysql</span>.<span class="title">so</span></span></span><br><span class="line">   <span class="symbol">ld:</span> library not found <span class="keyword">for</span> -lssl</span><br><span class="line">   <span class="symbol">clang:</span> <span class="symbol">error:</span> linker command failed <span class="keyword">with</span> exit code <span class="number">1</span> (use -v to see invocation)</span><br><span class="line">   <span class="symbol">error:</span> command <span class="string">&apos;cc&apos;</span> failed <span class="keyword">with</span> exit status <span class="number">1</span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-              <p>&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#xFF1A;<br>&#x5728; cmd &#x4E0B;&#x6267;&#x884C;&#x4E0B;&#x9762;&#x547D;&#x4EE4;</p>
-              <figure class="highlight lua">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
-                    <td class="code"><pre><span class="line">xcode-<span class="built_in">select</span> <span class="comment">--install</span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-              <p>&#x67E5;&#x770B;&#x662F;&#x5426;&#x5B89;&#x88C5;&#x6210;&#x529F;</p>
-              <figure class="highlight sql">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br></pre></td>
-                    <td class="code"><pre><span class="line">xcode-<span class="operator"><span class="keyword">select</span> -<span class="keyword">p</span></span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-              <p>&#x6B64;&#x65F6;&#x518D;&#x5B89;&#x88C5; </p>
-              <figure class="highlight cpp">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td>
-                    <td class="code"><pre><span class="line">sudo  pip install mysql-python </span><br><span class="line"></span><br><span class="line">Collecting mysql-python</span><br><span class="line">  Downloading MySQL-python-<span class="number">1.2</span><span class="number">.5</span>.zip (<span class="number">108</span>kB)</span><br><span class="line">    <span class="number">100</span>% |&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;| <span class="number">112</span>kB <span class="number">427</span>kB/s </span><br><span class="line">Installing collected packages: mysql-python</span><br><span class="line">  Running setup.py install <span class="keyword">for</span> mysql-python ... done</span><br><span class="line">Successfully installed mysql-python-<span class="number">1.2</span><span class="number">.5</span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-
-            </div>
-            <footer>
-
-              <div class="categories">
-                <a href="/categories/python/">python</a>
-              </div>
-              <div class="tags">
-                <a href="/tags/python下安装MySQLdb填坑/">python下安装MySQLdb填坑</a>
-              </div>
-
-
-              <div class="clearfix"></div>
-            </footer>
-          </div>
-        </article>
-
-        <section id="comments">
-          <!-- 多说评论框 start -->
-          <div class="ds-thread" data-thread-key="post-python下安装MySQLdb" data-title="python 下安装 MySQLdb 填坑" data-url="http://wwww.feel88.cn/2017/01/04/python下安装MySQLdb/"></div>
-          <!-- 多说评论框 end -->
-          <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-          <script type="text/javascript">
-            var duoshuoQuery = {
-              short_name: "feel"
-            };
-            (function() {
-              var ds = document.createElement('script');
-              ds.type = 'text/javascript';
-              ds.async = true;
-              ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-              ds.charset = 'UTF-8';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-            })();
-          </script>
-          <!-- 多说公共JS代码 end -->
-        </section>
-      </div>
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-01-04T08:46:48.000Z"><a href="/2017/01/04/python下安装MySQLdb/">2017-01-04</a></time>
+      
+      <h1 class="title">python 下安装 MySQLdb 填坑</h1>
+    </header>
+    <div class="entry">
+      
+        <p>&#x5728;&#x65B0;&#x7248;&#x7684; mac &#x4E0B;&#x5B89;&#x88C5;&#x4E00;&#x4E9B;&#x5E93;&#x7684;&#x65F6;&#x5019;&#x51FA;&#x73B0; <code>ld: library not found for -lssl</code> &#x7B49;&#x7C7B;&#x4F3C;&#x7684;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x3002;<br> &#x8BF4;&#x5E93;&#x91CC;&#x7F3A;&#x5C11;&#x94FE;&#x63A5;&#xFF0C;&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x7B49;&#x7B49;&#x3002;&#x5176;&#x5B9E;&#x90FD;&#x548C; xcode &#x6709;&#x5173;&#x7CFB; <br><a href="http://railsapps.github.io/xcode-command-line-tools.html" target="_blank" rel="external"> &#x53C2;&#x8003;</a></p>
+<a id="more"></a>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cc -bundle -undefined dynamic_lookup -arch x86_64 -arch i386 -<span class="constant">Wl</span>,-<span class="constant">F</span>. build/temp.macosx-<span class="number">10.12</span>-intel-<span class="number">2.7</span>/_mysql.o -<span class="constant">L</span>/usr/local/<span class="constant">Cellar</span>/mysql/<span class="number">5.7</span>.<span class="number">17</span>/<span class="class"><span class="keyword">lib</span> -<span class="title">lmysqlclient</span> -<span class="title">lssl</span> -<span class="title">lcrypto</span> -<span class="title">o</span> <span class="title">build</span>/<span class="title">lib</span>.<span class="title">macosx</span>-10.12-<span class="title">intel</span>-2.7/<span class="title">_mysql</span>.<span class="title">so</span></span></span><br><span class="line">   <span class="symbol">ld:</span> library not found <span class="keyword">for</span> -lssl</span><br><span class="line">   <span class="symbol">clang:</span> <span class="symbol">error:</span> linker command failed <span class="keyword">with</span> exit code <span class="number">1</span> (use -v to see invocation)</span><br><span class="line">   <span class="symbol">error:</span> command <span class="string">&apos;cc&apos;</span> failed <span class="keyword">with</span> exit status <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#xFF1A;<br>&#x5728; cmd &#x4E0B;&#x6267;&#x884C;&#x4E0B;&#x9762;&#x547D;&#x4EE4;</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcode-<span class="built_in">select</span> <span class="comment">--install</span></span><br></pre></td></tr></table></figure>
+<p>&#x67E5;&#x770B;&#x662F;&#x5426;&#x5B89;&#x88C5;&#x6210;&#x529F;</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcode-<span class="operator"><span class="keyword">select</span> -<span class="keyword">p</span></span></span><br></pre></td></tr></table></figure>
+<p>&#x6B64;&#x65F6;&#x518D;&#x5B89;&#x88C5; </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo  pip install mysql-python </span><br><span class="line"></span><br><span class="line">Collecting mysql-python</span><br><span class="line">  Downloading MySQL-python-<span class="number">1.2</span><span class="number">.5</span>.zip (<span class="number">108</span>kB)</span><br><span class="line">    <span class="number">100</span>% |&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;| <span class="number">112</span>kB <span class="number">427</span>kB/s </span><br><span class="line">Installing collected packages: mysql-python</span><br><span class="line">  Running setup.py install <span class="keyword">for</span> mysql-python ... done</span><br><span class="line">Successfully installed mysql-python-<span class="number">1.2</span><span class="number">.5</span></span><br></pre></td></tr></table></figure>
+      
     </div>
-    <aside id="sidebar" class="alignright">
-      <div class="widget tag">
-        <h3 class="title">最新文章</h3>
-        <ul class="entry">
+    <footer>
+      
+        <div class="categories">
+    <a href="/categories/python/">python</a>
+  </div>
+        <div class="tags">
+    <a href="/tags/python下安装MySQLdb填坑/">python下安装MySQLdb填坑</a>
+  </div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
 
-          <li>
-            <a href="/2017/06/27/ubuntu搭建深度学习tensorflow环境/">ubuntu 搭建深度学习 tensorflow 环境</a>
-          </li>
+<section id="comments">
+ <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-python下安装MySQLdb" data-title="python 下安装 MySQLdb 填坑" data-url="http://blog.feel88.cn/2017/01/04/python下安装MySQLdb/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"feel"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section></div></div>
+    <aside id="sidebar" class="alignright"><div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2017/06/27/ubuntu搭建深度学习tensorflow环境/">ubuntu 搭建深度学习 tensorflow 环境</a>
+      </li>
+    
+      <li>
+        <a href="/2017/01/04/python下安装MySQLdb/">python 下安装 MySQLdb 填坑</a>
+      </li>
+    
+      <li>
+        <a href="/2016/12/23/scala元编程/">scala 元编程</a>
+      </li>
+    
+      <li>
+        <a href="/2016/11/22/线程安全问题/">线程安全问题</a>
+      </li>
+    
+      <li>
+        <a href="/2016/11/22/Peterson无锁互斥算法/">Peterson 无锁互斥算法</a>
+      </li>
+    
+  </ul>
+</div>
 
-          <li>
-            <a href="/2017/01/04/python下安装MySQLdb/">python 下安装 MySQLdb 填坑</a>
-          </li>
+  <div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/DL/">DL</a><small>1</small></li>
+  
+    <li><a href="/categories/bigdata/">bigdata</a><small>2</small></li>
+  
+    <li><a href="/categories/css3/">css3</a><small>2</small></li>
+  
+    <li><a href="/categories/go/">go</a><small>2</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>4</small></li>
+  
+    <li><a href="/categories/kotlin/">kotlin</a><small>1</small></li>
+  
+    <li><a href="/categories/linux/">linux</a><small>6</small></li>
+  
+    <li><a href="/categories/nginx/">nginx</a><small>1</small></li>
+  
+    <li><a href="/categories/nginx常用错误/">nginx常用错误</a><small>1</small></li>
+  
+    <li><a href="/categories/python/">python</a><small>1</small></li>
+  
+    <li><a href="/categories/scala/">scala</a><small>3</small></li>
+  
+    <li><a href="/categories/tool/">tool</a><small>1</small></li>
+  
+    <li><a href="/categories/web/">web</a><small>2</small></li>
+  
+    <li><a href="/categories/数据库/">数据库</a><small>1</small></li>
+  
+  </ul>
+</div>
 
-          <li>
-            <a href="/2016/12/23/scala元编程/">scala 元编程</a>
-          </li>
-
-          <li>
-            <a href="/2016/11/22/线程安全问题/">线程安全问题</a>
-          </li>
-
-          <li>
-            <a href="/2016/11/22/Peterson无锁互斥算法/">Peterson 无锁互斥算法</a>
-          </li>
-
-        </ul>
-      </div>
-
-      <div class="widget tag">
-        <h3 class="title">分类</h3>
-        <ul class="entry">
-
-          <li><a href="/categories/DL/">DL</a><small>1</small></li>
-
-          <li><a href="/categories/bigtata/">bigdata</a><small>2</small></li>
-
-          <li><a href="/categories/css3/">css3</a><small>2</small></li>
-
-          <li><a href="/categories/go/">go</a><small>2</small></li>
-
-          <li><a href="/categories/java/">java</a><small>4</small></li>
-
-          <li><a href="/categories/kotlin/">kotlin</a><small>1</small></li>
-
-          <li><a href="/categories/linux/">linux</a><small>6</small></li>
-
-          <li><a href="/categories/nginx/">nginx</a><small>1</small></li>
-
-          <li><a href="/categories/nginx常用错误/">nginx常用错误</a><small>1</small></li>
-
-          <li><a href="/categories/python/">python</a><small>1</small></li>
-
-          <li><a href="/categories/scala/">scala</a><small>3</small></li>
-
-          <li><a href="/categories/tool/">tool</a><small>1</small></li>
-
-          <li><a href="/categories/web/">web</a><small>2</small></li>
-
-          <li><a href="/categories/数据库/">数据库</a><small>1</small></li>
-
-        </ul>
-      </div>
-
-      <div class="widget tag">
-        <h3 class="title">标签</h3>
-        <ul class="entry">
-
-          <li><a href="/tags/DL/">DL</a><small>1</small></li>
-
-          <li><a href="/tags/bigtata/">bigdata</a><small>2</small></li>
-
-          <li><a href="/tags/css3/">css3</a><small>2</small></li>
-
-          <li><a href="/tags/go/">go</a><small>2</small></li>
-
-          <li><a href="/tags/java/">java</a><small>3</small></li>
-
-          <li><a href="/tags/java并发编程/">java并发编程</a><small>2</small></li>
-
-          <li><a href="/tags/kotlin/">kotlin</a><small>1</small></li>
-
-          <li><a href="/tags/linux/">linux</a><small>6</small></li>
-
-          <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
-
-          <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
-
-          <li><a href="/tags/nginx信号量/">nginx信号量</a><small>1</small></li>
-
-          <li><a href="/tags/python下安装MySQLdb填坑/">python下安装MySQLdb填坑</a><small>1</small></li>
-
-          <li><a href="/tags/scala/">scala</a><small>3</small></li>
-
-          <li><a href="/tags/sqoop/">sqoop</a><small>1</small></li>
-
-          <li><a href="/tags/tool/">tool</a><small>1</small></li>
-
-          <li><a href="/tags/web/">web</a><small>3</small></li>
-
-          <li><a href="/tags/web前端/">web前端</a><small>1</small></li>
-
-          <li><a href="/tags/前端样式框架/">前端样式框架</a><small>1</small></li>
-
-          <li><a href="/tags/样式/">样式</a><small>1</small></li>
-
-        </ul>
-      </div>
-    </aside>
+  <div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/DL/">DL</a><small>1</small></li>
+  
+    <li><a href="/tags/bigdata/">bigdata</a><small>2</small></li>
+  
+    <li><a href="/tags/css3/">css3</a><small>2</small></li>
+  
+    <li><a href="/tags/go/">go</a><small>2</small></li>
+  
+    <li><a href="/tags/java/">java</a><small>3</small></li>
+  
+    <li><a href="/tags/java并发编程/">java并发编程</a><small>2</small></li>
+  
+    <li><a href="/tags/kotlin/">kotlin</a><small>1</small></li>
+  
+    <li><a href="/tags/linux/">linux</a><small>6</small></li>
+  
+    <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
+  
+    <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
+  
+    <li><a href="/tags/nginx信号量/">nginx信号量</a><small>1</small></li>
+  
+    <li><a href="/tags/python下安装MySQLdb填坑/">python下安装MySQLdb填坑</a><small>1</small></li>
+  
+    <li><a href="/tags/scala/">scala</a><small>3</small></li>
+  
+    <li><a href="/tags/sqoop/">sqoop</a><small>1</small></li>
+  
+    <li><a href="/tags/tool/">tool</a><small>1</small></li>
+  
+    <li><a href="/tags/web/">web</a><small>3</small></li>
+  
+    <li><a href="/tags/web前端/">web前端</a><small>1</small></li>
+  
+    <li><a href="/tags/前端样式框架/">前端样式框架</a><small>1</small></li>
+  
+    <li><a href="/tags/样式/">样式</a><small>1</small></li>
+  
+  </ul>
+</div></aside>
     <div class="clearfix"></div>
   </div>
-  <footer id="footer" class="inner">
-    <div class="alignleft">
-
-      &copy; 2017 feel
-
-    </div>
-    <div class="clearfix"></div>
-  </footer>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2018 feel
+  
+</div>
+<div class="clearfix"></div></footer>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-  <script src="/js/jquery.imagesloaded.min.js"></script>
-  <script src="/js/gallery.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
 
 
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript">
-    (function($) {
-      $('.fancybox').fancybox();
-    })(jQuery);
-  </script>
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
 </body>
-

@@ -1,288 +1,246 @@
 <!DOCTYPE HTML>
 <html>
-
 <head>
   <meta charset="utf-8">
-
-  <title>Peterson 无锁互斥算法 | Feel&#39;s blog</title>
+  
+  <title>Peterson 无锁互斥算法 | 知识从未如此性感</title>
   <meta name="author" content="feel">
-
-  <meta name="description" content="feel&#39;s blog | java | scala | python | javascript| linux | nodejs| Machine Learning|go">
-
-
+  
+  <meta name="description" content="feel&#39;s blog | java | scala | python | javascript| linux| go |人工智能">
+  
+  
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
   <meta property="og:title" content="Peterson 无锁互斥算法">
-  <meta property="og:site_name" content="Feel&#39;s blog">
+  <meta property="og:site_name" content="知识从未如此性感">
 
-
-  <meta property="og:image" content="undefined">
-
+  
+    <meta property="og:image" content="undefined">
+  
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="alternate" href="/atom.xml" title="Feel&#39;s blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="知识从未如此性感" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <a href="https://github.com/Bestfeel" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-</head>
-
-</html>
+  
+</head></html>
 
 <body>
-  <header id="header" class="inner">
-    <div class="alignleft">
-      <h1><a href="/">Feel&#39;s blog</a></h1>
-      <h2><a href="/">知识从未如此性感</a></h2>
-    </div>
-    <nav id="main-nav" class="alignright">
-      <ul>
-
-        <li><a href="/">首页</a></li>
-
-        <li><a href="/archives">归档</a></li>
-
-        <li><a href="/site">下载</a></li>
-
-        <li><a href="/about">联系我</a></li>
-
-        <li><a href="http://download.feel88.cn">新版下载中心</a></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-
-
-
-      <div class="clearfix"></div>
-    </nav>
-    <div class="clearfix"></div>
-  </header>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">知识从未如此性感</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/site">下载</a></li>
+    
+      <li><a href="/about">联系我</a></li>
+    
+    <li><a href="http://download.feel88.cn">新版下载中心</a></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  
+  
+  
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft">
-      <div id="wrapper">
-        <article class="post">
-
-          <div class="post-content">
-            <header>
-
-              <div class="icon"></div>
-              <time datetime="2016-11-21T16:07:54.000Z"><a href="/2016/11/22/Peterson无锁互斥算法/">2016-11-22</a></time>
-
-              <h1 class="title">Peterson 无锁互斥算法</h1>
-            </header>
-            <div class="entry">
-
-              <p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x8981;&#x89E3;&#x51B3;&#x7EBF;&#x7A0B;&#x4E92;&#x65A5;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x4F7F;&#x7528;&#x9501;&#x673A;&#x5236;&#x6765;&#x5B9E;&#x73B0;&#x3002;&#x5B9E;&#x73B0;&#x4E92;&#x65A5;&#x7684;&#x4E00;&#x79CD;&#x8F6F;&#x4EF6;&#x65B9;&#x6CD5;&#x662F;&#x91C7;&#x7528;&#x9501;&#x673A;&#x5236;&#xFF0C;&#x5373;&#x63D0;&#x4F9B;&#x4E00;&#x5BF9;&#x4E0A;&#x9501;&#x548C;&#x5F00;&#x9501;&#x539F;&#x8BED;&#xFF0C;&#x4EE5;&#x53CA;&#x4E00;&#x4E2A;&#x9501;&#x53D8;&#x91CF;
-                W &#x8FDB;&#x5165;&#x4E34;&#x754C;&#x533A;&#x524D;&#xFF0C;&#x901A;&#x8FC7;&#x9501;&#x53D8;&#x91CF;&#x6765;&#x5224;&#x65AD;&#x4E34;&#x754C;&#x8D44;&#x6E90;&#x662F;&#x5426;&#x88AB;&#x5360;&#x7528;&#x3002;</p>
-              <p>Peterson &#x7B97;&#x6CD5;&#x662F;&#x4E00;&#x4E2A;&#x5B9E;&#x73B0;&#x4E92;&#x65A5;&#x9501;&#x7684;&#x5E76;&#x53D1;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x7B97;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x63A7;&#x5236;&#x4E24;&#x4E2A;&#x8FDB;&#x7A0B;&#x8BBF;&#x95EE;&#x4E00;&#x4E2A;&#x5171;&#x4EAB;&#x7684;&#x5355;&#x7528;&#x6237;&#x8D44;&#x6E90;&#x800C;&#x4E0D;&#x53D1;&#x751F;&#x8BBF;&#x95EE;&#x51B2;&#x7A81;&#x3002;</p>
-              <a id="more"></a>
-              <h3 id="&#x540C;&#x6B65;&#x673A;&#x5236;&#x5E94;&#x8BE5;&#x9075;&#x5FAA;&#x7684;&#x51C6;&#x5219;">&#x540C;&#x6B65;&#x673A;&#x5236;&#x5E94;&#x8BE5;&#x9075;&#x5FAA;&#x7684;&#x51C6;&#x5219;&#xFF1A;</h3>
-              <ol>
-                <li>&#x7A7A;&#x95F2;&#x8BA9;&#x8FDB; &#x5F53;&#x65E0;&#x8FDB;&#x7A0B;&#x5904;&#x4E8E;&#x4E34;&#x754C;&#x533A;&#x5185;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x8BA9;&#x4E00;&#x4E2A;&#x8981;&#x6C42;&#x8FDB;&#x5165;&#x4E34;&#x754C;&#x533A;&#x7684;&#x8FDB;&#x7A0B;&#x7ACB;&#x5373;&#x8FDB;&#x5165;&#xFF0C;&#x4EE5;&#x6709;
-                  <br> &#x6548;&#x5730;&#x5229;&#x7528;&#x4E34;&#x754C;&#x8D44;&#x6E90;&#x3002;</li>
-                <li>&#x5FD9;&#x5219;&#x7B49;&#x5F85; &#x5F53;&#x5DF2;&#x6709;&#x8FDB;&#x7A0B;&#x5904;&#x4E8E;&#x4E34;&#x754C;&#x533A;&#x5185;&#x65F6;&#xFF0C;&#x5176;&#x5B83;&#x8BD5;&#x56FE;&#x8FDB;&#x5165;&#x4E34;&#x754C;&#x533A;&#x7684;&#x8FDB;&#x7A0B;&#x5FC5;&#x987B;&#x7B49;&#x5F85;&#xFF0C;&#x4EE5;&#x4FDD;&#x8BC1;&#x5B83;
-                  <br> &#x4EEC;&#x4E92;&#x65A5;&#x5730;&#x8FDB;&#x5165;&#x4E34;&#x754C;&#x533A;&#x3002;</li>
-                <li>&#x6709;&#x9650;&#x7B49;&#x5F85; &#x5BF9;&#x8981;&#x6C42;&#x8FDB;&#x5165;&#x4E34;&#x754C;&#x533A;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x5E94;&#x5728;&#x6709;&#x9650;&#x65F6;&#x95F4;&#x5185;&#x4F7F;&#x4E4B;&#x8FDB;&#x5165;&#xFF0C;&#x4EE5;&#x514D;&#x9677;&#x5165;&#x201C;&#x6B7B;&#x7B49;&#x201D;&#x3002;</li>
-                <li>&#x8BA9;&#x6743;&#x7B49;&#x5F85; &#x5BF9;&#x4E8E;&#x7B49;&#x5F85;&#x8FDB;&#x5165;&#x4E34;&#x754C;&#x533A;&#x7684;&#x8FDB;&#x7A0B;&#x800C;&#x8A00;&#xFF0C;&#x5B83;&#x5FC5;&#x987B;&#x7ACB;&#x5373;&#x91CA;&#x653E;&#x5904;&#x7406;&#x673A;&#xFF0C;&#x4EE5;&#x514D;&#x8FDB;&#x7A0B;&#x201C;&#x5FD9;&#x7B49;&#x201D;</li>
-              </ol>
-              <p>&#x5047;&#x8BBE;&#x6709;&#x4E24;&#x4E2A;&#x8FDB;&#x7A0B;&#x9700;&#x8981;&#x4E92;&#x65A5;&#x7684;&#x8BBF;&#x95EE;&#x67D0;&#x4E00;&#x4E2A;&#x4E34;&#x754C;&#x533A;&#x3002;</p>
-              <p>&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
-              <figure class="highlight cs">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td>
-                    <td class="code"><pre><span class="line">package com.gizwits.concurrent;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Peterson &#x4E92;&#x65A5;&#x7B97;&#x6CD5;</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Peterson</span> {</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#x7528;&#x4E8E;&#x8868;&#x793A;&#x8FDB;&#x7A0B;&#x8FDB;&#x5165;&#x4E34;&#x754C;&#x533A;&#x7684;&#x610F;&#x613F;&#xFF0C;&#x4E0B;&#x6807;&#x5BF9;&#x5E94;&#x8FDB;&#x7A0B;&#x53F7;. &#x4E3B;&#x89C2;&#x5730;&#x8868;&#x793A;&#x67D0;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x662F;&#x5426;&#x5E0C;&#x671B;&#x4F7F;&#x7528;&#x8D44;&#x6E90;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> boolean[] <span class="keyword">in</span> = {<span class="keyword">false</span>, <span class="keyword">false</span>};</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#x7528;&#x4E8E;&#x8868;&#x793A;&#x8F6E;&#x5230;&#x54EA;&#x4E2A;&#x8FDB;&#x7A0B;, &#x5BA2;&#x89C2;&#x5730;&#x8868;&#x793A;&#x54EA;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x6709;&#x6743;&#x4F7F;&#x7528;&#x8FDB;&#x7A0B;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> <span class="keyword">int</span> turn = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#x8FDB;&#x5165;&#x4E34;&#x754C;&#x533A;</span><br><span class="line">     *</span><br><span class="line">     * @param process &#x8FDB;&#x7A0B;&#x53F7;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enterRegion</span>(<span class="params"><span class="keyword">int</span> process</span>) </span>{</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">5</span>;</span><br><span class="line">        <span class="keyword">while</span> (cnt-- &gt; <span class="number">0</span>) {</span><br><span class="line">            <span class="comment">// &#x8FDB;&#x7A0B; id &#x60F3;&#x8FDB;&#x5165;&#x4E34;&#x754C;&#x533A;, &#x8868;&#x793A;&#x672C;&#x8FDB;&#x7A0B;&#x60F3;&#x4F7F;&#x7528;&#x8D44;&#x6E90;</span></span><br><span class="line">            <span class="keyword">in</span>[process] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// &#x53E6;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x7684;&#x8FDB;&#x7A0B;&#x53F7;</span></span><br><span class="line">            <span class="keyword">int</span> other = <span class="number">1</span> - process;</span><br><span class="line">            <span class="comment">// &#x8BBE;&#x7F6E;&#x8F6E;&#x5230;&#x81EA;&#x5DF1;&#x8FDB;&#x5165;&#x4E34;&#x754C;&#x533A;&#x4E86;, &#x8C26;&#x8BA9;&#xFF0C;&#x628A;&#x4F7F;&#x7528;&#x8FDB;&#x7A0B;&#x7684;&#x6743;&#x9650;&#x8BA9;&#x7ED9;&#x5BF9;&#x65B9;&#x8FDB;&#x7A0B;</span></span><br><span class="line">            turn = other;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// &#x5982;&#x679C;&#x5BF9;&#x65B9;&#x8FDB;&#x7A0B;&#x60F3;&#x4F7F;&#x7528;&#x8D44;&#x6E90;&#xFF0C;&#x4E14;&#x5BF9;&#x65B9;&#x8FDB;&#x7A0B;&#x6709;&#x4F7F;&#x7528;&#x8D44;&#x6E90;&#x7684;&#x6743;&#x9650;&#x65F6;&#xFF0C;&#x672C;&#x8FDB;&#x7A0B;&#x7B49;&#x5F85;</span></span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">in</span>[other] &amp;&amp; turn == other) {</span><br><span class="line">                System.<span class="keyword">out</span>.println(<span class="string">&quot;[&quot;</span> + process + <span class="string">&quot;] - wait...&quot;</span>);</span><br><span class="line">            }</span><br><span class="line">            System.<span class="keyword">out</span>.println(<span class="string">&quot;-------------------[&quot;</span> + process + <span class="string">&quot;] Working&quot;</span>);</span><br><span class="line">            leaveRegion(process);    <span class="comment">// &#x672C;&#x8FDB;&#x7A0B;&#x7528;&#x5B8C;&#x8D44;&#x6E90;&#x540E;&#xFF0C;&#x5FC5;&#x987B;&#x8868;&#x793A;&#x4E0D;&#x518D;&#x60F3;&#x7528;&#x8D44;&#x6E90;</span></span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">leaveRegion</span>(<span class="params"><span class="keyword">int</span> process</span>) </span>{</span><br><span class="line"></span><br><span class="line">        <span class="keyword">in</span>[process] = <span class="keyword">false</span>;     <span class="comment">// &#x672C;&#x8FDB;&#x7A0B;&#x7528;&#x5B8C;&#x8D44;&#x6E90;&#x540E;&#xFF0C;&#x5FC5;&#x987B;&#x8868;&#x793A;&#x4E0D;&#x518D;&#x60F3;&#x7528;&#x8D44;&#x6E90;</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>{</span><br><span class="line"></span><br><span class="line">        final Peterson peterson = <span class="keyword">new</span> Peterson();</span><br><span class="line">        <span class="keyword">int</span> threadNum = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; threadNum; i++) {</span><br><span class="line"></span><br><span class="line">            final <span class="keyword">int</span> finalI = i;</span><br><span class="line">            <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() {</span><br><span class="line">                @<span class="function">Override</span><br><span class="line">                <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>(<span class="params"></span>) </span>{</span><br><span class="line">                    peterson.enterRegion(finalI);</span><br><span class="line">                }</span><br><span class="line">            }).start();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">}</span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-              <p>&#x591A;&#x6B21;&#x8FD0;&#x884C;&#x51FA;&#x73B0;&#x4E92;&#x65A5;&#xFF1A;</p>
-              <figure class="highlight prolog">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td>
-                    <td class="code"><pre><span class="line">-------------------[<span class="number">0</span>] <span class="name">Working</span></span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">-------------------[<span class="number">1</span>] <span class="name">Working</span></span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">-------------------[<span class="number">0</span>] <span class="name">Working</span></span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">-------------------[<span class="number">1</span>] <span class="name">Working</span></span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">-------------------[<span class="number">0</span>] <span class="name">Working</span></span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">-------------------[<span class="number">1</span>] <span class="name">Working</span></span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">-------------------[<span class="number">0</span>] <span class="name">Working</span></span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">-------------------[<span class="number">1</span>] <span class="name">Working</span></span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">-------------------[<span class="number">0</span>] <span class="name">Working</span></span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">-------------------[<span class="number">1</span>] <span class="name">Working</span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-              <h3 id="&#x6269;&#x5C55;&#x5230;-n-&#x4E2A;&#x7EBF;&#x7A0B;&#x4E92;&#x65A5;&#x8BBF;&#x95EE;&#x4E00;&#x4E2A;&#x8D44;&#x6E90;&#x7684;-filter-&#x7B97;&#x6CD5;">&#x6269;&#x5C55;&#x5230; N &#x4E2A;&#x7EBF;&#x7A0B;&#x4E92;&#x65A5;&#x8BBF;&#x95EE;&#x4E00;&#x4E2A;&#x8D44;&#x6E90;&#x7684; filter &#x7B97;&#x6CD5;</h3>
-              <figure class="highlight stata">
-                <table>
-                  <tr>
-                    <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td>
-                    <td class="code"><pre><span class="line"><span class="comment">// initialization</span></span><br><span class="line">level[<span class="keyword">N</span>] = { -1 };     <span class="comment">// current level of processes 0...N-1</span></span><br><span class="line">waiting[<span class="keyword">N</span>-1] = { -1 }; <span class="comment">// the waiting process of each level 0...N-2</span></span><br><span class="line"><span class="comment">// code for process #i</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">l</span> = 0; <span class="keyword">l</span> &lt; <span class="keyword">N</span>-1; ++<span class="keyword">l</span>) {</span><br><span class="line">    level[i] = <span class="keyword">l</span>;</span><br><span class="line">    waiting[<span class="keyword">l</span>] = i;</span><br><span class="line">    <span class="keyword">while</span>(waiting[<span class="keyword">l</span>] == i &amp;&amp;</span><br><span class="line">          (there exists k &#x2260; i, such that level[k] &#x2265; <span class="keyword">l</span>)) {</span><br><span class="line">        <span class="comment">// busy wait</span></span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="comment">// critical section</span></span><br><span class="line">level[i] = -1; <span class="comment">// exit section</span></span><br></pre></td>
-                  </tr>
-                </table>
-              </figure>
-
-            </div>
-            <footer>
-
-              <div class="categories">
-                <a href="/categories/java/">java</a>
-              </div>
-              <div class="tags">
-                <a href="/tags/java并发编程/">java并发编程</a>
-              </div>
-
-
-              <div class="clearfix"></div>
-            </footer>
-          </div>
-        </article>
-
-        <section id="comments">
-          <!-- 多说评论框 start -->
-          <div class="ds-thread" data-thread-key="post-Peterson无锁互斥算法" data-title="Peterson 无锁互斥算法" data-url="http://wwww.feel88.cn/2016/11/22/Peterson无锁互斥算法/"></div>
-          <!-- 多说评论框 end -->
-          <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-          <script type="text/javascript">
-            var duoshuoQuery = {
-              short_name: "feel"
-            };
-            (function() {
-              var ds = document.createElement('script');
-              ds.type = 'text/javascript';
-              ds.async = true;
-              ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-              ds.charset = 'UTF-8';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-            })();
-          </script>
-          <!-- 多说公共JS代码 end -->
-        </section>
-      </div>
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-11-21T16:07:54.000Z"><a href="/2016/11/22/Peterson无锁互斥算法/">2016-11-22</a></time>
+      
+      <h1 class="title">Peterson 无锁互斥算法</h1>
+    </header>
+    <div class="entry">
+      
+        <p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x8981;&#x89E3;&#x51B3;&#x7EBF;&#x7A0B;&#x4E92;&#x65A5;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x4F7F;&#x7528;&#x9501;&#x673A;&#x5236;&#x6765;&#x5B9E;&#x73B0;&#x3002;&#x5B9E;&#x73B0;&#x4E92;&#x65A5;&#x7684;&#x4E00;&#x79CD;&#x8F6F;&#x4EF6;&#x65B9;&#x6CD5;&#x662F;&#x91C7;&#x7528;&#x9501;&#x673A;&#x5236;&#xFF0C;&#x5373;&#x63D0;&#x4F9B;&#x4E00;&#x5BF9;&#x4E0A;&#x9501;&#x548C;&#x5F00;&#x9501;&#x539F;&#x8BED;&#xFF0C;&#x4EE5;&#x53CA;&#x4E00;&#x4E2A;&#x9501;&#x53D8;&#x91CF; W &#x8FDB;&#x5165;&#x4E34;&#x754C;&#x533A;&#x524D;&#xFF0C;&#x901A;&#x8FC7;&#x9501;&#x53D8;&#x91CF;&#x6765;&#x5224;&#x65AD;&#x4E34;&#x754C;&#x8D44;&#x6E90;&#x662F;&#x5426;&#x88AB;&#x5360;&#x7528;&#x3002;</p>
+<p>Peterson &#x7B97;&#x6CD5;&#x662F;&#x4E00;&#x4E2A;&#x5B9E;&#x73B0;&#x4E92;&#x65A5;&#x9501;&#x7684;&#x5E76;&#x53D1;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x7B97;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x63A7;&#x5236;&#x4E24;&#x4E2A;&#x8FDB;&#x7A0B;&#x8BBF;&#x95EE;&#x4E00;&#x4E2A;&#x5171;&#x4EAB;&#x7684;&#x5355;&#x7528;&#x6237;&#x8D44;&#x6E90;&#x800C;&#x4E0D;&#x53D1;&#x751F;&#x8BBF;&#x95EE;&#x51B2;&#x7A81;&#x3002;</p>
+<a id="more"></a>
+<h3 id="&#x540C;&#x6B65;&#x673A;&#x5236;&#x5E94;&#x8BE5;&#x9075;&#x5FAA;&#x7684;&#x51C6;&#x5219;">&#x540C;&#x6B65;&#x673A;&#x5236;&#x5E94;&#x8BE5;&#x9075;&#x5FAA;&#x7684;&#x51C6;&#x5219;&#xFF1A;</h3><ol>
+<li>&#x7A7A;&#x95F2;&#x8BA9;&#x8FDB; &#x5F53;&#x65E0;&#x8FDB;&#x7A0B;&#x5904;&#x4E8E;&#x4E34;&#x754C;&#x533A;&#x5185;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x8BA9;&#x4E00;&#x4E2A;&#x8981;&#x6C42;&#x8FDB;&#x5165;&#x4E34;&#x754C;&#x533A;&#x7684;&#x8FDB;&#x7A0B;&#x7ACB;&#x5373;&#x8FDB;&#x5165;&#xFF0C;&#x4EE5;&#x6709; <br> &#x6548;&#x5730;&#x5229;&#x7528;&#x4E34;&#x754C;&#x8D44;&#x6E90;&#x3002;</li>
+<li>&#x5FD9;&#x5219;&#x7B49;&#x5F85; &#x5F53;&#x5DF2;&#x6709;&#x8FDB;&#x7A0B;&#x5904;&#x4E8E;&#x4E34;&#x754C;&#x533A;&#x5185;&#x65F6;&#xFF0C;&#x5176;&#x5B83;&#x8BD5;&#x56FE;&#x8FDB;&#x5165;&#x4E34;&#x754C;&#x533A;&#x7684;&#x8FDB;&#x7A0B;&#x5FC5;&#x987B;&#x7B49;&#x5F85;&#xFF0C;&#x4EE5;&#x4FDD;&#x8BC1;&#x5B83; <br> &#x4EEC;&#x4E92;&#x65A5;&#x5730;&#x8FDB;&#x5165;&#x4E34;&#x754C;&#x533A;&#x3002;</li>
+<li>&#x6709;&#x9650;&#x7B49;&#x5F85; &#x5BF9;&#x8981;&#x6C42;&#x8FDB;&#x5165;&#x4E34;&#x754C;&#x533A;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x5E94;&#x5728;&#x6709;&#x9650;&#x65F6;&#x95F4;&#x5185;&#x4F7F;&#x4E4B;&#x8FDB;&#x5165;&#xFF0C;&#x4EE5;&#x514D;&#x9677;&#x5165;&#x201C;&#x6B7B;&#x7B49;&#x201D;&#x3002;</li>
+<li>&#x8BA9;&#x6743;&#x7B49;&#x5F85; &#x5BF9;&#x4E8E;&#x7B49;&#x5F85;&#x8FDB;&#x5165;&#x4E34;&#x754C;&#x533A;&#x7684;&#x8FDB;&#x7A0B;&#x800C;&#x8A00;&#xFF0C;&#x5B83;&#x5FC5;&#x987B;&#x7ACB;&#x5373;&#x91CA;&#x653E;&#x5904;&#x7406;&#x673A;&#xFF0C;&#x4EE5;&#x514D;&#x8FDB;&#x7A0B;&#x201C;&#x5FD9;&#x7B49;&#x201D;</li>
+</ol>
+<p>&#x5047;&#x8BBE;&#x6709;&#x4E24;&#x4E2A;&#x8FDB;&#x7A0B;&#x9700;&#x8981;&#x4E92;&#x65A5;&#x7684;&#x8BBF;&#x95EE;&#x67D0;&#x4E00;&#x4E2A;&#x4E34;&#x754C;&#x533A;&#x3002;</p>
+<p>&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">package com.gizwits.concurrent;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Peterson &#x4E92;&#x65A5;&#x7B97;&#x6CD5;</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Peterson</span> {</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#x7528;&#x4E8E;&#x8868;&#x793A;&#x8FDB;&#x7A0B;&#x8FDB;&#x5165;&#x4E34;&#x754C;&#x533A;&#x7684;&#x610F;&#x613F;&#xFF0C;&#x4E0B;&#x6807;&#x5BF9;&#x5E94;&#x8FDB;&#x7A0B;&#x53F7;. &#x4E3B;&#x89C2;&#x5730;&#x8868;&#x793A;&#x67D0;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x662F;&#x5426;&#x5E0C;&#x671B;&#x4F7F;&#x7528;&#x8D44;&#x6E90;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> boolean[] <span class="keyword">in</span> = {<span class="keyword">false</span>, <span class="keyword">false</span>};</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#x7528;&#x4E8E;&#x8868;&#x793A;&#x8F6E;&#x5230;&#x54EA;&#x4E2A;&#x8FDB;&#x7A0B;, &#x5BA2;&#x89C2;&#x5730;&#x8868;&#x793A;&#x54EA;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x6709;&#x6743;&#x4F7F;&#x7528;&#x8FDB;&#x7A0B;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> <span class="keyword">int</span> turn = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#x8FDB;&#x5165;&#x4E34;&#x754C;&#x533A;</span><br><span class="line">     *</span><br><span class="line">     * @param process &#x8FDB;&#x7A0B;&#x53F7;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enterRegion</span>(<span class="params"><span class="keyword">int</span> process</span>) </span>{</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">5</span>;</span><br><span class="line">        <span class="keyword">while</span> (cnt-- &gt; <span class="number">0</span>) {</span><br><span class="line">            <span class="comment">// &#x8FDB;&#x7A0B; id &#x60F3;&#x8FDB;&#x5165;&#x4E34;&#x754C;&#x533A;, &#x8868;&#x793A;&#x672C;&#x8FDB;&#x7A0B;&#x60F3;&#x4F7F;&#x7528;&#x8D44;&#x6E90;</span></span><br><span class="line">            <span class="keyword">in</span>[process] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// &#x53E6;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x7684;&#x8FDB;&#x7A0B;&#x53F7;</span></span><br><span class="line">            <span class="keyword">int</span> other = <span class="number">1</span> - process;</span><br><span class="line">            <span class="comment">// &#x8BBE;&#x7F6E;&#x8F6E;&#x5230;&#x81EA;&#x5DF1;&#x8FDB;&#x5165;&#x4E34;&#x754C;&#x533A;&#x4E86;, &#x8C26;&#x8BA9;&#xFF0C;&#x628A;&#x4F7F;&#x7528;&#x8FDB;&#x7A0B;&#x7684;&#x6743;&#x9650;&#x8BA9;&#x7ED9;&#x5BF9;&#x65B9;&#x8FDB;&#x7A0B;</span></span><br><span class="line">            turn = other;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// &#x5982;&#x679C;&#x5BF9;&#x65B9;&#x8FDB;&#x7A0B;&#x60F3;&#x4F7F;&#x7528;&#x8D44;&#x6E90;&#xFF0C;&#x4E14;&#x5BF9;&#x65B9;&#x8FDB;&#x7A0B;&#x6709;&#x4F7F;&#x7528;&#x8D44;&#x6E90;&#x7684;&#x6743;&#x9650;&#x65F6;&#xFF0C;&#x672C;&#x8FDB;&#x7A0B;&#x7B49;&#x5F85;</span></span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">in</span>[other] &amp;&amp; turn == other) {</span><br><span class="line">                System.<span class="keyword">out</span>.println(<span class="string">&quot;[&quot;</span> + process + <span class="string">&quot;] - wait...&quot;</span>);</span><br><span class="line">            }</span><br><span class="line">            System.<span class="keyword">out</span>.println(<span class="string">&quot;-------------------[&quot;</span> + process + <span class="string">&quot;] Working&quot;</span>);</span><br><span class="line">            leaveRegion(process);    <span class="comment">// &#x672C;&#x8FDB;&#x7A0B;&#x7528;&#x5B8C;&#x8D44;&#x6E90;&#x540E;&#xFF0C;&#x5FC5;&#x987B;&#x8868;&#x793A;&#x4E0D;&#x518D;&#x60F3;&#x7528;&#x8D44;&#x6E90;</span></span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">leaveRegion</span>(<span class="params"><span class="keyword">int</span> process</span>) </span>{</span><br><span class="line"></span><br><span class="line">        <span class="keyword">in</span>[process] = <span class="keyword">false</span>;     <span class="comment">// &#x672C;&#x8FDB;&#x7A0B;&#x7528;&#x5B8C;&#x8D44;&#x6E90;&#x540E;&#xFF0C;&#x5FC5;&#x987B;&#x8868;&#x793A;&#x4E0D;&#x518D;&#x60F3;&#x7528;&#x8D44;&#x6E90;</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>{</span><br><span class="line"></span><br><span class="line">        final Peterson peterson = <span class="keyword">new</span> Peterson();</span><br><span class="line">        <span class="keyword">int</span> threadNum = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; threadNum; i++) {</span><br><span class="line"></span><br><span class="line">            final <span class="keyword">int</span> finalI = i;</span><br><span class="line">            <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() {</span><br><span class="line">                @<span class="function">Override</span><br><span class="line">                <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>(<span class="params"></span>) </span>{</span><br><span class="line">                    peterson.enterRegion(finalI);</span><br><span class="line">                }</span><br><span class="line">            }).start();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x591A;&#x6B21;&#x8FD0;&#x884C;&#x51FA;&#x73B0;&#x4E92;&#x65A5;&#xFF1A;</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">-------------------[<span class="number">0</span>] <span class="name">Working</span></span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">-------------------[<span class="number">1</span>] <span class="name">Working</span></span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">-------------------[<span class="number">0</span>] <span class="name">Working</span></span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">-------------------[<span class="number">1</span>] <span class="name">Working</span></span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">-------------------[<span class="number">0</span>] <span class="name">Working</span></span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">-------------------[<span class="number">1</span>] <span class="name">Working</span></span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">-------------------[<span class="number">0</span>] <span class="name">Working</span></span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">-------------------[<span class="number">1</span>] <span class="name">Working</span></span><br><span class="line">[<span class="number">0</span>] - <span class="atom">wait</span>...</span><br><span class="line">-------------------[<span class="number">0</span>] <span class="name">Working</span></span><br><span class="line">[<span class="number">1</span>] - <span class="atom">wait</span>...</span><br><span class="line">-------------------[<span class="number">1</span>] <span class="name">Working</span></span><br></pre></td></tr></table></figure>
+<h3 id="&#x6269;&#x5C55;&#x5230;-n-&#x4E2A;&#x7EBF;&#x7A0B;&#x4E92;&#x65A5;&#x8BBF;&#x95EE;&#x4E00;&#x4E2A;&#x8D44;&#x6E90;&#x7684;-filter-&#x7B97;&#x6CD5;">&#x6269;&#x5C55;&#x5230; N &#x4E2A;&#x7EBF;&#x7A0B;&#x4E92;&#x65A5;&#x8BBF;&#x95EE;&#x4E00;&#x4E2A;&#x8D44;&#x6E90;&#x7684; filter &#x7B97;&#x6CD5;</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// initialization</span></span><br><span class="line">level[<span class="keyword">N</span>] = { -1 };     <span class="comment">// current level of processes 0...N-1</span></span><br><span class="line">waiting[<span class="keyword">N</span>-1] = { -1 }; <span class="comment">// the waiting process of each level 0...N-2</span></span><br><span class="line"><span class="comment">// code for process #i</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">l</span> = 0; <span class="keyword">l</span> &lt; <span class="keyword">N</span>-1; ++<span class="keyword">l</span>) {</span><br><span class="line">    level[i] = <span class="keyword">l</span>;</span><br><span class="line">    waiting[<span class="keyword">l</span>] = i;</span><br><span class="line">    <span class="keyword">while</span>(waiting[<span class="keyword">l</span>] == i &amp;&amp;</span><br><span class="line">          (there exists k &#x2260; i, such that level[k] &#x2265; <span class="keyword">l</span>)) {</span><br><span class="line">        <span class="comment">// busy wait</span></span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="comment">// critical section</span></span><br><span class="line">level[i] = -1; <span class="comment">// exit section</span></span><br></pre></td></tr></table></figure>
+      
     </div>
-    <aside id="sidebar" class="alignright">
-      <div class="widget tag">
-        <h3 class="title">最新文章</h3>
-        <ul class="entry">
+    <footer>
+      
+        <div class="categories">
+    <a href="/categories/java/">java</a>
+  </div>
+        <div class="tags">
+    <a href="/tags/java并发编程/">java并发编程</a>
+  </div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
 
-          <li>
-            <a href="/2017/06/27/ubuntu搭建深度学习tensorflow环境/">ubuntu 搭建深度学习 tensorflow 环境</a>
-          </li>
+<section id="comments">
+ <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-Peterson无锁互斥算法" data-title="Peterson 无锁互斥算法" data-url="http://blog.feel88.cn/2016/11/22/Peterson无锁互斥算法/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"feel"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section></div></div>
+    <aside id="sidebar" class="alignright"><div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2017/06/27/ubuntu搭建深度学习tensorflow环境/">ubuntu 搭建深度学习 tensorflow 环境</a>
+      </li>
+    
+      <li>
+        <a href="/2017/01/04/python下安装MySQLdb/">python 下安装 MySQLdb 填坑</a>
+      </li>
+    
+      <li>
+        <a href="/2016/12/23/scala元编程/">scala 元编程</a>
+      </li>
+    
+      <li>
+        <a href="/2016/11/22/线程安全问题/">线程安全问题</a>
+      </li>
+    
+      <li>
+        <a href="/2016/11/22/Peterson无锁互斥算法/">Peterson 无锁互斥算法</a>
+      </li>
+    
+  </ul>
+</div>
 
-          <li>
-            <a href="/2017/01/04/python下安装MySQLdb/">python 下安装 MySQLdb 填坑</a>
-          </li>
+  <div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/DL/">DL</a><small>1</small></li>
+  
+    <li><a href="/categories/bigdata/">bigdata</a><small>2</small></li>
+  
+    <li><a href="/categories/css3/">css3</a><small>2</small></li>
+  
+    <li><a href="/categories/go/">go</a><small>2</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>4</small></li>
+  
+    <li><a href="/categories/kotlin/">kotlin</a><small>1</small></li>
+  
+    <li><a href="/categories/linux/">linux</a><small>6</small></li>
+  
+    <li><a href="/categories/nginx/">nginx</a><small>1</small></li>
+  
+    <li><a href="/categories/nginx常用错误/">nginx常用错误</a><small>1</small></li>
+  
+    <li><a href="/categories/python/">python</a><small>1</small></li>
+  
+    <li><a href="/categories/scala/">scala</a><small>3</small></li>
+  
+    <li><a href="/categories/tool/">tool</a><small>1</small></li>
+  
+    <li><a href="/categories/web/">web</a><small>2</small></li>
+  
+    <li><a href="/categories/数据库/">数据库</a><small>1</small></li>
+  
+  </ul>
+</div>
 
-          <li>
-            <a href="/2016/12/23/scala元编程/">scala 元编程</a>
-          </li>
-
-          <li>
-            <a href="/2016/11/22/线程安全问题/">线程安全问题</a>
-          </li>
-
-          <li>
-            <a href="/2016/11/22/Peterson无锁互斥算法/">Peterson 无锁互斥算法</a>
-          </li>
-
-        </ul>
-      </div>
-
-      <div class="widget tag">
-        <h3 class="title">分类</h3>
-        <ul class="entry">
-
-          <li><a href="/categories/DL/">DL</a><small>1</small></li>
-
-          <li><a href="/categories/bigtata/">bigdata</a><small>2</small></li>
-
-          <li><a href="/categories/css3/">css3</a><small>2</small></li>
-
-          <li><a href="/categories/go/">go</a><small>2</small></li>
-
-          <li><a href="/categories/java/">java</a><small>4</small></li>
-
-          <li><a href="/categories/kotlin/">kotlin</a><small>1</small></li>
-
-          <li><a href="/categories/linux/">linux</a><small>6</small></li>
-
-          <li><a href="/categories/nginx/">nginx</a><small>1</small></li>
-
-          <li><a href="/categories/nginx常用错误/">nginx常用错误</a><small>1</small></li>
-
-          <li><a href="/categories/python/">python</a><small>1</small></li>
-
-          <li><a href="/categories/scala/">scala</a><small>3</small></li>
-
-          <li><a href="/categories/tool/">tool</a><small>1</small></li>
-
-          <li><a href="/categories/web/">web</a><small>2</small></li>
-
-          <li><a href="/categories/数据库/">数据库</a><small>1</small></li>
-
-        </ul>
-      </div>
-
-      <div class="widget tag">
-        <h3 class="title">标签</h3>
-        <ul class="entry">
-
-          <li><a href="/tags/DL/">DL</a><small>1</small></li>
-
-          <li><a href="/tags/bigtata/">bigdata</a><small>2</small></li>
-
-          <li><a href="/tags/css3/">css3</a><small>2</small></li>
-
-          <li><a href="/tags/go/">go</a><small>2</small></li>
-
-          <li><a href="/tags/java/">java</a><small>3</small></li>
-
-          <li><a href="/tags/java并发编程/">java并发编程</a><small>2</small></li>
-
-          <li><a href="/tags/kotlin/">kotlin</a><small>1</small></li>
-
-          <li><a href="/tags/linux/">linux</a><small>6</small></li>
-
-          <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
-
-          <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
-
-          <li><a href="/tags/nginx信号量/">nginx信号量</a><small>1</small></li>
-
-          <li><a href="/tags/python下安装MySQLdb填坑/">python下安装MySQLdb填坑</a><small>1</small></li>
-
-          <li><a href="/tags/scala/">scala</a><small>3</small></li>
-
-          <li><a href="/tags/sqoop/">sqoop</a><small>1</small></li>
-
-          <li><a href="/tags/tool/">tool</a><small>1</small></li>
-
-          <li><a href="/tags/web/">web</a><small>3</small></li>
-
-          <li><a href="/tags/web前端/">web前端</a><small>1</small></li>
-
-          <li><a href="/tags/前端样式框架/">前端样式框架</a><small>1</small></li>
-
-          <li><a href="/tags/样式/">样式</a><small>1</small></li>
-
-        </ul>
-      </div>
-    </aside>
+  <div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/DL/">DL</a><small>1</small></li>
+  
+    <li><a href="/tags/bigdata/">bigdata</a><small>2</small></li>
+  
+    <li><a href="/tags/css3/">css3</a><small>2</small></li>
+  
+    <li><a href="/tags/go/">go</a><small>2</small></li>
+  
+    <li><a href="/tags/java/">java</a><small>3</small></li>
+  
+    <li><a href="/tags/java并发编程/">java并发编程</a><small>2</small></li>
+  
+    <li><a href="/tags/kotlin/">kotlin</a><small>1</small></li>
+  
+    <li><a href="/tags/linux/">linux</a><small>6</small></li>
+  
+    <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
+  
+    <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
+  
+    <li><a href="/tags/nginx信号量/">nginx信号量</a><small>1</small></li>
+  
+    <li><a href="/tags/python下安装MySQLdb填坑/">python下安装MySQLdb填坑</a><small>1</small></li>
+  
+    <li><a href="/tags/scala/">scala</a><small>3</small></li>
+  
+    <li><a href="/tags/sqoop/">sqoop</a><small>1</small></li>
+  
+    <li><a href="/tags/tool/">tool</a><small>1</small></li>
+  
+    <li><a href="/tags/web/">web</a><small>3</small></li>
+  
+    <li><a href="/tags/web前端/">web前端</a><small>1</small></li>
+  
+    <li><a href="/tags/前端样式框架/">前端样式框架</a><small>1</small></li>
+  
+    <li><a href="/tags/样式/">样式</a><small>1</small></li>
+  
+  </ul>
+</div></aside>
     <div class="clearfix"></div>
   </div>
-  <footer id="footer" class="inner">
-    <div class="alignleft">
-
-      &copy; 2017 feel
-
-    </div>
-    <div class="clearfix"></div>
-  </footer>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2018 feel
+  
+</div>
+<div class="clearfix"></div></footer>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-  <script src="/js/jquery.imagesloaded.min.js"></script>
-  <script src="/js/gallery.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
 
 
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript">
-    (function($) {
-      $('.fancybox').fancybox();
-    })(jQuery);
-  </script>
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
 </body>
-
